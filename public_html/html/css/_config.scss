@@ -1,0 +1,46 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,700,900&subset=latin,vietnamese);
+@import url(https://fonts.googleapis.com/css?family=Lora:400,700);
+/*@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&subset=latin,vietnamese);*/
+
+/*@font-face{
+    font-family: 'WebFont';
+    src: url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,700,900&subset=latin,vietnamese);
+}*/
+
+@mixin main-font{
+    font:{
+        /*family: 'Open Sans', sans-serif;*/
+        family: 'Roboto', sans-serif;
+        size: 100%;
+        weight: normal;
+    }
+}
+
+@mixin phone-number($size, $weight){
+    font:{
+        family: 'Lora', serif;
+        size: $size;
+        weight: $weight;
+    }
+}
+
+@mixin border-radius($radius){
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin transition($second){
+    -webkit-transition: all $second ease 0s;
+    -moz-transition: all $second ease 0s;
+    transition: all $second ease 0s;
+}
+
+
+$white: #fff;
+$bg-primary: #fff;
+$color-primary: #666;
+$hot-top-bg: #AFAF4D;
+$color-menu: #4BAE4F;
+$brand-color: #ff0000;

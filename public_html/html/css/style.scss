@@ -1,0 +1,54 @@
+@import "_config";
+
+body{
+    @include main-font;
+    background: $bg-primary;
+    color: $color-primary;
+}
+.hot-top{
+    /*background: $hot-top-bg url('../images/bg/grid.png');*/
+    background: $hot-top-bg;
+    color: $white;
+    ul{
+        list-style-type: none;
+        margin-bottom: 0;
+        li{
+            vertical-align: middle;
+            display: inline-block;
+            padding: 5px 20px;
+            i{
+                vertical-align: middle;
+            }
+            .hotline{
+                @include phone-number(24px, 300);
+                vertical-align: middle;
+            }
+        }
+    }
+}
+#header{
+    background: saturate($hot-top-bg, 50%);
+    #logo{
+
+    }
+    nav{
+        ul{
+            list-style-type: none;
+            li{
+                display: inline-block;
+                a{
+                    @include transition(0.3s);
+                    color: lighten($color-menu, 20%);
+                    font-size: 14px;
+                    text-transform: capitalize;
+                    display: block;
+                    padding: 20px;
+                    &.active, &:hover{
+                        color: $color-menu;
+                        border-bottom: 2px solid $white;
+                    }
+                }
+            }
+        }
+    }
+}
