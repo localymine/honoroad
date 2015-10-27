@@ -1,5 +1,9 @@
 @import "_config";
 
+.nopadding{
+    padding-left: 0;
+    padding-right: 0;
+}
 body{
     @include main-font;
     background: $bg-primary;
@@ -27,25 +31,65 @@ body{
     }
 }
 #header{
-    background: saturate($hot-top-bg, 50%);
+    background: $menu-bg;
     #logo{
-
+        
     }
     nav{
+        padding-left: 0;
+        padding-right: 0;
+        float: right;
         ul{
+            clear: both;
+            display: block;
+            float: right;
+            margin: 0px 0 0;
+            padding: 0;
             list-style-type: none;
             li{
                 display: inline-block;
+                position: relative;
+                line-height: 31px;
                 a{
                     @include transition(0.3s);
-                    color: lighten($color-menu, 20%);
-                    font-size: 14px;
-                    text-transform: capitalize;
+                    background: $menu-bg !important;
+                    font-weight: 700;
+                    color: lighten($menu-color, 5%);
+                    font-size: 16px;
                     display: block;
-                    padding: 20px;
-                    &.active, &:hover{
-                        color: $color-menu;
-                        border-bottom: 2px solid $white;
+                    padding: 20px 10px;
+                    &:before{
+                        @include transition(0.3s);
+                        background: $white;
+                        bottom: 0;
+                        content: "";
+                        display: block;
+                        height: 6px;
+                        left: 0;
+                        position: absolute;
+                        right: 0;
+                        width: 0;
+                    }
+                    &:hover{
+                        text-decoration: none;
+                        color: $menu-color;
+                    }
+                    &.active:before, &:hover:before{
+                        @include transition(0.3s);
+                        width: 100%;
+                    }
+                    &.active{
+                        color: $menu-color;
+                    }
+                    &.nav-title{
+                        display: block;
+                        position: relative;
+                        text-transform: capitalize;
+                        z-index: 1;
+                    }
+                    span{
+                        text-align: center;
+                        display: block;
                     }
                 }
             }
