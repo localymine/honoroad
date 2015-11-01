@@ -1,1 +1,186 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,700,900&subset=latin,vietnamese);@import url(https://fonts.googleapis.com/css?family=Lora:400,700);.nopadding{padding-left:0;padding-right:0}body{font-family:'Roboto', sans-serif;font-size:100%;font-weight:normal;background:#fff;color:#666}.hot-top{background:#cc0;color:#fff}.hot-top ul{list-style-type:none;margin-bottom:0}.hot-top ul li{vertical-align:middle;display:inline-block;padding:5px 20px}.hot-top ul li i{vertical-align:middle}.hot-top ul li .hotline{font-family:'Lora', serif;font-size:24px;font-weight:300;vertical-align:middle}#header{background:#ff0}#header nav{padding-left:0;padding-right:0;float:right}#header nav ul{clear:both;display:block;float:right;margin:0px 0 0;padding:0;list-style-type:none}#header nav ul li{display:inline-block;position:relative;line-height:31px}#header nav ul li a{-webkit-transition:all 0.3s ease 0s;-moz-transition:all 0.3s ease 0s;transition:all 0.3s ease 0s;background:#ff0 !important;font-weight:700;color:#39e600;font-size:16px;display:block;padding:20px 10px}#header nav ul li a:before{-webkit-transition:all 0.3s ease 0s;-moz-transition:all 0.3s ease 0s;transition:all 0.3s ease 0s;background:#fff;bottom:0;content:"";display:block;height:6px;left:0;position:absolute;right:0;width:0}#header nav ul li a:hover{text-decoration:none;color:#3c0}#header nav ul li a.active:before,#header nav ul li a:hover:before{-webkit-transition:all 0.3s ease 0s;-moz-transition:all 0.3s ease 0s;transition:all 0.3s ease 0s;width:100%}#header nav ul li a.active{color:#3c0}#header nav ul li a.nav-title{display:block;position:relative;text-transform:capitalize;z-index:1}#header nav ul li a span{text-align:center;display:block}
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,700,900&subset=latin,vietnamese);
+@import url(https://fonts.googleapis.com/css?family=Lora:400,700);
+/*@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&subset=latin,vietnamese);*/
+/*@font-face{
+    font-family: 'WebFont';
+    src: url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,700,900&subset=latin,vietnamese);
+}*/
+/*
+font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+*/
+/*==========  Mobile First Method  ==========*/
+/* Custom, iPhone Retina */
+@media only screen and (min-width: 320px) {
+  #header nav #logo {
+    width: auto; }
+    #header nav #logo .navbar-brand {
+      img: 70%; } }
+/*==========  Mobile First Method  ==========*/
+/* Extra Small Devices, Phones */
+@media only screen and (min-width: 480px) {
+  #header nav #logo {
+    width: auto; }
+    #header nav #logo .navbar-brand {
+      img: 70%; }
+  #header nav ul li a {
+    font-size: 12px; } }
+/*==========  Mobile First Method  ==========*/
+/* Small Devices, Tablets */
+@media only screen and (min-width: 768px) {
+  #header nav #logo {
+    width: auto; }
+    #header nav #logo .navbar-brand {
+      img: 80%; }
+  #header nav ul li a {
+    font-size: 12px; } }
+/*==========  Mobile First Method  ==========*/
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 992px) {
+  #header nav ul li a {
+    font-size: 16px; } }
+/*==========  Mobile First Method  ==========*/
+/* Large Devices, Wide Screens */
+.nopadding {
+  padding: 0; }
+
+body {
+  /*family: 'Open Sans', sans-serif;*/
+  font-family: 'Roboto', sans-serif;
+  font-size: 100%;
+  font-weight: normal;
+  background: #fff;
+  color: #666; }
+
+.hot-top {
+  /*background: $hot-top-bg url('../images/bg/grid.png');*/
+  background: #CCCC00;
+  color: #fff; }
+  .hot-top ul {
+    list-style-type: none;
+    margin-bottom: 0; }
+    .hot-top ul li {
+      vertical-align: middle;
+      display: inline-block;
+      padding: 5px 20px; }
+      .hot-top ul li i {
+        vertical-align: middle; }
+      .hot-top ul li .hotline {
+        font-family: 'Lora', serif;
+        font-size: 24px;
+        font-weight: 300;
+        vertical-align: middle; }
+
+#header {
+  background: #FFFF00; }
+  #header #logo #menu-toggle .navbar-toggle {
+    border: 1px solid #33CC00; }
+    #header #logo #menu-toggle .navbar-toggle:hover {
+      background-color: #39e600; }
+      #header #logo #menu-toggle .navbar-toggle:hover .icon-bar {
+        background-color: #fff; }
+    #header #logo #menu-toggle .navbar-toggle .icon-bar {
+      background-color: #33CC00; }
+  #header #logo .navbar-brand {
+    padding: 0; }
+  #header nav {
+    padding-left: 0;
+    padding-right: 0; }
+    #header nav.navbar-oil {
+      background-color: #FFFF00;
+      border: none; }
+    #header nav ul {
+      display: inline-block;
+      float: right;
+      margin: 0px 0 0;
+      padding: 0;
+      list-style-type: none; }
+      #header nav ul li {
+        display: inline-block;
+        position: relative;
+        line-height: 24px; }
+        #header nav ul li a {
+          -webkit-transition: all 0.3s ease 0s;
+          transition: all 0.3s ease 0s;
+          /*background: $menu-bg;*/
+          font-weight: 700;
+          color: #39e600;
+          font-size: 16px;
+          display: block;
+          padding: 20px 10px; }
+          #header nav ul li a:before {
+            -webkit-transition: all 0.3s ease 0s;
+            transition: all 0.3s ease 0s;
+            background: #fff;
+            bottom: 0;
+            content: "";
+            display: block;
+            height: 6px;
+            left: 0;
+            position: absolute;
+            right: 0;
+            width: 0; }
+          #header nav ul li a:hover {
+            text-decoration: none;
+            color: #33CC00; }
+          #header nav ul li a.active:before, #header nav ul li a:hover:before {
+            -webkit-transition: all 0.3s ease 0s;
+            transition: all 0.3s ease 0s;
+            width: 100%; }
+          #header nav ul li a.active {
+            color: #33CC00; }
+          #header nav ul li a.nav-title {
+            display: block;
+            position: relative;
+            text-transform: capitalize;
+            z-index: 1; }
+          #header nav ul li a span {
+            text-align: center;
+            display: block; }
+
+/*------------------- sidebar*/
+ul.m-sidebar {
+  list-style-type: none;
+  padding-left: 0;
+  width: 170px; }
+  ul.m-sidebar li {
+    display: block;
+    position: relative;
+    line-height: 24px; }
+    ul.m-sidebar li a {
+      -webkit-transition: all 0.3s ease 0s;
+      transition: all 0.3s ease 0s;
+      background: #FFFF00;
+      font-weight: 700;
+      color: #39e600;
+      font-size: 16px;
+      display: block;
+      padding: 20px 10px; }
+      ul.m-sidebar li a:before {
+        -webkit-transition: all 0.3s ease 0s;
+        transition: all 0.3s ease 0s;
+        background: #fff;
+        bottom: 0;
+        content: "";
+        display: block;
+        height: 6px;
+        left: 0;
+        position: absolute;
+        right: 0;
+        width: 0; }
+      ul.m-sidebar li a:hover {
+        text-decoration: none;
+        color: #33CC00; }
+      ul.m-sidebar li a.active:before, ul.m-sidebar li a:hover:before {
+        -webkit-transition: all 0.3s ease 0s;
+        transition: all 0.3s ease 0s;
+        width: 100%; }
+      ul.m-sidebar li a.active {
+        color: #33CC00; }
+      ul.m-sidebar li a.nav-title {
+        display: block;
+        position: relative;
+        text-transform: capitalize;
+        z-index: 1; }
+      ul.m-sidebar li a span {
+        text-align: center;
+        display: block; }

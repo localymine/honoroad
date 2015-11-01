@@ -1,8 +1,13 @@
 @import "_config";
 
+@import "mf-1-min-320.scss";
+@import "mf-2-min-480.scss";
+@import "mf-3-min-768.scss";
+@import "mf-4-min-992.scss";
+@import "mf-5-min-1200.scss";
+
 .nopadding{
-    padding-left: 0;
-    padding-right: 0;
+    padding: 0;
 }
 body{
     @include main-font;
@@ -30,18 +35,37 @@ body{
         }
     }
 }
+
 #header{
     background: $menu-bg;
     #logo{
-        
+        #menu-toggle{
+            .navbar-toggle{
+                border: 1px solid $menu-color;
+                &:hover{
+                    background-color: $menu-color-normal;
+                    .icon-bar{
+                        background-color: $white;
+                    }
+                }
+                .icon-bar{
+                    background-color: $menu-color;
+                }
+            }
+        }
+        .navbar-brand{
+            padding: 0;
+        }
     }
     nav{
         padding-left: 0;
         padding-right: 0;
-        float: right;
+        &.navbar-oil{
+            background-color: $menu-bg;
+            border: none;
+        }
         ul{
-            clear: both;
-            display: block;
+            display: inline-block;
             float: right;
             margin: 0px 0 0;
             padding: 0;
@@ -49,12 +73,12 @@ body{
             li{
                 display: inline-block;
                 position: relative;
-                line-height: 31px;
+                line-height: 24px;
                 a{
                     @include transition(0.3s);
-                    background: $menu-bg !important;
+                    /*background: $menu-bg;*/
                     font-weight: 700;
-                    color: lighten($menu-color, 5%);
+                    color: $menu-color-normal;
                     font-size: 16px;
                     display: block;
                     padding: 20px 10px;
@@ -79,7 +103,7 @@ body{
                         width: 100%;
                     }
                     &.active{
-                        color: $menu-color;
+                        color: $menu-color-active;
                     }
                     &.nav-title{
                         display: block;
@@ -92,6 +116,59 @@ body{
                         display: block;
                     }
                 }
+            }
+        }
+    }
+}
+/*------------------- sidebar*/
+ul.m-sidebar{
+    list-style-type: none;
+    padding-left: 0;
+    width: 170px;
+    li{
+        display: block;
+        position: relative;
+        line-height: 24px;
+        a{
+            @include transition(0.3s);
+            background: $menu-bg;
+            font-weight: 700;
+            color: $menu-color-normal;
+            font-size: 16px;
+            display: block;
+            padding: 20px 10px;
+            &:before{
+                @include transition(0.3s);
+                background: $white;
+                bottom: 0;
+                content: "";
+                display: block;
+                height: 6px;
+                left: 0;
+                position: absolute;
+                right: 0;
+                width: 0;
+            }
+            &:hover{
+                text-decoration: none;
+                color: $menu-color;
+            }
+            &.active:before, &:hover:before{
+                @include transition(0.3s);
+                width: 100%;
+            }
+            &.active{
+                color: $menu-color-active;
+            }
+            &.nav-title{
+                display: block;
+                position: relative;
+                text-transform: capitalize;
+                z-index: 1;
+            }
+            span{
+                text-align: center;
+                display: block;
             }
         }
     }

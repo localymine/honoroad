@@ -7,6 +7,10 @@
     src: url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,700,900&subset=latin,vietnamese);
 }*/
 
+/*
+font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+*/
+
 @mixin main-font{
     font:{
         /*family: 'Open Sans', sans-serif;*/
@@ -37,6 +41,35 @@
     transition: all $second ease 0s;
 }
 
+@mixin border($width, $type, $color){
+    border: $width $type $color;
+}
+
+@mixin header-part($div-logo, $logo-width, $font-size){
+    #header{
+        nav{
+            #logo{
+                @if $div-logo != ''{
+                    width: $div-logo;
+                }
+                @if $logo-width != ''{
+                    .navbar-brand{
+                        img: $logo-width;
+                    }
+                }
+            }
+            ul{
+                li{
+                    a{
+                        @if $font-size != ''{
+                            font-size: $font-size;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 $white: #fff;
 $bg-primary: #fff;
@@ -44,5 +77,7 @@ $color-primary: #666;
 $hot-top-bg: #CCCC00; //#AFAF4D;
 $menu-bg: #FFFF00;
 $menu-color: #33CC00;
-$color-menu: #4BAE4F;
+$menu-color-normal: lighten($menu-color, 5%);
+$menu-color-active: $menu-color;
 $brand-color: #ff0000;
+$border-color: #e7e7e7;

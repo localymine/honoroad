@@ -3,20 +3,21 @@
     <head>
         <title>Top Page</title>
         <meta charset="UTF-8">
-        <!--<meta content="IE=edge" http-equiv="X-UA-Compatible">-->
+        <meta content="IE=edge" http-equiv="X-UA-Compatible">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="" name="description">
         <meta content="" name="author">
         <link href="http://dummyimage.com/16x16/7f7b3c/ffffff.png&text=o" rel="icon">
         <link rel="stylesheet" href="css/bootstrap.min.css"/>
         <link rel="stylesheet" href="css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="css/jquery.sidr.light.css"/>
         <link rel="stylesheet" href="css/style.css"/>
     </head>
     <body>
-        <!-- hotline -->
-        <header class="hot-top">
-            <div class="container">
-                <div class="row">
+        <div class="navbar-wrapper">
+            <!-- hotline -->
+            <header class="hot-top">
+                <div class="container">
                     <ul class="pull-right nopadding">
                         <li>
                             <i class="fa fa-phone fa-2x"></i><span class="hotline">0906 870 873</span>
@@ -29,52 +30,99 @@
                         </li>
                     </ul>
                 </div>
-            </div>
-        </header>
-        <!-- hotline end-->
-        <!-- navigator -->
-        <header id="header">
-            <div class="container">
-                <div id="logo" class="col-xs-3 nopadding">
-                    <a class="navbar-brand">
-                        <img class="img-responsive" src="http://dummyimage.com/197x63/F3E623/ffffff.png&text=logo" alt="Honoroad" />
-                    </a>
-                </div>
-                <nav class="nav col-xs-9">
-                    <ul>
-                        <li><a class="nav-title active" href="#"><span>Trang chủ</span></a></li>
-                        <li><a class="nav-title" href="#"><span>Giới thiệu</span></a></li>
-                        <li><a class="nav-title" href="#"><span>Tin tức</span></a></li>
-                        <li><a class="nav-title" href="#"><span>Sản phẩm</span></a></li>
-                        <li><a class="nav-title" href="#"><span>Chính sách</span></a></li>
-                        <li><a class="nav-title" href="#"><span>Khuyến mãi</span></a></li>
-                        <li><a class="nav-title" href="#"><span>Tuyển dụng</span></a></li>
-                        <li><a class="nav-title" href="#"><span>Liên hệ</span></a></li>
-                        <li class="menu-search">
+            </header>
+            <!-- hotline end-->
+            <!-- navigator -->
+            <header id="header">
+                <nav class="navbar navbar-defaultx navbar-oil">
+                    <div class="container">
+                        <div id="logo" class="navbar-header">
+                            <a id="menu-toggle" href="#sidr">
+                                <button class="navbar-toggle collapsed">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </a>
+                            <a class="navbar-brand nopadding">
+                                <img class="img-responsive" src="http://dummyimage.com/197x63/F3E623/ffffff.png&text=logo" alt="Honoroad" />
+                            </a>
+                        </div>
+                        <div class="navbar-collapse collapse nopadding">
                             <ul>
-                                <li>
-                                    <div>
-                                        <ul>
-                                            <li>
-                                                <form class="nav-form">
-                                                    
-                                                </form>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                <li><a class="nav-title active" href="#"><span>Trang chủ</span></a></li>
+                                <li><a class="nav-title" href="#"><span>Giới thiệu</span></a></li>
+                                <li><a class="nav-title" href="#"><span>Tin tức</span></a></li>
+                                <li><a class="nav-title" href="#"><span>Sản phẩm</span></a></li>
+                                <li><a class="nav-title" href="#"><span>Chính sách</span></a></li>
+                                <li><a class="nav-title" href="#"><span>Khuyến mãi</span></a></li>
+                                <li><a class="nav-title" href="#"><span>Tuyển dụng</span></a></li>
+                                <li><a class="nav-title" href="#"><span>Liên hệ</span></a></li>
+                                <li class="menu-search">
+                                    <ul>
+                                        <li>
+                                            <div>
+                                                <ul>
+                                                    <li>
+                                                        <form class="nav-form">
+
+                                                        </form>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </li>
                             </ul>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
                 </nav>
-            </div>
-        </header>
-        <!-- navigator -->
+                <!--side-bar-->
+                <ul id="sidr" class="m-sidebar">
+                    <li><a class="active" href="#"><span>Trang chủ</span></a></li>
+                    <li><a class="" href="#"><span>Giới thiệu</span></a></li>
+                    <li><a class="" href="#"><span>Tin tức</span></a></li>
+                    <li><a class="" href="#"><span>Sản phẩm</span></a></li>
+                    <li><a class="" href="#"><span>Chính sách</span></a></li>
+                    <li><a class="" href="#"><span>Khuyến mãi</span></a></li>
+                    <li><a class="" href="#"><span>Tuyển dụng</span></a></li>
+                    <li><a class="" href="#"><span>Liên hệ</span></a></li>
+                    <li class="menu-search">
+                    <li>
+                        <form class="nav-form">
+
+                        </form>
+                    </li>
+                </ul>
+                <!--side-bar-->
+            </header>
+            <!-- navigator -->
+        </div>
 
 
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <script src="toolkit/toolkit.min.js"></script>
+        <script src="js/jquery.sidr.min.js"></script>
+        <script>
+            $(function () {
+                $('#menu-toggle').sidr();
+                //
+                $(document).on('click', function (e) {
+                    var container = $('#sidr');
+                    if (!container.is(e.target) && container.has(e.target).length === 0) {
+                        $.sidr('close', 'sidr');
+                    }
+                });
+                //
+                $(window).bind('resize', function () {
+                    if ($('body').hasClass('sidr-open') && $(window).width() >= 768) {
+                        $.sidr('close');
+                    }
+
+                });
+            });
+        </script>
     </body>
 </html>
