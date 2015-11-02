@@ -86,6 +86,7 @@ body {
     padding-left: 0;
     padding-right: 0; }
     #header nav.navbar-oil {
+      margin-bottom: 0;
       background-color: #FFFF00;
       border: none; }
     #header nav ul {
@@ -110,7 +111,7 @@ body {
           #header nav ul li a:before {
             -webkit-transition: all 0.3s ease 0s;
             transition: all 0.3s ease 0s;
-            background: #fff;
+            background: #39e600;
             bottom: 0;
             content: "";
             display: block;
@@ -184,3 +185,18 @@ ul.m-sidebar {
       ul.m-sidebar li a span {
         text-align: center;
         display: block; }
+
+.product {
+  margin-top: 30px;
+  margin-bottom: 30px; }
+  .product a {
+    color: #fff;
+    text-decoration: none; }
+    .product a article.item .prod-title {
+      position: relative;
+      background: rgba(0, 0, 0, 0.75);
+      margin-top: -6em;
+      padding: 6px;
+      text-align: center; }
+      .product a article.item .prod-title h1 {
+        font-size: 16px; }

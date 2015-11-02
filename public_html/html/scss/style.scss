@@ -61,6 +61,7 @@ body{
         padding-left: 0;
         padding-right: 0;
         &.navbar-oil{
+            margin-bottom: 0;
             background-color: $menu-bg;
             border: none;
         }
@@ -84,7 +85,7 @@ body{
                     padding: 20px 10px;
                     &:before{
                         @include transition(0.3s);
-                        background: $white;
+                        background: $menu-color-normal;
                         bottom: 0;
                         content: "";
                         display: block;
@@ -169,6 +170,29 @@ ul.m-sidebar{
             span{
                 text-align: center;
                 display: block;
+            }
+        }
+    }
+}
+
+.product{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    a{
+        color: $white;
+        text-decoration: none;
+        article{
+            &.item{
+                .prod-title{
+                    position: relative;
+                    background: rgba(0,0,0,0.75);
+                    margin-top: -6em;
+                    padding: 6px;
+                    text-align: center;
+                    h1{
+                        font-size: 16px;
+                    }
+                }
             }
         }
     }
