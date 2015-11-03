@@ -2,5 +2,7 @@
 
 /* Small Devices, Tablets */
 @media only screen and (min-width : 768px) {
-@include header-part(auto, 80%, 12px);
+    @include header-part(auto, 80%, 12px);
+    
+    @include product-top-middle(0);
 }

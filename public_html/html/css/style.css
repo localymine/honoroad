@@ -14,7 +14,10 @@ font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
   #header nav #logo {
     width: auto; }
     #header nav #logo .navbar-brand {
-      img: 70%; } }
+      img: 70%; }
+
+  .product .row div.prod-block:nth-child(2) {
+    margin: 15px 0; } }
 /*==========  Mobile First Method  ==========*/
 /* Extra Small Devices, Phones */
 @media only screen and (min-width: 480px) {
@@ -23,7 +26,10 @@ font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
     #header nav #logo .navbar-brand {
       img: 70%; }
   #header nav ul li a {
-    font-size: 12px; } }
+    font-size: 12px; }
+
+  .product .row div.prod-block:nth-child(2) {
+    margin: 15px 0; } }
 /*==========  Mobile First Method  ==========*/
 /* Small Devices, Tablets */
 @media only screen and (min-width: 768px) {
@@ -32,14 +38,23 @@ font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
     #header nav #logo .navbar-brand {
       img: 80%; }
   #header nav ul li a {
-    font-size: 12px; } }
+    font-size: 12px; }
+
+  .product .row div.prod-block:nth-child(2) {
+    margin: 0; } }
 /*==========  Mobile First Method  ==========*/
 /* Medium Devices, Desktops */
 @media only screen and (min-width: 992px) {
   #header nav ul li a {
-    font-size: 16px; } }
+    font-size: 16px; }
+
+  .product .row div.prod-block:nth-child(2) {
+    margin: 0; } }
 /*==========  Mobile First Method  ==========*/
 /* Large Devices, Wide Screens */
+@media only screen and (min-width: 1200px) {
+  .product .row div.prod-block:nth-child(2) {
+    margin: 0; } }
 .nopadding {
   padding: 0; }
 
@@ -50,6 +65,10 @@ body {
   font-weight: normal;
   background: #fff;
   color: #666; }
+
+h1, h2, h3, h4, h5, h6 {
+  color: #363f45;
+  margin-top: 0; }
 
 .hot-top {
   /*background: $hot-top-bg url('../images/bg/grid.png');*/
@@ -101,6 +120,7 @@ body {
         line-height: 24px; }
         #header nav ul li a {
           -webkit-transition: all 0.3s ease 0s;
+          -moz-transition: all 0.3s ease 0s;
           transition: all 0.3s ease 0s;
           /*background: $menu-bg;*/
           font-weight: 700;
@@ -110,6 +130,7 @@ body {
           padding: 20px 10px; }
           #header nav ul li a:before {
             -webkit-transition: all 0.3s ease 0s;
+            -moz-transition: all 0.3s ease 0s;
             transition: all 0.3s ease 0s;
             background: #39e600;
             bottom: 0;
@@ -125,6 +146,7 @@ body {
             color: #33CC00; }
           #header nav ul li a.active:before, #header nav ul li a:hover:before {
             -webkit-transition: all 0.3s ease 0s;
+            -moz-transition: all 0.3s ease 0s;
             transition: all 0.3s ease 0s;
             width: 100%; }
           #header nav ul li a.active {
@@ -140,6 +162,7 @@ body {
 
 /*------------------- sidebar*/
 ul.m-sidebar {
+  display: none;
   list-style-type: none;
   padding-left: 0;
   width: 170px; }
@@ -149,6 +172,7 @@ ul.m-sidebar {
     line-height: 24px; }
     ul.m-sidebar li a {
       -webkit-transition: all 0.3s ease 0s;
+      -moz-transition: all 0.3s ease 0s;
       transition: all 0.3s ease 0s;
       background: #FFFF00;
       font-weight: 700;
@@ -158,6 +182,7 @@ ul.m-sidebar {
       padding: 20px 10px; }
       ul.m-sidebar li a:before {
         -webkit-transition: all 0.3s ease 0s;
+        -moz-transition: all 0.3s ease 0s;
         transition: all 0.3s ease 0s;
         background: #fff;
         bottom: 0;
@@ -173,6 +198,7 @@ ul.m-sidebar {
         color: #33CC00; }
       ul.m-sidebar li a.active:before, ul.m-sidebar li a:hover:before {
         -webkit-transition: all 0.3s ease 0s;
+        -moz-transition: all 0.3s ease 0s;
         transition: all 0.3s ease 0s;
         width: 100%; }
       ul.m-sidebar li a.active {
@@ -186,17 +212,53 @@ ul.m-sidebar {
         text-align: center;
         display: block; }
 
+/*-------------- carousel*/
+.carousel-control.left {
+  background-image: none; }
+.carousel-control.right {
+  background-image: none; }
+
 .product {
   margin-top: 30px;
   margin-bottom: 30px; }
   .product a {
     color: #fff;
     text-decoration: none; }
-    .product a article.item .prod-title {
-      position: relative;
-      background: rgba(0, 0, 0, 0.75);
-      margin-top: -6em;
-      padding: 6px;
-      text-align: center; }
-      .product a article.item .prod-title h1 {
-        font-size: 16px; }
+    .product a article.item {
+      position: relative; }
+      .product a article.item .prod-title {
+        bottom: 0;
+        position: absolute;
+        background: rgba(0, 0, 0, 0.75);
+        padding: 6px;
+        text-align: center;
+        width: 100%; }
+        .product a article.item .prod-title h1 {
+          font-size: 16px;
+          color: #fff;
+          margin-top: 10px; }
+
+.information .module-info header {
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-color: #e9e8e8 #e9e8e8 -moz-use-text-color;
+  border-image: none;
+  border-style: solid solid none;
+  border-width: 1px 1px 0; }
+  .information .module-info header .module-title {
+    box-sizing: border-box;
+    margin-bottom: 0;
+    padding: 10px 30px; }
+    .information .module-info header .module-title span {
+      font-size: 20.02px;
+      line-height: 40.08px;
+      text-transform: uppercase; }
+.information .module-info .mod-article .item-info {
+  background: #ffffff none repeat scroll 0 0;
+  border: 1px solid #e9e8e8;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 25px 30px;
+  font-size: 1.5em; }

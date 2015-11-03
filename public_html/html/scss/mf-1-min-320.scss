@@ -3,4 +3,6 @@
 /* Custom, iPhone Retina */ 
 @media only screen and (min-width : 320px) {
     @include header-part(auto, 70%, '');
+    
+    @include product-top-middle(15px 0);
 }

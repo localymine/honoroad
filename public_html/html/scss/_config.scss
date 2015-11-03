@@ -71,6 +71,29 @@ font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
     }
 }
 
+@mixin product-top-middle($margin){
+    .product{
+        .row{
+            div.prod-block{
+                &:nth-child(2){
+                    margin: $margin;
+                }
+            }
+        }
+    }
+}
+
+@mixin information-header($border-color){
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: $border-color $border-color -moz-use-text-color;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 1px 0;
+}
+
 $white: #fff;
 $black: #000;
 $bg-primary: #fff;
@@ -82,3 +105,4 @@ $menu-color-normal: lighten($menu-color, 5%);
 $menu-color-active: $menu-color;
 $brand-color: #ff0000;
 $border-color: #e7e7e7;
+$h-color: #363f45;

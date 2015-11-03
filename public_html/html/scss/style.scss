@@ -14,6 +14,10 @@ body{
     background: $bg-primary;
     color: $color-primary;
 }
+h1,h2,h3,h4,h5,h6{
+    color: $h-color;
+    margin-top: 0;
+}
 .hot-top{
     /*background: $hot-top-bg url('../images/bg/grid.png');*/
     background: $hot-top-bg;
@@ -123,6 +127,7 @@ body{
 }
 /*------------------- sidebar*/
 ul.m-sidebar{
+    display: none;
     list-style-type: none;
     padding-left: 0;
     width: 170px;
@@ -175,6 +180,16 @@ ul.m-sidebar{
     }
 }
 
+/*-------------- carousel*/
+.carousel-control{
+    &.left{
+        background-image: none;
+    }
+    &.right{
+        background-image: none;
+    }
+}
+
 .product{
     margin-top: 30px;
     margin-bottom: 30px;
@@ -183,16 +198,48 @@ ul.m-sidebar{
         text-decoration: none;
         article{
             &.item{
+                position: relative;
                 .prod-title{
-                    position: relative;
+                    bottom: 0;
+                    position: absolute;
                     background: rgba(0,0,0,0.75);
-                    margin-top: -6em;
                     padding: 6px;
                     text-align: center;
+                    width: 100%;
                     h1{
                         font-size: 16px;
+                        color: $white;
+                        margin-top: 10px;
                     }
                 }
+            }
+        }
+    }
+}
+
+.information{
+    .module-info{
+        header{
+            @include information-header(#e9e8e8);
+            .module-title{
+                box-sizing: border-box;
+                margin-bottom: 0;
+                padding: 10px 30px;
+                span{
+                    font-size: 20.02px;
+                    line-height: 40.08px;
+                    text-transform: uppercase
+                }
+            }
+        }
+        .mod-article{
+            .item-info{
+                background: #ffffff none repeat scroll 0 0;
+                border: 1px solid #e9e8e8;
+                box-sizing: border-box;
+                overflow: hidden;
+                padding: 25px 30px;
+                font-size: 1.5em;
             }
         }
     }
