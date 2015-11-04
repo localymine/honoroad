@@ -17,7 +17,10 @@ font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
       img: 70%; }
 
   .product .row div.prod-block:nth-child(2) {
-    margin: 15px 0; } }
+    margin: 15px 0; }
+
+  .carousel-inner > .item > img {
+    height: auto; } }
 /*==========  Mobile First Method  ==========*/
 /* Extra Small Devices, Phones */
 @media only screen and (min-width: 480px) {
