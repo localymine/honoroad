@@ -15,7 +15,7 @@ font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
     font:{
         /*family: 'Open Sans', sans-serif;*/
         family: 'Roboto', sans-serif;
-        size: 100%;
+        /*size: 100%;*/
         weight: normal;
     }
 }
@@ -95,6 +95,7 @@ font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
 }
 
 $white: #fff;
+$lighten-white: lighten($white, 50%);
 $black: #000;
 $bg-primary: #fff;
 $color-primary: #666;
@@ -106,3 +107,7 @@ $menu-color-active: $menu-color;
 $brand-color: #ff0000;
 $border-color: #e7e7e7;
 $h-color: #363f45;
+$accordion-normal-color: #363f45;
+$accordion-selected-color: #7acb5a;
+$accordion-minus-color: #CFCFCF;
+$accordion-body-bg: #f9f9f9;

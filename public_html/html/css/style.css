@@ -8,6 +8,19 @@
 /*
 font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
 */
+/* remove ouline */
+a {
+  outline: 0; }
+
+a:hover, a:active, a:focus {
+  outline: 0; }
+
+object, embed {
+  outline: 0; }
+
+input::-moz-focus-inner {
+  border: 0; }
+
 /*==========  Mobile First Method  ==========*/
 /* Custom, iPhone Retina */
 @media only screen and (min-width: 320px) {
@@ -64,7 +77,7 @@ font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
 body {
   /*family: 'Open Sans', sans-serif;*/
   font-family: 'Roboto', sans-serif;
-  font-size: 100%;
+  /*size: 100%;*/
   font-weight: normal;
   background: #fff;
   color: #666; }
@@ -73,6 +86,43 @@ h1, h2, h3, h4, h5, h6 {
   color: #363f45;
   margin-top: 0; }
 
+p {
+  font-size: 1.143em; }
+
+h2 {
+  font-size: 20.02px; }
+
+.margin-top-xs {
+  margin-top: 0.5rem; }
+
+.margin-bottom-xs {
+  margin-bottom: 0.5rem; }
+
+.margin-top-sm {
+  margin-top: 1rem; }
+
+.margin-bottom-sm {
+  margin-bottom: 1rem; }
+
+.margin-top-md {
+  margin-top: 1.5rem; }
+
+.margin-bottom-md {
+  margin-bottom: 1.5rem; }
+
+.margin-top-lg {
+  margin-top: 2rem; }
+
+.margin-bottom-lg {
+  margin-bottom: 2rem; }
+
+.margin-top-xl {
+  margin-top: 2.5rem; }
+
+.margin-bottom-xl {
+  margin-bottom: 2.5rem; }
+
+/*----------------------------------------------------------------------------*/
 .hot-top {
   /*background: $hot-top-bg url('../images/bg/grid.png');*/
   background: #CCCC00;
@@ -92,6 +142,21 @@ h1, h2, h3, h4, h5, h6 {
         font-weight: 300;
         vertical-align: middle; }
 
+#nav.affix {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10; }
+
+.sticky {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  width: 100%; }
+
+.menu-padding {
+  padding-top: 40px; }
+
 #header {
   background: #FFFF00; }
   #header #logo #menu-toggle .navbar-toggle {
@@ -110,7 +175,8 @@ h1, h2, h3, h4, h5, h6 {
     #header nav.navbar-oil {
       margin-bottom: 0;
       background-color: #FFFF00;
-      border: none; }
+      border: none;
+      box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15); }
     #header nav ul {
       display: inline-block;
       float: right;
@@ -228,7 +294,8 @@ ul.m-sidebar {
     color: #fff;
     text-decoration: none; }
     .product a article.item {
-      position: relative; }
+      position: relative;
+      box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.15); }
       .product a article.item .prod-title {
         bottom: 0;
         position: absolute;
@@ -255,7 +322,7 @@ ul.m-sidebar {
     margin-bottom: 0;
     padding: 10px 30px; }
     .information .module-info header .module-title span {
-      font-size: 20.02px;
+      /*font-size: 20.02px;*/
       line-height: 40.08px;
       text-transform: uppercase; }
 .information .module-info .mod-article .item-info {
@@ -263,5 +330,94 @@ ul.m-sidebar {
   border: 1px solid #e9e8e8;
   box-sizing: border-box;
   overflow: hidden;
-  padding: 25px 30px;
-  font-size: 1.5em; }
+  padding: 25px 30px; }
+
+.accordion .accordion-group {
+  overflow: hidden; }
+  .accordion .accordion-group .accordion-heading {
+    border-bottom: 0 none; }
+    .accordion .accordion-group .accordion-heading a {
+      text-decoration: none; }
+    .accordion .accordion-group .accordion-heading .accordion-toggle {
+      background: #ffffff none repeat scroll 0 0;
+      border: 1px solid #e9e8e8;
+      color: #363f45;
+      display: block;
+      font: 400 16px/15px "Roboto",sans-serif;
+      padding: 22px 40px 22px 30px;
+      position: relative; }
+      .accordion .accordion-group .accordion-heading .accordion-toggle.selected {
+        color: #7acb5a; }
+        .accordion .accordion-group .accordion-heading .accordion-toggle.selected::before {
+          content: "\f068";
+          color: #CFCFCF; }
+        .accordion .accordion-group .accordion-heading .accordion-toggle.selected::after {
+          background: #7acb5a none repeat scroll 0 0; }
+      .accordion .accordion-group .accordion-heading .accordion-toggle::before {
+        color: #7acb5a;
+        content: "\f067";
+        font: 25px/25px "FontAwesome";
+        position: absolute;
+        right: 20px;
+        text-align: center;
+        transition: all 0.3s ease 0s;
+        width: 25px; }
+      .accordion .accordion-group .accordion-heading .accordion-toggle::after {
+        background: transparent none repeat scroll 0 0;
+        content: "";
+        display: block;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        transition: all 0.3s ease 0s;
+        width: 5px; }
+      .accordion .accordion-group .accordion-heading .accordion-toggle::focus, .accordion .accordion-group .accordion-heading .accordion-toggle::hover {
+        color: #363f45;
+        text-decoration: none; }
+      .accordion .accordion-group .accordion-heading .accordion-toggle:hover, .accordion .accordion-group .accordion-heading .accordion-toggle:focus {
+        content: "\f068";
+        color: #363f45;
+        text-decoration: none; }
+      .accordion .accordion-group .accordion-heading .accordion-toggle:hover {
+        color: #7acb5a; }
+        .accordion .accordion-group .accordion-heading .accordion-toggle:hover::before {
+          content: "\f068";
+          color: #CFCFCF; }
+        .accordion .accordion-group .accordion-heading .accordion-toggle:hover::after {
+          background: #7acb5a none repeat scroll 0 0; }
+  .accordion .accordion-group .accordion-body.collapsing {
+    background: #f9f9f9 none repeat scroll 0 0;
+    padding: 15px 20px 15px 22px; }
+  .accordion .accordion-group .accordion-body.collapse {
+    overflow: hidden;
+    position: relative;
+    transition: height 0.35s ease 0s; }
+    .accordion .accordion-group .accordion-body.collapse .accordion-inner {
+      background: #f9f9f9 none repeat scroll 0 0;
+      border-bottom: 1px solid #e9e8e8;
+      border-left: 1px solid #e9e8e8;
+      border-right: 1px solid #e9e8e8;
+      padding: 15px 20px 15px 22px; }
+      .accordion .accordion-group .accordion-body.collapse .accordion-inner p {
+        margin: 0; }
+
+#main-bottom {
+  background: #FFFF00;
+  padding: 20px 0; }
+
+#bottom {
+  background: #33CC00;
+  padding: 20px 0; }
+  #bottom article .item-content i {
+    color: #53ff1a; }
+  #bottom article .item-content h2 {
+    display: inline-block;
+    padding-left: 10px; }
+    #bottom article .item-content h2 span {
+      color: #fff;
+      text-transform: uppercase; }
+  #bottom article .item-content .item-introtext p {
+    color: white; }
+    #bottom article .item-content .item-introtext p a {
+      color: white; }

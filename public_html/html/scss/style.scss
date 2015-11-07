@@ -1,4 +1,5 @@
 @import "_config";
+@import "remove-outline.scss";
 
 @import "mf-1-min-320.scss";
 @import "mf-2-min-480.scss";
@@ -18,6 +19,28 @@ h1,h2,h3,h4,h5,h6{
     color: $h-color;
     margin-top: 0;
 }
+p{
+    font-size: 1.143em;
+}
+
+$h-font-size: (h2: 20.02px);
+@each $name, $value in $h-font-size{
+    #{$name} {
+        font-size: $value;
+    }
+}
+
+$margins: (xs: 0.5rem, sm: 1rem, md: 1.5rem, lg: 2rem, xl: 2.5rem);
+@each $name, $value in $margins {
+  .margin-top-#{$name} {
+    margin-top: $value;
+  }
+
+  .margin-bottom-#{$name} {
+    margin-bottom: $value;
+  }
+}
+/*----------------------------------------------------------------------------*/
 .hot-top{
     /*background: $hot-top-bg url('../images/bg/grid.png');*/
     background: $hot-top-bg;
@@ -40,6 +63,23 @@ h1,h2,h3,h4,h5,h6{
     }
 }
 
+#nav{
+    &.affix {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index:10;
+    }
+}
+.sticky {
+    position:fixed;
+    top:0;
+    z-index: 10;
+    width: 100%;
+}
+.menu-padding{
+    padding-top:40px;
+}
 #header{
     background: $menu-bg;
     #logo{
@@ -68,6 +108,7 @@ h1,h2,h3,h4,h5,h6{
             margin-bottom: 0;
             background-color: $menu-bg;
             border: none;
+            box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
         }
         ul{
             display: inline-block;
@@ -199,6 +240,7 @@ ul.m-sidebar{
         article{
             &.item{
                 position: relative;
+                box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.15);
                 .prod-title{
                     bottom: 0;
                     position: absolute;
@@ -226,7 +268,7 @@ ul.m-sidebar{
                 margin-bottom: 0;
                 padding: 10px 30px;
                 span{
-                    font-size: 20.02px;
+                    /*font-size: 20.02px;*/
                     line-height: 40.08px;
                     text-transform: uppercase
                 }
@@ -239,7 +281,131 @@ ul.m-sidebar{
                 box-sizing: border-box;
                 overflow: hidden;
                 padding: 25px 30px;
-                font-size: 1.5em;
+            }
+        }
+    }
+}
+
+.accordion{
+    .accordion-group{
+        overflow: hidden;
+        .accordion-heading{
+            border-bottom: 0 none;
+            a{
+                text-decoration: none;
+            }
+            .accordion-toggle{
+                background: #ffffff none repeat scroll 0 0;
+                border: 1px solid #e9e8e8;
+                color: $accordion-normal-color;
+                display: block;
+                font: 400 16px/15px "Roboto",sans-serif;
+                padding: 22px 40px 22px 30px;
+                position: relative;
+                &.selected{
+                    color: $accordion-selected-color;
+                    &::before{
+                        content: "\f068";
+                        color: $accordion-minus-color;
+                    }
+                    &::after{
+                        background: $accordion-selected-color none repeat scroll 0 0;
+                    }
+                }
+                &::before{
+                    color: $accordion-selected-color;
+                    content: "\f067";
+                    font: 25px/25px "FontAwesome";
+                    position: absolute;
+                    right: 20px;
+                    text-align: center;
+                    transition: all 0.3s ease 0s;
+                    width: 25px;
+                }
+                &::after{
+                    background: transparent none repeat scroll 0 0;
+                    content: "";
+                    display: block;
+                    height: 100%;
+                    left: 0;
+                    position: absolute;
+                    top: 0;
+                    transition: all 0.3s ease 0s;
+                    width: 5px;
+                }
+                &::focus, &::hover{
+                    color: $accordion-normal-color;
+                    text-decoration: none;
+                }
+                &:hover, &:focus{
+                    content: "\f068";
+                    color: $accordion-normal-color;
+                    text-decoration: none;
+                }
+                &:hover{
+                    color: $accordion-selected-color;
+                    &::before{
+                        content: "\f068";
+                        color: $accordion-minus-color;
+                    }
+                    &::after{
+                        background: $accordion-selected-color none repeat scroll 0 0;
+                    }
+                }
+            }
+        }
+        .accordion-body{
+            &.collapsing{
+                background: $accordion-body-bg none repeat scroll 0 0;
+                padding: 15px 20px 15px 22px;
+            }
+            &.collapse{
+                overflow: hidden;
+                position: relative;
+                transition: height 0.35s ease 0s;
+                .accordion-inner{
+                    background: $accordion-body-bg none repeat scroll 0 0;
+                    border-bottom: 1px solid #e9e8e8;
+                    border-left: 1px solid #e9e8e8;
+                    border-right: 1px solid #e9e8e8;
+                    padding: 15px 20px 15px 22px;
+                    p{
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#main-bottom{
+    background: $menu-bg;
+    padding: 20px 0;
+}
+
+#bottom{
+    background: $menu-color-active;
+    padding: 20px 0;
+    article{
+        .item-content{
+            i{
+                color: lighten($menu-color-normal, 10%);
+            }
+            h2{
+                display: inline-block;
+                padding-left: 10px;
+                span{
+                    color: $white;
+                    text-transform: uppercase;
+                }
+            }
+            .item-introtext{
+                p{
+                    color: $lighten-white;
+                    a{
+                        color: $lighten-white;
+                    }
+                }
             }
         }
     }
