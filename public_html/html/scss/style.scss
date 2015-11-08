@@ -32,13 +32,37 @@ $h-font-size: (h2: 20.02px);
 
 $margins: (xs: 0.5rem, sm: 1rem, md: 1.5rem, lg: 2rem, xl: 2.5rem);
 @each $name, $value in $margins {
-  .margin-top-#{$name} {
-    margin-top: $value;
-  }
+    .margin-top-#{$name} {
+        margin-top: $value;
+    }
 
-  .margin-bottom-#{$name} {
-    margin-bottom: $value;
-  }
+    .margin-bottom-#{$name} {
+        margin-bottom: $value;
+    }
+}
+
+$paddings: (xs: 0.5rem, sm: 1rem, md: 1.5rem, lg: 2rem, xl: 2.5rem, xxl: 3rem);
+@each $name, $value in $paddings {
+    .padding-top-#{$name} {
+        padding-top: $value;
+    }
+
+    .padding-bottom-#{$name} {
+        padding-bottom: $value;
+    }
+
+    .padding-left-#{$name} {
+        padding-left: $value;
+    }
+
+    .padding-right-#{$name} {
+        padding-right: $value;
+    }
+
+    .padding-lt-rt-#{$name} {
+        padding-left: $value;
+        padding-right: $value;
+    }
 }
 /*----------------------------------------------------------------------------*/
 .hot-top{
@@ -109,6 +133,7 @@ $margins: (xs: 0.5rem, sm: 1rem, md: 1.5rem, lg: 2rem, xl: 2.5rem);
             background-color: $menu-bg;
             border: none;
             box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
+            border-radius: 0;
         }
         ul{
             display: inline-block;
@@ -406,6 +431,70 @@ ul.m-sidebar{
                         color: $lighten-white;
                     }
                 }
+            }
+        }
+    }
+}
+
+#map{
+    position: relative;
+    min-height: 350px;
+    overflow: hidden;
+    iframe{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+    }
+}
+
+#footer-wrapper{
+    background: $bg-primary;
+    .copyright{
+        text-align: center;
+        color: $footer-color-link;
+        .privacy_link{
+            color: $footer-color-link;
+            text-decoration: none;
+        }
+    }
+}
+
+.login-menu{
+    color: $white;
+}
+
+ul{
+    &.icesubMenu{
+        background: #ffffff none repeat scroll 0 0;
+        border: medium none;
+        box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.15);
+        height: 0;
+        left: 50%;
+        margin: 0;
+        opacity: 0;
+        overflow: hidden;
+        pointer-events: none;
+        position: absolute;
+        text-align: left;
+        text-transform: capitalize;
+        top: 100%;
+        transform: translate(-50%, 30px);
+        transition: all 0.25s ease-out 0s;
+        z-index: 9999;
+        &.sub-level-1{
+            left: auto;
+            right: 20px;
+            transform: translate(0px, 30px);
+            &::before{
+                border-color: transparent transparent #777777;
+                border-style: solid;
+                border-width: 0 0 20px 20px;
+                height: 0;
+                left: auto;
+                right: 0;
+                transform: translate(0px, 0px);
+                width: 0;
             }
         }
     }
