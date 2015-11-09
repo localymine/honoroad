@@ -34,18 +34,6 @@
                         </li>
                         <li>
                             <a class="login-menu" href="javascript:void(0)"><i class="fa fa-user"></i></a>
-                            <ul class="icesubMenu">
-                                <li>
-                                    <div class='login_module'>
-                                        <h2><span>Login</span></h2>
-                                        <form id='login-form' method="post">
-                                            <div class='form-control'>
-
-                                            </div>
-                                        </form>
-                                    </div>
-                                </li>
-                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -68,10 +56,18 @@
                                 <img class="img-responsive" src="images/logo.png" alt="Honoroad" />
                             </a>
                         </div>
-                        <div class="navbar-collapse collapse nopadding">
-                            <ul>
-                                <li><a class="nav-title active" href="#"><span>Trang chủ</span></a></li>
-                                <li><a class="nav-title" href="#"><span>Giới thiệu</span></a></li>
+                        <div class="navbar-collapse collapse nopadding icemegamenu">
+                            <ul id="icemegamenu">
+                                <li><a class="nav-title active" href="index.html"><span>Trang chủ</span></a></li>
+                                <li class="ice-lv1">
+                                    <a class="nav-title" href="#"><span>Giới thiệu</span></a>
+                                    <div class="ice-cols">
+                                        <ul class="icesubmenu sub-lv1">
+                                            <li><a href="#">Giới thiệu tập đoàn</a></li>
+                                            <li><a href="#">Tin tức</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
                                 <li><a class="nav-title" href="#"><span>Tin tức</span></a></li>
                                 <li><a class="nav-title" href="#"><span>Sản phẩm</span></a></li>
                                 <li><a class="nav-title" href="#"><span>Chính sách</span></a></li>
@@ -455,13 +451,12 @@
                 });
             });
 
+            function mouse_enter_map(){
+                $('.map iframe').css("pointer-events", "auto");
+            }
             $(function () {
-//                $('.map').click(function () {
-//                    $('.map iframe').css("pointer-events", "auto");
-//                });
-                //
-                $(".map").on('click', function () {
-                    $('.map iframe').css("pointer-events", "auto");
+                $(".map").on('mouseenter', function () {
+                    setTimeout(mouse_enter_map, 500);
                 });
                 $(".map").on('mouseleave', function () {
                     $('.map iframe').css("pointer-events", "none");

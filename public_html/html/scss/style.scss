@@ -111,9 +111,9 @@ $paddings: (xs: 0.5rem, sm: 1rem, md: 1.5rem, lg: 2rem, xl: 2.5rem, xxl: 3rem);
             .navbar-toggle{
                 border: 1px solid $menu-color;
                 &:hover{
-                    background-color: $menu-color-normal;
+                    background-color: $menu-color;
                     .icon-bar{
-                        background-color: $white;
+                        background-color: invert($menu-color);
                     }
                 }
                 .icon-bar{
@@ -141,7 +141,7 @@ $paddings: (xs: 0.5rem, sm: 1rem, md: 1.5rem, lg: 2rem, xl: 2.5rem, xxl: 3rem);
             margin: 0px 0 0;
             padding: 0;
             list-style-type: none;
-            li{
+            > li{
                 display: inline-block;
                 position: relative;
                 line-height: 24px;
@@ -155,7 +155,7 @@ $paddings: (xs: 0.5rem, sm: 1rem, md: 1.5rem, lg: 2rem, xl: 2.5rem, xxl: 3rem);
                     padding: 20px 10px;
                     &:before{
                         @include transition(0.3s);
-                        background: $menu-color-normal;
+                        background: $menu-color;
                         bottom: 0;
                         content: "";
                         display: block;
@@ -191,6 +191,54 @@ $paddings: (xs: 0.5rem, sm: 1rem, md: 1.5rem, lg: 2rem, xl: 2.5rem, xxl: 3rem);
         }
     }
 }
+
+.icemegamenu{
+    > ul{
+        > li{
+            &.ice-lv1{
+                .ice-cols{
+                    width: 200px;
+                    max-width: 100%;
+                    position: absolute;
+                    > ul.icesubmenu{
+                        background: #ffffff none repeat scroll 0 0;
+                        border: medium none;
+                        box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.15);
+                        height: 0;
+                        left: 50%;
+                        margin: 0;
+                        opacity: 0;
+                        overflow: hidden;
+                        pointer-events: none;
+                        position: absolute;
+                        text-align: left;
+                        text-transform: capitalize;
+                        top: 100%;
+                        transform: translate(-50%, 30px);
+                        transition: all 0.25s ease-out 0s;
+                        z-index: 9999;
+                        &.sub-lv1{
+                            > li{
+                                display: block;
+                                padding: 24px 1px 23px 3px;
+                                position: relative;
+                            }
+                        }
+                    }
+                }
+                &::hover{
+                    > ul.icesubmenu{
+                        opacity: 1;
+                        height: auto;
+                    }
+                }
+            }
+            &.ice-lv2{
+
+            }
+        }
+    }
+}
 /*------------------- sidebar*/
 ul.m-sidebar{
     display: none;
@@ -211,7 +259,7 @@ ul.m-sidebar{
             padding: 20px 10px;
             &:before{
                 @include transition(0.3s);
-                background: $white;
+                background: $menu-color;
                 bottom: 0;
                 content: "";
                 display: block;
@@ -404,17 +452,17 @@ ul.m-sidebar{
 }
 
 #main-bottom{
-    background: $menu-bg;
+    background: $main-bottom-bg;
     padding: 20px 0;
 }
 
 #bottom{
-    background: $menu-color-active;
+    background: $bottom-bg;
     padding: 20px 0;
     article{
         .item-content{
             i{
-                color: lighten($menu-color-normal, 10%);
+                color: lighten($bottom-bg, 10%);
             }
             h2{
                 display: inline-block;
@@ -450,7 +498,7 @@ ul.m-sidebar{
 }
 
 #footer-wrapper{
-    background: $bg-primary;
+    background: $footer-bg;
     .copyright{
         text-align: center;
         color: $footer-color-link;
@@ -465,7 +513,7 @@ ul.m-sidebar{
     color: $white;
 }
 
-ul{
+/*ul{
     &.icesubMenu{
         background: #ffffff none repeat scroll 0 0;
         border: medium none;
@@ -499,4 +547,10 @@ ul{
             }
         }
     }
-}
+}*/
+
+@import "nmf-1-max-1200.scss";
+@import "nmf-2-max-992.scss";
+@import "nmf-3-max-768.scss";
+@import "nmf-4-max-480.scss";
+@import "nmf-5-max-320.scss";
