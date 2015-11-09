@@ -519,15 +519,16 @@ ul.m-sidebar {
     #bottom article .item-content .item-introtext p a {
       color: white; }
 
-#map {
+.map {
   position: relative;
   min-height: 350px;
   overflow: hidden; }
-  #map iframe {
+  .map iframe {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100% !important; }
+    width: 100% !important;
+    pointer-events: none; }
 
 #footer-wrapper {
   background: #f6f6f6; }

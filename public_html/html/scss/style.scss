@@ -436,7 +436,7 @@ ul.m-sidebar{
     }
 }
 
-#map{
+.map{
     position: relative;
     min-height: 350px;
     overflow: hidden;
@@ -445,6 +445,7 @@ ul.m-sidebar{
         top: 0;
         left: 0;
         width: 100% !important;
+        pointer-events: none;
     }
 }
 
