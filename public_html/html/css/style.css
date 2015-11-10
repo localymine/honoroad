@@ -254,38 +254,38 @@ h2 {
 .menu-padding {
   padding-top: 40px; }
 
-#header {
+.header {
   background: #84904B; }
-  #header #logo #menu-toggle .navbar-toggle {
+  .header #logo #menu-toggle .navbar-toggle {
     border: 1px solid #DFFFBF; }
-    #header #logo #menu-toggle .navbar-toggle:hover {
+    .header #logo #menu-toggle .navbar-toggle:hover {
       background-color: #DFFFBF; }
-      #header #logo #menu-toggle .navbar-toggle:hover .icon-bar {
+      .header #logo #menu-toggle .navbar-toggle:hover .icon-bar {
         background-color: #200040; }
-    #header #logo #menu-toggle .navbar-toggle .icon-bar {
+    .header #logo #menu-toggle .navbar-toggle .icon-bar {
       background-color: #DFFFBF; }
-  #header #logo .navbar-brand {
+  .header #logo .navbar-brand {
     padding: 0; }
-  #header nav {
+  .header nav {
     padding-left: 0;
     padding-right: 0; }
-    #header nav.navbar-oil {
+    .header nav.navbar-oil {
       margin-bottom: 0;
       background-color: #84904B;
       border: none;
       box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
       border-radius: 0; }
-    #header nav ul {
+    .header nav ul {
       display: inline-block;
       float: right;
       margin: 0px 0 0;
       padding: 0;
       list-style-type: none; }
-      #header nav ul > li {
+      .header nav ul > li {
         display: inline-block;
-        position: relative;
+        /*position: relative;*/
         line-height: 24px; }
-        #header nav ul > li a {
+        .header nav ul > li a {
           -webkit-transition: all 0.3s ease 0s;
           -moz-transition: all 0.3s ease 0s;
           transition: all 0.3s ease 0s;
@@ -295,7 +295,7 @@ h2 {
           font-size: 16px;
           display: block;
           padding: 20px 10px; }
-          #header nav ul > li a:before {
+          .header nav ul > li a:before {
             -webkit-transition: all 0.3s ease 0s;
             -moz-transition: all 0.3s ease 0s;
             transition: all 0.3s ease 0s;
@@ -308,26 +308,27 @@ h2 {
             position: absolute;
             right: 0;
             width: 0; }
-          #header nav ul > li a:hover {
+          .header nav ul > li a:hover {
             text-decoration: none;
             color: #DFFFBF; }
-          #header nav ul > li a.active:before, #header nav ul > li a:hover:before {
+          .header nav ul > li a.active:before, .header nav ul > li a:hover:before {
             -webkit-transition: all 0.3s ease 0s;
             -moz-transition: all 0.3s ease 0s;
             transition: all 0.3s ease 0s;
             width: 100%; }
-          #header nav ul > li a.active {
+          .header nav ul > li a.active {
             color: #f9fff2; }
-          #header nav ul > li a.nav-title {
+          .header nav ul > li a.nav-title {
             display: block;
             position: relative;
             text-transform: capitalize;
             z-index: 1; }
-          #header nav ul > li a span {
+          .header nav ul > li a span {
             text-align: center;
             display: block; }
 
 .icemegamenu > ul > li.ice-lv1 .ice-cols {
+  height: auto;
   width: 200px;
   max-width: 100%;
   position: absolute; }
@@ -350,11 +351,25 @@ h2 {
     z-index: 9999; }
     .icemegamenu > ul > li.ice-lv1 .ice-cols > ul.icesubmenu.sub-lv1 > li {
       display: block;
-      padding: 24px 1px 23px 3px;
+      padding: 5px 1px 5px 3px;
       position: relative; }
-.icemegamenu > ul > li.ice-lv1::hover > ul.icesubmenu {
+.icemegamenu > ul > li.ice-lv1:hover .ice-cols > ul.icesubmenu.sub-lv1 {
   opacity: 1;
-  height: auto; }
+  height: auto;
+  width: 100%;
+  transform: translate(-50%, 0px); }
+  .icemegamenu > ul > li.ice-lv1:hover .ice-cols > ul.icesubmenu.sub-lv1 > li a {
+    padding: 0 5px;
+    color: #000;
+    line-height: 1.2em; }
+.icemegamenu > ul > li.ice-lv1:hover .ice-cols > ul.icesubmenu:focus, .icemegamenu > ul > li.ice-lv1:hover .ice-cols > ul.icesubmenu:hover {
+  opacity: 1;
+  height: auto;
+  width: 100%; }
+.icemegamenu > ul > li.ice-lv1:hover .ice-cols:hover, .icemegamenu > ul > li.ice-lv1:hover .ice-cols:focus {
+  opacity: 1;
+  height: auto;
+  width: 100%; }
 
 /*------------------- sidebar*/
 ul.m-sidebar {
@@ -568,6 +583,33 @@ ul.m-sidebar {
     #footer-wrapper .copyright .privacy_link {
       color: #fff;
       text-decoration: none; }
+
+#back-top {
+  bottom: 90px;
+  visibility: hidden;
+  position: fixed;
+  right: 20px;
+  z-index: 99; }
+  #back-top.cd-is-visible {
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    /* the button becomes visible */
+    visibility: visible;
+    opacity: 1; }
+  #back-top.cd-fade-out {
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+    opacity: 0.5; }
+  #back-top a {
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    color: rgba(162, 181, 66, 0.9); }
+    #back-top a:hover {
+      color: #A2B542; }
 
 .login-menu {
   color: #fff; }

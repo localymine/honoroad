@@ -104,7 +104,7 @@ $paddings: (xs: 0.5rem, sm: 1rem, md: 1.5rem, lg: 2rem, xl: 2.5rem, xxl: 3rem);
 .menu-padding{
     padding-top:40px;
 }
-#header{
+.header{
     background: $menu-bg;
     #logo{
         #menu-toggle{
@@ -143,7 +143,7 @@ $paddings: (xs: 0.5rem, sm: 1rem, md: 1.5rem, lg: 2rem, xl: 2.5rem, xxl: 3rem);
             list-style-type: none;
             > li{
                 display: inline-block;
-                position: relative;
+                /*position: relative;*/
                 line-height: 24px;
                 a{
                     @include transition(0.3s);
@@ -197,6 +197,7 @@ $paddings: (xs: 0.5rem, sm: 1rem, md: 1.5rem, lg: 2rem, xl: 2.5rem, xxl: 3rem);
         > li{
             &.ice-lv1{
                 .ice-cols{
+                    height: auto;
                     width: 200px;
                     max-width: 100%;
                     position: absolute;
@@ -220,16 +221,39 @@ $paddings: (xs: 0.5rem, sm: 1rem, md: 1.5rem, lg: 2rem, xl: 2.5rem, xxl: 3rem);
                         &.sub-lv1{
                             > li{
                                 display: block;
-                                padding: 24px 1px 23px 3px;
+                                padding: 5px 1px 5px 3px;
                                 position: relative;
                             }
                         }
                     }
                 }
-                &::hover{
-                    > ul.icesubmenu{
-                        opacity: 1;
-                        height: auto;
+                &:hover{
+                    .ice-cols{
+                        > ul.icesubmenu{
+                            &.sub-lv1{
+                                opacity: 1;
+                                height: auto;
+                                width: 100%;
+                                transform: translate(-50%, 0px);
+                                > li{
+                                    a{
+                                        padding: 0 5px;
+                                        color: $black;
+                                        line-height: 1.2em;
+                                    }
+                                }
+                            }
+                        }
+                        & > ul.icesubmenu:focus, & > ul.icesubmenu:hover{
+                            opacity: 1;
+                            height: auto;
+                            width: 100%;
+                        }
+                        &:hover, &:focus{
+                            opacity: 1;
+                            height: auto;
+                            width: 100%;
+                        }
                     }
                 }
             }
@@ -505,6 +529,32 @@ ul.m-sidebar{
         .privacy_link{
             color: $footer-color-link;
             text-decoration: none;
+        }
+    }
+}
+
+#back-top{
+    bottom: 90px;
+    visibility: hidden;
+    position: fixed;
+    right: 20px;
+    z-index: 99;
+    &.cd-is-visible {
+        @include transition(0.3s);
+        /* the button becomes visible */
+        visibility: visible;
+        opacity: 1;
+    }
+    &.cd-fade-out {
+        @include transition(0.3s);
+        /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+        opacity: 0.5;
+    }
+    a{
+        @include transition(0.3s);
+        color: transparentize($hot-top-bg, 0.1);
+        &:hover{
+            color: $hot-top-bg
         }
     }
 }
