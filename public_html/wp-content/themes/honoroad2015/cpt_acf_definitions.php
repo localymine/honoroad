@@ -39,6 +39,30 @@ function cptui_register_my_cpts() {
     );
     register_post_type("product", $args);
 
+    $labels = array(
+        "name" => "Top About",
+        "singular_name" => "Top About",
+    );
+
+    $args = array(
+        "labels" => $labels,
+        "description" => "",
+        "public" => true,
+        "show_ui" => true,
+        "has_archive" => false,
+        "show_in_menu" => true,
+        "exclude_from_search" => false,
+        "capability_type" => "post",
+        "map_meta_cap" => true,
+        "hierarchical" => false,
+        "rewrite" => array("slug" => "top-about", "with_front" => true),
+        "query_var" => true,
+        "menu_position" => 26,
+        "menu_icon" => get_template_directory_uri() . '/images/ad-ico/h2.png',
+        "supports" => array("title", "editor", "excerpt"),
+    );
+    register_post_type("top-about", $args);
+
 // End of cptui_register_my_cpts()
 }
 
@@ -56,7 +80,7 @@ function cptui_register_my_taxes() {
 
     $args = array(
         "labels" => $labels,
-        "hierarchical" => false,
+        "hierarchical" => true,
         "label" => "Product Line",
         "show_ui" => true,
         "query_var" => true,
@@ -89,7 +113,7 @@ if (function_exists("register_field_group")) {
                         'name' => 'image',
                         'type' => 'image',
                         'column_width' => '',
-                        'save_format' => 'url',
+                        'save_format' => 'object',
                         'preview_size' => 'thumbnail',
                         'library' => 'all',
                     ),
@@ -98,6 +122,22 @@ if (function_exists("register_field_group")) {
                 'row_limit' => '',
                 'layout' => 'table',
                 'button_label' => 'Add Row',
+            ),
+            array(
+                'key' => 'field_564451009570f',
+                'label' => 'Weight',
+                'name' => 'weight',
+                'type' => 'checkbox',
+                'instructions' => 'Trọng lượng',
+                'choices' => array(
+                    '1L' => '1L',
+                    '2L' => '2L',
+                    '5L' => '5L',
+                    '22L' => '22L',
+                    '25KG' => '25KG',
+                ),
+                'default_value' => '',
+                'layout' => 'horizontal',
             ),
             array(
                 'key' => 'field_5642d49fb732a',
@@ -203,6 +243,7 @@ if (function_exists("register_field_group")) {
                             '%' => '%',
                             'Meq/kg' => 'Meq/kg',
                             'g/100g' => 'g/100g',
+                            'oC' => 'oC',
                         ),
                         'default_value' => '',
                         'allow_null' => 0,
@@ -210,8 +251,8 @@ if (function_exists("register_field_group")) {
                     ),
                     array(
                         'key' => 'field_5642e62e6beef',
-                        'label' => 'Yummy Cooking Oil',
-                        'name' => 'yummy_cooking_oil',
+                        'label' => 'Amount',
+                        'name' => 'amount',
                         'type' => 'text',
                         'column_width' => '',
                         'default_value' => '',
@@ -360,7 +401,7 @@ if (function_exists("register_field_group")) {
                         'name' => 'image',
                         'type' => 'image',
                         'column_width' => '',
-                        'save_format' => 'url',
+                        'save_format' => 'object',
                         'preview_size' => 'thumbnail',
                         'library' => 'all',
                     ),
@@ -377,6 +418,57 @@ if (function_exists("register_field_group")) {
                     'param' => 'post_type',
                     'operator' => '==',
                     'value' => 'product',
+                    'order_no' => 0,
+                    'group_no' => 0,
+                ),
+            ),
+        ),
+        'options' => array(
+            'position' => 'normal',
+            'layout' => 'no_box',
+            'hide_on_screen' => array(
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+
+    register_field_group(array(
+        'id' => 'acf_top-info',
+        'title' => 'Top Info',
+        'fields' => array(
+            array(
+                'key' => 'field_56454336c93fa',
+                'label' => 'Show Button',
+                'name' => 'show_button',
+                'type' => 'radio',
+                'choices' => array(
+                    1 => 'Show',
+                    0 => 'Hide',
+                ),
+                'other_choice' => 0,
+                'save_other_choice' => 0,
+                'default_value' => '',
+                'layout' => 'horizontal',
+            ),
+            array(
+                'key' => 'field_564542a9c93f9',
+                'label' => 'Link To',
+                'name' => 'link_to',
+                'type' => 'text',
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'none',
+                'maxlength' => '',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'top-about',
                     'order_no' => 0,
                     'group_no' => 0,
                 ),
