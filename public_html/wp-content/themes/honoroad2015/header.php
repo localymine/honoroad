@@ -54,7 +54,7 @@
                                 </button>
                             </a>
                             <a class="navbar-brand nopadding">
-                                <img class="img-responsive" src="images/logo.png" alt="Honoroad" />
+                                <img class="img-responsive" src="<?php echo get_template_directory_uri() ?>/images/logo.png" alt="Honoroad" />
                             </a>
                         </div>
                         <div class="navbar-collapse collapse nopadding icemegamenu">

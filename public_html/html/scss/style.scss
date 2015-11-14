@@ -220,7 +220,7 @@ $paddings: (xs: 0.5rem, sm: 1rem, md: 1.5rem, lg: 2rem, xl: 2.5rem, xxl: 3rem);
                         z-index: 9999;
                         &.sub-lv1{
                             > li{
-                                display: block;
+                                display: block !important;
                                 padding: 5px 1px 5px 3px;
                                 position: relative;
                             }
@@ -235,24 +235,35 @@ $paddings: (xs: 0.5rem, sm: 1rem, md: 1.5rem, lg: 2rem, xl: 2.5rem, xxl: 3rem);
                                 height: auto;
                                 width: 100%;
                                 transform: translate(-50%, 0px);
+                                display: inline-block;
                                 > li{
+                                    display: inline-block;
                                     a{
                                         padding: 0 5px;
                                         color: $black;
                                         line-height: 1.2em;
+                                        &::visited, &::link{
+                                            display: inline-block !important;
+                                        }
                                     }
                                 }
                             }
                         }
-                        & > ul.icesubmenu:focus, & > ul.icesubmenu:hover{
+                        & > ul.icesubmenu::focus, & > ul.icesubmenu::hover, & > ul.icemegamenu::visited{
+                            & > li{
+                                display: inline-block;
+                            }
                             opacity: 1;
                             height: auto;
                             width: 100%;
+                            display: block !important;
+                            overflow: visible;
                         }
-                        &:hover, &:focus{
+                        &:hover, &:focus, &:visited, &:link{
                             opacity: 1;
                             height: auto;
                             width: 100%;
+                            display: block !important;
                         }
                     }
                 }

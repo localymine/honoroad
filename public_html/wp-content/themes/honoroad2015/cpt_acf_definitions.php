@@ -40,8 +40,8 @@ function cptui_register_my_cpts() {
     register_post_type("product", $args);
 
     $labels = array(
-        "name" => "Top About",
-        "singular_name" => "Top About",
+        "name" => "Top About Info",
+        "singular_name" => "Top About Info",
     );
 
     $args = array(
@@ -62,6 +62,30 @@ function cptui_register_my_cpts() {
         "supports" => array("title", "editor", "excerpt"),
     );
     register_post_type("top-about", $args);
+
+    $labels = array(
+        "name" => "Partner Info",
+        "singular_name" => "Partner Info",
+    );
+
+    $args = array(
+        "labels" => $labels,
+        "description" => "",
+        "public" => true,
+        "show_ui" => true,
+        "has_archive" => false,
+        "show_in_menu" => true,
+        "exclude_from_search" => false,
+        "capability_type" => "post",
+        "map_meta_cap" => true,
+        "hierarchical" => false,
+        "rewrite" => array("slug" => "partner-info", "with_front" => true),
+        "query_var" => true,
+        "menu_position" => 26,
+        "menu_icon" => get_template_directory_uri() . '/images/ad-ico/h3.png',
+        "supports" => array("title"),
+    );
+    register_post_type("partner-info", $args);
 
 // End of cptui_register_my_cpts()
 }
@@ -469,6 +493,40 @@ if (function_exists("register_field_group")) {
                     'param' => 'post_type',
                     'operator' => '==',
                     'value' => 'top-about',
+                    'order_no' => 0,
+                    'group_no' => 0,
+                ),
+            ),
+        ),
+        'options' => array(
+            'position' => 'normal',
+            'layout' => 'no_box',
+            'hide_on_screen' => array(
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+
+    register_field_group(array(
+        'id' => 'acf_partner-info',
+        'title' => 'Partner Info',
+        'fields' => array(
+            array(
+                'key' => 'field_5645ed2229524',
+                'label' => 'Logo',
+                'name' => 'logo',
+                'type' => 'image',
+                'save_format' => 'object',
+                'preview_size' => 'thumbnail',
+                'library' => 'all',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'partner-info',
                     'order_no' => 0,
                     'group_no' => 0,
                 ),

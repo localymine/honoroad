@@ -350,26 +350,36 @@ h2 {
     transition: all 0.25s ease-out 0s;
     z-index: 9999; }
     .icemegamenu > ul > li.ice-lv1 .ice-cols > ul.icesubmenu.sub-lv1 > li {
-      display: block;
+      display: block !important;
       padding: 5px 1px 5px 3px;
       position: relative; }
 .icemegamenu > ul > li.ice-lv1:hover .ice-cols > ul.icesubmenu.sub-lv1 {
   opacity: 1;
   height: auto;
   width: 100%;
-  transform: translate(-50%, 0px); }
-  .icemegamenu > ul > li.ice-lv1:hover .ice-cols > ul.icesubmenu.sub-lv1 > li a {
-    padding: 0 5px;
-    color: #000;
-    line-height: 1.2em; }
-.icemegamenu > ul > li.ice-lv1:hover .ice-cols > ul.icesubmenu:focus, .icemegamenu > ul > li.ice-lv1:hover .ice-cols > ul.icesubmenu:hover {
+  transform: translate(-50%, 0px);
+  display: inline-block; }
+  .icemegamenu > ul > li.ice-lv1:hover .ice-cols > ul.icesubmenu.sub-lv1 > li {
+    display: inline-block; }
+    .icemegamenu > ul > li.ice-lv1:hover .ice-cols > ul.icesubmenu.sub-lv1 > li a {
+      padding: 0 5px;
+      color: #000;
+      line-height: 1.2em; }
+      .icemegamenu > ul > li.ice-lv1:hover .ice-cols > ul.icesubmenu.sub-lv1 > li a::visited, .icemegamenu > ul > li.ice-lv1:hover .ice-cols > ul.icesubmenu.sub-lv1 > li a::link {
+        display: inline-block !important; }
+.icemegamenu > ul > li.ice-lv1:hover .ice-cols > ul.icesubmenu::focus, .icemegamenu > ul > li.ice-lv1:hover .ice-cols > ul.icesubmenu::hover, .icemegamenu > ul > li.ice-lv1:hover .ice-cols > ul.icemegamenu::visited {
   opacity: 1;
   height: auto;
-  width: 100%; }
-.icemegamenu > ul > li.ice-lv1:hover .ice-cols:hover, .icemegamenu > ul > li.ice-lv1:hover .ice-cols:focus {
+  width: 100%;
+  display: block !important;
+  overflow: visible; }
+  .icemegamenu > ul > li.ice-lv1:hover .ice-cols > ul.icesubmenu::focus > li, .icemegamenu > ul > li.ice-lv1:hover .ice-cols > ul.icesubmenu::hover > li, .icemegamenu > ul > li.ice-lv1:hover .ice-cols > ul.icemegamenu::visited > li {
+    display: inline-block; }
+.icemegamenu > ul > li.ice-lv1:hover .ice-cols:hover, .icemegamenu > ul > li.ice-lv1:hover .ice-cols:focus, .icemegamenu > ul > li.ice-lv1:hover .ice-cols:visited, .icemegamenu > ul > li.ice-lv1:hover .ice-cols:link {
   opacity: 1;
   height: auto;
-  width: 100%; }
+  width: 100%;
+  display: block !important; }
 
 /*------------------- sidebar*/
 ul.m-sidebar {

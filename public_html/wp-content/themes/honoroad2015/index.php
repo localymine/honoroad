@@ -117,27 +117,33 @@ get_header();
 <div id="main-bottom" class="margin-top-lg">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-md-4 wow fadeInUp" data-wow-delay="3.5s">
-                <article>
-                    <figure>
-                        <img class="img-responsive center-block" src="<?php echo get_template_directory_uri() ?>/images/c-logo-1.jpg"/>
-                    </figure>
-                </article>
-            </div>
-            <div class="col-xs-12 col-md-4 wow fadeInUp" data-wow-delay="3.75s">
-                <article>
-                    <figure>
-                        <img class="img-responsive center-block" src="<?php echo get_template_directory_uri() ?>/images/c-logo-2.jpg"/>
-                    </figure>
-                </article>
-            </div>
-            <div class="col-xs-12 col-md-4 wow fadeInUp" data-wow-delay="4s">
-                <article>
-                    <figure>
-                        <img class="img-responsive center-block" src="<?php echo get_template_directory_uri() ?>/images/c-logo-3.jpg"/>
-                    </figure>
-                </article>
-            </div>
+            <?php
+            $i = 1;
+            $args = array(
+                'post_type' => 'partner-info',
+                'posts_per_page' => -1,
+            );
+            $loop = new WP_Query($args);
+            ?>
+            <?php if ($loop->have_posts()): ?>
+                <?php while ($loop->have_posts()): $loop->the_post(); ?>
+                    <?php
+                    $image = get_field('logo');
+                    // thumbnail
+                    $size = 'medium';
+                    $thumb_logo = $image['sizes'][$size];
+                    ?>
+                    <div class="col-xs-12 col-md-4 wow fadeInUp" data-wow-delay="<?php echo $i * 0.5 ?>s">
+                        <article>
+                            <figure>
+                                <img class="img-responsive center-block" src="<?php echo $thumb_logo ?>"/>
+                            </figure>
+                        </article>
+                    </div>
+                    <?php $i++; ?>
+                <?php endwhile; ?>
+            <?php endif; ?>
+            <?php wp_reset_postdata() ?>
         </div>
     </div>
 </div>
