@@ -160,7 +160,7 @@ get_header();
                         <h2><span>Địa Chỉ</span></h2>
                         <div class="item-introtext">
                             <p>
-                                26A KCN Long Giang, Xã Lập 1, Huyện Tân Phước, Tĩnh Tiền Giang
+                                <?php echo $omw_theme_settings->ct_company_address ?>
                             </p>
                         </div>
                     </div>
@@ -173,7 +173,7 @@ get_header();
                         <h2><span>Điện Thoại</span></h2>
                         <div class="item-introtext">
                             <p>
-                                0123 456 789
+                                <?php echo $omw_theme_settings->ct_company_telephone ?>
                             </p>
                         </div>
                     </div>
@@ -186,7 +186,7 @@ get_header();
                         <h2><span>Email</span></h2>
                         <div class="item-introtext">
                             <p>
-                                <a href="mailto:leduongkhang@gmail.com">leduongkhang@gmail.com</a>
+                                <a href="mailto:<?php echo $omw_theme_settings->ct_company_email ?>"><?php echo $omw_theme_settings->ct_company_email ?></a>
                             </p>
                         </div>
                     </div>

@@ -1,7 +1,10 @@
- <!-- footer -->
+<?php
+global $omw_theme_settings;
+?> 
+<!-- footer -->
         <div id="footer">
             <div id="map" class="map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.2966032270815!2d106.3025217509567!3d10.477268167470955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310ab99c0ced4c49%3A0xe22317e8862d6c70!2sKhu+C%C3%B4ng+Nghi%E1%BB%87p+Long+Giang!5e0!3m2!1sen!2s!4v1446955596231" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                <?php echo $omw_theme_settings->ct_company_google_map ?>
             </div>
         </div>
         <!-- footer end -->
