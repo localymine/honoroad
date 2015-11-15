@@ -12,7 +12,8 @@
 //include_once (dirname(__FILE__) . '/MyTheme_Global_Service.php');
 //include_once (dirname(__FILE__) . '/MyTheme_Customize_Staff_Detail.php');
 include_once (dirname(__FILE__) . '/includes/my_settings.php');
-include_once(dirname(__FILE__) . '/cpt_acf_definitions.php');
+include_once (dirname(__FILE__) . '/includes/options_page.php');
+include_once(dirname(__FILE__) . '/includes/cpt_acf_definitions.php');
 
 /* -------------------------------------------------------------------------- */
 add_action('init', 'myStartSession', 1);

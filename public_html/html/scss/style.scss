@@ -610,6 +610,138 @@ ul.m-sidebar{
     }
 }*/
 
+.prodcut-detail{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    .thumb-list{
+        display: inline-block;
+        vertical-align: top;
+        ul.touch-list{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            li{
+                a{
+                    display: block;
+                }
+                margin-top: 5px;
+                margin-bottom: 5px;
+                border: 1px solid $image-border-color;
+                &.selected{
+                    border: 1px solid $image-border-color-selected;
+                }
+            }
+        }
+    }
+    .box-prod-info{
+        .new-price{
+            color: $new-price-color;
+        }
+        .text{
+            border: 1px solid $image-border-color;
+            width: 60px;
+            height: 30px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .quan-edit{
+            width: 30px;
+            height: 30px;
+            border: 1px solid $image-border-color;
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
+            padding: 0;
+            line-height: 2em;
+            i{
+                color: $image-border-color-selected;
+            }
+        }
+    }
+    .image-block{
+        border: 1px solid $image-border-color;
+        display: inline-block;
+        padding: 0;
+        margin: 5px;
+        width: 88%;
+    }
+    .prod-name{
+        color: $menu-bg;
+    }
+    .prod-detail{
+        .prod-attr{
+            color: $menu-bg;
+        }
+    }
+    .prod-img-features{
+        a{
+            padding: 5px;
+            position: relative;
+        }
+    }
+}
+
+.btn-add-cart{
+    font-family: FontAwesome;
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: 1px solid $btn-cart-border-color;
+    color: $btn-cart-color;
+    @include border-radius(0);
+    @include transition(0.2s);
+    &::before{
+        content: "\f07a";
+        padding-right: 10px;
+    }
+    &:hover{
+        background: transparent;
+        border: 1px solid $image-border-color-selected;
+    }
+    &.disabled{
+        &::before{
+            content: "\f110";
+        }
+        &:hover{
+            cursor: default;
+        }
+    }
+    &.added{
+        &::before{
+            content: "\f00c";
+        }
+    }
+}
+
+.product-all{
+    .prod-cat{
+        span{
+            color: $menu-bg;
+        }
+        border-bottom: 2px solid $image-border-color-selected;
+        padding: 15px;
+        margin-bottom: 35px;
+        font-size: 2em;
+    }
+    a{
+        @include transition(0.5s);
+        .prod-title{
+            color: $menu-bg;
+        }
+        .prod-title{
+            padding-top: 10px;
+        }
+        p{
+            color: $black;
+        }
+        &:hover{
+            background: lighten($menu-bg, 50%);
+            display: block;
+            p{
+                color: $black;
+            }
+        }
+    }
+}
+
 @import "nmf-1-max-1200.scss";
 @import "nmf-2-max-992.scss";
 @import "nmf-3-max-768.scss";

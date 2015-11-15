@@ -35,10 +35,10 @@ font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
     border-radius: $radius;
 }
 
-@mixin transition($second){
-    -webkit-transition: all $second ease 0s;
-    -moz-transition: all $second ease 0s;
-    transition: all $second ease 0s;
+@mixin transition($second, $type : ease){
+    -webkit-transition: all $second $type 0s;
+    -moz-transition: all $second $type 0s;
+    transition: all $second $type 0s;
 }
 
 @mixin border($width, $type, $color){
@@ -115,3 +115,8 @@ $main-bottom-bg: #5B7016;
 $bottom-bg: #B9C43D;
 $footer-bg: #9D8C00;
 $footer-color-link: #fff;
+$new-price-color: #F13340;
+$image-border-color: #DFE2DF;
+$image-border-color-selected: #9CA59C;
+$btn-cart-border-color: #8cac1b;
+$btn-cart-color: #8cac1b;

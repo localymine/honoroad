@@ -110,3 +110,15 @@ $(function ($) {
 //        $("#myCarousel").carousel('next');
 //    });
 //});
+
+$(function () {
+    var $thumb_list = $('.thumb-list ul.touch-list li');
+    $thumb_list.each(function () {
+        $(this).find('a').on('click', function () {
+            var full = $(this).data('full');
+            $thumb_list.removeClass('selected');
+            $(this).parent().addClass('selected');
+            $('.image-block img').attr('src', full);
+        });
+    });
+});
