@@ -65,6 +65,7 @@ class omw_theme_settings {
             'company-info' => 'Compnay Infomation',
             'general' => 'General',
             'footer' => 'Footer',
+            'mail-setting' => 'Mail Setting',
         );
         //
         $tab_data = array();
@@ -210,6 +211,66 @@ class omw_theme_settings {
                         ),
                     );
                     break;
+                case 'mail-setting':
+                    $tab_data[$tab_id] = array(
+                        'ct_from_email' => array(
+                            'id' => 'ct_from_email',
+                            'label' => 'From Email',
+                            'description' => '',
+                            'type' => 'text',
+                            'default' => 'no-reply',
+                            'placeholder' => '',
+                        ),
+                        'ct_from_name' => array(
+                            'id' => 'ct_from_name',
+                            'label' => 'From Name',
+                            'description' => '',
+                            'type' => 'text',
+                            'default' => '',
+                            'placeholder' => '',
+                        ),
+                        'ct_mail_subject_client' => array(
+                            'id' => 'ct_mail_subject_client',
+                            'label' => 'Mail Subject to Client',
+                            'description' => '',
+                            'type' => 'text',
+                            'default' => '',
+                            'placeholder' => '',
+                        ),
+                        'ct_mail_content_client' => array(
+                            'id' => 'ct_mail_content_client',
+                            'label' => 'Mail Content to Client',
+                            'description' => '',
+                            'type' => 'wysiwyg',
+                            'default' => '',
+                            'placeholder' => '',
+                        ),
+                        'ct_mail_list_admin' => array(
+                            'id' => 'ct_mail_list_admin',
+                            'label' => 'Mail list to Admin',
+                            'description' => 'List email to Admin, add new line for each email address',
+                            'type' => 'textarea',
+                            'default' => '',
+                            'placeholder' => '',
+                        ),
+                        'ct_mail_subject_admin' => array(
+                            'id' => 'ct_mail_subject_admin',
+                            'label' => 'Mail Subject to Admin',
+                            'description' => '',
+                            'type' => 'text',
+                            'default' => '',
+                            'placeholder' => '',
+                        ),
+                        'ct_mail_content_admin' => array(
+                            'id' => 'ct_mail_content_admin',
+                            'label' => 'Mail Content to Admin',
+                            'description' => '',
+                            'type' => 'wysiwyg',
+                            'default' => '',
+                            'placeholder' => '',
+                        ),
+                    );
+                    break;
             }
         }
         //
@@ -316,7 +377,7 @@ class omw_theme_settings {
                                             <tr>
                                                 <th><label for="<?php echo $id ?>"><?php echo $data['label'] ?></label></th>
                                                 <td>
-                                                    <input class="form-control" id="<?php echo $id ?>" name="<?php echo $id ?>" type="text" value="<?php echo isset($settings[$id]) ? esc_html(stripslashes($settings[$id])) : '' ?>" /><br/>
+                                                    <input class="form-control" id="<?php echo $id ?>" name="<?php echo $id ?>" type="text" value="<?php echo isset($settings[$id]) ? esc_html(stripslashes($settings[$id])) : $data['default'] ?>" /><br/>
                                                     <span class="description"><?php echo $data['description'] ?></span>
                                                 </td>
                                             </tr>
@@ -327,7 +388,7 @@ class omw_theme_settings {
                                             <tr>
                                                 <th><label for="<?php echo $id ?>"><?php echo $data['label'] ?></label></th>
                                                 <td>
-                                                    <textarea class="form-control" id="<?php echo $id ?>" name="<?php echo $id ?>" cols="60" rows="5"><?php echo isset($settings[$id]) ? esc_html(stripslashes($settings[$id])) : '' ?></textarea><br/>
+                                                    <textarea class="form-control" id="<?php echo $id ?>" name="<?php echo $id ?>" cols="60" rows="5"><?php echo isset($settings[$id]) ? esc_html(stripslashes($settings[$id])) : $data['default'] ?></textarea><br/>
                                                     <span class="description"><?php echo $data['description'] ?></span>
                                                 </td>
                                             </tr>

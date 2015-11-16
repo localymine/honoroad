@@ -1,7 +1,6 @@
 <?php
 /*
  * Author: KhangLe
- * Template Name: Product Detail
  *
  */
 get_header();
