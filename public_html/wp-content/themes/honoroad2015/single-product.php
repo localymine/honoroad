@@ -8,7 +8,7 @@ get_header();
 ?>
 
 <!-- product detail -->
-<div class="container prodcut-detail">
+<div class="container prodcut-detail margin-top-xl margin-bottom-xl">
     <div class="row">
         <div class="col-xs-12 col-md-6">
             <?php if (have_rows('images') && count(get_field('images')) > 1): ?>

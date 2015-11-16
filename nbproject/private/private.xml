@@ -13,11 +13,11 @@
             <file>file:/D:/xampp/htdocs/honoroad.localhost/public_html/html/css/_config.scss</file>
         </group>
         <group name="Mine">
-            <file>file:/var/www/html/honoroad.localhost/public_html/html/index.html</file>
             <file>file:/var/www/html/honoroad.localhost/public_html/wp-content/themes/honoroad2015/cpt_acf_definitions.php</file>
+            <file>file:/var/www/html/honoroad.localhost/public_html/html/index.html</file>
+            <file>file:/var/www/html/honoroad.localhost/public_html/wp-content/themes/honoroad2015/index.php</file>
             <file>file:/var/www/html/honoroad.localhost/public_html/wp-content/themes/honoroad2015/header.php</file>
             <file>file:/var/www/html/honoroad.localhost/public_html/wp-content/themes/honoroad2015/footer.php</file>
-            <file>file:/var/www/html/honoroad.localhost/public_html/wp-content/themes/honoroad2015/index.php</file>
         </group>
     </open-files>
 </project-private>

@@ -141,6 +141,7 @@ $paddings: (xs: 0.5rem, sm: 1rem, md: 1.5rem, lg: 2rem, xl: 2.5rem, xxl: 3rem);
             margin: 0px 0 0;
             padding: 0;
             list-style-type: none;
+            position: relative;
             > li{
                 display: inline-block;
                 /*position: relative;*/
@@ -328,7 +329,23 @@ ul.m-sidebar{
         }
     }
 }
-
+.sidr{
+    background: $menu-bg;
+    box-shadow: none;
+}
+.sidr ul{
+    margin: 0;
+}
+.sidr ul li:hover > a, .sidr ul li:hover > span, .sidr ul li.active > a, .sidr ul li.active > span, .sidr ul li.sidr-class-active > a, .sidr ul li.sidr-class-active > span{
+    box-shadow: none;
+    line-height: 1.5em;
+}
+.sidr ul li:hover, .sidr ul li.active, .sidr ul li.sidr-class-active{
+    border-top: none;
+}
+.sidr ul li{
+    border-top: none;
+}
 /*-------------- carousel*/
 .carousel-control{
     &.left{
@@ -611,8 +628,6 @@ ul.m-sidebar{
 }*/
 
 .prodcut-detail{
-    margin-top: 20px;
-    margin-bottom: 20px;
     .thumb-list{
         display: inline-block;
         vertical-align: top;
@@ -681,6 +696,14 @@ ul.m-sidebar{
     }
 }
 
+.btn-oil{
+    border: 2px solid $menu-bg;
+    color: $menu-bg;
+    background: transparent;
+    @include border-radius(0);
+    @include transition(0.2s);
+}
+
 .btn-add-cart{
     font-family: FontAwesome;
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
@@ -737,6 +760,59 @@ ul.m-sidebar{
             display: block;
             p{
                 color: $black;
+            }
+        }
+    }
+}
+
+.top-about-us{
+    .module-container{
+        header{
+            border: 1px solid $border-color;
+            .module-title{
+                padding: 15px 15px;
+                margin: 0;
+                span{
+                    text-transform: uppercase;
+                }
+            }
+        }
+        .module-article{
+            background: $white;
+            border: 1px solid $border-color;
+            padding: 25px 30px;
+            box-sizing: border-box;
+        }
+    }
+    .ref-post{
+        .module-container{
+            background: $menu-bg;
+            padding: 40px 20px 40px 30px;
+            header{
+                border: none;
+                .module-title-2{
+                    color: $white;
+                    margin: 0;
+                    span{
+                        text-transform: uppercase;
+                    }
+                }
+            }
+            .module-article-post{
+                ul{
+                    margin: 0;
+                    padding: 0;
+                    list-style: none;
+                    li{
+                        padding: 5px 0;
+                        a{
+                            color: $white;
+                            display: block;
+                            font-size: 1.2em;
+                            width: 100%;
+                        }
+                    }
+                }
             }
         }
     }

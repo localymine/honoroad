@@ -65,15 +65,25 @@
                                     <a class="nav-title" href="javascript:void(0)"><span>Giới thiệu</span></a>
                                     <div class="ice-cols">
                                         <ul class="icesubmenu sub-lv1">
-                                            <li><a href="#">Giới thiệu tập đoàn</a></li>
-                                            <li><a href="#">Chính sách</a></li>
-                                            <li><a href="#">Khuyến mãi</a></li>
-                                            <li><a href="#">Tin tức</a></li>
+                                            <?php
+                                            $args = array(
+                                                'post_type' => 'top-about',
+                                                'posts_per_page' => 3,
+                                            );
+                                            $loop = new WP_Query($args);
+                                            ?>
+                                            <?php if ($loop->have_posts()): ?>
+                                                <?php while ($loop->have_posts()): $loop->the_post(); ?>
+                                                    <li><a href="<?php the_permalink() ?>"><?php the_title() ?></a></li>
+                                                <?php endwhile; ?>
+                                            <?php endif; ?>
+                                            <?php wp_reset_postdata() ?>
+                                            <li><a href="<?php bloginfo('url') ?>/news">Tin tức</a></li>
                                         </ul>
                                     </div>
                                 </li>
                                 <li><a class="nav-title" href="<?php echo bloginfo('url') ?>/product"><span>Sản phẩm</span></a></li>
-                                <li><a class="nav-title" href="#"><span>Tuyển dụng</span></a></li>
+                                <li><a class="nav-title" href="<?php echo bloginfo('url') ?>/recruit"><span>Tuyển dụng</span></a></li>
                                 <li><a class="nav-title" href="<?php echo bloginfo('url') ?>/contact"><span>Liên hệ</span></a></li>
                                 <li class="menu-search">
                                     <ul>
@@ -99,17 +109,25 @@
                     <li><a class="active" href="<?php echo bloginfo('url') ?>"><span>Trang chủ</span></a></li>
                     <li>
                         <a class="" href="javascript:void(0)"><span>Giới thiệu</span></a>
-                        <ul>
-                            <li>
-                                <a href="#"><span>Giới thiệu tập đoàn</span></a>
-                                <a href="#"><span>Chính sách</span></a>
-                                <a href="#"><span>Khuyến mãi</span></a>
-                                <a href="#"><span>Tin tức</span></a>
-                            </li>
+                        <ul class="sub-menu-sidr">
+                            <?php
+                            $args = array(
+                                'post_type' => 'top-about',
+                                'posts_per_page' => 3,
+                            );
+                            $loop = new WP_Query($args);
+                            ?>
+                            <?php if ($loop->have_posts()): ?>
+                                <?php while ($loop->have_posts()): $loop->the_post(); ?>
+                                    <li><a href="<?php the_permalink() ?>"><?php the_title() ?></a></li>
+                                <?php endwhile; ?>
+                            <?php endif; ?>
+                            <?php wp_reset_postdata() ?>
+                            <li><a href="<?php bloginfo('url') ?>/news">Tin tức</a></li>
                         </ul>
                     </li>
                     <li><a class="" href="<?php echo bloginfo('url') ?>/product"><span>Sản phẩm</span></a></li>
-                    <li><a class="" href="#"><span>Tuyển dụng</span></a></li>
+                    <li><a class="" href="<?php echo bloginfo('url') ?>/recruit"><span>Tuyển dụng</span></a></li>
                     <li><a class="" href="<?php echo bloginfo('url') ?>/contact"><span>Liên hệ</span></a></li>
                     <li class="menu-search">
                     <li>

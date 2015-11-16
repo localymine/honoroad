@@ -51,7 +51,7 @@ get_header();
             ?>
             <?php if ($loop->have_posts()): ?>
                 <?php while ($loop->have_posts()): $loop->the_post(); ?>
-                    <div class="col-xs-12 col-md-4 prod-block wow fadeInUp" data-wow-delay="<?php echo $i * 0.5 ?>s">
+                    <div class="col-xs-12 col-md-4 prod-block wow fadeInUp" data-wow-delay="<?php echo $i * 0.25 ?>s">
                         <a href="<?php the_permalink() ?>">
                             <article id="item-1" class="item">
                                 <?php if (have_rows('images')): ?>
@@ -92,7 +92,7 @@ get_header();
         ?>
         <?php if ($loop->have_posts()): ?>
             <?php while ($loop->have_posts()): $loop->the_post(); ?>
-                <div class="col-xs-12 col-md-4 wow fadeInUp" data-wow-delay="<?php echo $i * 0.5 ?>s">
+                <div class="col-xs-12 col-md-4 wow fadeInUp" data-wow-delay="<?php echo $i * 0.25 ?>s">
                     <div class="module-info">
                         <header>
                             <h2 class="module-title"><span><?php the_title() ?></span></h2>
@@ -101,8 +101,10 @@ get_header();
                             <div class="item-info">
                                 <?php the_excerpt() ?>
                             </div>
-
                         </div>
+                        <?php if (get_field('show_button')): ?>
+                        <a href="<?php the_permalink() ?>" class="btn btn-oil center-block"><i class="fa fa-angle-double-right fa-3x"></i></a>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <?php $i++; ?>
@@ -133,7 +135,7 @@ get_header();
                     $size = 'medium';
                     $thumb_logo = $image['sizes'][$size];
                     ?>
-                    <div class="col-xs-12 col-md-4 wow fadeInUp" data-wow-delay="<?php echo $i * 0.5 ?>s">
+                    <div class="col-xs-12 col-md-4 wow fadeInUp" data-wow-delay="<?php echo $i * 0.25 ?>s">
                         <article>
                             <figure>
                                 <img class="img-responsive center-block" src="<?php echo $thumb_logo ?>"/>
@@ -166,7 +168,7 @@ get_header();
                     </div>
                 </article>
             </div>
-            <div class="col-xs-12 col-md-3 wow fadeInUp" data-wow-delay="1.5s">
+            <div class="col-xs-12 col-md-3 wow fadeInUp" data-wow-delay="0.5s">
                 <article>
                     <div class="item-content">
                         <i class="fa fa-phone fa-3x"></i>
@@ -179,7 +181,7 @@ get_header();
                     </div>
                 </article>
             </div>
-            <div class="col-xs-12 col-md-3 wow fadeInUp" data-wow-delay="1.75s">
+            <div class="col-xs-12 col-md-3 wow fadeInUp" data-wow-delay="0.75s">
                 <article>
                     <div class="item-content">
                         <i class="fa fa-envelope-o fa-3x"></i>
@@ -192,7 +194,7 @@ get_header();
                     </div>
                 </article>
             </div>
-            <div class="col-xs-12 col-md-3 wow fadeInUp" data-wow-delay="2s">
+            <div class="col-xs-12 col-md-3 wow fadeInUp" data-wow-delay="1s">
                 <article>
                     <div class="item-content">
                         <i class="fa fa-envelope-o fa-3x"></i>

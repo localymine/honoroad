@@ -10,7 +10,14 @@ jQuery.fn.extend({
 });
 
 $(function () {
-    $('#menu-toggle').sidr();
+    $('#menu-toggle').sidr({
+        name: 'sidr',
+        speed: 200,
+        side: 'left',
+        source: null,
+        renaming: true,
+        body: 'body'
+    });
     //
     $(document).on('click', function (e) {
         var container = $('#sidr');
@@ -23,6 +30,12 @@ $(function () {
         if ($('body').hasClass('sidr-open') && $(window).width() >= 768) {
             $.sidr('close');
         }
+    });
+    //
+    $('.sub-menu-sidr').hide();
+
+    $("#sidr li").on('click', function () {
+        $("ul", this).toggle('fast');
     });
 });
 
