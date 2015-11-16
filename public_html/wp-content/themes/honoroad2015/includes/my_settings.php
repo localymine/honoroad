@@ -64,7 +64,7 @@ class omw_theme_settings {
         $this->tabs = array(
             'company-info' => 'Compnay Infomation',
             'general' => 'General',
-            'footer' => 'Footer'
+            'footer' => 'Footer',
         );
         //
         $tab_data = array();
