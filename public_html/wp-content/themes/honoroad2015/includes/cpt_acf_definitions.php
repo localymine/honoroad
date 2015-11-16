@@ -16,6 +16,30 @@ add_action('init', 'cptui_register_my_cpts');
 
 function cptui_register_my_cpts() {
     $labels = array(
+        "name" => "Home Slider",
+        "singular_name" => "Home Slider",
+    );
+
+    $args = array(
+        "labels" => $labels,
+        "description" => "",
+        "public" => true,
+        "show_ui" => true,
+        "has_archive" => false,
+        "show_in_menu" => true,
+        "exclude_from_search" => false,
+        "capability_type" => "post",
+        "map_meta_cap" => true,
+        "hierarchical" => false,
+        "rewrite" => array("slug" => "home-slider", "with_front" => true),
+        "query_var" => true,
+        "menu_position" => 26,
+        "menu_icon" => get_template_directory_uri() . '/images/ad-ico/h1.png',
+        "supports" => array("title"),
+    );
+    register_post_type("home-slider", $args);
+
+    $labels = array(
         "name" => "Product",
         "singular_name" => "Product",
     );
@@ -34,7 +58,7 @@ function cptui_register_my_cpts() {
         "rewrite" => array("slug" => "product", "with_front" => true),
         "query_var" => true,
         "menu_position" => 26,
-        "menu_icon" => get_template_directory_uri() . '/images/ad-ico/h1.png',
+        "menu_icon" => get_template_directory_uri() . '/images/ad-ico/h2.png',
         "supports" => array("title"),
     );
     register_post_type("product", $args);
@@ -58,7 +82,7 @@ function cptui_register_my_cpts() {
         "rewrite" => array("slug" => "top-about", "with_front" => true),
         "query_var" => true,
         "menu_position" => 26,
-        "menu_icon" => get_template_directory_uri() . '/images/ad-ico/h2.png',
+        "menu_icon" => get_template_directory_uri() . '/images/ad-ico/h3.png',
         "supports" => array("title", "editor", "excerpt"),
     );
     register_post_type("top-about", $args);
@@ -82,7 +106,7 @@ function cptui_register_my_cpts() {
         "rewrite" => array("slug" => "partner-info", "with_front" => true),
         "query_var" => true,
         "menu_position" => 26,
-        "menu_icon" => get_template_directory_uri() . '/images/ad-ico/h3.png',
+        "menu_icon" => get_template_directory_uri() . '/images/ad-ico/h4.png',
         "supports" => array("title"),
     );
     register_post_type("partner-info", $args);
@@ -120,6 +144,53 @@ function cptui_register_my_taxes() {
 /* custom fields definitions */
 /* ---------------------------------------------------------------------------- */
 if (function_exists("register_field_group")) {
+    register_field_group(array(
+        'id' => 'acf_home-slider',
+        'title' => 'Home Slider',
+        'fields' => array(
+            array(
+                'key' => 'field_5649e7ebdc0e1',
+                'label' => 'Images',
+                'name' => 'images',
+                'type' => 'repeater',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_5649e7f9dc0e2',
+                        'label' => 'image',
+                        'name' => 'image',
+                        'type' => 'image',
+                        'column_width' => '',
+                        'save_format' => 'object',
+                        'preview_size' => 'thumbnail',
+                        'library' => 'all',
+                    ),
+                ),
+                'row_min' => '',
+                'row_limit' => '',
+                'layout' => 'table',
+                'button_label' => 'Add Row',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'home-slider',
+                    'order_no' => 0,
+                    'group_no' => 0,
+                ),
+            ),
+        ),
+        'options' => array(
+            'position' => 'normal',
+            'layout' => 'no_box',
+            'hide_on_screen' => array(
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+
     register_field_group(array(
         'id' => 'acf_product',
         'title' => 'Product',

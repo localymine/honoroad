@@ -8,19 +8,42 @@ get_header();
 ?>
 
 <!-- silder -->
+<?php
+$args = array(
+    'post_type' => 'home-slider',
+    'posts_per_page' => -1,
+    'orderby' => array('date' => 'DESC'),
+);
+$loop = new WP_Query($args);
+$home_slider = array();
+if ($loop->have_posts()) {
+    while ($loop->have_posts()) {
+        $loop->the_post();
+        while (have_rows('images')) {
+            the_row();
+            $image = get_sub_field('image');
+            $full = $image['url'];
+            $home_slider[]['image'] = $full;
+        }
+    }
+}
+?>
 <div data-ride="carousel" class="carousel slide" id="myCarousel">
     <div role="listbox" class="carousel-inner">
-        <div class="item active" style="background: url('<?php echo get_template_directory_uri() ?>/images/slide-1-b.png') fixed 0 0 / cover;"></div>
-        <div class="item" style="background: url('<?php echo get_template_directory_uri() ?>/images/slide-2-b.png') fixed 0 0 / cover;"></div>
+        <?php for ($i = 0; $i < count($home_slider); $i++): ?>
+                <!--<div class="item <?php echo ($i == 0) ? 'active' : '' ?>" style="background: url('<?php echo $home_slider[$i]['image'] ?>') repeat fixed center 7.8em / cover;background-position: 0 110em;" ></div>-->
+            <div class="item <?php echo ($i == 0) ? 'active' : '' ?>" style="background: url('<?php echo $home_slider[$i]['image'] ?>');background-size: cover;" ></div>
+        <?php endfor; ?>
     </div>
-    <a data-slide="prev" role="button" href="#myCarousel" class="left carousel-control">
-        <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a data-slide="next" role="button" href="#myCarousel" class="right carousel-control">
-        <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
-        <span class="sr-only">Next</span>
-    </a>
+</div>
+<a data-slide="prev" role="button" href="#myCarousel" class="left carousel-control">
+    <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+</a>
+<a data-slide="next" role="button" href="#myCarousel" class="right carousel-control">
+    <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+</a>
 </div>
 <!-- silder end -->
 
@@ -103,7 +126,7 @@ get_header();
                             </div>
                         </div>
                         <?php if (get_field('show_button')): ?>
-                        <a href="<?php the_permalink() ?>" class="btn btn-oil center-block"><i class="fa fa-angle-double-right fa-3x"></i></a>
+                            <a href="<?php echo (get_field('link_to') != '') ? get_field('link_to') : get_permalink() ?>" class="btn btn-oil center-block"><i class="fa fa-angle-double-right fa-3x"></i></a>
                         <?php endif; ?>
                     </div>
                 </div>

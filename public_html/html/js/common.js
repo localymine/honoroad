@@ -87,11 +87,10 @@ $(function () {
 $(function () {
     //
     $('.carousel-inner .item').each(function () {
-        console.log($(this))
         $(this).height($(window).height());
-        $(this).parallax({
-            speed: 0.15
-        });
+//        $(this).parallax({
+//            speed: 0.15
+//        });
     });
     //
 });
@@ -114,15 +113,6 @@ $(function ($) {
         $('#header').scrollTo();
     });
 });
-
-//$(function () {
-//    $("#myCarousel").swiperight(function () {
-//        $("#myCarousel").carousel('prev');
-//    });
-//    $("#myCarousel").swipeleft(function () {
-//        $("#myCarousel").carousel('next');
-//    });
-//});
 
 $(function () {
     var $thumb_list = $('.thumb-list ul.touch-list li');

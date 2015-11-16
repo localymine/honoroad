@@ -681,11 +681,11 @@ ul.m-sidebar{
         width: 88%;
     }
     .prod-name{
-        color: $menu-bg;
+        color: $menu-color;
     }
     .prod-detail{
         .prod-attr{
-            color: $menu-bg;
+            color: $menu-color;
         }
     }
     .prod-img-features{
@@ -702,6 +702,7 @@ ul.m-sidebar{
     background: transparent;
     @include border-radius(0);
     @include transition(0.2s);
+    outline: 0;
 }
 
 .btn-add-cart{
