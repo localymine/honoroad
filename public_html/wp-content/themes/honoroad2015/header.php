@@ -104,6 +104,56 @@
                         </div>
                     </div>
                 </nav>
+                <!--  wp menu -->
+                <div class="clearfix"></div>
+                <nav id="nav" class="navbar navbar-defaultx navbar-oil">
+                    <?php
+                    $defaults = array(
+                        'theme_location' => 'header-menu',
+                        'menu' => 'Top Menu',
+                        'container' => 'div',
+                        'container_class' => 'container',
+                        'container_id' => '',
+                        'menu_class' => 'navbar-collapse collapse nopadding icemegamenu',
+                        'menu_id' => 'icemegamenu',
+                        'echo' => true,
+                        'fallback_cb' => 'wp_page_menu',
+                        'before' => '',
+                        'after' => '',
+                        'link_before' => '',
+                        'link_after' => '',
+                        'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                        'depth' => 0,
+                        'walker' => ''
+                    );
+                    wp_nav_menu($defaults);
+                    ?>
+                </nav>
+                <nav id="nav" class="navbar navbar-defaultx navbar-oil">
+                    <?php
+                    $defaults = array(
+                        'theme_location' => 'sales-menu',
+                        'menu' => 'Top Menu',
+                        'container' => 'div',
+                        'container_class' => 'container',
+                        'container_id' => '',
+                        'menu_class' => 'navbar-collapse collapse nopadding icemegamenu',
+                        'menu_id' => 'icemegamenu',
+                        'echo' => true,
+                        'fallback_cb' => 'wp_page_menu',
+                        'before' => '',
+                        'after' => '',
+                        'link_before' => '',
+                        'link_after' => '',
+                        'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                        'depth' => 0,
+                        'walker' => ''
+                    );
+                    wp_nav_menu($defaults);
+                    ?>
+                </nav>
+                <!--  wp menu //-->
+                
                 <!--side-bar-->
                 <ul id="sidr" class="m-sidebar">
                     <li><a class="active" href="<?php echo bloginfo('url') ?>"><span>Trang chủ</span></a></li>

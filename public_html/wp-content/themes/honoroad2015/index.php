@@ -31,19 +31,17 @@ if ($loop->have_posts()) {
 <div data-ride="carousel" class="carousel slide" id="myCarousel">
     <div role="listbox" class="carousel-inner">
         <?php for ($i = 0; $i < count($home_slider); $i++): ?>
-                <!--<div class="item <?php echo ($i == 0) ? 'active' : '' ?>" style="background: url('<?php echo $home_slider[$i]['image'] ?>') repeat fixed center 7.8em / cover;background-position: 0 110em;" ></div>-->
-            <div class="item <?php echo ($i == 0) ? 'active' : '' ?>" style="background: url('<?php echo $home_slider[$i]['image'] ?>');background-size: cover;" ></div>
+            <img class="img-responsive item <?php echo ($i == 0) ? 'active' : '' ?>" src="<?php echo $home_slider[$i]['image'] ?>" />
         <?php endfor; ?>
     </div>
-</div>
-<a data-slide="prev" role="button" href="#myCarousel" class="left carousel-control">
-    <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
-    <span class="sr-only">Previous</span>
-</a>
-<a data-slide="next" role="button" href="#myCarousel" class="right carousel-control">
-    <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
-    <span class="sr-only">Next</span>
-</a>
+    <a data-slide="prev" role="button" href="#myCarousel" class="left carousel-control">
+        <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a data-slide="next" role="button" href="#myCarousel" class="right carousel-control">
+        <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+    </a>
 </div>
 <!-- silder end -->
 
@@ -174,74 +172,8 @@ if ($loop->have_posts()) {
 </div>
 <!-- main bottom end -->
 
-<!-- bottom -->
-<div id="bottom">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-md-3 wow fadeInUp" data-wow-delay="0.25s">
-                <article>
-                    <div class="item-content">
-                        <i class="fa fa-map-marker fa-3x"></i>
-                        <h2><span>Địa Chỉ</span></h2>
-                        <div class="item-introtext">
-                            <p>
-                                <?php echo $omw_theme_settings->ct_company_address ?>
-                            </p>
-                        </div>
-                    </div>
-                </article>
-            </div>
-            <div class="col-xs-12 col-md-3 wow fadeInUp" data-wow-delay="0.5s">
-                <article>
-                    <div class="item-content">
-                        <i class="fa fa-phone fa-3x"></i>
-                        <h2><span>Điện Thoại</span></h2>
-                        <div class="item-introtext">
-                            <p>
-                                <?php echo $omw_theme_settings->ct_company_telephone ?>
-                            </p>
-                        </div>
-                    </div>
-                </article>
-            </div>
-            <div class="col-xs-12 col-md-3 wow fadeInUp" data-wow-delay="0.75s">
-                <article>
-                    <div class="item-content">
-                        <i class="fa fa-envelope-o fa-3x"></i>
-                        <h2><span>Email</span></h2>
-                        <div class="item-introtext">
-                            <p>
-                                <a href="mailto:<?php echo $omw_theme_settings->ct_company_email ?>"><?php echo $omw_theme_settings->ct_company_email ?></a>
-                            </p>
-                        </div>
-                    </div>
-                </article>
-            </div>
-            <div class="col-xs-12 col-md-3 wow fadeInUp" data-wow-delay="1s">
-                <article>
-                    <div class="item-content">
-                        <i class="fa fa-envelope-o fa-3x"></i>
-                        <h2><span>Follow Us</span></h2>
-                        <div class="item-introtext">
-                            <p>
-                                <a class="padding-lt-rt-md"><i class="fa fa-facebook fa-4x"></i></a>
-                                <a class="padding-lt-rt-md"><i class="fa fa-twitter fa-4x"></i></a>
-                            </p>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- bottom end-->
+<?php get_template_part('part-company-info') ?>
 
-<!-- footer -->
-<div id="footer">
-    <div id="map" class="map">
-        <?php echo $omw_theme_settings->ct_company_google_map ?>
-    </div>
-</div>
-<!-- footer end -->
+<?php get_template_part('part-google-map') ?>
 
 <?php get_footer(); ?>

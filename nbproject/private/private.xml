@@ -13,11 +13,21 @@
             <file>file:/D:/xampp/htdocs/honoroad.localhost/public_html/html/css/_config.scss</file>
         </group>
         <group name="Mine">
-            <file>file:/var/www/html/honoroad.localhost/public_html/wp-content/themes/honoroad2015/cpt_acf_definitions.php</file>
-            <file>file:/var/www/html/honoroad.localhost/public_html/html/index.html</file>
+            <file>file:/var/www/html/honoroad.localhost/public_html/wp-content/themes/honoroad2015/single-product.php</file>
+            <file>file:/var/www/html/honoroad.localhost/public_html/html/js/common.js</file>
+            <file>file:/var/www/html/honoroad.localhost/public_html/wp-content/themes/honoroad2015/contact.php</file>
+            <file>file:/var/www/html/honoroad.localhost/public_html/html/info</file>
+            <file>file:/var/www/html/honoroad.localhost/public_html/wp-content/themes/honoroad2015/includes/my_settings.php</file>
             <file>file:/var/www/html/honoroad.localhost/public_html/wp-content/themes/honoroad2015/index.php</file>
             <file>file:/var/www/html/honoroad.localhost/public_html/wp-content/themes/honoroad2015/header.php</file>
+            <file>file:/var/www/html/honoroad.localhost/public_html/html/top_about_us.html</file>
+            <file>file:/var/www/html/honoroad.localhost/public_html/wp-content/themes/honoroad2015/archive-product.php</file>
             <file>file:/var/www/html/honoroad.localhost/public_html/wp-content/themes/honoroad2015/footer.php</file>
+            <file>file:/var/www/html/honoroad.localhost/public_html/wp-content/themes/honoroad2015/single-top-about.php</file>
+            <file>file:/var/www/html/honoroad.localhost/public_html/wp-content/themes/honoroad2015/includes/cpt_acf_definitions.php</file>
+            <file>file:/var/www/html/honoroad.localhost/public_html/html/index.html</file>
+            <file>file:/var/www/html/honoroad.localhost/public_html/html/scss/style.scss</file>
+            <file>file:/var/www/html/honoroad.localhost/public_html/html/scss/_config.scss</file>
         </group>
     </open-files>
 </project-private>
