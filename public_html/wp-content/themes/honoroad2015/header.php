@@ -12,12 +12,14 @@
         <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/css/font-awesome.min.css"/>
         <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/css/jquery.sidr.light.css"/>
+        <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/fancybox/jquery.fancybox.css"/>
         <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/css/animate.css"/>
         <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/css/style.css"/>
 
-        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
-          <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
         <?php
         global $omw_theme_settings;
@@ -25,7 +27,6 @@
         ?>
     </head>
     <body>
-        <!-- http://dummyimage.com/2048x560/FF4B91/ffffff.png&text=2 -->
         <div class="navbar-wrapper">
             <!-- hotline -->
             <header class="hot-top">
@@ -105,7 +106,7 @@
                     </div>
                 </nav>
                 <!--  wp menu -->
-                <div class="clearfix"></div>
+<!--                <div class="clearfix"></div>
                 <nav id="nav" class="navbar navbar-defaultx navbar-oil">
                     <?php
                     $defaults = array(
@@ -151,9 +152,9 @@
                     );
                     wp_nav_menu($defaults);
                     ?>
-                </nav>
+                </nav>-->
                 <!--  wp menu //-->
-                
+
                 <!--side-bar-->
                 <ul id="sidr" class="m-sidebar">
                     <li><a class="active" href="<?php echo bloginfo('url') ?>"><span>Trang chủ</span></a></li>

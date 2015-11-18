@@ -10,35 +10,28 @@ get_header();
 <div class="container prodcut-detail margin-top-xl margin-bottom-xl">
     <div class="row">
         <div class="col-xs-12 col-md-6">
-            <?php if (have_rows('images') && count(get_field('images')) > 1): ?>
-                <div class="thumb-list clearfix">
-                    <?php while (have_rows('images')): the_row(); ?>
-                        <?php
-                        $prod_img = get_sub_field('image');
-                        //
-                        $url = $prod_img['url'];
-                        $size = 'thumbnail';
-                        $prod_thumb = $prod_img['sizes'][$size];
-                        ?>
+            <div class="thumb-list clearfix">
+                <?php while (have_rows('images')): the_row(); ?>
+                    <?php
+                    $prod_img = get_sub_field('image');
+                    //
+                    $url = $prod_img['url'];
+                    $size = 'thumbnail';
+                    $prod_thumb = $prod_img['sizes'][$size];
+                    ?>
 
-                        <ul class="touch-list">
-                            <li>
-                                <a href="javascript:void(0)" data-full="<?php echo $url ?>"><img width="50" src="<?php echo $prod_thumb ?>"/></a>
-                            </li>
-                        </ul>
+                    <ul class="touch-list">
+                        <li>
+                            <a href="javascript:void(0)" data-full="<?php echo $url ?>"><img width="50" src="<?php echo $prod_thumb ?>"/></a>
+                        </li>
+                    </ul>
 
-                    <?php endwhile; ?>
-                </div>
-                <div class="image-block clearfix">
-                    <?php $prod_img = get_field('images'); ?>
-                    <img class="img-responsive center-block" src="<?php echo $prod_img[0]['image']['url'] ?>" />
-                </div>
-            <?php else: ?>
-                <div class="image-block clearfix">
-                    <?php $prod_img = get_field('images'); ?>
-                    <img class="img-responsive center-block" src="<?php echo $prod_img[0]['image']['url'] ?>" />
-                </div>
-            <?php endif; ?>
+                <?php endwhile; ?>
+            </div>
+            <div class="image-block clearfix">
+                <?php $prod_img = get_field('images'); ?>
+                <img class="img-responsive center-block" src="<?php echo $prod_img[0]['image']['url'] ?>" />
+            </div>
 
             <div class="box-prod-info">
                 <table class="table">
@@ -165,17 +158,17 @@ get_header();
             </div>
         </div>
         <?php if (have_rows('feature_images')): ?>
-            <div class="col-xs-12 col-md-12">
+            <div class="col-xs-12 col-md-3">
                 <div class="prod-img-features">
                     <?php while (have_rows('feature_images')): the_row(); ?>
-                    <?php
-                    $feature_images = get_sub_field('image');
-                    //
-                    $url = $feature_images['url'];
-                    $size = 'medium';
-                    $feature_images_thumb = $feature_images['sizes'][$size];
-                    ?>
-                        <a href="<?php echo $url ?>" class="col-md-3 nopadding"><img class="img-responsive" src="<?php echo $feature_images_thumb ?>"/></a>
+                        <?php
+                        $feature_images = get_sub_field('image');
+                        //
+                        $url = $feature_images['url'];
+                        $size = 'medium';
+                        $feature_images_thumb = $feature_images['sizes'][$size];
+                        ?>
+                        <a class="fancybox" href="<?php echo $url ?>" rel="usage-products" class="col-md-3 nopadding"><img class="img-responsive" src="<?php echo $feature_images_thumb ?>" alt=""/></a>
                         <?php endwhile; ?>
                 </div>
             </div>

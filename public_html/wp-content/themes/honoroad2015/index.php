@@ -28,21 +28,41 @@ if ($loop->have_posts()) {
     }
 }
 ?>
-<div data-ride="carousel" class="carousel slide" id="myCarousel">
-    <div role="listbox" class="carousel-inner">
-        <?php for ($i = 0; $i < count($home_slider); $i++): ?>
-            <img class="img-responsive item <?php echo ($i == 0) ? 'active' : '' ?>" src="<?php echo $home_slider[$i]['image'] ?>" />
-        <?php endfor; ?>
+<div class="row nopadding nomargin" style="min-height: 50px;">
+    <!-- Jssor Slider Begin -->
+    <div id="slider1_container">
+        <!-- Loading Screen -->
+        <div class="box-loading" u="loading">
+            <div class="box-loading-overlay"></div>
+            <div class="box-loading-img"></div>
+        </div>
+        <!-- Slides Container -->
+        <div class="box-slider" u="slides">
+            <?php for ($i = 0; $i < count($home_slider); $i++): ?>
+            <div>
+                <img u="image" src2="<?php echo $home_slider[$i]['image'] ?>" />
+            </div>
+            <?php endfor; ?>
+        </div>
+
+        <!--#region Bullet Navigator Skin Begin -->
+        <!-- bullet navigator container -->
+        <div u="navigator" class="jssorb21">
+            <!-- bullet navigator item prototype -->
+            <div u="prototype"></div>
+        </div>
+        <!--#endregion Bullet Navigator Skin End -->
+
+        <!--#region Arrow Navigator Skin Begin -->
+        <!-- Arrow Left -->
+        <span u="arrowleft" class="jssora21l"></span>
+        <!-- Arrow Right -->
+        <span u="arrowright" class="jssora21r"> </span>
+        <!--#endregion Arrow Navigator Skin End -->
     </div>
-    <a data-slide="prev" role="button" href="#myCarousel" class="left carousel-control">
-        <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a data-slide="next" role="button" href="#myCarousel" class="right carousel-control">
-        <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
-        <span class="sr-only">Next</span>
-    </a>
+    <!-- Jssor Slider End -->
 </div>
+
 <!-- silder end -->
 
 <!-- product -->

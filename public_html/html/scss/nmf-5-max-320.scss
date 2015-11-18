@@ -2,6 +2,18 @@
 
 /* Custom, iPhone Retina */ 
 @media only screen and (max-width : 320px) {
+
+    .header{
+        #logo{
+            .navbar-brand{
+                /*padding: 0;*/
+                img{
+                    width: 80%;
+                }
+            }
+        }
+    }
+
     .hot-top{
         ul{
             margin-bottom: 0;

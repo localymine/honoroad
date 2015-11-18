@@ -1,5 +1,6 @@
 @import "_config";
 @import "remove-outline.scss";
+@import "jssor.scss";
 
 @import "mf-1-min-320.scss";
 @import "mf-2-min-480.scss";
@@ -12,9 +13,15 @@ $nopadding: (left: 0, right: 0, top: 0, bottom: 0);
     .nopadding-#{$name} {
         padding-#{$name}: $value;
     }
+    .nomargin-#{$name}{
+        margin-#{$name}: $value;
+    }
 }
 .nopadding{
     padding: 0;
+}
+.nomargin{
+    margin: 0;
 }
 body{
     @include main-font;

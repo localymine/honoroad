@@ -24,8 +24,10 @@
 
 <script src="<?php echo get_template_directory_uri() ?>/js/jquery-1.11.2.js"></script>
 <script src="<?php echo get_template_directory_uri() ?>/js/bootstrap.min.js"></script>
+<script src="<?php echo get_template_directory_uri() ?>/js/ie10-viewport-bug-workaround.js"></script>
+<script src="<?php echo get_template_directory_uri() ?>/fancybox/jquery.fancybox.pack.js"></script>
+<script src="<?php echo get_template_directory_uri() ?>/js/jssor.slider.mini.js"></script>
 <script src="<?php echo get_template_directory_uri() ?>/js/jquery.sidr.min.js"></script>
-<script src="<?php echo get_template_directory_uri() ?>/js/jquery.parallax.js"></script>
 <script src="<?php echo get_template_directory_uri() ?>/js/wow.min.js"></script>
 <script src="<?php echo get_template_directory_uri() ?>/js/common.js"></script>
 </body>
