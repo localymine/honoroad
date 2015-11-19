@@ -5,6 +5,15 @@
  *
  */
 
+$site_key = '6LeGRBETAAAAAIQx1ILt6av7twENg2SSjgMu6S78';
+$secret_key = '6LeGRBETAAAAACqcKxJKwWov6nZkavBF6gabL8Y4';
+
+//var_dump($_POST['g-recaptcha-response']);
+//var_export($_POST);
+$recaptcha = new \ReCaptcha\ReCaptcha('6LfYQRETAAAAAD1qa_x5_kmato1hRwQbUJRVsHnX');
+var_dump($recaptcha);
+exit;
+
 if (isset($_POST['submit'])) {
 
     $reg_title = @htmlspecialchars(stripslashes($_POST['re_title']));

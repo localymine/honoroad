@@ -4,6 +4,9 @@
  * Template Name: Contact
  *
  */
+
+/** code here **/
+
 get_header();
 ?>
 
@@ -26,7 +29,7 @@ get_header();
                         <input type="text" id="re_email" name="re_email" value="" placeholder="Email" class="form-control" />
                     </div>
                     <div class="form-group">
-                        <input type="text" id="re_company" name="re_company" value="" placeholder="Email" class="form-control" />
+                        <input type="text" id="re_company" name="re_company" value="" placeholder="Tên công ty" class="form-control" />
                     </div>
                     <div class="form-group col-md-6 nopadding-left">
                         <input type="text" id="re_phone" name="re_phone" value="" placeholder="Điện thoại" class="form-control" />
@@ -36,6 +39,9 @@ get_header();
                     </div>
                     <div class="form-group">
                         <textarea id="re_content" name="re_content" class="form-control" placeholder="Nội dung"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <div class="g-recaptcha" data-sitekey="6LfYQRETAAAAABpN2BZ96ALZMESjSA6DFTEgbRwX"></div>
                     </div>
                     <div class="form-group">
                         <div class="controls center-block">
