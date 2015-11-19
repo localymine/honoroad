@@ -14,6 +14,7 @@ class omw_theme_settings {
     private $setting_fields;
     private $assets_url;
     private $tabs;
+    private $theme_data;
 
     public function __construct() {
         add_action('admin_menu', array($this, 'omw_settings_page_init'));
@@ -21,8 +22,9 @@ class omw_theme_settings {
         $this->assets_url = get_template_directory_uri() . '/includes/assets/';
         //
         $this->setting_fields = $this->omw_init_setting_fields();
+        $this->theme_data = wp_get_theme();
     }
-
+    
     public function get_theme_settings() {
         $meta_data = get_option($this->option_name);
         $data = array();
@@ -66,6 +68,7 @@ class omw_theme_settings {
             'general' => 'General',
             'footer' => 'Footer',
             'mail-setting' => 'Mail Setting',
+            'recaptcha' => 'reCaptcha',
         );
         //
         $tab_data = array();
@@ -271,6 +274,26 @@ class omw_theme_settings {
                         ),
                     );
                     break;
+                case 'recaptcha':
+                    $tab_data[$tab_id] = array(
+                        'ct_recaptcha_public_key' => array(
+                            'id' => 'ct_recaptcha_public_key',
+                            'label' => 'Site Key',
+                            'description' => '',
+                            'type' => 'text',
+                            'default' => '',
+                            'placeholder' => '',
+                        ),
+                        'ct_recaptcha_private_key' => array(
+                            'id' => 'ct_recaptcha_private_key',
+                            'label' => 'Security Key',
+                            'description' => '',
+                            'type' => 'text',
+                            'default' => '',
+                            'placeholder' => '',
+                        ),
+                    );
+                    break;
             }
         }
         //
@@ -278,14 +301,14 @@ class omw_theme_settings {
     }
 
     public function omw_settings_page_init() {
-        $theme_data = get_theme_data(TEMPLATEPATH . '/style.css');
-        $settings_page = add_theme_page($theme_data['Name'] . ' Theme Settings', $theme_data['Name'] . ' Theme Settings', 'edit_theme_options', $this->page_slug, array($this, 'omw_settings_page'));
+        $theme_data = $this->theme_data;
+        $settings_page = add_theme_page($theme_data->get('Name') . ' Theme Settings', $theme_data->get('Name') . ' Theme Settings', 'edit_theme_options', $this->page_slug, array($this, 'omw_settings_page'));
         add_action("load-{$settings_page}", array($this, 'omw_settings_assets'));
         add_action("load-{$settings_page}", array($this, 'omw_load_settings_page'));
     }
 
     public function omw_load_settings_page() {
-        if ($_POST["omw-settings-submit"] == 'Y') {
+        if (isset($_POST["omw-settings-submit"]) && $_POST["omw-settings-submit"] == 'Y') {
             check_admin_referer("omw-settings-page");
             $this->omw_save_theme_settings();
             $url_parameters = isset($_GET['tab']) ? 'updated=true&tab=' . $_GET['tab'] : 'updated=true';
@@ -302,22 +325,24 @@ class omw_theme_settings {
         foreach ($this->setting_fields as $s_tab => $tab_data) {
             foreach ($tab_data as $field => $data) {
                 $id = $data['id'];
-                switch ($data['type']) {
-                    case 'image':
-                        $image_data = array(
-                            'url' => $_POST[$id],
-                            'sizes' => array(
-                                'thumbnail' => $_POST[$id . '_thumbnail'],
-                                'medium' => $_POST[$id . '_medium'],
-                                'large' => $_POST[$id . '_large'],
-                                'full' => $_POST[$id . '_full'],
-                            ),
-                        );
-                        $this->settings[$id] = json_encode($image_data);
-                        break;
-                    default:
-                        $this->settings[$id] = $_POST[$id];
-                        break;
+                if (isset($_POST[$id])) {
+                    switch ($data['type']) {
+                        case 'image':
+                            $image_data = array(
+                                'url' => $_POST[$id],
+                                'sizes' => array(
+                                    'thumbnail' => $_POST[$id . '_thumbnail'],
+                                    'medium' => $_POST[$id . '_medium'],
+                                    'large' => $_POST[$id . '_large'],
+                                    'full' => $_POST[$id . '_full'],
+                                ),
+                            );
+                            $this->settings[$id] = json_encode($image_data);
+                            break;
+                        default:
+                            $this->settings[$id] = $_POST[$id];
+                            break;
+                    }
                 }
             }
         }
@@ -345,10 +370,10 @@ class omw_theme_settings {
         $theme_data = wp_get_theme();
         ?>
         <div class="wrap">
-            <h2><?php echo $theme_data['Name']; ?> Theme Settings</h2>
+            <h2><?php echo $theme_data->get('Name') ?> Theme Settings</h2>
 
             <?php
-            if ('true' == esc_attr($_GET['updated']))
+            if (isset($_GET['updated']) && true == esc_attr($_GET['updated']))
                 echo '<div class="updated" ><p>Theme Settings updated.</p></div>';
             if (isset($_GET['tab']))
                 $this->omw_admin_tabs($_GET['tab']);
@@ -455,7 +480,7 @@ class omw_theme_settings {
                                                     <input id="<?php echo $id ?>_delete" type="button" class="image_delete_button button" value="Remove image" />
                                                     <input id="<?php echo $id ?>" class="image_data_field" type="hidden" name="<?php echo $id ?>" value="<?php echo isset($media_meta->url) ? $media_meta->url : '' ?>"/>
                                                     <input id="<?php echo $id ?>_full" class="image_data_field" type="hidden" name="<?php echo $id ?>_full" value="<?php echo isset($media_meta->sizes->full) ? $media_meta->sizes->full : '' ?>"/>
-                                                    <input id="<?php echo $id ?>_thumbnail" class="image_data_field" type="hidden" name="<?php echo $id ?>_thumbnail" value="<?php echo isset($media_meta->sizes->thumbnail) ? $media_meta->sizes->url : '' ?>"/>
+                                                    <input id="<?php echo $id ?>_thumbnail" class="image_data_field" type="hidden" name="<?php echo $id ?>_thumbnail" value="<?php echo isset($media_meta->sizes->thumbnail) ? $media_meta->sizes->thumbnail : '' ?>"/>
                                                     <input id="<?php echo $id ?>_medium" class="image_data_field" type="hidden" name="<?php echo $id ?>_medium" value="<?php echo isset($media_meta->sizes->medium) ? $media_meta->sizes->medium : '' ?>"/>
                                                     <input id="<?php echo $id ?>_large" class="image_data_field" type="hidden" name="<?php echo $id ?>_large" value="<?php echo isset($media_meta->sizes->large) ? $media_meta->sizes->large : '' ?>"/>
                                                     <span class="description"><?php echo $data['description'] ?></span>
@@ -492,7 +517,7 @@ class omw_theme_settings {
                     </p>
                 </form>
 
-                <p><?php echo $theme_data['Name'] ?> theme by <?php echo $theme_data['Author'] ?> (<?php echo $theme_data['Version'] ?>)</p>
+                <p><?php echo $theme_data->get('Name') ?> theme by <?php echo $theme_data->get('Author') ?> (<?php echo $theme_data->get('Version') ?>)</p>
             </div>
 
         </div>

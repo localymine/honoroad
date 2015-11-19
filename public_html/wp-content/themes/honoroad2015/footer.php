@@ -29,6 +29,7 @@
 <script src="<?php echo get_template_directory_uri() ?>/js/jssor.slider.mini.js"></script>
 <script src="<?php echo get_template_directory_uri() ?>/js/jquery.sidr.min.js"></script>
 <script src="<?php echo get_template_directory_uri() ?>/js/wow.min.js"></script>
+<script src="<?php echo get_template_directory_uri() ?>/js/jquery.validate.min.js"></script>
 <script src="<?php echo get_template_directory_uri() ?>/js/common.js"></script>
 </body>
 </html>

@@ -1,17 +1,37 @@
 <?php
+
 /*
  * Author: KhangLe
  * Template Name: Contact Confirm
  *
  */
 
-$site_key = '6LeGRBETAAAAAIQx1ILt6av7twENg2SSjgMu6S78';
-$secret_key = '6LeGRBETAAAAACqcKxJKwWov6nZkavBF6gabL8Y4';
+require_once 'includes/lib/ReCaptcha/src/autoload.php';
+
+$secret = $omw_theme_settings->ct_recaptcha_private_key;
+
+if (isset($_POST['g-recaptcha-response'])) {
+
+    var_export($_POST);
+    
+    $recaptcha = new \ReCaptcha\ReCaptcha($secret);
+
+    $resp = $recaptcha->verify($_POST['g-recaptcha-response'], $_SERVER['REMOTE_ADDR']);
+
+    if ($resp->isSuccess()) {
+        
+        
+        
+    } else {
+        foreach ($resp->getErrorCodes() as $code) {
+        }
+    }
+}
+
 
 //var_dump($_POST['g-recaptcha-response']);
-//var_export($_POST);
-$recaptcha = new \ReCaptcha\ReCaptcha('6LfYQRETAAAAAD1qa_x5_kmato1hRwQbUJRVsHnX');
-var_dump($recaptcha);
+//
+
 exit;
 
 if (isset($_POST['submit'])) {
@@ -34,11 +54,11 @@ if (isset($_POST['submit'])) {
         'content' => $reg_content,
     );
 
-    
+
     var_dump($data);
-    
+
     exit;
-    
+
     require_once 'includes/lib/Twig/Autoloader.php';
     Twig_Autoloader::register();
 

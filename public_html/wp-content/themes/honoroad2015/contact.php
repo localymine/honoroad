@@ -41,7 +41,8 @@ get_header();
                         <textarea id="re_content" name="re_content" class="form-control" placeholder="Nội dung"></textarea>
                     </div>
                     <div class="form-group">
-                        <div class="g-recaptcha" data-sitekey="6LfYQRETAAAAABpN2BZ96ALZMESjSA6DFTEgbRwX"></div>
+                        <div class="g-recaptcha" data-sitekey="<?php echo $omw_theme_settings->ct_recaptcha_public_key ?>"></div>
+                        <div id="catpcha"></div>
                     </div>
                     <div class="form-group">
                         <div class="controls center-block">

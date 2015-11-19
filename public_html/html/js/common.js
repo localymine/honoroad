@@ -178,6 +178,51 @@ $(function () {
             $('.image-block img').attr('src', full);
         });
     });
-    
+
     $(".fancybox").fancybox();
+});
+
+$(function () {
+    var error_icon_template = '<span class="pull-right" style="position: absolute; right: 5px; top: 5px; font-size: 1.2em;"><i class="fa fa-times"></i></span>';
+    var form_valid = $('#contact-info-form');
+    form_valid.validate({
+        rules: {
+            're_title': {
+                required: true
+            },
+            're_name': {
+                required: true
+            },
+            're_email': {
+                required: true,
+                email: true
+            },
+            're_phone': {
+                required: true,
+                number: true
+            },
+            're_content': {
+                required: true
+            }
+        },
+        messages: {
+            're_title': error_icon_template,
+            're_email': error_icon_template,
+            're_phone': error_icon_template,
+            're_content': error_icon_template,
+        },
+        submitHandler: function (form) {
+            //
+            var v = grecaptcha.getResponse();
+            if (v.length == 0) {
+                $('#captcha').innerHTML = "You can't leave Captcha Code empty";
+                return false;
+            }
+            if (v.length != 0) {
+//                $('#captcha').innerHTML = "Captcha completed";
+                form.submit();
+                return false;
+            }            
+        }
+    });
 });
