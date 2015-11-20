@@ -840,8 +840,38 @@ ul.m-sidebar{
     .contact-info-form{
         width: 60%;
         margin: 0 auto;
+        .form-group{
+            position: relative;
+            input[type="text"], textarea{
+                @include border-radius(0);
+            }
+            .error{
+                border-color: $error-text-color;
+            }
+            label{
+                display: inherit;
+                span{
+                    position: absolute;
+                    right: 5px;
+                    top: 5px;
+                    font-size: 1.2em;
+                    color: $error-text-color;
+                }
+            }
+            #re_name-error, #re_phone-error{
+                span{
+                    right: 20px;
+                }
+            }
+            #re_content-error{
+                span{
+                    top: 55px;
+                }
+            }
+        }
     }
 }
+
 
 @import "nmf-1-max-1200.scss";
 @import "nmf-2-max-992.scss";

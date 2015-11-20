@@ -111,6 +111,54 @@ function cptui_register_my_cpts() {
     );
     register_post_type("partner-info", $args);
 
+    $labels = array(
+        "name" => "Recruit",
+        "singular_name" => "Recruit",
+    );
+
+    $args = array(
+        "labels" => $labels,
+        "description" => "",
+        "public" => true,
+        "show_ui" => true,
+        "has_archive" => false,
+        "show_in_menu" => true,
+        "exclude_from_search" => false,
+        "capability_type" => "post",
+        "map_meta_cap" => true,
+        "hierarchical" => false,
+        "rewrite" => array("slug" => "recruit", "with_front" => true),
+        "query_var" => true,
+        "menu_position" => 26,
+        "menu_icon" => get_template_directory_uri() . '/images/ad-ico/h5.png',
+        "supports" => array("title", "editor"),
+    );
+    register_post_type("recruit", $args);
+
+    $labels = array(
+        "name" => "News",
+        "singular_name" => "News",
+    );
+
+    $args = array(
+        "labels" => $labels,
+        "description" => "",
+        "public" => true,
+        "show_ui" => true,
+        "has_archive" => false,
+        "show_in_menu" => true,
+        "exclude_from_search" => false,
+        "capability_type" => "post",
+        "map_meta_cap" => true,
+        "hierarchical" => false,
+        "rewrite" => array("slug" => "news", "with_front" => true),
+        "query_var" => true,
+        "menu_position" => 26,
+        "menu_icon" => get_template_directory_uri() . '/images/ad-ico/h6.png',
+        "supports" => array("title", "editor", "excerpt"),
+    );
+    register_post_type("news", $args);
+
 // End of cptui_register_my_cpts()
 }
 

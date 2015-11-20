@@ -183,7 +183,7 @@ $(function () {
 });
 
 $(function () {
-    var error_icon_template = '<span class="pull-right" style="position: absolute; right: 5px; top: 5px; font-size: 1.2em;"><i class="fa fa-times"></i></span>';
+    var error_icon_template = '<span><i class="fa fa-times"></i></span>';
     var form_valid = $('#contact-info-form');
     form_valid.validate({
         rules: {
@@ -207,6 +207,7 @@ $(function () {
         },
         messages: {
             're_title': error_icon_template,
+            're_name': error_icon_template,
             're_email': error_icon_template,
             're_phone': error_icon_template,
             're_content': error_icon_template,
