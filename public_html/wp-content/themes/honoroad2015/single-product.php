@@ -60,11 +60,17 @@ get_header();
                     <?php endif; ?>
                 </table>
             </div>
-
+            [MINICART item="<?php the_ID() ?>"]
         </div>
         <div class="col-xs-12 col-md-6">
             <h2 class="prod-name"><?php the_title() ?></h2>
             <div class="prod-detail">
+                <?php if (trim(get_field('description')) != ''): ?>
+                    <div class="prod-attr">Mô tả:</div> 
+                    <p>
+                        <?php echo get_field('description') ?>
+                    </p>
+                <?php endif; ?>
                 <?php if (trim(get_field('ingredients')) != ''): ?>
                     <div class="prod-attr">Thành phần:</div> 
                     <p>

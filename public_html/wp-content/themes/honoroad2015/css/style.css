@@ -441,12 +441,13 @@ h2 {
       margin: 0px 0 0;
       padding: 0;
       list-style-type: none;
-      position: relative; }
-      .header nav ul > li {
+      position: relative;
+      z-index: 5; }
+      .header nav ul li {
         display: inline-block;
         /*position: relative;*/
         line-height: 24px; }
-        .header nav ul > li a {
+        .header nav ul li a {
           -webkit-transition: all 0.3s ease 0s;
           -moz-transition: all 0.3s ease 0s;
           transition: all 0.3s ease 0s;
@@ -456,7 +457,7 @@ h2 {
           font-size: 16px;
           display: block;
           padding: 20px 10px; }
-          .header nav ul > li a:before {
+          .header nav ul li a:before {
             -webkit-transition: all 0.3s ease 0s;
             -moz-transition: all 0.3s ease 0s;
             transition: all 0.3s ease 0s;
@@ -469,78 +470,54 @@ h2 {
             position: absolute;
             right: 0;
             width: 0; }
-          .header nav ul > li a:hover {
+          .header nav ul li a:hover {
             text-decoration: none;
             color: #5b8800; }
-          .header nav ul > li a.active:before, .header nav ul > li a:hover:before {
+          .header nav ul li a.active:before, .header nav ul li a:hover:before {
             -webkit-transition: all 0.3s ease 0s;
             -moz-transition: all 0.3s ease 0s;
             transition: all 0.3s ease 0s;
             width: 100%; }
-          .header nav ul > li a.active {
+          .header nav ul li a.active {
             color: #7dbb00; }
-          .header nav ul > li a.nav-title {
+          .header nav ul li a.nav-title {
             display: block;
             position: relative;
             text-transform: capitalize;
-            z-index: 1; }
-          .header nav ul > li a span {
+            z-index: 5; }
+          .header nav ul li a span {
             text-align: center;
             display: block; }
 
-.icemegamenu > ul > li.ice-lv1 .ice-cols {
-  height: auto;
-  width: 200px;
-  max-width: 100%;
-  position: absolute; }
-  .icemegamenu > ul > li.ice-lv1 .ice-cols > ul.icesubmenu {
-    background: #ffffff none repeat scroll 0 0;
-    border: medium none;
-    box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.15);
-    height: 0;
-    left: 50%;
-    margin: 0;
-    opacity: 0;
-    overflow: hidden;
-    pointer-events: none;
-    position: absolute;
-    text-align: left;
-    text-transform: capitalize;
-    top: 100%;
-    transform: translate(-50%, 30px);
-    transition: all 0.25s ease-out 0s;
-    z-index: 9999; }
-    .icemegamenu > ul > li.ice-lv1 .ice-cols > ul.icesubmenu.sub-lv1 > li {
-      display: block !important;
-      padding: 5px 1px 5px 3px;
-      position: relative; }
-.icemegamenu > ul > li.ice-lv1:hover .ice-cols > ul.icesubmenu.sub-lv1 {
-  opacity: 1;
-  height: auto;
-  width: 100%;
-  transform: translate(-50%, 0px);
-  display: inline-block; }
-  .icemegamenu > ul > li.ice-lv1:hover .ice-cols > ul.icesubmenu.sub-lv1 > li {
-    display: inline-block; }
-    .icemegamenu > ul > li.ice-lv1:hover .ice-cols > ul.icesubmenu.sub-lv1 > li a {
-      padding: 0 5px;
-      color: #000;
+ul.top-menu {
+  position: relative;
+  z-index: 100; }
+  ul.top-menu li {
+    position: relative; }
+    ul.top-menu li ul {
+      -webkit-transition: all 0.3s ease 0s;
+      -moz-transition: all 0.3s ease 0s;
+      transition: all 0.3s ease 0s;
+      background: #fff;
+      border: medium none;
+      box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.15);
+      position: absolute;
+      opacity: 0; }
+      ul.top-menu li ul.right {
+        right: 0;
+        padding: 0; }
+      ul.top-menu li ul li {
+        float: none; }
+      ul.top-menu li ul a {
+        text-transform: capitalize;
+        white-space: nowrap; }
+        ul.top-menu li ul a:before {
+          height: 0; }
+  ul.top-menu li:hover ul {
+    opacity: 1; }
+    ul.top-menu li:hover ul a {
+      padding: 5px 10px;
       line-height: 1.2em; }
-      .icemegamenu > ul > li.ice-lv1:hover .ice-cols > ul.icesubmenu.sub-lv1 > li a::visited, .icemegamenu > ul > li.ice-lv1:hover .ice-cols > ul.icesubmenu.sub-lv1 > li a::link {
-        display: inline-block !important; }
-.icemegamenu > ul > li.ice-lv1:hover .ice-cols > ul.icesubmenu::focus, .icemegamenu > ul > li.ice-lv1:hover .ice-cols > ul.icesubmenu::hover, .icemegamenu > ul > li.ice-lv1:hover .ice-cols > ul.icemegamenu::visited {
-  opacity: 1;
-  height: auto;
-  width: 100%;
-  display: block !important;
-  overflow: visible; }
-  .icemegamenu > ul > li.ice-lv1:hover .ice-cols > ul.icesubmenu::focus > li, .icemegamenu > ul > li.ice-lv1:hover .ice-cols > ul.icesubmenu::hover > li, .icemegamenu > ul > li.ice-lv1:hover .ice-cols > ul.icemegamenu::visited > li {
-    display: inline-block; }
-.icemegamenu > ul > li.ice-lv1:hover .ice-cols:hover, .icemegamenu > ul > li.ice-lv1:hover .ice-cols:focus, .icemegamenu > ul > li.ice-lv1:hover .ice-cols:visited, .icemegamenu > ul > li.ice-lv1:hover .ice-cols:link {
-  opacity: 1;
-  height: auto;
-  width: 100%;
-  display: block !important; }
 
 /*------------------- sidebar*/
 ul.m-sidebar {
@@ -801,42 +778,9 @@ ul.m-sidebar {
 
 .login-menu {
   color: #fff; }
+  .login-menu:hover {
+    color: #fff; }
 
-/*ul{
-    &.icesubMenu{
-        background: #ffffff none repeat scroll 0 0;
-        border: medium none;
-        box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.15);
-        height: 0;
-        left: 50%;
-        margin: 0;
-        opacity: 0;
-        overflow: hidden;
-        pointer-events: none;
-        position: absolute;
-        text-align: left;
-        text-transform: capitalize;
-        top: 100%;
-        transform: translate(-50%, 30px);
-        transition: all 0.25s ease-out 0s;
-        z-index: 9999;
-        &.sub-level-1{
-            left: auto;
-            right: 20px;
-            transform: translate(0px, 30px);
-            &::before{
-                border-color: transparent transparent #777777;
-                border-style: solid;
-                border-width: 0 0 20px 20px;
-                height: 0;
-                left: auto;
-                right: 0;
-                transform: translate(0px, 0px);
-                width: 0;
-            }
-        }
-    }
-}*/
 .prodcut-detail .thumb-list {
   display: inline-block;
   vertical-align: top; }

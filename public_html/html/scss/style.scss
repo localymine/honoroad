@@ -159,7 +159,8 @@ $paddings: (xs: 0.5rem, sm: 1rem, md: 1.5rem, lg: 2rem, xl: 2.5rem, xxl: 3rem);
             padding: 0;
             list-style-type: none;
             position: relative;
-            > li{
+            z-index: 5;
+            li{
                 display: inline-block;
                 /*position: relative;*/
                 line-height: 24px;
@@ -198,7 +199,7 @@ $paddings: (xs: 0.5rem, sm: 1rem, md: 1.5rem, lg: 2rem, xl: 2.5rem, xxl: 3rem);
                         display: block;
                         position: relative;
                         text-transform: capitalize;
-                        z-index: 1;
+                        z-index: 5;
                     }
                     span{
                         text-align: center;
@@ -210,88 +211,45 @@ $paddings: (xs: 0.5rem, sm: 1rem, md: 1.5rem, lg: 2rem, xl: 2.5rem, xxl: 3rem);
     }
 }
 
-.icemegamenu{
-    > ul{
-        > li{
-            &.ice-lv1{
-                .ice-cols{
-                    height: auto;
-                    width: 200px;
-                    max-width: 100%;
-                    position: absolute;
-                    > ul.icesubmenu{
-                        background: #ffffff none repeat scroll 0 0;
-                        border: medium none;
-                        box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.15);
-                        height: 0;
-                        left: 50%;
-                        margin: 0;
-                        opacity: 0;
-                        overflow: hidden;
-                        pointer-events: none;
-                        position: absolute;
-                        text-align: left;
-                        text-transform: capitalize;
-                        top: 100%;
-                        transform: translate(-50%, 30px);
-                        transition: all 0.25s ease-out 0s;
-                        z-index: 9999;
-                        &.sub-lv1{
-                            > li{
-                                display: block !important;
-                                padding: 5px 1px 5px 3px;
-                                position: relative;
-                            }
-                        }
-                    }
-                }
-                &:hover{
-                    .ice-cols{
-                        > ul.icesubmenu{
-                            &.sub-lv1{
-                                opacity: 1;
-                                height: auto;
-                                width: 100%;
-                                transform: translate(-50%, 0px);
-                                display: inline-block;
-                                > li{
-                                    display: inline-block;
-                                    a{
-                                        padding: 0 5px;
-                                        color: $black;
-                                        line-height: 1.2em;
-                                        &::visited, &::link{
-                                            display: inline-block !important;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        & > ul.icesubmenu::focus, & > ul.icesubmenu::hover, & > ul.icemegamenu::visited{
-                            & > li{
-                                display: inline-block;
-                            }
-                            opacity: 1;
-                            height: auto;
-                            width: 100%;
-                            display: block !important;
-                            overflow: visible;
-                        }
-                        &:hover, &:focus, &:visited, &:link{
-                            opacity: 1;
-                            height: auto;
-                            width: 100%;
-                            display: block !important;
-                        }
-                    }
+ul.top-menu{
+    position:relative;
+    z-index: 100;
+    li{
+        position: relative;
+        ul{
+            @include transition(0.3s);
+            background: $white;
+            border: medium none;
+            box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.15);
+            position: absolute;
+            opacity: 0;
+            &.right{
+                right: 0;
+                padding: 0;
+            }
+            li{
+                float: none;
+            }
+            a{
+                text-transform: capitalize;
+                white-space: nowrap;
+                &:before{
+                    height: 0;
                 }
             }
-            &.ice-lv2{
-
+        }
+    }
+    li:hover{
+        ul{
+            opacity: 1;
+            a{
+                padding: 5px 10px;
+                line-height: 1.2em;
             }
         }
     }
 }
+
 /*------------------- sidebar*/
 ul.m-sidebar{
     display: none;
@@ -599,50 +557,17 @@ ul.m-sidebar{
         @include transition(0.3s);
         color: transparentize($hot-top-bg, 0.1);
         &:hover{
-            color: $hot-top-bg
+            color: $hot-top-bg;
         }
     }
 }
 
 .login-menu{
     color: $white;
-}
-
-/*ul{
-    &.icesubMenu{
-        background: #ffffff none repeat scroll 0 0;
-        border: medium none;
-        box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.15);
-        height: 0;
-        left: 50%;
-        margin: 0;
-        opacity: 0;
-        overflow: hidden;
-        pointer-events: none;
-        position: absolute;
-        text-align: left;
-        text-transform: capitalize;
-        top: 100%;
-        transform: translate(-50%, 30px);
-        transition: all 0.25s ease-out 0s;
-        z-index: 9999;
-        &.sub-level-1{
-            left: auto;
-            right: 20px;
-            transform: translate(0px, 30px);
-            &::before{
-                border-color: transparent transparent #777777;
-                border-style: solid;
-                border-width: 0 0 20px 20px;
-                height: 0;
-                left: auto;
-                right: 0;
-                transform: translate(0px, 0px);
-                width: 0;
-            }
-        }
+    &:hover{
+        color: $white;
     }
-}*/
+}
 
 .prodcut-detail{
     .thumb-list{
@@ -871,7 +796,6 @@ ul.m-sidebar{
         }
     }
 }
-
 
 @import "nmf-1-max-1200.scss";
 @import "nmf-2-max-992.scss";

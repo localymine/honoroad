@@ -33,12 +33,16 @@
             <!-- hotline -->
             <header class="hot-top">
                 <div class="container">
-                    <ul class="pull-right nopadding">
+                    <ul class="top-menu pull-right nopadding">
                         <li>
                             <i class="fa fa-phone fa-2x"></i><span class="hotline"><?php echo $omw_theme_settings->ct_company_telephone ?></span>
                         </li>
                         <li>
                             <a class="login-menu" href="javascript:void(0)"><i class="fa fa-user"></i></a>
+                            <ul class="right">
+                                <li>name</li>
+                                <li><a href="<?php echo wp_logout_url() ?>">logout</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -61,29 +65,27 @@
                                 <img class="img-responsive" src="<?php echo $logo->url ?>" alt="Honoroad" />
                             </a>
                         </div>
-                        <div class="navbar-collapse collapse nopadding icemegamenu">
-                            <ul id="icemegamenu">
+                        <div class="navbar-collapse collapse nopadding">
+                            <ul class="top-menu">
                                 <li><a class="nav-title active" href="<?php echo bloginfo('url') ?>"><span>Trang chủ</span></a></li>
-                                <li class="ice-lv1">
+                                <li>
                                     <a class="nav-title" href="javascript:void(0)"><span>Giới thiệu</span></a>
-                                    <div class="ice-cols">
-                                        <ul class="icesubmenu sub-lv1">
-                                            <?php
-                                            $args = array(
-                                                'post_type' => 'top-about',
-                                                'posts_per_page' => 3,
-                                            );
-                                            $loop = new WP_Query($args);
-                                            ?>
-                                            <?php if ($loop->have_posts()): ?>
-                                                <?php while ($loop->have_posts()): $loop->the_post(); ?>
-                                                    <li><a href="<?php the_permalink() ?>"><?php the_title() ?></a></li>
-                                                <?php endwhile; ?>
-                                            <?php endif; ?>
-                                            <?php wp_reset_postdata() ?>
-                                            <li><a href="<?php bloginfo('url') ?>/news">Tin tức</a></li>
-                                        </ul>
-                                    </div>
+                                    <ul>
+                                        <?php
+                                        $args = array(
+                                            'post_type' => 'top-about',
+                                            'posts_per_page' => 3,
+                                        );
+                                        $loop = new WP_Query($args);
+                                        ?>
+                                        <?php if ($loop->have_posts()): ?>
+                                            <?php while ($loop->have_posts()): $loop->the_post(); ?>
+                                                <li><a href="<?php the_permalink() ?>"><?php the_title() ?></a></li>
+                                            <?php endwhile; ?>
+                                        <?php endif; ?>
+                                        <?php wp_reset_postdata() ?>
+                                        <li><a href="<?php bloginfo('url') ?>/news">Tin tức</a></li>
+                                    </ul>
                                 </li>
                                 <li><a class="nav-title" href="<?php echo bloginfo('url') ?>/product"><span>Sản phẩm</span></a></li>
                                 <li><a class="nav-title" href="<?php echo bloginfo('url') ?>/recruit"><span>Tuyển dụng</span></a></li>
