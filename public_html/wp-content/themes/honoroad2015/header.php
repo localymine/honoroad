@@ -21,9 +21,12 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-        
+
         <script src='https://www.google.com/recaptcha/api.js'></script>
         <?php
+        global $current_user;
+        get_currentuserinfo();
+        //
         global $omw_theme_settings;
         $logo = (object) json_decode($omw_theme_settings->ct_company_logo);
         ?>
@@ -39,9 +42,11 @@
                         </li>
                         <li>
                             <a class="login-menu" href="javascript:void(0)"><i class="fa fa-user"></i></a>
-                            <ul class="right">
-                                <li>name</li>
-                                <li><a href="<?php echo wp_logout_url() ?>">logout</a></li>
+                            <ul class="right" style="width: 150px;">
+                                <li>
+                                    <h4><?php echo esc_html($current_user->display_name); ?><br/><span>(<?php echo str_replace('_', ' ', $current_user->roles[0]) ?>)</span></h4>
+                                </li>
+                                <li><a href="<?php echo wp_logout_url(home_url()) ?>">logout</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -110,53 +115,53 @@
                     </div>
                 </nav>
                 <!--  wp menu -->
-<!--                <div class="clearfix"></div>
-                <nav id="nav" class="navbar navbar-defaultx navbar-oil">
-                    <?php
-                    $defaults = array(
-                        'theme_location' => 'header-menu',
-                        'menu' => 'Top Menu',
-                        'container' => 'div',
-                        'container_class' => 'container',
-                        'container_id' => '',
-                        'menu_class' => 'navbar-collapse collapse nopadding icemegamenu',
-                        'menu_id' => 'icemegamenu',
-                        'echo' => true,
-                        'fallback_cb' => 'wp_page_menu',
-                        'before' => '',
-                        'after' => '',
-                        'link_before' => '',
-                        'link_after' => '',
-                        'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-                        'depth' => 0,
-                        'walker' => ''
-                    );
-                    wp_nav_menu($defaults);
-                    ?>
-                </nav>
-                <nav id="nav" class="navbar navbar-defaultx navbar-oil">
-                    <?php
-                    $defaults = array(
-                        'theme_location' => 'sales-menu',
-                        'menu' => 'Top Menu',
-                        'container' => 'div',
-                        'container_class' => 'container',
-                        'container_id' => '',
-                        'menu_class' => 'navbar-collapse collapse nopadding icemegamenu',
-                        'menu_id' => 'icemegamenu',
-                        'echo' => true,
-                        'fallback_cb' => 'wp_page_menu',
-                        'before' => '',
-                        'after' => '',
-                        'link_before' => '',
-                        'link_after' => '',
-                        'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-                        'depth' => 0,
-                        'walker' => ''
-                    );
-                    wp_nav_menu($defaults);
-                    ?>
-                </nav>-->
+                <!--                <div class="clearfix"></div>
+                                <nav id="nav" class="navbar navbar-defaultx navbar-oil">
+                <?php
+                $defaults = array(
+                    'theme_location' => 'header-menu',
+                    'menu' => 'Top Menu',
+                    'container' => 'div',
+                    'container_class' => 'container',
+                    'container_id' => '',
+                    'menu_class' => 'navbar-collapse collapse nopadding icemegamenu',
+                    'menu_id' => 'icemegamenu',
+                    'echo' => true,
+                    'fallback_cb' => 'wp_page_menu',
+                    'before' => '',
+                    'after' => '',
+                    'link_before' => '',
+                    'link_after' => '',
+                    'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                    'depth' => 0,
+                    'walker' => ''
+                );
+                wp_nav_menu($defaults);
+                ?>
+                                </nav>
+                                <nav id="nav" class="navbar navbar-defaultx navbar-oil">
+                <?php
+                $defaults = array(
+                    'theme_location' => 'sales-menu',
+                    'menu' => 'Top Menu',
+                    'container' => 'div',
+                    'container_class' => 'container',
+                    'container_id' => '',
+                    'menu_class' => 'navbar-collapse collapse nopadding icemegamenu',
+                    'menu_id' => 'icemegamenu',
+                    'echo' => true,
+                    'fallback_cb' => 'wp_page_menu',
+                    'before' => '',
+                    'after' => '',
+                    'link_before' => '',
+                    'link_after' => '',
+                    'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                    'depth' => 0,
+                    'walker' => ''
+                );
+                wp_nav_menu($defaults);
+                ?>
+                                </nav>-->
                 <!--  wp menu //-->
 
                 <!--side-bar-->

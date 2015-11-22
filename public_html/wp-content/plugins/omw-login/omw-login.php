@@ -292,7 +292,7 @@ class omw_login extends PW_Template_Loader {
     public function omw_admin_login_init() {
         foreach ($this->roles as $role) {
             if (current_user_can($role)) {
-                wp_redirect(home_url());
+                wp_redirect(home_url('/profile'));
                 exit;
             }
         }

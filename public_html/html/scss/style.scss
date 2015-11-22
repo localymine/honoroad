@@ -224,8 +224,14 @@ ul.top-menu{
             position: absolute;
             opacity: 0;
             &.right{
-                right: 0;
+                /*right: 0;*/
                 padding: 0;
+                h4{
+                    span{
+                        font-size: 0.75em;
+                        text-transform: capitalize;
+                    }
+                }
             }
             li{
                 float: none;
@@ -794,6 +800,27 @@ ul.m-sidebar{
                 }
             }
         }
+    }
+}
+
+.login-form{
+    text-align: center;
+    input[type="text"], input[type="password"]{
+        border: 1px solid $border-color;
+        padding: 5px;
+    }
+    p{
+        label{
+            font-weight: normal;
+        }
+    }
+    .entry-header{
+        .entry-title{
+            color: $menu-color;
+        }
+    }
+    #loginform{
+        
     }
 }
 

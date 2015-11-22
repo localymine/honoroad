@@ -14,12 +14,21 @@ $failed = !empty($_GET['failed']) ? $_GET['failed'] : false;
 
 <?php get_header(); ?>
 
-
-<header class="entry-header">
-    <h1 class="entry-title">Login</h1>
-</header>
-
-<?php wp_login_form(); ?>
-
+<div class="container login-form margin-top-xl margin-bottom-xl">
+    <div class="row">
+        <header class="entry-header">
+            <h1 class="entry-title">Đăng Nhập</h1>
+        </header>
+        <?php
+        $args = array(
+            'form_id' => 'login-form',
+            'id_submit' => __('submit-login'),
+            'label_remember' => __('Nhớ mật khẩu'),
+            'label_log_in' => __('Submit'),
+        );
+        ?>
+        <?php wp_login_form($args); ?>
+    </div>
+</div>
 
 <?php get_footer(); ?>
