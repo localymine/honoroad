@@ -1,16 +1,20 @@
 <?php
 
 /**
-  Plugin Name: Mini Cart
-  Plugin URI:
-  Description: Mini Shoping Cart
-  Version:     1.1.0
-  Author:      Le Duong Khang
-  Author URI:  mailto:leduongkhang@gmail.com
-  License: GPL
-  License URI:
-  Domain Path:
-  Text Domain: omw-mini-cart
+ * Plugin Name: Mini Cart
+ * Plugin URI: mailto:leduongkhang@gmail.com
+ * Description: Mini Shoping Cart
+ * Version:     1.1.0
+ * Author:      Le Duong Khang
+ * Author URI:  mailto:leduongkhang@gmail.com
+ * Text Domain: omw-mini-cart
+ * 
+ * @package   omw-mini-cart
+ * @version   1.1.0
+ * @author    Le Duong Khang <leduongkhang@gmail.com>
+ * @copyright Copyright (c) 2015, Le Duong Khang
+ * @link      http://onmyway.vn
+ * @license   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 if (!defined('ABSPATH')) {
     die('No script kiddies please!');
@@ -65,7 +69,7 @@ class omw_mini_cart {
         $this->roles = array('sale_staff', 'distribution_staff', 'b2b_customer');
 
         // Register pages
-//        add_action('init', array($this, 'register_table'));
+        add_action('init', array($this, 'register_table'));
         // Load frontend JS & CSS
         add_action('wp_enqueue_scripts', array($this, 'register_styles'), 10);
         add_action('wp_enqueue_scripts', array($this, 'register_scripts'), 10);
@@ -118,7 +122,9 @@ class omw_mini_cart {
      */
     public function register_scripts() {
         //
-        wp_register_script('js-own-plugin-frontend', $this->assets_url . 'js/settings.js', array('jquery'), '1.0.0', TRUE);
+        wp_register_script('js-own-plugin-frontend-cookie', $this->assets_url . 'js/jquery.cookie.js', array('jquery'), '1.4.1', TRUE);
+        wp_enqueue_script('js-own-plugin-frontend-cookie');
+        wp_register_script('js-own-plugin-frontend', $this->assets_url . 'js/minicart.js', array('cookie'), '1.0', TRUE);
         wp_enqueue_script('js-own-plugin-frontend');
         //
         $dataToBePassed = array(
@@ -137,34 +143,35 @@ class omw_mini_cart {
         $charset_collate = $wpdb->get_charset_collate();
         $table_name = $wpdb->prefix . 'mini_cart';
 
-        $sql = "CREATE TABLE $table_name (
+        $sql_1 = "CREATE TABLE $table_name (
             id int(12) NOT NULL AUTO_INCREMENT,
-            id_product int(12) NOT NULL,
             id_user int(12) NOT NULL,
-            id_product_type varchar(32) NOT NULL,
+            username varchar(32) NOT NULL,
+            email varchar(255) NOT NULL,
             order_date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-            order_status DEFAULT '' NOT NULL,
-            quantity int(12) NOT NULL,
-            
-            fullname varchar(60) DEFAULT '' NOT NULL,
-            email varchar(255) DEFAULT '' NOT NULL,
-            phone_number varchar(15) DEFAULT '' NOT NULL,
-            gender varchar(1) DEFAULT '-',
-            attach_file varchar(255) NOT NULL,
-            download_link varchar(255) NOT NULL,
-            job_id int(12) NULL,
-            job_title varchar(255) NULL,
-            job_slug varchar(255) NULL,
-            job_position varchar(32) NULL,
-            job_level varchar(32) NULL,
-            job_salary varchar(32) NULL,
-            job_location varchar(32) NULL,
-            job_expired varchar(32) NULL,
+            id_product int(12) NOT NULL,
+            id_product_type varchar(32) NOT NULL,
+            product_image varchar (255) NULL,
+            quantity int(12) DEFAULT '0' NOT NULL,
+            price int(12) DEFAULT '0' NOT NULL,
+            price_total int(12) DEFAULT '0' NOT NULL,
+            order_status DEFAULT NOT NULL COMMENT 'incomplete,pending,process,partially_shipped,shipping,shiped,partially_returned,returned,canceled',
+            order_status_last_date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
             UNIQUE KEY id (id)
             ) $charset_collate;";
+        
+        $table_minicart_history = $wpdb->prefix . 'mini_cart_history';
+        
+        $sql_2 = "CREATE TABLE $table_minicart_history (
+            id int(12) NOT NULL AUTO_INCREMENT,
+            id_product int(12) NOT NULL,
+            order_status DEFAULT NOT NULL COMMENT 'incomplete,pending,process,partially_shipped,shipping,shiped,partially_returned,returned,canceled',
+            order_status_date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+                ) $charset_collate;";
 
         require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-        dbDelta($sql);
+        dbDelta($sql_1);
+        dbDelta($sql_2);
     }
 
     /**

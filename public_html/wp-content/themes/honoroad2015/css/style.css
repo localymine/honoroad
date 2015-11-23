@@ -507,9 +507,11 @@ ul.top-menu {
       ul.top-menu li ul.right {
         right: 0;
         padding: 0; }
-        ul.top-menu li ul.right h4 span {
-          font-size: 0.75em;
-          text-transform: capitalize; }
+        ul.top-menu li ul.right h4 {
+          margin-bottom: 0; }
+          ul.top-menu li ul.right h4 span {
+            font-size: 0.75em;
+            text-transform: capitalize; }
       ul.top-menu li ul li {
         float: none; }
       ul.top-menu li ul a {
@@ -520,6 +522,8 @@ ul.top-menu {
   ul.top-menu li:hover ul {
     opacity: 1;
     visibility: visible; }
+    ul.top-menu li:hover ul.right h4 {
+      margin-bottom: 0; }
     ul.top-menu li:hover ul a {
       padding: 5px 10px;
       line-height: 1.2em; }

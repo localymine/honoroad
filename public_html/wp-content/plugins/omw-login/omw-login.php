@@ -392,7 +392,7 @@ class omw_login {
     public function omw_admin_login_init() {
         foreach ($this->roles as $role) {
             if (is_user_logged_in() && current_user_can($role)) {
-                wp_redirect(home_url('/profile'));
+                wp_redirect(home_url());
                 exit;
             }
         }

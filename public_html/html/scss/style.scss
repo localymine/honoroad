@@ -228,6 +228,7 @@ ul.top-menu{
                 right: 0;
                 padding: 0;
                 h4{
+                    margin-bottom: 0;
                     span{
                         font-size: 0.75em;
                         text-transform: capitalize;
@@ -250,6 +251,11 @@ ul.top-menu{
         ul{
             opacity: 1;
             visibility: visible;
+            &.right{
+                h4{
+                    margin-bottom: 0;
+                }
+            }
             a{
                 padding: 5px 10px;
                 line-height: 1.2em;
