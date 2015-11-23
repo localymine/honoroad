@@ -85,7 +85,7 @@ get_header();
         <div class="col-xs-12 col-md-12">
             <div class="contact-info-form">
                 <h3>Thông tin phản hồi của khách hàng</h3>
-                <form id="contact-info-form" name="contact-info-form" method="post" action="<?php echo bloginfo('url') ?>/contact">
+                <form id="contact-info-form" name="contact-info-form" method="post" action="<?php bloginfo('url') ?>/contact">
                     <div class="form-group">
                         <input type="text" id="re_title" name="re_title" value="" placeholder="Chủ đề" class="form-control" />
                     </div>

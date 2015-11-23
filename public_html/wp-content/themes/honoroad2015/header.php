@@ -77,13 +77,13 @@
                                     <span class="icon-bar"></span>
                                 </button>
                             </a>
-                            <a class="navbar-brand nopadding" href="<?php echo bloginfo('url') ?>">
+                            <a class="navbar-brand nopadding" href="<?php bloginfo('url') ?>">
                                 <img class="img-responsive" src="<?php echo $logo->url ?>" alt="Honoroad" />
                             </a>
                         </div>
                         <div class="navbar-collapse collapse nopadding">
                             <ul class="top-menu">
-                                <li><a class="nav-title active" href="<?php echo bloginfo('url') ?>"><span>Trang chủ</span></a></li>
+                                <li><a class="nav-title active" href="<?php bloginfo('url') ?>"><span>Trang chủ</span></a></li>
                                 <li>
                                     <a class="nav-title" href="javascript:void(0)"><span>Giới thiệu</span></a>
                                     <ul>
@@ -103,9 +103,9 @@
                                         <li><a href="<?php bloginfo('url') ?>/news">Tin tức</a></li>
                                     </ul>
                                 </li>
-                                <li><a class="nav-title" href="<?php echo bloginfo('url') ?>/product"><span>Sản phẩm</span></a></li>
-                                <li><a class="nav-title" href="<?php echo bloginfo('url') ?>/recruit"><span>Tuyển dụng</span></a></li>
-                                <li><a class="nav-title" href="<?php echo bloginfo('url') ?>/contact"><span>Liên hệ</span></a></li>
+                                <li><a class="nav-title" href="<?php bloginfo('url') ?>/product"><span>Sản phẩm</span></a></li>
+                                <li><a class="nav-title" href="<?php bloginfo('url') ?>/recruit"><span>Tuyển dụng</span></a></li>
+                                <li><a class="nav-title" href="<?php bloginfo('url') ?>/contact"><span>Liên hệ</span></a></li>
                                 <li class="menu-search">
                                     <ul>
                                         <li>
@@ -177,7 +177,7 @@
 
                 <!--side-bar-->
                 <ul id="sidr" class="m-sidebar">
-                    <li><a class="active" href="<?php echo bloginfo('url') ?>"><span>Trang chủ</span></a></li>
+                    <li><a class="active" href="<?php bloginfo('url') ?>"><span>Trang chủ</span></a></li>
                     <li>
                         <a class="" href="javascript:void(0)"><span>Giới thiệu</span></a>
                         <ul class="sub-menu-sidr">
@@ -197,9 +197,9 @@
                             <li><a href="<?php bloginfo('url') ?>/news">Tin tức</a></li>
                         </ul>
                     </li>
-                    <li><a class="" href="<?php echo bloginfo('url') ?>/product"><span>Sản phẩm</span></a></li>
-                    <li><a class="" href="<?php echo bloginfo('url') ?>/recruit"><span>Tuyển dụng</span></a></li>
-                    <li><a class="" href="<?php echo bloginfo('url') ?>/contact"><span>Liên hệ</span></a></li>
+                    <li><a class="" href="<?php bloginfo('url') ?>/product"><span>Sản phẩm</span></a></li>
+                    <li><a class="" href="<?php bloginfo('url') ?>/recruit"><span>Tuyển dụng</span></a></li>
+                    <li><a class="" href="<?php bloginfo('url') ?>/contact"><span>Liên hệ</span></a></li>
                     <li class="menu-search">
                     <li>
                         <form class="nav-form">

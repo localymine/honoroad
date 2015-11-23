@@ -27,7 +27,7 @@ get_header();
             </header>
             <div class="module-article-post margin-top-md">
                 <ul>
-                    <li><a href="<?php echo bloginfo('url') ?>/news">Tin tức</a></li>
+                    <li><a href="<?php bloginfo('url') ?>/news">Tin tức</a></li>
                     <?php
                     $args = array(
                         'post_type' => 'top-about',
