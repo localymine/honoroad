@@ -257,7 +257,7 @@ class omw_login {
             'post_type' => 'page',
             'page_template' => $this->theme_template_directory . '/reset-password.php',
         );
-        $$reset_password_id = $this->create_page_if_null($reset_password_page);
+        $reset_password_id = $this->create_page_if_null($reset_password_page);
 
         // Register
         $register_page = array(
