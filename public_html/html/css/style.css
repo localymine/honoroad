@@ -502,10 +502,14 @@ ul.top-menu {
       border: medium none;
       box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.15);
       position: absolute;
-      opacity: 0; }
+      opacity: 0;
+      visibility: hidden; }
       ul.top-menu li ul.right {
-        right: 0;
+        /*right: 0;*/
         padding: 0; }
+        ul.top-menu li ul.right h4 span {
+          font-size: 0.75em;
+          text-transform: capitalize; }
       ul.top-menu li ul li {
         float: none; }
       ul.top-menu li ul a {
@@ -514,7 +518,8 @@ ul.top-menu {
         ul.top-menu li ul a:before {
           height: 0; }
   ul.top-menu li:hover ul {
-    opacity: 1; }
+    opacity: 1;
+    visibility: visible; }
     ul.top-menu li:hover ul a {
       padding: 5px 10px;
       line-height: 1.2em; }
@@ -873,13 +878,13 @@ ul.m-sidebar {
   margin-bottom: 35px;
   font-size: 2em; }
   .product-all .prod-cat span {
-    color: #ffef00; }
+    color: #5b8800; }
 .product-all a {
   -webkit-transition: all 0.5s ease 0s;
   -moz-transition: all 0.5s ease 0s;
   transition: all 0.5s ease 0s; }
   .product-all a .prod-title {
-    color: #ffef00; }
+    color: #5b8800; }
   .product-all a .prod-title {
     padding-top: 10px; }
   .product-all a p {
@@ -948,6 +953,16 @@ ul.m-sidebar {
       right: 20px; }
     .contact-info .contact-info-form .form-group #re_content-error span {
       top: 55px; }
+
+.login-form {
+  text-align: center; }
+  .login-form input[type="text"], .login-form input[type="password"] {
+    border: 1px solid #e9e8e8;
+    padding: 5px; }
+  .login-form p label {
+    font-weight: normal; }
+  .login-form .entry-header .entry-title {
+    color: #5b8800; }
 
 /*==========  Non-Mobile First Method  ==========*/
 /* Large Devices, Wide Screens */

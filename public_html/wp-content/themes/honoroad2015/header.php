@@ -45,7 +45,7 @@
                                 <a class="login-menu" href="javascript:void(0)"><i class="fa fa-user"></i></a>
                                 <ul class="right" style="width: 150px;">
                                     <li>
-                                        <h4><?php echo esc_html($current_user->display_name); ?><br/><span>(<?php echo str_replace('_', ' ', $current_user->roles[0]) ?>)</span></h4>
+                                        <a href="<?php bloginfo('url') ?>/profile"><h4><?php echo esc_html($current_user->display_name); ?><br/><span>(<?php echo str_replace('_', ' ', $current_user->roles[0]) ?>)</span></h4></a>
                                     </li>
                                     <?php if (current_user_can('sale_staff')): ?>
                                         <li><a href="">menu 1</a></li>

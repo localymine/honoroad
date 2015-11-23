@@ -225,7 +225,7 @@ ul.top-menu{
             opacity: 0;
             visibility: hidden;
             &.right{
-                /*right: 0;*/
+                right: 0;
                 padding: 0;
                 h4{
                     span{
@@ -805,7 +805,7 @@ ul.m-sidebar{
     }
 }
 
-.login-form{
+.user-fe-form{
     text-align: center;
     input[type="text"], input[type="password"]{
         border: 1px solid $border-color;
@@ -821,8 +821,12 @@ ul.m-sidebar{
             color: $menu-color;
         }
     }
-    #loginform{
-        
+    .login-holder{
+        width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        background: lighten($main-bottom-bg, 40%);
+        box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.15);
     }
 }
 

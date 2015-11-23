@@ -83,13 +83,21 @@ class omw_login {
         $this->templates = array(
             $this->theme_template_directory . '/login.php' => 'Login',
             $this->theme_template_directory . '/profile.php' => 'Profile',
+            $this->theme_template_directory . '/forgot-password.php' => 'Forgot Password',
+            $this->theme_template_directory . '/reset-password.php' => 'Reset Password',
+            $this->theme_template_directory . '/register.php' => 'Register',
         );
 
         // Add short code
         add_shortcode('omw-shortcode', array($this, 'print_shortcode'), 10, 1);
         //
+        add_filter('login_redirect', array($this, 'omw_login_redirect'), 10, 3);
         add_action('admin_init', array($this, 'omw_admin_login_init'));
-        add_action('template_redirect', array($this, 'omw_login_redirect'));
+        add_action('template_redirect', array($this, 'omw_template_redirect'));
+        add_action('lostpassword_post', array($this, 'omw_reset_password'));
+        add_action('validate_password_reset', array($this, 'omw_validate_password_reset'), 10, 2);
+        add_action('login_init', array($this, 'omw_login_init'));
+        add_filter('registration_errors', array($this, 'omw_registration_redirect'), 10, 3);
     }
 
     /**
@@ -230,6 +238,36 @@ class omw_login {
             'page_template' => $this->theme_template_directory . '/profile.php',
         );
         $profile_page_id = $this->create_page_if_null($profile_page);
+
+        // Forgot Password
+        $forgot_password_page = array(
+            'post_name' => 'forgot',
+            'post_title' => 'Forgot',
+            'post_status' => 'publish',
+            'post_type' => 'page',
+            'page_template' => $this->theme_template_directory . '/forgot-password.php',
+        );
+        $forgot_password_id = $this->create_page_if_null($forgot_password_page);
+
+        // Reset Password
+        $reset_password_page = array(
+            'post_name' => 'reset',
+            'post_title' => 'Reset',
+            'post_status' => 'publish',
+            'post_type' => 'page',
+            'page_template' => $this->theme_template_directory . '/reset-password.php',
+        );
+        $$reset_password_id = $this->create_page_if_null($reset_password_page);
+
+        // Register
+        $register_page = array(
+            'post_name' => 'register',
+            'post_title' => 'Register',
+            'post_status' => 'publish',
+            'post_type' => 'page',
+            'page_template' => $this->theme_template_directory . '/register.php',
+        );
+        $register_page_id = $this->create_page_if_null($register_page);
     }
 
     /**
@@ -262,9 +300,71 @@ class omw_login {
     }
 
     /**
+     * Redirect to the custom login page
      * 
+     * @return type
      */
-    public function omw_login_redirect() {
+    public function omw_login_init() {
+        $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : 'login';
+
+        if (isset($_POST['wp-submit'])) {
+            $action = 'post-data';
+        } else if (isset($_GET['reauth'])) {
+            $action = 'reauth';
+        }
+
+        // redirect to change password form
+        if ($action == 'rp' || $action == 'resetpass') {
+            if (isset($_GET['key']) && isset($_GET['login'])) {
+                $rp_path = wp_unslash('/login/');
+                $rp_cookie = 'wp-resetpass-' . COOKIEHASH;
+                $value = sprintf('%s:%s', wp_unslash($_GET['login']), wp_unslash($_GET['key']));
+                setcookie($rp_cookie, $value, 0, $rp_path, COOKIE_DOMAIN, is_ssl(), true);
+            }
+
+//            wp_redirect(home_url('/login/?action=resetpass'));
+            wp_redirect(home_url('/reset'));
+            exit;
+        }
+
+        // redirect from wrong key when resetting password
+        if ($action == 'lostpassword' && isset($_GET['error']) && ( $_GET['error'] == 'expiredkey' || $_GET['error'] == 'invalidkey' )) {
+            wp_redirect(home_url('/login/?action=forgot&failed=wrongkey'));
+            exit;
+        }
+
+        if (
+                $action == 'post-data' || // don't mess with POST requests
+                $action == 'reauth' || // need to reauthorize
+                $action == 'logout'      // user is logging out
+        ) {
+            return;
+        }
+
+        wp_redirect(home_url('/login/'));
+        exit;
+    }
+
+    /**
+     * Login page redirect
+     * 
+     * @param type $redirect_to
+     * @param type $url
+     * @param type $user
+     */
+    public function omw_login_redirect($redirect_to, $url, $user) {
+        if (!isset($user->errors)) {
+            return $redirect_to;
+        }
+
+        wp_redirect(home_url('/login/') . '?action=login&failed=1');
+        exit;
+    }
+
+    /**
+     * Redirect logged in users to the right page
+     */
+    public function omw_template_redirect() {
         foreach ($this->roles as $role) {
             if (is_page('login') && is_user_logged_in() && !current_user_can($role)) {
                 wp_redirect(home_url('/wp-admin'));
@@ -274,7 +374,7 @@ class omw_login {
 
         foreach ($this->roles as $role) {
             if (is_page('login') && is_user_logged_in() && current_user_can($role)) {
-                wp_redirect(home_url() . '/profile');
+                wp_redirect(home_url('/profile'));
                 exit();
             }
         }
@@ -287,6 +387,7 @@ class omw_login {
 
     /**
      * Prevent users to access the admin
+     * !defined('DOING_AJAX')
      */
     public function omw_admin_login_init() {
         foreach ($this->roles as $role) {
@@ -295,6 +396,95 @@ class omw_login {
                 exit;
             }
         }
+    }
+
+    /**
+     * Password reset redirect
+     */
+    public function omw_reset_password() {
+        $user_data = '';
+
+        if (!empty($_POST['user_login'])) {
+            if (strpos($_POST['user_login'], '@')) {
+                $user_data = get_user_by('email', trim($_POST['user_login']));
+            } else {
+                $user_data = get_user_by('login', trim($_POST['user_login']));
+            }
+        }
+
+        if (empty($user_data)) {
+            wp_redirect(home_url('/login/') . '?action=forgot&failed=1');
+            exit;
+        }
+    }
+
+    /**
+     * Validate password reset
+     * 
+     * @param type $errors
+     * @param type $user
+     */
+    public function omw_validate_password_reset($errors, $user) {
+        // passwords don't match
+        if ($errors->get_error_code()) {
+            wp_redirect(home_url('/login/?action=resetpass&failed=nomatch'));
+            exit;
+        }
+
+        // wp-login already checked if the password is valid, so no further check is needed
+        if (!empty($_POST['pass1'])) {
+            reset_password($user, $_POST['pass1']);
+
+            wp_redirect(home_url('/login/?action=resetpass&success=1'));
+            exit;
+        }
+
+        // redirect to change password form
+        wp_redirect(home_url('/login/?action=resetpass'));
+        exit;
+    }
+
+    /**
+     * Registration page redirect
+     * 
+     * @param type $errors
+     * @param type $sanitized_user_login
+     * @param type $user_email
+     * @return type
+     */
+    public function omw_registration_redirect($errors, $sanitized_user_login, $user_email) {
+        // don't lose your time with spammers, redirect them to a success page
+        if (!isset($_POST['confirm_email']) || $_POST['confirm_email'] !== '') {
+
+            wp_redirect(home_url('/login/') . '?action=register&success=1');
+            exit;
+        }
+
+        if (!empty($errors->errors)) {
+            if (isset($errors->errors['username_exists'])) {
+
+                wp_redirect(home_url('/login/') . '?action=register&failed=username_exists');
+            } else if (isset($errors->errors['email_exists'])) {
+
+                wp_redirect(home_url('/login/') . '?action=register&failed=email_exists');
+            } else if (isset($errors->errors['invalid_username'])) {
+
+                wp_redirect(home_url('/login/') . '?action=register&failed=invalid_username');
+            } else if (isset($errors->errors['invalid_email'])) {
+                +
+                        + wp_redirect(home_url('/login/') . '?action=register&failed=invalid_email');
+            } else if (isset($errors->errors['empty_username']) || isset($errors->errors['empty_email'])) {
+
+                wp_redirect(home_url('/login/') . '?action=register&failed=empty');
+            } else {
+
+                wp_redirect(home_url('/login/') . '?action=register&failed=generic');
+            }
+
+            exit;
+        }
+
+        return $errors;
     }
 
     /**

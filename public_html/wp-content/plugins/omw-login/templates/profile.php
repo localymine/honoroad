@@ -36,7 +36,7 @@ if (!empty($_POST) && !empty($_POST['action']) && $_POST['action'] == 'update-us
 
         if (empty($error)) {
             do_action('edit_user_profile_update', $current_user->ID);
-            wp_redirect(site_url('/user/') . '?success=1');
+            wp_redirect(site_url('/profile') . '?success=1');
             exit;
         }
     }
@@ -51,8 +51,7 @@ if (!empty($_POST) && !empty($_POST['action']) && $_POST['action'] == 'update-us
         <?php while (have_posts()) : the_post(); ?>
 
             <article id="page-<?php the_ID(); ?>" class="meta-box hentry">
-                <div class="post-content cf">
-
+                <div class="col-xs-12 col-md-6">
                     <?php if (!empty($_GET['success'])): ?>
                         <div class="message-box message-success">
                             <span class="icon-thumbs-up"></span>
@@ -68,45 +67,48 @@ if (!empty($_POST) && !empty($_POST['action']) && $_POST['action'] == 'update-us
                     <?php endif; ?>
 
                     <header class="entry-header">
-                        <h1 class="entry-title">Welcome, <span class="userColor"><?php echo esc_html($current_user->display_name); ?></span></h1>
+                        <h1 class="entry-title">Welcome <span class="userColor"><?php echo esc_html($current_user->display_name); ?></span></h1>
                     </header>
-
-                    <div class="entry-content">
-                        <p>Pretty empty over here. Don’t worry it will fill up over time.</p>
-
-                        <hr>
-                    </div><!-- .entry-content -->
 
                     <h2>Change password</h2>
                     <p>You may change your password if you are so inclined.</p>
 
-                    <form method="post" id="adduser" action="/user/">
+                    <form class="form-horizontal form-profile" method="post" id="adduser" action="/profile">
 
-                        <p class="form-password">
-                            <label for="current_pass">Current Password</label>
-                            <input class="text-input" name="current_pass" type="password" id="current_pass">
-                        </p>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="current_pass">Current Password</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" name="current_pass" type="password" id="current_pass">
+                            </div>
+                        </div>
 
-                        <p class="form-password">
-                            <label for="pass1">New Password</label>
-                            <input class="text-input" name="pass1" type="password" id="pass1">
-                        </p>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="pass1">New Password</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" name="pass1" type="password" id="pass1">
+                            </div>
+                        </div>
 
-                        <p class="form-password">
-                            <label for="pass2">Confirm Password</label>
-                            <input class="text-input" name="pass2" type="password" id="pass2">
-                        </p>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="pass2">Confirm Password</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" name="pass2" type="password" id="pass2">
+                            </div>
+                        </div>
 
                         <?php
-// action hook for plugin and extra fields
+                        // action hook for plugin and extra fields
                         do_action('edit_user_profile', $current_user);
                         ?>
-                        <p class="form-submit">
-                            <input name="updateuser" type="submit" id="updateuser" class="submit button" value="Update profile">
-                            <input name="action" type="hidden" id="action" value="update-user">
-                        </p>
-                    </form>
 
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button name="updateuser" id="updateuser" type="submit" class="btn btn-success">Update profile</button>
+                                <input name="action" type="hidden" id="action" value="update-user" />
+                            </div>
+                        </div>
+
+                    </form>
                 </div>
             </article>
 
