@@ -8,7 +8,7 @@
  */
 require_once 'class-gamajo-template-loader.php';
 
-class PW_Template_Loader extends Gamajo_Template_Loader {
+class mini_cart_PW_Template_Loader extends mini_cart_Gamajo_Template_Loader {
 
     /**
      * Prefix for filter names.
@@ -16,7 +16,7 @@ class PW_Template_Loader extends Gamajo_Template_Loader {
      * @since 1.0.0
      * @type string
      */
-    protected $filter_prefix = 'omw';
+    protected $filter_prefix = 'omw-mini-cart';
 
     /**
      * Directory name where custom templates for this plugin should be found in the theme.
@@ -32,6 +32,6 @@ class PW_Template_Loader extends Gamajo_Template_Loader {
      * @since 1.0.0
      * @type string
      */
-    protected $plugin_directory = OMW_PLUGIN_DIR;
+    protected $plugin_directory = OMW_MINI_CART_PLUGIN_DIR;
 
 }

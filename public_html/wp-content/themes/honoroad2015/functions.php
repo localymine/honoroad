@@ -8,7 +8,7 @@
 
 include_once (dirname(__FILE__) . '/includes/my_settings.php');
 //include_once (dirname(__FILE__) . '/includes/load_scripts.php');
-include_once (dirname(__FILE__) . '/includes/options_page.php');
+//include_once (dirname(__FILE__) . '/includes/options_page.php');
 include_once(dirname(__FILE__) . '/includes/cpt_acf_definitions.php');
 
 /* -------------------------------------------------------------------------- */

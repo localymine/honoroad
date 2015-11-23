@@ -41,13 +41,24 @@
                             <i class="fa fa-phone fa-2x"></i><span class="hotline"><?php echo $omw_theme_settings->ct_company_telephone ?></span>
                         </li>
                         <li>
-                            <a class="login-menu" href="javascript:void(0)"><i class="fa fa-user"></i></a>
-                            <ul class="right" style="width: 150px;">
-                                <li>
-                                    <h4><?php echo esc_html($current_user->display_name); ?><br/><span>(<?php echo str_replace('_', ' ', $current_user->roles[0]) ?>)</span></h4>
-                                </li>
-                                <li><a href="<?php echo wp_logout_url(home_url()) ?>">logout</a></li>
-                            </ul>
+                            <?php if (is_user_logged_in()): ?>
+                                <a class="login-menu" href="javascript:void(0)"><i class="fa fa-user"></i></a>
+                                <ul class="right" style="width: 150px;">
+                                    <li>
+                                        <h4><?php echo esc_html($current_user->display_name); ?><br/><span>(<?php echo str_replace('_', ' ', $current_user->roles[0]) ?>)</span></h4>
+                                    </li>
+                                    <?php if (current_user_can('sale_staff')): ?>
+                                        <li><a href="">menu 1</a></li>
+                                    <?php elseif (current_user_can('distribution_staff')): ?>
+                                        <li><a href="">menu 2</a></li>
+                                    <?php elseif (current_user_can('b2b_customer')): ?>
+                                        <li><a href="">menu 3</a></li>
+                                    <?php endif; ?>
+                                    <li><a href="<?php echo wp_logout_url(home_url()) ?>">logout</a></li>
+                                </ul>
+                            <?php else: ?>
+                                <a class="login-menu" href="<?php bloginfo('url') ?>/login"><i class="fa fa-user"></i></a>
+                            <?php endif; ?>
                         </li>
                     </ul>
                 </div>

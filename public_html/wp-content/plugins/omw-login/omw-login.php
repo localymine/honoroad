@@ -20,7 +20,7 @@ define('OMW_PLUGIN_DIR', plugin_dir_path(__FILE__));
 
 require_once 'includes/class-pw-template-loader.php';
 
-class omw_login extends PW_Template_Loader {
+class omw_login {
 
     /**
      * A Unique Identifier
@@ -48,7 +48,7 @@ class omw_login extends PW_Template_Loader {
      */
     public static function get_instance() {
         if (null == self::$instance) {
-            self::$instance = new jobs_management();
+            self::$instance = new omw_login();
         }
         return self::$instance;
     }
@@ -65,7 +65,6 @@ class omw_login extends PW_Template_Loader {
 
         // Register pages
         add_action('init', array($this, 'register_pages'));
-//        add_action('init', array($this, 'register_table'));
         // Load frontend JS & CSS
         add_action('wp_enqueue_scripts', array($this, 'register_styles'), 10);
         add_action('wp_enqueue_scripts', array($this, 'register_scripts'), 10);
@@ -87,7 +86,7 @@ class omw_login extends PW_Template_Loader {
         );
 
         // Add short code
-        add_shortcode('owm-shortcode', array($this, 'print_shortcode'), 10, 1);
+        add_shortcode('omw-shortcode', array($this, 'print_shortcode'), 10, 1);
         //
         add_action('admin_init', array($this, 'omw_admin_login_init'));
         add_action('template_redirect', array($this, 'omw_login_redirect'));
@@ -174,7 +173,7 @@ class omw_login extends PW_Template_Loader {
         $template = new PW_Template_Loader();
 
         switch ($type) {
-            case 'form-list':
+            case 'demo':
                 $template->get_template_part('demo-template');
                 break;
         }
@@ -266,20 +265,20 @@ class omw_login extends PW_Template_Loader {
      * 
      */
     public function omw_login_redirect() {
-        foreach ($this->roles as $role){
+        foreach ($this->roles as $role) {
             if (is_page('login') && is_user_logged_in() && !current_user_can($role)) {
                 wp_redirect(home_url('/wp-admin'));
                 exit();
             }
         }
 
-        foreach ($this->roles as $role){
+        foreach ($this->roles as $role) {
             if (is_page('login') && is_user_logged_in() && current_user_can($role)) {
                 wp_redirect(home_url() . '/profile');
                 exit();
             }
         }
-        
+
         if (is_page('profile') && !is_user_logged_in()) {
             wp_redirect(home_url('/login'));
             exit();
@@ -291,45 +290,11 @@ class omw_login extends PW_Template_Loader {
      */
     public function omw_admin_login_init() {
         foreach ($this->roles as $role) {
-            if (current_user_can($role)) {
+            if (is_user_logged_in() && current_user_can($role)) {
                 wp_redirect(home_url('/profile'));
                 exit;
             }
         }
-    }
-
-    /**
-     * 
-     * @global type $wpdb
-     */
-    public function register_table() {
-        global $wpdb;
-
-        $charset_collate = $wpdb->get_charset_collate();
-        $table_name = $wpdb->prefix . 'jobs_management';
-
-        $sql = "CREATE TABLE $table_name (
-            id int(12) NOT NULL AUTO_INCREMENT,
-            apply_date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-            fullname varchar(60) DEFAULT '' NOT NULL,
-            email varchar(255) DEFAULT '' NOT NULL,
-            phone_number varchar(15) DEFAULT '' NOT NULL,
-            gender varchar(1) DEFAULT '-',
-            attach_file varchar(255) NOT NULL,
-            download_link varchar(255) NOT NULL,
-            job_id int(12) NULL,
-            job_title varchar(255) NULL,
-            job_slug varchar(255) NULL,
-            job_position varchar(32) NULL,
-            job_level varchar(32) NULL,
-            job_salary varchar(32) NULL,
-            job_location varchar(32) NULL,
-            job_expired varchar(32) NULL,
-            UNIQUE KEY id (id)
-            ) $charset_collate;";
-
-        require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-        dbDelta($sql);
     }
 
     /**

@@ -11,8 +11,6 @@ get_header();
 global $current_user;
 get_currentuserinfo();
 
-require_once( ABSPATH . WPINC . '/registration.php' );
-
 if (!empty($_POST) && !empty($_POST['action']) && $_POST['action'] == 'update-user') {
 
     /* Update user password */

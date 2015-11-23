@@ -44,7 +44,7 @@ get_header();
                                     $size = 'large';
                                     $thumb = $image['sizes'][$size];
                                     ?>
-                                    <img class="img-responsive" src="<?php echo $thumb ?>" alt="<?php the_title() ?>" />
+                                    <img class="img-responsive center-block" src="<?php echo $thumb ?>" alt="<?php the_title() ?>" />
                                     <?php break; ?>
                                 <?php endwhile; ?>
                             <?php endif; ?>

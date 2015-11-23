@@ -32,7 +32,10 @@ get_header();
                 <?php $prod_img = get_field('images'); ?>
                 <img class="img-responsive center-block" src="<?php echo $prod_img[0]['image']['url'] ?>" />
             </div>
+            
+            <?php echo do_shortcode('[omw-mini-cart type="order-list"]') ?>
 
+            <?php if (is_user_logged_in() && current_user_can('b2b_customer')): ?>
             <div class="box-prod-info">
                 <table class="table">
                     <thead>
@@ -60,7 +63,8 @@ get_header();
                     <?php endif; ?>
                 </table>
             </div>
-            [MINICART item="<?php the_ID() ?>"]
+            <?php endif; ?>
+            
         </div>
         <div class="col-xs-12 col-md-6">
             <h2 class="prod-name"><?php the_title() ?></h2>

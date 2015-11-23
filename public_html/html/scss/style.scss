@@ -223,6 +223,7 @@ ul.top-menu{
             box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.15);
             position: absolute;
             opacity: 0;
+            visibility: hidden;
             &.right{
                 /*right: 0;*/
                 padding: 0;
@@ -248,6 +249,7 @@ ul.top-menu{
     li:hover{
         ul{
             opacity: 1;
+            visibility: visible;
             a{
                 padding: 5px 10px;
                 line-height: 1.2em;
@@ -686,17 +688,17 @@ ul.m-sidebar{
 .product-all{
     .prod-cat{
         span{
-            color: $menu-bg;
+            color: $menu-color;
         }
         border-bottom: 2px solid $image-border-color-selected;
         padding: 15px;
         margin-bottom: 35px;
-        font-size: 2em;
+        font-size: 2em;        
     }
     a{
         @include transition(0.5s);
         .prod-title{
-            color: $menu-bg;
+            color: $menu-color;
         }
         .prod-title{
             padding-top: 10px;
@@ -705,7 +707,7 @@ ul.m-sidebar{
             color: $black;
         }
         &:hover{
-            background: lighten($menu-bg, 50%);
+            background: lighten($image-border-color, 50%);
             display: block;
             p{
                 color: $black;
