@@ -227,3 +227,7 @@ $(function () {
         }
     });
 });
+
+$(function(){
+   $('.image-block').zoom();
+});

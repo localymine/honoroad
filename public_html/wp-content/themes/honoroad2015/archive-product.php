@@ -18,7 +18,7 @@ get_header();
     <?php foreach ($terms as $term): ?>
         <?php
         $args = array(
-            'post_type' => 'san-pham',
+            'post_type' => 'product',
             'posts_per_page' => -1,
             'tax_query' => array(
                 array(
@@ -49,7 +49,6 @@ get_header();
                                 <?php endwhile; ?>
                             <?php endif; ?>
                             <h2 class="prod-title"><?php the_title() ?></h2>
-                            <p><?php echo get_field('description') ?></p>
                         </a>
                     </div>
                 <?php endwhile; ?>

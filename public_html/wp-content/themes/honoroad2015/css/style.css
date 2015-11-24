@@ -22,6 +22,7 @@ object, embed {
 input::-moz-focus-inner {
   border: 0; }
 
+/*$slider-height: 975px;*/
 #slider1_container {
   visibility: hidden;
   position: relative;
@@ -29,7 +30,7 @@ input::-moz-focus-inner {
   top: 0px;
   left: 0px;
   width: 2048px;
-  height: 975px;
+  height: 840px;
   border-top: 2px solid #519044;
   border-bottom: 2px solid #519044;
   overflow: hidden; }
@@ -60,7 +61,7 @@ input::-moz-focus-inner {
     left: 0px;
     top: 0px;
     width: 2048px;
-    height: 975px;
+    height: 840px;
     overflow: hidden; }
 
 /*
@@ -759,6 +760,8 @@ ul.m-sidebar {
     #footer-wrapper .copyright .privacy_link {
       color: #fff;
       text-decoration: none; }
+    #footer-wrapper .copyright h5 {
+      color: #fff; }
 
 #back-top {
   bottom: 90px;
@@ -792,11 +795,28 @@ ul.m-sidebar {
   .login-menu:hover {
     color: #fff; }
 
+.prodcut-detail ul.thumb-list-side {
+  background: #f3f3f3;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.15);
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+  .prodcut-detail ul.thumb-list-side li:first-child {
+    padding-top: 10px; }
+  .prodcut-detail ul.thumb-list-side li:last-child {
+    padding-bottom: 10px; }
+  .prodcut-detail ul.thumb-list-side li {
+    padding: 5px; }
+    .prodcut-detail ul.thumb-list-side li a {
+      color: #5b8800; }
+      .prodcut-detail ul.thumb-list-side li a span {
+        padding-left: 10px; }
 .prodcut-detail .thumb-list {
   display: inline-block;
   vertical-align: top; }
   .prodcut-detail .thumb-list ul.touch-list {
     list-style-type: none;
+    display: inline-block;
     margin: 0;
     padding: 0; }
     .prodcut-detail .thumb-list ul.touch-list li {
@@ -831,7 +851,7 @@ ul.m-sidebar {
   display: inline-block;
   padding: 0;
   margin: 5px;
-  width: 88%; }
+  width: 100%; }
 .prodcut-detail .prod-name {
   color: #5b8800; }
 .prodcut-detail .prod-detail .prod-attr {
@@ -896,8 +916,10 @@ ul.m-sidebar {
   .product-all a p {
     color: #000; }
   .product-all a:hover {
-    background: white;
+    /*background: lighten($image-border-color, 50%);*/
     display: block; }
+    .product-all a:hover .prod-title {
+      color: #7dbb00; }
     .product-all a:hover p {
       color: #000; }
 
@@ -1005,9 +1027,6 @@ ul.m-sidebar {
         font-size: 16px;
         font-weight: 300;
         vertical-align: middle; }
-
-  .prodcut-detail .image-block {
-    width: 77%; }
 
   .contact-info .contact-info-form {
     width: 100%;

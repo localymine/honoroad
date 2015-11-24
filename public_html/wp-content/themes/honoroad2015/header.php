@@ -86,7 +86,7 @@
                                 <li><a class="nav-title active" href="<?php bloginfo('url') ?>"><span>Trang chủ</span></a></li>
                                 <li><a class="nav-title" href="<?php bloginfo('url') ?>/about-us"><span>Giới thiệu</span></a></li>
                                 <li>
-                                    <a class="nav-title" href="<?php bloginfo('url') ?>/san-pham"><span>Sản phẩm</span></a>
+                                    <a class="nav-title" href="<?php bloginfo('url') ?>/product"><span>Sản phẩm</span></a>
                                     <ul>
                                         <?php
                                         $args = array(

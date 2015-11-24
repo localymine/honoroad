@@ -547,6 +547,9 @@ ul.m-sidebar{
             color: $footer-color-link;
             text-decoration: none;
         }
+        h5{
+            color: $footer-color-link;
+        }
     }
 }
 
@@ -584,11 +587,34 @@ ul.m-sidebar{
 }
 
 .prodcut-detail{
+    ul.thumb-list-side{
+      background: #f3f3f3;
+      box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.15);
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      li:first-child{
+          padding-top: 10px;
+      }
+      li:last-child{
+          padding-bottom: 10px;
+      }
+      li{
+          padding: 5px;
+          a{
+              color: $menu-color;
+              span{
+                  padding-left: 10px;
+              }
+          }
+      }
+    }
     .thumb-list{
         display: inline-block;
         vertical-align: top;
         ul.touch-list{
             list-style-type: none;
+            display: inline-block;
             margin: 0;
             padding: 0;
             li{
@@ -634,7 +660,7 @@ ul.m-sidebar{
         display: inline-block;
         padding: 0;
         margin: 5px;
-        width: 88%;
+        width: 100%;
     }
     .prod-name{
         color: $menu-color;
@@ -713,8 +739,11 @@ ul.m-sidebar{
             color: $black;
         }
         &:hover{
-            background: lighten($image-border-color, 50%);
+            /*background: lighten($image-border-color, 50%);*/
             display: block;
+            .prod-title{
+                color: $menu-color-active;
+            }
             p{
                 color: $black;
             }

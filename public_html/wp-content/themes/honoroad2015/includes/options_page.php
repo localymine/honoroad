@@ -83,3 +83,32 @@ function remove_menus() {
 }
 
 //add_action('admin_menu', 'remove_menus');
+
+/*----------------------------------------------------------------------------*/
+//add_filter('pll_translated_post_type_rewrite_slugs', function($post_type_translated_slugs) {
+//    // Add translation for "product" post type.
+//    $post_type_translated_slugs = array(
+//        'product' => array(
+//            'vi' => array(
+//                'has_archive' => true,
+//                'rewrite' => array(
+//                    'slug' => 'san-pham',
+//                ),
+//            ),
+//            'fr' => array(
+//                'has_archive' => true,
+//                'rewrite' => array(
+//                    'slug' => 'produit',
+//                ),
+//            ),
+//            'en' => array(
+//                'has_archive' => true,
+//                'rewrite' => array(
+//                    'slug' => 'product',
+//                ),
+//            ),
+//            
+//        ),
+//    );
+//    return $post_type_translated_slugs;
+//});

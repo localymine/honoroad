@@ -168,6 +168,14 @@ class omw_theme_settings {
                             'default' => '',
                             'placeholder' => '',
                         ),
+                        'ct_company' => array(
+                            'id' => 'ct_company',
+                            'label' => 'Corporations',
+                            'description' => '',
+                            'type' => 'text',
+                            'default' => '',
+                            'placeholder' => '',
+                        ),
                     );
                     break;
                 case 'footer':

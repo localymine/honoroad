@@ -43,6 +43,7 @@ function cptui_register_my_cpts() {
     $labels = array(
         "name" => "Product",
         "singular_name" => "Product",
+        "menu_name" => "Sản phẩm",
     );
 
     $args = array(
@@ -65,30 +66,30 @@ function cptui_register_my_cpts() {
     register_post_type("product", $args);
     
 
-    $labels = array(
-        "name" => "Product",
-        "singular_name" => "Product",
-        "menu_name" => "Sản phẩm",
-    );
-
-    $args = array(
-        "labels" => $labels,
-        "description" => "",
-        "public" => true,
-        "show_ui" => true,
-        "has_archive" => true,
-        "show_in_menu" => true,
-        "exclude_from_search" => false,
-        "capability_type" => "post",
-        "map_meta_cap" => true,
-        "hierarchical" => true,
-        "rewrite" => array("slug" => "san-pham", "with_front" => true),
-        "query_var" => true,
-        "menu_position" => 26,
-        "menu_icon" => get_template_directory_uri() . '/images/ad-ico/h2.png',
-        "supports" => array("title"),
-    );
-    register_post_type("san-pham", $args);
+//    $labels = array(
+//        "name" => "Product",
+//        "singular_name" => "Product",
+//        "menu_name" => "Sản phẩm",
+//    );
+//
+//    $args = array(
+//        "labels" => $labels,
+//        "description" => "",
+//        "public" => true,
+//        "show_ui" => true,
+//        "has_archive" => true,
+//        "show_in_menu" => true,
+//        "exclude_from_search" => false,
+//        "capability_type" => "post",
+//        "map_meta_cap" => true,
+//        "hierarchical" => true,
+//        "rewrite" => array("slug" => "san-pham", "with_front" => true),
+//        "query_var" => true,
+//        "menu_position" => 26,
+//        "menu_icon" => get_template_directory_uri() . '/images/ad-ico/h2.png',
+//        "supports" => array("title"),
+//    );
+//    register_post_type("san-pham", $args);
 
     $labels = array(
         "name" => "Top Info",
@@ -157,13 +158,13 @@ function cptui_register_my_cpts() {
         "capability_type" => "post",
         "map_meta_cap" => true,
         "hierarchical" => false,
-        "rewrite" => array("slug" => "tuyen-dung", "with_front" => true),
+        "rewrite" => array("slug" => "recruit", "with_front" => true),
         "query_var" => true,
         "menu_position" => 26,
         "menu_icon" => get_template_directory_uri() . '/images/ad-ico/h5.png',
         "supports" => array("title", "editor"),
     );
-    register_post_type("tuyen-dung", $args);
+    register_post_type("recruit", $args);
 
     $labels = array(
         "name" => "News",
@@ -182,13 +183,13 @@ function cptui_register_my_cpts() {
         "capability_type" => "post",
         "map_meta_cap" => true,
         "hierarchical" => false,
-        "rewrite" => array("slug" => "tin-tuc", "with_front" => true),
+        "rewrite" => array("slug" => "news", "with_front" => true),
         "query_var" => true,
         "menu_position" => 26,
         "menu_icon" => get_template_directory_uri() . '/images/ad-ico/h6.png',
         "supports" => array("title", "editor", "excerpt"),
     );
-    register_post_type("tin-tuc", $args);
+    register_post_type("news", $args);
 
 // End of cptui_register_my_cpts()
 }
@@ -214,7 +215,7 @@ function cptui_register_my_taxes() {
         "rewrite" => array('slug' => 'product-line', 'with_front' => true),
         "show_admin_column" => false,
     );
-    register_taxonomy("product-line", array("san-pham"), $args);
+    register_taxonomy("product-line", array("product"), $args);
 
     $labels = array(
         "name" => "News Type",
@@ -230,7 +231,7 @@ function cptui_register_my_taxes() {
         "rewrite" => array('slug' => 'news-type', 'with_front' => true),
         "show_admin_column" => false,
     );
-    register_taxonomy("news-type", array("tin-tuc"), $args);
+    register_taxonomy("news-type", array("news"), $args);
 
 
 // End cptui_register_my_taxes
@@ -663,7 +664,7 @@ if (function_exists("register_field_group")) {
                 array(
                     'param' => 'post_type',
                     'operator' => '==',
-                    'value' => 'san-pham',
+                    'value' => 'product',
                     'order_no' => 0,
                     'group_no' => 0,
                 ),
