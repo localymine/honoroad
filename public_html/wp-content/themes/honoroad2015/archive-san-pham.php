@@ -18,7 +18,7 @@ get_header();
     <?php foreach ($terms as $term): ?>
         <?php
         $args = array(
-            'post_type' => 'product',
+            'post_type' => 'san-pham',
             'posts_per_page' => -1,
             'tax_query' => array(
                 array(

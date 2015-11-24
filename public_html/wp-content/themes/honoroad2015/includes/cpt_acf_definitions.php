@@ -38,7 +38,8 @@ function cptui_register_my_cpts() {
         "supports" => array("title"),
     );
     register_post_type("home-slider", $args);
-
+    
+    
     $labels = array(
         "name" => "Product",
         "singular_name" => "Product",
@@ -58,14 +59,41 @@ function cptui_register_my_cpts() {
         "rewrite" => array("slug" => "product", "with_front" => true),
         "query_var" => true,
         "menu_position" => 26,
-        "menu_icon" => get_template_directory_uri() . '/images/ad-ico/h2.png',
+        "menu_icon" => get_template_directory_uri() . '/images/ad-ico/h16.png',
         "supports" => array("title"),
     );
     register_post_type("product", $args);
+    
 
     $labels = array(
-        "name" => "Top About Info",
-        "singular_name" => "Top About Info",
+        "name" => "Product",
+        "singular_name" => "Product",
+        "menu_name" => "Sản phẩm",
+    );
+
+    $args = array(
+        "labels" => $labels,
+        "description" => "",
+        "public" => true,
+        "show_ui" => true,
+        "has_archive" => true,
+        "show_in_menu" => true,
+        "exclude_from_search" => false,
+        "capability_type" => "post",
+        "map_meta_cap" => true,
+        "hierarchical" => true,
+        "rewrite" => array("slug" => "san-pham", "with_front" => true),
+        "query_var" => true,
+        "menu_position" => 26,
+        "menu_icon" => get_template_directory_uri() . '/images/ad-ico/h2.png',
+        "supports" => array("title"),
+    );
+    register_post_type("san-pham", $args);
+
+    $labels = array(
+        "name" => "Top Info",
+        "singular_name" => "Top Info",
+        "menu_name" => "Top Info",
     );
 
     $args = array(
@@ -79,41 +107,43 @@ function cptui_register_my_cpts() {
         "capability_type" => "post",
         "map_meta_cap" => true,
         "hierarchical" => false,
-        "rewrite" => array("slug" => "top-about", "with_front" => true),
+        "rewrite" => array("slug" => "top-info", "with_front" => true),
         "query_var" => true,
         "menu_position" => 26,
         "menu_icon" => get_template_directory_uri() . '/images/ad-ico/h3.png',
         "supports" => array("title", "editor", "excerpt"),
     );
-    register_post_type("top-about", $args);
+    register_post_type("top-info", $args);
 
-    $labels = array(
-        "name" => "Partner Info",
-        "singular_name" => "Partner Info",
-    );
-
-    $args = array(
-        "labels" => $labels,
-        "description" => "",
-        "public" => true,
-        "show_ui" => true,
-        "has_archive" => false,
-        "show_in_menu" => true,
-        "exclude_from_search" => false,
-        "capability_type" => "post",
-        "map_meta_cap" => true,
-        "hierarchical" => false,
-        "rewrite" => array("slug" => "partner-info", "with_front" => true),
-        "query_var" => true,
-        "menu_position" => 26,
-        "menu_icon" => get_template_directory_uri() . '/images/ad-ico/h4.png',
-        "supports" => array("title"),
-    );
-    register_post_type("partner-info", $args);
+//    $labels = array(
+//        "name" => "Partner Info",
+//        "singular_name" => "Partner Info",
+//        "menu_name" => "Đối tác",
+//    );
+//
+//    $args = array(
+//        "labels" => $labels,
+//        "description" => "",
+//        "public" => true,
+//        "show_ui" => true,
+//        "has_archive" => false,
+//        "show_in_menu" => true,
+//        "exclude_from_search" => false,
+//        "capability_type" => "post",
+//        "map_meta_cap" => true,
+//        "hierarchical" => false,
+//        "rewrite" => array("slug" => "doi-tac", "with_front" => true),
+//        "query_var" => true,
+//        "menu_position" => 26,
+//        "menu_icon" => get_template_directory_uri() . '/images/ad-ico/h4.png',
+//        "supports" => array("title"),
+//    );
+//    register_post_type("doi-tac", $args);
 
     $labels = array(
         "name" => "Recruit",
         "singular_name" => "Recruit",
+        "menu_name" => "Tuyển dụng",
     );
 
     $args = array(
@@ -127,17 +157,18 @@ function cptui_register_my_cpts() {
         "capability_type" => "post",
         "map_meta_cap" => true,
         "hierarchical" => false,
-        "rewrite" => array("slug" => "recruit", "with_front" => true),
+        "rewrite" => array("slug" => "tuyen-dung", "with_front" => true),
         "query_var" => true,
         "menu_position" => 26,
         "menu_icon" => get_template_directory_uri() . '/images/ad-ico/h5.png',
         "supports" => array("title", "editor"),
     );
-    register_post_type("recruit", $args);
+    register_post_type("tuyen-dung", $args);
 
     $labels = array(
         "name" => "News",
         "singular_name" => "News",
+        "menu_name" => "Tin tức",
     );
 
     $args = array(
@@ -151,13 +182,13 @@ function cptui_register_my_cpts() {
         "capability_type" => "post",
         "map_meta_cap" => true,
         "hierarchical" => false,
-        "rewrite" => array("slug" => "news", "with_front" => true),
+        "rewrite" => array("slug" => "tin-tuc", "with_front" => true),
         "query_var" => true,
         "menu_position" => 26,
         "menu_icon" => get_template_directory_uri() . '/images/ad-ico/h6.png',
         "supports" => array("title", "editor", "excerpt"),
     );
-    register_post_type("news", $args);
+    register_post_type("tin-tuc", $args);
 
 // End of cptui_register_my_cpts()
 }
@@ -183,7 +214,24 @@ function cptui_register_my_taxes() {
         "rewrite" => array('slug' => 'product-line', 'with_front' => true),
         "show_admin_column" => false,
     );
-    register_taxonomy("product-line", array("product"), $args);
+    register_taxonomy("product-line", array("san-pham"), $args);
+
+    $labels = array(
+        "name" => "News Type",
+        "label" => "News Type",
+    );
+
+    $args = array(
+        "labels" => $labels,
+        "hierarchical" => true,
+        "label" => "News Type",
+        "show_ui" => true,
+        "query_var" => true,
+        "rewrite" => array('slug' => 'news-type', 'with_front' => true),
+        "show_admin_column" => false,
+    );
+    register_taxonomy("news-type", array("tin-tuc"), $args);
+
 
 // End cptui_register_my_taxes
 }
@@ -615,7 +663,7 @@ if (function_exists("register_field_group")) {
                 array(
                     'param' => 'post_type',
                     'operator' => '==',
-                    'value' => 'product',
+                    'value' => 'san-pham',
                     'order_no' => 0,
                     'group_no' => 0,
                 ),
@@ -666,7 +714,7 @@ if (function_exists("register_field_group")) {
                 array(
                     'param' => 'post_type',
                     'operator' => '==',
-                    'value' => 'top-about',
+                    'value' => 'top-info',
                     'order_no' => 0,
                     'group_no' => 0,
                 ),
@@ -700,7 +748,7 @@ if (function_exists("register_field_group")) {
                 array(
                     'param' => 'post_type',
                     'operator' => '==',
-                    'value' => 'partner-info',
+                    'value' => 'doi-tac',
                     'order_no' => 0,
                     'group_no' => 0,
                 ),

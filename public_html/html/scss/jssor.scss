@@ -1,5 +1,6 @@
 $slider-width: 2048px;
-$slider-height: 1100px;
+$slider-height: 975px;
+$slider-border-color: #519044;
 
 #slider1_container{
     visibility: hidden; 
@@ -9,6 +10,8 @@ $slider-height: 1100px;
     left: 0px; 
     width: $slider-width; 
     height: $slider-height; 
+    border-top: 2px solid $slider-border-color;
+    border-bottom: 2px solid $slider-border-color;
     overflow: hidden;
     .box-loading{
         position: absolute;

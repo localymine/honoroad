@@ -29,7 +29,9 @@ input::-moz-focus-inner {
   top: 0px;
   left: 0px;
   width: 2048px;
-  height: 1100px;
+  height: 975px;
+  border-top: 2px solid #519044;
+  border-bottom: 2px solid #519044;
   overflow: hidden; }
   #slider1_container .box-loading {
     position: absolute;
@@ -58,7 +60,7 @@ input::-moz-focus-inner {
     left: 0px;
     top: 0px;
     width: 2048px;
-    height: 1100px;
+    height: 975px;
     overflow: hidden; }
 
 /*
@@ -382,7 +384,7 @@ h2 {
 /*----------------------------------------------------------------------------*/
 .hot-top {
   /*background: $hot-top-bg url('../images/bg/grid.png');*/
-  background: #8fd400;
+  background: #44aa6c;
   color: #fff; }
   .hot-top ul {
     list-style-type: none;
@@ -395,7 +397,7 @@ h2 {
         vertical-align: middle; }
       .hot-top ul li .hotline {
         font-family: 'Lora', serif;
-        font-size: 24px;
+        font-size: 20px;
         font-weight: 300;
         vertical-align: middle; }
 
@@ -781,9 +783,9 @@ ul.m-sidebar {
     -webkit-transition: all 0.3s ease 0s;
     -moz-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
-    color: rgba(143, 212, 0, 0.9); }
+    color: rgba(68, 170, 108, 0.9); }
     #back-top a:hover {
-      color: #8fd400; }
+      color: #44aa6c; }
 
 .login-menu {
   color: #fff; }
@@ -839,8 +841,8 @@ ul.m-sidebar {
   position: relative; }
 
 .btn-oil {
-  border: 2px solid #ffef00;
-  color: #ffef00;
+  border: 2px solid #c4d400;
+  color: #c4d400;
   background: transparent;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;

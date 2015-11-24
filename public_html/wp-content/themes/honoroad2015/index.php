@@ -143,7 +143,7 @@ if ($loop->have_posts()) {
                             </div>
                         </div>
                         <?php if (get_field('show_button')): ?>
-                            <a href="<?php echo (get_field('link_to') != '') ? get_field('link_to') : get_permalink() ?>" class="btn btn-oil center-block"><i class="fa fa-angle-double-right fa-3x"></i></a>
+                            <a href="<?php echo (get_field('link_to') != '') ? get_field('link_to') : get_permalink() ?>" class="btn btn-oil center-block"><i class="fa fa-angle-double-right fa-2x"></i></a>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -154,42 +154,6 @@ if ($loop->have_posts()) {
     </div>
 </div>
 <!-- information end -->
-
-<!-- main bottom -->
-<div id="main-bottom" class="margin-top-lg">
-    <div class="container">
-        <div class="row">
-            <?php
-            $i = 1;
-            $args = array(
-                'post_type' => 'partner-info',
-                'posts_per_page' => -1,
-            );
-            $loop = new WP_Query($args);
-            ?>
-            <?php if ($loop->have_posts()): ?>
-                <?php while ($loop->have_posts()): $loop->the_post(); ?>
-                    <?php
-                    $image = get_field('logo');
-                    // thumbnail
-                    $size = 'medium';
-                    $thumb_logo = $image['sizes'][$size];
-                    ?>
-                    <div class="col-xs-12 col-md-4 wow fadeInUp" data-wow-delay="<?php echo $i * 0.25 ?>s">
-                        <article>
-                            <figure>
-                                <img class="img-responsive center-block" src="<?php echo $thumb_logo ?>"/>
-                            </figure>
-                        </article>
-                    </div>
-                    <?php $i++; ?>
-                <?php endwhile; ?>
-            <?php endif; ?>
-            <?php wp_reset_postdata() ?>
-        </div>
-    </div>
-</div>
-<!-- main bottom end -->
 
 <?php get_template_part('part-company-info') ?>
 

@@ -2,7 +2,7 @@
 global $omw_theme_settings;
 ?>
 <!-- bottom -->
-<div id="bottom">
+<div id="bottom" class="margin-top-xl">
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-md-3 wow fadeInUp" data-wow-delay="0.25s">

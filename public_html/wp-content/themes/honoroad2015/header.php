@@ -84,13 +84,16 @@
                         <div class="navbar-collapse collapse nopadding">
                             <ul class="top-menu">
                                 <li><a class="nav-title active" href="<?php bloginfo('url') ?>"><span>Trang chủ</span></a></li>
+                                <li><a class="nav-title" href="<?php bloginfo('url') ?>/about-us"><span>Giới thiệu</span></a></li>
                                 <li>
-                                    <a class="nav-title" href="javascript:void(0)"><span>Giới thiệu</span></a>
+                                    <a class="nav-title" href="<?php bloginfo('url') ?>/san-pham"><span>Sản phẩm</span></a>
                                     <ul>
                                         <?php
                                         $args = array(
-                                            'post_type' => 'top-about',
-                                            'posts_per_page' => 3,
+                                            'post_type' => 'product',
+                                            'posts_per_page' => -1,
+                                            'orderby' => 'title',
+                                            'order' => 'ASC',
                                         );
                                         $loop = new WP_Query($args);
                                         ?>
@@ -100,27 +103,27 @@
                                             <?php endwhile; ?>
                                         <?php endif; ?>
                                         <?php wp_reset_postdata() ?>
-                                        <li><a href="<?php bloginfo('url') ?>/news">Tin tức</a></li>
                                     </ul>
                                 </li>
-                                <li><a class="nav-title" href="<?php bloginfo('url') ?>/product"><span>Sản phẩm</span></a></li>
-                                <li><a class="nav-title" href="<?php bloginfo('url') ?>/recruit"><span>Tuyển dụng</span></a></li>
-                                <li><a class="nav-title" href="<?php bloginfo('url') ?>/contact"><span>Liên hệ</span></a></li>
-                                <li class="menu-search">
+                                <li>
+                                    <a class="" href="javascript:void(0);"><span>Tin tức</span></a>
                                     <ul>
-                                        <li>
-                                            <div>
-                                                <ul>
-                                                    <li>
-                                                        <form class="nav-form">
-
-                                                        </form>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
+                                        <?php
+                                        $args = array(
+                                            'hide_empty' => 0
+                                        );
+                                        $terms = get_terms('news-type', $args);
+                                        ?>
+                                        <?php foreach ($terms as $term): ?>
+                                            <li><a class="" href="<?php bloginfo('url') ?>/news/<?php echo $term->slug ?>"><?php echo $term->name ?></a></li>
+                                        <?php endforeach; ?>
+                                        <li><a class="" href="<?php bloginfo('url') ?>/recruit"><span>Tuyển dụng</span></a></li>
                                     </ul>
                                 </li>
+                                <li><a class="" href="<?php bloginfo('url') ?>/heath-nutrition"><span>Sức khỏe và Dinh dưỡng</span></a></li>
+                                <li><a class="" href="<?php bloginfo('url') ?>/heath-nutrition"><span>Chính sách</span></a></li>
+                                <li><a class="" href="<?php bloginfo('url') ?>/order"><span>Đặt hàng</span></a></li>
+                                <li><a class="" href="<?php bloginfo('url') ?>/contact"><span>Liên hệ</span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -147,7 +150,7 @@
                     'depth' => 0,
                     'walker' => ''
                 );
-                wp_nav_menu($defaults);
+//                wp_nav_menu($defaults);
                 ?>
                                 </nav>
                                 <nav id="nav" class="navbar navbar-defaultx navbar-oil">
@@ -170,7 +173,7 @@
                     'depth' => 0,
                     'walker' => ''
                 );
-                wp_nav_menu($defaults);
+//                wp_nav_menu($defaults);
                 ?>
                                 </nav>-->
                 <!--  wp menu //-->
@@ -178,13 +181,16 @@
                 <!--side-bar-->
                 <ul id="sidr" class="m-sidebar">
                     <li><a class="active" href="<?php bloginfo('url') ?>"><span>Trang chủ</span></a></li>
+                    <li><a class="" href="javascript:void(0)"><span>Giới thiệu</span></a></li>
                     <li>
-                        <a class="" href="javascript:void(0)"><span>Giới thiệu</span></a>
+                        <a class="" href="<?php bloginfo('url') ?>/product"><span>Sản phẩm</span></a>
                         <ul class="sub-menu-sidr">
                             <?php
                             $args = array(
-                                'post_type' => 'top-about',
-                                'posts_per_page' => 3,
+                                'post_type' => 'product',
+                                'posts_per_page' => -1,
+                                'orderby' => 'title',
+                                'order' => 'ASC',
                             );
                             $loop = new WP_Query($args);
                             ?>
@@ -194,18 +200,27 @@
                                 <?php endwhile; ?>
                             <?php endif; ?>
                             <?php wp_reset_postdata() ?>
-                            <li><a href="<?php bloginfo('url') ?>/news">Tin tức</a></li>
                         </ul>
                     </li>
-                    <li><a class="" href="<?php bloginfo('url') ?>/product"><span>Sản phẩm</span></a></li>
-                    <li><a class="" href="<?php bloginfo('url') ?>/recruit"><span>Tuyển dụng</span></a></li>
-                    <li><a class="" href="<?php bloginfo('url') ?>/contact"><span>Liên hệ</span></a></li>
-                    <li class="menu-search">
                     <li>
-                        <form class="nav-form">
-
-                        </form>
+                        <a class="" href="javascript:void(0);"><span>Tin tức</span></a>
+                        <ul class="sub-menu-sidr">
+                            <?php
+                            $args = array(
+                                'hide_empty' => 0
+                            );
+                            $terms = get_terms('news-type', $args);
+                            ?>
+                            <?php foreach ($terms as $term): ?>
+                                <li><a class="" href="<?php bloginfo('url') ?>/news/<?php echo $term->slug ?>"><?php echo $term->name ?></a></li>
+                            <?php endforeach; ?>
+                            <li><a class="" href="<?php bloginfo('url') ?>/recruit"><span>Tuyển dụng</span></a></li>
+                        </ul>
                     </li>
+                    <li><a class="" href="<?php bloginfo('url') ?>/heath-nutrition"><span>Sức khỏe và Dinh dưỡng</span></a></li>
+                    <li><a class="" href="<?php bloginfo('url') ?>/heath-nutrition"><span>Chính sách</span></a></li>
+                    <li><a class="" href="<?php bloginfo('url') ?>/order"><span>Đặt hàng</span></a></li>
+                    <li><a class="" href="<?php bloginfo('url') ?>/contact"><span>Liên hệ</span></a></li>
                 </ul>
                 <!--side-bar-->
             </header>

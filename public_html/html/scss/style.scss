@@ -97,7 +97,7 @@ $paddings: (xs: 0.5rem, sm: 1rem, md: 1.5rem, lg: 2rem, xl: 2.5rem, xxl: 3rem);
                 vertical-align: middle;
             }
             .hotline{
-                @include phone-number(24px, 300);
+                @include phone-number(20px, 300);
                 vertical-align: middle;
             }
         }
@@ -653,8 +653,8 @@ ul.m-sidebar{
 }
 
 .btn-oil{
-    border: 2px solid $menu-bg;
-    color: $menu-bg;
+    border: 2px solid $bottom-bg;
+    color: $bottom-bg;
     background: transparent;
     @include border-radius(0);
     @include transition(0.2s);

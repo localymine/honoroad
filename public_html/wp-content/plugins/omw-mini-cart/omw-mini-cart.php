@@ -135,6 +135,7 @@ class omw_mini_cart {
 
     /**
      * 
+     * order_status: incomplete,pending,process,partially_shipped,shipping,shiped,partially_returned,returned,canceled
      * @global type $wpdb
      */
     public function register_table() {
@@ -155,7 +156,7 @@ class omw_mini_cart {
             quantity int(12) DEFAULT '0' NOT NULL,
             price int(12) DEFAULT '0' NOT NULL,
             price_total int(12) DEFAULT '0' NOT NULL,
-            order_status DEFAULT NOT NULL COMMENT 'incomplete,pending,process,partially_shipped,shipping,shiped,partially_returned,returned,canceled',
+            order_status varchar(32) DEFAULT '' NOT NULL,
             order_status_last_date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
             UNIQUE KEY id (id)
             ) $charset_collate;";
@@ -165,8 +166,9 @@ class omw_mini_cart {
         $sql_2 = "CREATE TABLE $table_minicart_history (
             id int(12) NOT NULL AUTO_INCREMENT,
             id_product int(12) NOT NULL,
-            order_status DEFAULT NOT NULL COMMENT 'incomplete,pending,process,partially_shipped,shipping,shiped,partially_returned,returned,canceled',
+            order_status varchar(32) DEFAULT '' NOT NULL,
             order_status_date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+            UNIQUE KEY id (id)
                 ) $charset_collate;";
 
         require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
