@@ -38,8 +38,8 @@ function cptui_register_my_cpts() {
         "supports" => array("title"),
     );
     register_post_type("home-slider", $args);
-    
-    
+
+
     $labels = array(
         "name" => "Product",
         "singular_name" => "Product",
@@ -64,32 +64,6 @@ function cptui_register_my_cpts() {
         "supports" => array("title"),
     );
     register_post_type("product", $args);
-    
-
-//    $labels = array(
-//        "name" => "Product",
-//        "singular_name" => "Product",
-//        "menu_name" => "Sản phẩm",
-//    );
-//
-//    $args = array(
-//        "labels" => $labels,
-//        "description" => "",
-//        "public" => true,
-//        "show_ui" => true,
-//        "has_archive" => true,
-//        "show_in_menu" => true,
-//        "exclude_from_search" => false,
-//        "capability_type" => "post",
-//        "map_meta_cap" => true,
-//        "hierarchical" => true,
-//        "rewrite" => array("slug" => "san-pham", "with_front" => true),
-//        "query_var" => true,
-//        "menu_position" => 26,
-//        "menu_icon" => get_template_directory_uri() . '/images/ad-ico/h2.png',
-//        "supports" => array("title"),
-//    );
-//    register_post_type("san-pham", $args);
 
     $labels = array(
         "name" => "Top Info",
@@ -108,63 +82,13 @@ function cptui_register_my_cpts() {
         "capability_type" => "post",
         "map_meta_cap" => true,
         "hierarchical" => false,
-        "rewrite" => array("slug" => "top-info", "with_front" => true),
+        "rewrite" => array("slug" => "info", "with_front" => true),
         "query_var" => true,
         "menu_position" => 26,
         "menu_icon" => get_template_directory_uri() . '/images/ad-ico/h3.png',
         "supports" => array("title", "editor", "excerpt"),
     );
-    register_post_type("top-info", $args);
-
-//    $labels = array(
-//        "name" => "Partner Info",
-//        "singular_name" => "Partner Info",
-//        "menu_name" => "Đối tác",
-//    );
-//
-//    $args = array(
-//        "labels" => $labels,
-//        "description" => "",
-//        "public" => true,
-//        "show_ui" => true,
-//        "has_archive" => false,
-//        "show_in_menu" => true,
-//        "exclude_from_search" => false,
-//        "capability_type" => "post",
-//        "map_meta_cap" => true,
-//        "hierarchical" => false,
-//        "rewrite" => array("slug" => "doi-tac", "with_front" => true),
-//        "query_var" => true,
-//        "menu_position" => 26,
-//        "menu_icon" => get_template_directory_uri() . '/images/ad-ico/h4.png',
-//        "supports" => array("title"),
-//    );
-//    register_post_type("doi-tac", $args);
-
-    $labels = array(
-        "name" => "Recruit",
-        "singular_name" => "Recruit",
-        "menu_name" => "Tuyển dụng",
-    );
-
-    $args = array(
-        "labels" => $labels,
-        "description" => "",
-        "public" => true,
-        "show_ui" => true,
-        "has_archive" => false,
-        "show_in_menu" => true,
-        "exclude_from_search" => false,
-        "capability_type" => "post",
-        "map_meta_cap" => true,
-        "hierarchical" => false,
-        "rewrite" => array("slug" => "recruit", "with_front" => true),
-        "query_var" => true,
-        "menu_position" => 26,
-        "menu_icon" => get_template_directory_uri() . '/images/ad-ico/h5.png',
-        "supports" => array("title", "editor"),
-    );
-    register_post_type("recruit", $args);
+    register_post_type("info", $args);
 
     $labels = array(
         "name" => "News",
@@ -229,26 +153,9 @@ function cptui_register_my_taxes() {
         "show_ui" => true,
         "query_var" => true,
         "rewrite" => array('slug' => 'news-type', 'with_front' => true),
-        "show_admin_column" => false,
+        "show_admin_column" => true,
     );
     register_taxonomy("news-type", array("news"), $args);
-    
-    $labels = array(
-        "name" => "News Type test",
-        "label" => "News Type test",
-    );
-
-    $args = array(
-        "labels" => $labels,
-        "hierarchical" => true,
-        "label" => "News Type",
-        "show_ui" => true,
-        "query_var" => true,
-        "rewrite" => array('slug' => 'news_type', 'with_front' => true),
-        "show_admin_column" => false,
-    );
-    register_taxonomy("news_type", array("news"), $args);
-
 
 // End cptui_register_my_taxes
 }
@@ -747,17 +654,16 @@ if (function_exists("register_field_group")) {
     ));
 
     register_field_group(array(
-        'id' => 'acf_partner-info',
-        'title' => 'Partner Info',
+        'id' => 'acf_news',
+        'title' => 'News',
         'fields' => array(
             array(
-                'key' => 'field_5645ed2229524',
-                'label' => 'Logo',
-                'name' => 'logo',
+                'key' => 'field_5657396f9fdc8',
+                'label' => 'Image',
+                'name' => 'image',
                 'type' => 'image',
                 'save_format' => 'object',
                 'preview_size' => 'thumbnail',
-                'library' => 'all',
             ),
         ),
         'location' => array(
@@ -765,7 +671,7 @@ if (function_exists("register_field_group")) {
                 array(
                     'param' => 'post_type',
                     'operator' => '==',
-                    'value' => 'doi-tac',
+                    'value' => 'news',
                     'order_no' => 0,
                     'group_no' => 0,
                 ),

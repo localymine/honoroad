@@ -998,6 +998,33 @@ ul.m-sidebar {
     background: #e0ffa1;
     box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.15); }
 
+.news .news-sidebar {
+  padding: 5px 0;
+  background: #white;
+  box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.15); }
+  .news .news-sidebar .title {
+    color: #fff;
+    background: #44aa6c;
+    padding: 7px 5px; }
+  .news .news-sidebar ul {
+    margin: 0;
+    padding-left: 5px;
+    list-style-type: none; }
+    .news .news-sidebar ul li .head-news-type {
+      margin-top: 10px;
+      color: #5b8800; }
+    .news .news-sidebar ul ul li {
+      margin-bottom: 5px; }
+      .news .news-sidebar ul ul li a {
+        display: block;
+        color: #5b8800; }
+        .news .news-sidebar ul ul li a:hover {
+          color: #7dbb00; }
+.news article.news-detail h2 {
+  padding-top: 10px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #44aa6c; }
+
 /*==========  Non-Mobile First Method  ==========*/
 /* Large Devices, Wide Screens */
 /*==========  Non-Mobile First Method  ==========*/

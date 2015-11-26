@@ -78,7 +78,7 @@
                                 </button>
                             </a>
                             <a class="navbar-brand nopadding" href="<?php bloginfo('url') ?>">
-                                <img class="img-responsive" src="<?php echo $logo->url ?>" alt="Honoroad" />
+                                <img class="img-responsive" src="<?php echo $logo->url ?>" alt="<?php echo $omw_theme_settings->ct_company_name ?>" />
                             </a>
                         </div>
                         <div class="navbar-collapse collapse nopadding">
@@ -117,11 +117,10 @@
                                         <?php foreach ($terms as $term): ?>
                                             <li><a class="" href="<?php bloginfo('url') ?>/news/<?php echo $term->slug ?>"><?php echo $term->name ?></a></li>
                                         <?php endforeach; ?>
-                                        <li><a class="" href="<?php bloginfo('url') ?>/recruit"><span>Tuyển dụng</span></a></li>
                                     </ul>
                                 </li>
                                 <li><a class="" href="<?php bloginfo('url') ?>/heath-nutrition"><span>Sức khỏe và Dinh dưỡng</span></a></li>
-                                <li><a class="" href="<?php bloginfo('url') ?>/heath-nutrition"><span>Chính sách</span></a></li>
+                                <li><a class="" href="<?php bloginfo('url') ?>/policy"><span>Chính sách</span></a></li>
                                 <li><a class="" href="<?php bloginfo('url') ?>/order"><span>Đặt hàng</span></a></li>
                                 <li><a class="" href="<?php bloginfo('url') ?>/contact"><span>Liên hệ</span></a></li>
                             </ul>
@@ -214,11 +213,10 @@
                             <?php foreach ($terms as $term): ?>
                                 <li><a class="" href="<?php bloginfo('url') ?>/news/<?php echo $term->slug ?>"><?php echo $term->name ?></a></li>
                             <?php endforeach; ?>
-                            <li><a class="" href="<?php bloginfo('url') ?>/recruit"><span>Tuyển dụng</span></a></li>
                         </ul>
                     </li>
                     <li><a class="" href="<?php bloginfo('url') ?>/heath-nutrition"><span>Sức khỏe và Dinh dưỡng</span></a></li>
-                    <li><a class="" href="<?php bloginfo('url') ?>/heath-nutrition"><span>Chính sách</span></a></li>
+                    <li><a class="" href="<?php bloginfo('url') ?>/policy"><span>Chính sách</span></a></li>
                     <li><a class="" href="<?php bloginfo('url') ?>/order"><span>Đặt hàng</span></a></li>
                     <li><a class="" href="<?php bloginfo('url') ?>/contact"><span>Liên hệ</span></a></li>
                 </ul>

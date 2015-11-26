@@ -30,7 +30,7 @@ get_header();
                     <li><a href="<?php bloginfo('url') ?>/news">Tin tức</a></li>
                     <?php
                     $args = array(
-                        'post_type' => 'top-about',
+                        'post_type' => 'info',
                         'posts_per_page' => -1,
                         'post__not_in' => array($post->ID),
                     );

@@ -1,5 +1,4 @@
 <?php
-
 //function register_my_menus() {
 //    register_nav_menus(
 //            array(
@@ -14,6 +13,7 @@
 //unregister_nav_menu('header-menu');
 
 /* ----------- Change Admin Default Logo & Url -------------------------------- */
+
 function my_login_logo() {
     ?>
     <style type="text/css">
