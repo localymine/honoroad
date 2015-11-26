@@ -13,7 +13,9 @@ $logo = (object) json_decode($omw_theme_settings->ct_company_logo);
                         <span class="copy"><i class="fa fa-copyright"></i></span>
                         <span class="year">2015</span>
                         <a class="privacy_link" href="<?php bloginfo('url') ?>/policy">Privacy Policy</a>
-                        <h5><?php echo $omw_theme_settings->ct_company ?></h5>
+                        <?php if ($omw_theme_settings->ct_company): ?>
+                            <h5><?php echo $omw_theme_settings->ct_company ?></h5>
+                        <?php endif; ?>
                     </span>
                 </div>
             </div>

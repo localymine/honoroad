@@ -177,7 +177,7 @@ function cptui_register_my_cpts() {
         "description" => "",
         "public" => true,
         "show_ui" => true,
-        "has_archive" => false,
+        "has_archive" => true,
         "show_in_menu" => true,
         "exclude_from_search" => false,
         "capability_type" => "post",
@@ -232,6 +232,22 @@ function cptui_register_my_taxes() {
         "show_admin_column" => false,
     );
     register_taxonomy("news-type", array("news"), $args);
+    
+    $labels = array(
+        "name" => "News Type test",
+        "label" => "News Type test",
+    );
+
+    $args = array(
+        "labels" => $labels,
+        "hierarchical" => true,
+        "label" => "News Type",
+        "show_ui" => true,
+        "query_var" => true,
+        "rewrite" => array('slug' => 'news_type', 'with_front' => true),
+        "show_admin_column" => false,
+    );
+    register_taxonomy("news_type", array("news"), $args);
 
 
 // End cptui_register_my_taxes
