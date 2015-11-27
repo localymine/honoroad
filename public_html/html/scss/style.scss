@@ -869,7 +869,7 @@ ul.m-sidebar{
     .news-sidebar{
         padding: 5px 0;
         background: #white; 
-        box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.15);
+        /*box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.15);*/
         .title{
             color: $white;
             background: $hot-top-bg;
@@ -891,6 +891,10 @@ ul.m-sidebar{
                     a{
                         display: block;
                         color: $menu-color;
+                        span{
+                            text-transform: capitalize;
+                            padding-left: 5px;
+                        }
                         &:hover{
                             color: $menu-color-active;
                         }
@@ -901,14 +905,56 @@ ul.m-sidebar{
     }
     article.news-detail{
         h2{
-            padding-top: 10px;
+            padding-top: 8px;
             padding-bottom: 5px;
             border-bottom: 2px solid $hot-top-bg;
             span{
-                
+                text-transform: capitalize;
             }
         }
     }
+    .news-most-ref{
+        .title{
+            padding-top: 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid $hot-top-bg;
+        }
+        ul{
+            margin: 0;
+            padding-left: 15px;
+            li{
+                a{
+                    display: block;
+                    color: $menu-color;
+                    span{
+                        text-transform: capitalize;
+                    }
+                    &:hover{
+                        color: $menu-color-active;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.header-sta-health{
+    background: url('../images/header-health.jpg');
+    min-height: 300px;
+    width: 100%;
+    border-top: 2px solid $hot-top-bg;
+    border-bottom: 2px solid $hot-top-bg;
+    h2{
+        margin: 0;
+        padding: 0;
+        text-align: cetner;
+    }
+}
+.fan-content{
+    display: none;
+}
+.fancybox-nav{
+    width: 30%;
 }
 
 @import "nmf-1-max-1200.scss";

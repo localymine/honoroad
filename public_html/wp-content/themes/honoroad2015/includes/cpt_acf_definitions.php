@@ -115,6 +115,31 @@ function cptui_register_my_cpts() {
     );
     register_post_type("news", $args);
 
+    $labels = array(
+        "name" => "Health & Nutrition",
+        "singular_name" => "Health & Nutrition",
+        "menu_name" => "Sức khỏe & Dinh dưỡng",
+    );
+
+    $args = array(
+        "labels" => $labels,
+        "description" => "",
+        "public" => true,
+        "show_ui" => true,
+        "has_archive" => true,
+        "show_in_menu" => true,
+        "exclude_from_search" => false,
+        "capability_type" => "post",
+        "map_meta_cap" => true,
+        "hierarchical" => false,
+        "rewrite" => array("slug" => "health", "with_front" => true),
+        "query_var" => true,
+        "menu_position" => 26,
+        "menu_icon" => get_template_directory_uri() . '/images/ad-ico/h7.png',
+        "supports" => array("title", "editor", "excerpt"),
+    );
+    register_post_type("health", $args);
+
 // End of cptui_register_my_cpts()
 }
 
@@ -638,7 +663,7 @@ if (function_exists("register_field_group")) {
                 array(
                     'param' => 'post_type',
                     'operator' => '==',
-                    'value' => 'top-info',
+                    'value' => 'info',
                     'order_no' => 0,
                     'group_no' => 0,
                 ),
@@ -672,6 +697,40 @@ if (function_exists("register_field_group")) {
                     'param' => 'post_type',
                     'operator' => '==',
                     'value' => 'news',
+                    'order_no' => 0,
+                    'group_no' => 0,
+                ),
+            ),
+        ),
+        'options' => array(
+            'position' => 'normal',
+            'layout' => 'no_box',
+            'hide_on_screen' => array(
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+
+    register_field_group(array(
+        'id' => 'acf_health',
+        'title' => 'Health',
+        'fields' => array(
+            array(
+                'key' => 'field_565802f94a54f',
+                'label' => 'Image',
+                'name' => 'image',
+                'type' => 'image',
+                'save_format' => 'object',
+                'preview_size' => 'thumbnail',
+                'library' => 'all',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'health',
                     'order_no' => 0,
                     'group_no' => 0,
                 ),

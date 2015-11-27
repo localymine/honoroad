@@ -125,7 +125,7 @@ if ($loop->have_posts()) {
         <?php
         $i = 1;
         $args = array(
-            'post_type' => 'top-info',
+            'post_type' => 'info',
             'posts_per_page' => 3,
         );
         $loop = new WP_Query($args);

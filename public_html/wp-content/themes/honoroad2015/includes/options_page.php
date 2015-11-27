@@ -1,4 +1,5 @@
 <?php
+
 //function register_my_menus() {
 //    register_nav_menus(
 //            array(
@@ -84,31 +85,62 @@ function remove_menus() {
 
 //add_action('admin_menu', 'remove_menus');
 
-/*----------------------------------------------------------------------------*/
-//add_filter('pll_translated_post_type_rewrite_slugs', function($post_type_translated_slugs) {
-//    // Add translation for "product" post type.
-//    $post_type_translated_slugs = array(
-//        'product' => array(
-//            'vi' => array(
-//                'has_archive' => true,
-//                'rewrite' => array(
-//                    'slug' => 'san-pham',
-//                ),
-//            ),
-//            'fr' => array(
-//                'has_archive' => true,
-//                'rewrite' => array(
-//                    'slug' => 'produit',
-//                ),
-//            ),
-//            'en' => array(
-//                'has_archive' => true,
-//                'rewrite' => array(
-//                    'slug' => 'product',
-//                ),
-//            ),
-//            
-//        ),
-//    );
-//    return $post_type_translated_slugs;
-//});
+/* ---------------------------------------------------------------------------- */
+
+/**
+ * 
+ * @param type $post_ID
+ * @return string
+ * 
+ * Reference http://wpsnipp.com/index.php/functions-php/track-post-views-without-a-plugin-using-post-meta/#
+ * 
+ */
+function getPostViews($post_ID, $count_key = '') {
+    if ($count_key == '') {
+        $count_key = 'post_views_count';
+    }
+    //
+    $count = get_post_meta($post_ID, $count_key, true);
+    if ($count == '') {
+        delete_post_meta($post_ID, $count_key);
+        add_post_meta($post_ID, $count_key, '0');
+        return "0";
+    }
+    return $count;
+}
+
+/**
+ * 
+ * @param type $post_ID
+ * 
+ * Reference http://wpsnipp.com/index.php/functions-php/track-post-views-without-a-plugin-using-post-meta/#
+ * 
+ */
+function setPostViews($post_ID, $count_key = '') {
+    if ($count_key == '') {
+        $count_key = 'post_views_count';
+    }
+    //
+    $current_date = date('Y-m-d H:i:s');
+    //
+    $count = get_post_meta($post_ID, $count_key, true);
+    if ($count == '') {
+        $count = 0;
+        delete_post_meta($post_ID, $count_key);
+        add_post_meta($post_ID, $count_key, '1');
+        add_post_meta($post_ID, $count_key . '_date', $current_date);
+    } else {
+        $current = strtotime($current_date);
+        $timestamp = strtotime(get_post_meta($post_ID, $count_key . '_date', true));
+        if (($current - $timestamp) < 10) {
+            // do nothing
+        } else {
+            $count++;
+            update_post_meta($post_ID, $count_key, $count);
+            update_post_meta($post_ID, $count_key . '_date', $current_date);
+        }
+    }
+}
+
+// Remove issues with prefetching adding extra views
+remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);

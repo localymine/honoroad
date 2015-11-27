@@ -7,6 +7,8 @@
 
 require_once 'includes/lib/ReCaptcha/src/autoload.php';
 
+global $omw_theme_settings;
+
 $secret = $omw_theme_settings->ct_recaptcha_private_key;
 
 if (isset($_POST['g-recaptcha-response'])) {

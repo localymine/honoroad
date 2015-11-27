@@ -4,6 +4,7 @@
  *
  */
 get_header();
+setPostViews($post->ID, 'view-news');
 ?>
 
 <div class="container news margin-top-xl margin-bottom-xl">
@@ -12,14 +13,14 @@ get_header();
             <?php get_sidebar('news-left') ?>
         </div>
         <div class="col-xs-12 col-md-9">
-            <div class="col-xs-12 col-md-10 nopadding">
+            <div class="col-xs-12 col-md-10 nopadding-left">
                 <article class="news-detail">
                     <h2><span><?php echo $post->post_title ?></span></h2>
                     <p><?php echo $post->post_content ?></p>
                 </article>
             </div>
             <div class="col-xs-12 col-md-2 nopadding">
-
+                <?php get_sidebar('news-right') ?>
             </div>
         </div>
     </div>

@@ -119,7 +119,7 @@
                                         <?php endforeach; ?>
                                     </ul>
                                 </li>
-                                <li><a class="" href="<?php bloginfo('url') ?>/heath-nutrition"><span>Sức khỏe và Dinh dưỡng</span></a></li>
+                                <li><a class="" href="<?php bloginfo('url') ?>/health"><span>Sức khỏe và Dinh dưỡng</span></a></li>
                                 <li><a class="" href="<?php bloginfo('url') ?>/policy"><span>Chính sách</span></a></li>
                                 <li><a class="" href="<?php bloginfo('url') ?>/order"><span>Đặt hàng</span></a></li>
                                 <li><a class="" href="<?php bloginfo('url') ?>/contact"><span>Liên hệ</span></a></li>
@@ -215,7 +215,7 @@
                             <?php endforeach; ?>
                         </ul>
                     </li>
-                    <li><a class="" href="<?php bloginfo('url') ?>/heath-nutrition"><span>Sức khỏe và Dinh dưỡng</span></a></li>
+                    <li><a class="" href="<?php bloginfo('url') ?>/health"><span>Sức khỏe và Dinh dưỡng</span></a></li>
                     <li><a class="" href="<?php bloginfo('url') ?>/policy"><span>Chính sách</span></a></li>
                     <li><a class="" href="<?php bloginfo('url') ?>/order"><span>Đặt hàng</span></a></li>
                     <li><a class="" href="<?php bloginfo('url') ?>/contact"><span>Liên hệ</span></a></li>

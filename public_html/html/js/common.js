@@ -223,11 +223,21 @@ $(function () {
 //                $('#captcha').innerHTML = "Captcha completed";
                 form.submit();
                 return false;
-            }            
+            }
         }
     });
 });
 
-$(function(){
-   $('.image-block').zoom();
+$(function () {
+    $('.image-block').zoom();
+
+    $('a.fancybox').attr('rel', 'health-news').fancybox({
+        minWidth: 200, // or whatever, default is 100
+        minHeight: 200, // default 100
+        maxWidth: 800, // default 9999
+        maxHeight: 900, // default 9999
+        afterLoad: function () {
+            this.content = $('#content-' + this.element.data('id')).html();
+        }
+    });
 });
