@@ -181,6 +181,22 @@ function cptui_register_my_taxes() {
         "show_admin_column" => true,
     );
     register_taxonomy("news-type", array("news"), $args);
+    
+    $labels = array(
+        "name" => "NewsType",
+        "label" => "NewsType",
+    );
+
+    $args = array(
+        "labels" => $labels,
+        "hierarchical" => true,
+        "label" => "News Type",
+        "show_ui" => true,
+        "query_var" => true,
+        "rewrite" => array('slug' => 'news_type', 'with_front' => true),
+        "show_admin_column" => true,
+    );
+    register_taxonomy("news_type", array("news"), $args);
 
 // End cptui_register_my_taxes
 }

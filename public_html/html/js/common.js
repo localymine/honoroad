@@ -228,8 +228,12 @@ $(function () {
     });
 });
 
+
 $(function () {
     $('.image-block').zoom();
+    
+    $('.health-nutri article').heightLine();
+    $('.news article').heightLine();
 
     $('a.fancybox').attr('rel', 'health-news').fancybox({
         minWidth: 200, // or whatever, default is 100
@@ -238,6 +242,12 @@ $(function () {
         maxHeight: 900, // default 9999
         afterLoad: function () {
             this.content = $('#content-' + this.element.data('id')).html();
+            //
+            $.ajax({
+                method: 'post',
+                url: '/wp-admin/admin-ajax.php',
+                data: {action: 'update_view', id: this.element.data('id')}
+            });
         }
     });
 });

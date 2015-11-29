@@ -9,4 +9,18 @@
     .carousel-inner > .item > img {
         height: auto;
     }
+
+    .news{
+        .news-most-ref{
+            ul{
+                li{
+                    a{
+                        span.ref-title{
+                            width: 254px;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

@@ -38,6 +38,7 @@ $logo = (object) json_decode($omw_theme_settings->ct_company_logo);
 <script src="<?php echo get_template_directory_uri() ?>/js/wow.min.js"></script>
 <script src="<?php echo get_template_directory_uri() ?>/js/jquery.validate.min.js"></script>
 <script src="<?php echo get_template_directory_uri() ?>/js/jquery.zoom.min.js"></script>
+<script src="<?php echo get_template_directory_uri() ?>/js/jquery.heightLine.js"></script>
 <script src="<?php echo get_template_directory_uri() ?>/js/common.js"></script>
 </body>
 </html>

@@ -18,11 +18,12 @@ get_header();
         $args = array(
             'post_type' => 'health',
             'posts_per_page' => 12,
+            'paged' => $paged,
         );
-        $loop = new WP_Query($args);
+        $wp_query = new WP_Query($args);
         ?>
-        <?php if ($loop->have_posts()): ?>
-            <?php while ($loop->have_posts()): $loop->the_post(); ?>
+        <?php if ($wp_query->have_posts()): ?>
+            <?php while ($wp_query->have_posts()): $wp_query->the_post(); ?>
                 <?php $image = get_field('image'); ?>
                 <div class="col-xs-12 col-md-3">
                     <article>
@@ -40,8 +41,13 @@ get_header();
                 </div>
             <?php endwhile; ?>
         <?php endif; ?>
-        <?php wp_reset_postdata() ?>
     </div>
+    <div class="row">
+        <div class="paging-navigation text-center">
+            <?php wpbeginner_numeric_posts_nav(); ?>
+        </div>
+    </div>
+    <?php wp_reset_postdata() ?>
 </div>
 
 <?php get_footer(); ?>

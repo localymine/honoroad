@@ -903,6 +903,11 @@ ul.m-sidebar{
             }
         }
     }
+    article.box{
+        h2{
+            padding: 5px;
+        }
+    }
     article.news-detail{
         h2{
             padding-top: 8px;
@@ -921,17 +926,41 @@ ul.m-sidebar{
         }
         ul{
             margin: 0;
-            padding-left: 15px;
+            padding-left: 0px;
+            list-style-type: none;
             li{
+                @include transition(0.3s);
+                background: lighten($hot-top-bg, 10%);
                 a{
+                    @include transition(0.3s);
                     display: block;
-                    color: $menu-color;
-                    span{
+                    color: $white;
+                    span.num{
+                        background: #ccc;
+                        display: inline-block;
+                        font-size: 2em;
+                        padding: 5px 10px;
+                        vertical-align: middle;
+                    }
+                    span.ref-title{
                         text-transform: capitalize;
+                        display: inline-block;
+                        padding: 5px 10px;
+                        vertical-align: middle;
+                        word-break: keep-all;
+                        white-space: -moz-pre-wrap; /* Mozilla */
+                        white-space: -o-pre-wrap; /* Opera 7 */
+                        white-space: pre-wrap;  /* CSS 2.1 */
+                        white-space: pre-line; /* CSS 3 */
+                        word-wrap: break-word; /* IE */
+                        width: 226px;
                     }
                     &:hover{
-                        color: $menu-color-active;
+                        color: $menu-color;
                     }
+                }
+                &:hover{
+                    background: #ccc;
                 }
             }
         }
@@ -955,6 +984,58 @@ ul.m-sidebar{
 }
 .fancybox-nav{
     width: 30%;
+}
+.health-nutri{
+    article{
+        border: 1px solid $image-border-color; 
+        padding: 10px; 
+        text-align: center;
+        h2{
+            margin: 0;
+            padding-top: 10px;
+            padding-bottom: 5px;
+        }
+    }
+}
+.fancybox-inner{
+    h2{
+        color: $menu-color;
+    }
+}
+
+.pagination{
+    > li:first-child{
+        > a, > span{
+            @include border-radius(0);
+        }
+    }
+    > li:last-child{
+        > a, > span{
+            @include border-radius(0);
+        }
+    }
+    > li{
+        > a, > span{
+            background-color: transparent;
+            border: 1px solid $image-border-color;
+            color: $menu-color;
+            @include border-radius(0);
+        }  
+    }
+    > li {
+        > a:hover, > a:focus, > span:hover, > span:focus{
+            background-color: $menu-color;
+            border: 1px solid $image-border-color;
+            color: $white;
+        }
+    }
+    > .active{
+        > a, > a:hover, > a:focus, > span, > span:hover, > span:focus{
+            background-color: $menu-color;
+            border: 1px solid $image-border-color;
+            color: $white;
+        }
+    }
 }
 
 @import "nmf-1-max-1200.scss";

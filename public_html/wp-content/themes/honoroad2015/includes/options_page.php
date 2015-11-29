@@ -1,5 +1,4 @@
 <?php
-
 //function register_my_menus() {
 //    register_nav_menus(
 //            array(
@@ -12,6 +11,40 @@
 //
 //
 //unregister_nav_menu('header-menu');
+
+/* ------------------------------------------------------------ theme support */
+global $theme_options;
+$theme_options = get_option('my_theme_option');
+add_action('wp_footer', 'add_custom_script');
+
+function add_custom_script() {
+    global $theme_options;
+    $script = '';
+    //Google Analytics
+    if (isset($theme_options['ct_google_analytics'])) {
+        $script .= $theme_options['ct_google_analytics'];
+    }
+    if (isset($theme_options['ct_google_tag_manager'])) {
+        $script .= $theme_options['ct_google_tag_manager'];
+    }
+    // Social Network
+    if (isset($theme_options['ct_facebook_script'])) {
+        $script .= $theme_options['ct_facebook_script'];
+    }
+    if (isset($theme_options['ct_google_plus_script'])) {
+        $script .= $theme_options['ct_google_plus_script'];
+    }
+    if (isset($theme_options['ct_twitter_script'])) {
+        $script .= $theme_options['ct_twitter_script'];
+    }
+    // Custom Script
+    if (isset($theme_options['ct_custom_script'])) {
+        $script .= $theme_options['ct_custom_script'];
+    }
+    echo stripslashes($script);
+}
+
+/* --------------------------------------------------------------------------- */
 
 /* ----------- Change Admin Default Logo & Url -------------------------------- */
 
@@ -44,11 +77,6 @@ add_filter('login_headertitle', 'my_login_logo_url_title');
 
 /* ----------------------------------------------------------------------- Menu */
 
-//function remove_menus_from_plugins() {
-//    remove_menu_page('cptui_main_menu');          // CPT
-//}
-//add_action('admin_init', 'remove_menus_from_plugins');
-
 function remove_menus() {
 
     global $user_ID;
@@ -59,8 +87,7 @@ function remove_menus() {
     $arr_roles = array('administrator');
 
     if (in_array($role, $arr_roles)) {
-        remove_menu_page('edit.php?post_type=acf');     // ACF
-        remove_menu_page('cptui_main_menu');          // CPT
+//        remove_menu_page('cptui_main_menu');          // CPT
         remove_menu_page('index.php');                  //Dashboard
         remove_menu_page('edit.php');                   //Posts
 //        remove_menu_page('upload.php');                 //Media
@@ -84,63 +111,3 @@ function remove_menus() {
 }
 
 //add_action('admin_menu', 'remove_menus');
-
-/* ---------------------------------------------------------------------------- */
-
-/**
- * 
- * @param type $post_ID
- * @return string
- * 
- * Reference http://wpsnipp.com/index.php/functions-php/track-post-views-without-a-plugin-using-post-meta/#
- * 
- */
-function getPostViews($post_ID, $count_key = '') {
-    if ($count_key == '') {
-        $count_key = 'post_views_count';
-    }
-    //
-    $count = get_post_meta($post_ID, $count_key, true);
-    if ($count == '') {
-        delete_post_meta($post_ID, $count_key);
-        add_post_meta($post_ID, $count_key, '0');
-        return "0";
-    }
-    return $count;
-}
-
-/**
- * 
- * @param type $post_ID
- * 
- * Reference http://wpsnipp.com/index.php/functions-php/track-post-views-without-a-plugin-using-post-meta/#
- * 
- */
-function setPostViews($post_ID, $count_key = '') {
-    if ($count_key == '') {
-        $count_key = 'post_views_count';
-    }
-    //
-    $current_date = date('Y-m-d H:i:s');
-    //
-    $count = get_post_meta($post_ID, $count_key, true);
-    if ($count == '') {
-        $count = 0;
-        delete_post_meta($post_ID, $count_key);
-        add_post_meta($post_ID, $count_key, '1');
-        add_post_meta($post_ID, $count_key . '_date', $current_date);
-    } else {
-        $current = strtotime($current_date);
-        $timestamp = strtotime(get_post_meta($post_ID, $count_key . '_date', true));
-        if (($current - $timestamp) < 10) {
-            // do nothing
-        } else {
-            $count++;
-            update_post_meta($post_ID, $count_key, $count);
-            update_post_meta($post_ID, $count_key . '_date', $current_date);
-        }
-    }
-}
-
-// Remove issues with prefetching adding extra views
-remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);

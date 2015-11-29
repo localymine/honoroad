@@ -3,7 +3,7 @@
     <ul>
         <?php
         $args = array(
-            'hide_empty' => 1
+            'hide_empty' => 0
         );
         $terms = get_terms('news-type', $args);
         ?>

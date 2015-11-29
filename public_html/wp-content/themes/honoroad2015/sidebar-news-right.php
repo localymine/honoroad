@@ -2,8 +2,8 @@
     <h4 class="title"><span>Tin xem nhiều</span></h4>
     <?php
     $args = array(
-        'post_type' => 'news',
-        'posts_per_page' => 10,
+        'post_type' => array('news', 'health'),
+        'posts_per_page' => 9,
         'order' => 'DESC',
         'orderby' => 'meta_value_num',
         'meta_key' => 'view-news',
@@ -17,15 +17,17 @@
         ),
     );
     $loop = new WP_Query($args);
+    $i = 1;
     ?>
     <ul>
         <?php if ($loop->have_posts()): ?>
             <?php while ($loop->have_posts()): $loop->the_post(); ?>
                 <li>
                     <a href="<?php the_permalink() ?>">
-                        <span><?php the_title() ?></span>
+                        <span class="num"><?php echo $i ?></span><span class="ref-title"><?php the_title() ?></span>
                     </a>
                 </li>
+                <?php $i++ ?>
             <?php endwhile; ?>
         <?php endif; ?>
         <?php wp_reset_postdata() ?>
