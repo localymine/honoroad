@@ -107,7 +107,7 @@ function cptui_register_my_cpts() {
         "capability_type" => "post",
         "map_meta_cap" => true,
         "hierarchical" => false,
-        "rewrite" => array("slug" => "news", "with_front" => true),
+        "rewrite" => array("slug" => "news/%news-type%", "with_front" => true),
         "query_var" => true,
         "menu_position" => 26,
         "menu_icon" => get_template_directory_uri() . '/images/ad-ico/h6.png',
@@ -166,9 +166,41 @@ function cptui_register_my_taxes() {
     );
     register_taxonomy("product-line", array("product"), $args);
 
+//    $labels = array(
+//        "name" => "News Type",
+//        "label" => "News Type",
+//    );
+//
+//    $args = array(
+//        "labels" => $labels,
+//        "hierarchical" => true,
+//        "label" => "News Type",
+//        "show_ui" => true,
+//        "query_var" => true,
+//        "rewrite" => array('slug' => 'news-type', 'with_front' => true),
+//        "show_admin_column" => true,
+//    );
+//    register_taxonomy("news-type", array("news"), $args);
+//    
+//    $labels = array(
+//        "name" => "News Category",
+//        "label" => "News Category",
+//    );
+//    $args = array(
+//        "labels" => $labels,
+//        "hierarchical" => true,
+//        "label" => "News Category",
+//        "show_ui" => true,
+////        "query_var" => true,
+//        "query_var" => 'news',
+//        "rewrite" => array('slug' => 'news'),
+//        "show_admin_column" => true,
+//    );
+//    register_taxonomy("news", array("news"), $args);
+
     $labels = array(
-        "name" => "News Type",
-        "label" => "News Type",
+        "name" => "News Type Category",
+        "label" => "News Type Category",
     );
 
     $args = array(
@@ -177,26 +209,12 @@ function cptui_register_my_taxes() {
         "label" => "News Type",
         "show_ui" => true,
         "query_var" => true,
-        "rewrite" => array('slug' => 'news-type', 'with_front' => true),
+        "rewrite" => array('slug' => 'news', 'with_front' => true),
         "show_admin_column" => true,
     );
     register_taxonomy("news-type", array("news"), $args);
-    
-    $labels = array(
-        "name" => "NewsType",
-        "label" => "NewsType",
-    );
 
-    $args = array(
-        "labels" => $labels,
-        "hierarchical" => true,
-        "label" => "News Type",
-        "show_ui" => true,
-        "query_var" => true,
-        "rewrite" => array('slug' => 'news_type', 'with_front' => true),
-        "show_admin_column" => true,
-    );
-    register_taxonomy("news_type", array("news"), $args);
+
 
 // End cptui_register_my_taxes
 }
@@ -761,3 +779,64 @@ if (function_exists("register_field_group")) {
         'menu_order' => 0,
     ));
 }
+
+/* -------------------------------------------------------------------------- */
+
+/* F1iltro per modificare il permalink */
+add_filter('post_link', 'news_permalink', 1, 3);
+add_filter('post_type_link', 'news_permalink', 1, 3);
+
+function news_permalink($permalink, $post_id, $leavename) {
+    //con %brand% catturo il rewrite del Custom Post Type
+    if (strpos($permalink, '%news-type%') === FALSE)
+        return $permalink;
+    // Get post
+    $post = get_post($post_id);
+    if (!$post)
+        return $permalink;
+
+    // Get taxonomy terms
+    $terms = wp_get_object_terms($post->ID, 'news-type');
+    if (!is_wp_error($terms) && !empty($terms) && is_object($terms[0]))
+        $taxonomy_slug = $terms[0]->slug;
+    else
+        $taxonomy_slug = 'no-type';
+
+    return str_replace('%news-type%', $taxonomy_slug, $permalink);
+}
+
+/*
+ * Replace Taxonomy slug with Post Type slug in url
+ * Version: 1.1
+ */
+//function taxonomy_slug_rewrite($wp_rewrite) {
+//    $rules = array();
+//    // get all custom taxonomies
+//    $taxonomies = get_taxonomies(array('_builtin' => false), 'objects');
+//    // get all custom post types
+//    $post_types = get_post_types(array('public' => true, '_builtin' => false), 'objects');
+//     
+//    foreach ($post_types as $post_type) {
+//        foreach ($taxonomies as $taxonomy) {
+//         
+//            // go through all post types which this taxonomy is assigned to
+//            foreach ($taxonomy->object_type as $object_type) {
+//                 
+//                // check if taxonomy is registered for this custom type
+//                if ($object_type == $post_type->rewrite['slug']) {
+//             
+//                    // get category objects
+//                    $terms = get_categories(array('type' => $object_type, 'taxonomy' => $taxonomy->name, 'hide_empty' => 0));
+//             
+//                    // make rules
+//                    foreach ($terms as $term) {
+//                        $rules[$object_type . '/' . $term->slug . '/?$'] = 'index.php?' . $term->taxonomy . '=' . $term->slug;
+//                    }
+//                }
+//            }
+//        }
+//    }
+//    // merge with global rules
+//    $wp_rewrite->rules = $rules + $wp_rewrite->rules;
+//}
+//add_filter('generate_rewrite_rules', 'taxonomy_slug_rewrite');

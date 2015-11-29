@@ -115,13 +115,15 @@
                                         $terms = get_terms('news-type', $args);
                                         ?>
                                         <?php foreach ($terms as $term): ?>
-                                            <li><a class="" href="<?php bloginfo('url') ?>/news/<?php echo $term->slug ?>"><?php echo $term->name ?></a></li>
+                                            <li><a class="" href="<?php echo get_term_link($term) ?>"><?php echo $term->name ?></a></li>
                                         <?php endforeach; ?>
                                     </ul>
                                 </li>
                                 <li><a class="" href="<?php bloginfo('url') ?>/health"><span>Sức khỏe và Dinh dưỡng</span></a></li>
                                 <li><a class="" href="<?php bloginfo('url') ?>/policy"><span>Chính sách</span></a></li>
-                                <li><a class="" href="<?php bloginfo('url') ?>/order"><span>Đặt hàng</span></a></li>
+                                <?php if (is_user_logged_in() && current_user_can('b2b_customer')): ?>
+                                    <li><a class="" href="<?php bloginfo('url') ?>/order"><span>Đặt hàng</span></a></li>
+                                <?php endif; ?>
                                 <li><a class="" href="<?php bloginfo('url') ?>/contact"><span>Liên hệ</span></a></li>
                             </ul>
                         </div>
@@ -211,13 +213,15 @@
                             $terms = get_terms('news-type', $args);
                             ?>
                             <?php foreach ($terms as $term): ?>
-                                <li><a class="" href="<?php bloginfo('url') ?>/news/<?php echo $term->slug ?>"><?php echo $term->name ?></a></li>
+                                <li><a class="" href="<?php echo get_term_link($term) ?>"><?php echo $term->name ?></a></li>
                             <?php endforeach; ?>
                         </ul>
                     </li>
                     <li><a class="" href="<?php bloginfo('url') ?>/health"><span>Sức khỏe và Dinh dưỡng</span></a></li>
                     <li><a class="" href="<?php bloginfo('url') ?>/policy"><span>Chính sách</span></a></li>
-                    <li><a class="" href="<?php bloginfo('url') ?>/order"><span>Đặt hàng</span></a></li>
+                    <?php if (is_user_logged_in() && current_user_can('b2b_customer')): ?>
+                        <li><a class="" href="<?php bloginfo('url') ?>/order"><span>Đặt hàng</span></a></li>
+                    <?php endif; ?>
                     <li><a class="" href="<?php bloginfo('url') ?>/contact"><span>Liên hệ</span></a></li>
                 </ul>
                 <!--side-bar-->

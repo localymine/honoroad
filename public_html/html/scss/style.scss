@@ -874,6 +874,7 @@ ul.m-sidebar{
             color: $white;
             background: $hot-top-bg;
             padding: 7px 5px;
+            text-transform: capitalize;
         }
         ul{
             margin: 0;
@@ -881,8 +882,14 @@ ul.m-sidebar{
             list-style-type: none;
             li{
                 .head-news-type{
+                    text-transform: capitalize;
                     margin-top: 10px;
                     color: $menu-color;
+                }
+                &:hover{
+                    .head-news-type{
+                        color: $menu-color-active;
+                    }
                 }
             }
             ul{
@@ -918,11 +925,20 @@ ul.m-sidebar{
             }
         }
     }
+    h2.tax-title{
+        padding-top: 8px;
+        padding-bottom: 5px;
+        border-bottom: 2px solid $hot-top-bg;
+        span{
+            text-transform: capitalize;
+        }
+    }
     .news-most-ref{
         .title{
             padding-top: 10px;
             padding-bottom: 5px;
             border-bottom: 2px solid $hot-top-bg;
+            text-transform: capitalize;
         }
         ul{
             margin: 0;

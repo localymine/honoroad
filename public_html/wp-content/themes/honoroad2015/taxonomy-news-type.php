@@ -12,13 +12,23 @@ get_header();
             <?php get_sidebar('news-left') ?>
         </div>
         <div class="col-xs-12 col-md-7 nopadding">
+            <?php $term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy')); ?>
+            <h2 class="tax-title"><span><?php echo $term->name ?></span></h2>
+            
             <?php
             $args = array(
-                'post_type' => array('news', 'health'),
-                'posts_per_page' => 12,
+                'post_type' => array('news'),
+                'posts_per_page' => -1,
                 'order' => 'DESC',
                 'orderby' => 'post_date',
                 'paged' => $paged,
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'news-type',
+                        'field' => 'slug',
+                        'terms' => array(get_query_var('term')),
+                    ),
+                ),
             );
             $wp_query = new WP_Query($args);
             ?>

@@ -1,5 +1,6 @@
 <?php
 
+/* -------------------------------------------------------------------------- */
 add_action('wp_ajax_update_view', 'update_view');
 
 /**
@@ -77,7 +78,7 @@ function redirect_post_type_taxonomy() {
     }
 }
 
-add_action('template_redirect', 'redirect_post_type_taxonomy');
+//add_action('template_redirect', 'redirect_post_type_taxonomy');
 
 /**
  * 

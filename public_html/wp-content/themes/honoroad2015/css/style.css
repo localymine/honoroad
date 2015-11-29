@@ -1008,14 +1008,18 @@ ul.m-sidebar {
   .news .news-sidebar .title {
     color: #fff;
     background: #44aa6c;
-    padding: 7px 5px; }
+    padding: 7px 5px;
+    text-transform: capitalize; }
   .news .news-sidebar ul {
     margin: 0;
     padding-left: 5px;
     list-style-type: none; }
     .news .news-sidebar ul li .head-news-type {
+      text-transform: capitalize;
       margin-top: 10px;
       color: #5b8800; }
+    .news .news-sidebar ul li:hover .head-news-type {
+      color: #7dbb00; }
     .news .news-sidebar ul ul li {
       margin-bottom: 5px; }
       .news .news-sidebar ul ul li a {
@@ -1034,10 +1038,17 @@ ul.m-sidebar {
   border-bottom: 2px solid #44aa6c; }
   .news article.news-detail h2 span {
     text-transform: capitalize; }
+.news h2.tax-title {
+  padding-top: 8px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #44aa6c; }
+  .news h2.tax-title span {
+    text-transform: capitalize; }
 .news .news-most-ref .title {
   padding-top: 10px;
   padding-bottom: 5px;
-  border-bottom: 2px solid #44aa6c; }
+  border-bottom: 2px solid #44aa6c;
+  text-transform: capitalize; }
 .news .news-most-ref ul {
   margin: 0;
   padding-left: 0px;
