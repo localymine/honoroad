@@ -787,7 +787,7 @@ add_filter('post_link', 'news_permalink', 1, 3);
 add_filter('post_type_link', 'news_permalink', 1, 3);
 
 function news_permalink($permalink, $post_id, $leavename) {
-    //con %brand% catturo il rewrite del Custom Post Type
+    //replace %news-type% with custom post type category slug
     if (strpos($permalink, '%news-type%') === FALSE)
         return $permalink;
     // Get post

@@ -41,12 +41,11 @@ class register_assets {
 
 /* ---------------------------------------------------------------------------- */
 
-add_action('wp_print_scripts', 'omw_register_scripts');
+add_action('wp_enqueue_scripts', 'omw_register_load_scripts');
 
-function omw_register_scripts() {
-    //Change the key and url with yours
-    wp_register_script('my-js', get_template_directory_uri() . '/js/my-js.js', array( 'jquery' ) );
-    wp_enqueue_script('my-js');
+function omw_register_load_scripts() {
+//    wp_register_script('my-js', get_template_directory_uri() . '/js/my-js.js', array('jquery'), '', TRUE);
+//    wp_enqueue_script('my-js');
     //
     $dataToBePassed = array(
         'home_url' => home_url(),
