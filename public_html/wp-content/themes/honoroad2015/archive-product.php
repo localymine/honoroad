@@ -31,7 +31,7 @@ get_header();
         $loop = new WP_Query($args);
         ?>
         <div class="row margin-top-xl">
-            <h1 class="prod-cat"><span><?php echo $term->name ?></span></h1>
+            <!--<h1 class="prod-cat"><span><?php // echo $term->name ?></span></h1>-->
             <?php if ($loop->have_posts()): ?>
                 <?php while ($loop->have_posts()): $loop->the_post(); ?>
                     <div class="col-xs-12 col-md-4">

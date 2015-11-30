@@ -199,8 +199,9 @@ function cptui_register_my_taxes() {
 //    register_taxonomy("news", array("news"), $args);
 
     $labels = array(
-        "name" => "News Type Category",
-        "label" => "News Type Category",
+        "name" => "News",
+        "label" => "News Category",
+        "menu_name" => "News Category",
     );
 
     $args = array(

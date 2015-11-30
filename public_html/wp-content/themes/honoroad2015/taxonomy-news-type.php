@@ -12,8 +12,8 @@ get_header();
             <?php get_sidebar('news-left') ?>
         </div>
         <div class="col-xs-12 col-md-7 nopadding">
-            <?php $term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy')); ?>
-            <h2 class="tax-title"><span><?php echo $term->name ?></span></h2>
+            <?php // $term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy')); ?>
+            <!--<h2 class="tax-title"><span><?php // echo $term->name ?></span></h2>-->
             
             <?php
             $args = array(
@@ -35,11 +35,11 @@ get_header();
             <?php if ($wp_query->have_posts()): ?>
                 <?php while ($wp_query->have_posts()): $wp_query->the_post(); ?>
                     <?php $image = get_field('image'); ?>
-                    <div class="col-xs-12 col-md-3 padding-left-xs padding-right-xs margin-bottom-sm margin-top-xs">
-                        <article class="box">
+                    <div class="col-xs-12 col-md-12 padding-left-xs padding-right-xs margin-bottom-sm margin-top-xs">
+                        <article class="box-row">
                             <a href="<?php the_permalink() ?>">
                                 <figure>
-                                    <img src="<?php echo $image['sizes']['thumbnail'] ?>" class="img-responsive center-block" />
+                                    <img width="100" src="<?php echo $image['sizes']['thumbnail'] ?>" class="img-responsive center-block" />
                                 </figure>
                                 <h2><?php the_title() ?></h2>
                             </a>

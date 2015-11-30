@@ -91,19 +91,19 @@ get_header();
                     <div class="form-group">
                         <input type="text" id="re_title" name="re_title" value="" placeholder="Chủ đề" class="form-control" />
                     </div>
-                    <div class="form-group col-md-6 nopadding-left">
+                    <div class="form-group col-xs-12 col-md-6 nopadding-left">
                         <input type="text" id="re_name" name="re_name" value="" placeholder="Tên người liên hệ" class="form-control" />
                     </div>
-                    <div class="form-group col-md-6 nopadding-right">
+                    <div class="form-group col-xs-12 col-md-6 nopadding-right">
                         <input type="text" id="re_email" name="re_email" value="" placeholder="Email" class="form-control" />
                     </div>
                     <div class="form-group">
                         <input type="text" id="re_company" name="re_company" value="" placeholder="Tên công ty" class="form-control" />
                     </div>
-                    <div class="form-group col-md-6 nopadding-left">
+                    <div class="form-group col-xs-12 col-md-6 nopadding-left">
                         <input type="text" id="re_phone" name="re_phone" value="" placeholder="Điện thoại" class="form-control" />
                     </div>
-                    <div class="form-group col-md-6 nopadding-right">
+                    <div class="form-group col-xs-12 col-md-6 nopadding-right">
                         <input type="text" id="re_fax" name="re_fax" value="" placeholder="Fax" class="form-control" />
                     </div>
                     <div class="form-group">

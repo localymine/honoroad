@@ -1,4 +1,5 @@
 <?php
+
 //function register_my_menus() {
 //    register_nav_menus(
 //            array(
@@ -12,38 +13,31 @@
 //
 //unregister_nav_menu('header-menu');
 
-/* ------------------------------------------------------------ theme support */
-global $theme_options;
-$theme_options = get_option('my_theme_option');
-add_action('wp_footer', 'add_custom_script');
-
-function add_custom_script() {
-    global $theme_options;
-    $script = '';
-    //Google Analytics
-    if (isset($theme_options['ct_google_analytics'])) {
-        $script .= $theme_options['ct_google_analytics'];
+/* ---------------------------------------------------------------------Title */
+function omw_set_wp_title($title, $sep) {
+    global $page, $paged;
+    if (is_feed()) {
+        return $title;
     }
-    if (isset($theme_options['ct_google_tag_manager'])) {
-        $script .= $theme_options['ct_google_tag_manager'];
-    }
-    // Social Network
-    if (isset($theme_options['ct_facebook_script'])) {
-        $script .= $theme_options['ct_facebook_script'];
-    }
-    if (isset($theme_options['ct_google_plus_script'])) {
-        $script .= $theme_options['ct_google_plus_script'];
-    }
-    if (isset($theme_options['ct_twitter_script'])) {
-        $script .= $theme_options['ct_twitter_script'];
-    }
-    // Custom Script
-    if (isset($theme_options['ct_custom_script'])) {
-        $script .= $theme_options['ct_custom_script'];
-    }
-    echo stripslashes($script);
+    // Add the site name.
+    $title .= get_bloginfo('name');
+    //
+    return $title;
 }
 
+add_filter('wp_title', 'omw_set_wp_title', 10, 2);
+
+/* --------------------------------------------------------------------- menu */
+
+function breadcrumbs_on_post_start() {
+    if (function_exists('bcn_display')) {
+        echo '<div class="breadcrumbs">';
+        bcn_display();
+        echo '</div>';
+    }
+}
+
+add_action('themify_post_start', 'breadcrumbs_on_post_start');
 /* --------------------------------------------------------------------------- */
 
 /* ----------- Change Admin Default Logo & Url -------------------------------- */

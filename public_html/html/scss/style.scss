@@ -911,8 +911,34 @@ ul.m-sidebar{
         }
     }
     article.box{
-        h2{
-            padding: 5px;
+        a{
+            h2{
+                padding: 5px;
+            }
+            &:hover{
+                h2{
+                    color: $menu-color;
+                }
+            }
+        }
+    }
+    article.box-row{
+        a{
+            display: table;
+            figure{
+                display: table-cell;
+            }
+            h2{
+                padding: 5px;
+                display: table-cell;
+                vertical-align: middle;
+                width: 100%;
+            }
+            &:hover{
+                h2{
+                    color: $menu-color;
+                }
+            }
         }
     }
     article.news-detail{

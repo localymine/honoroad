@@ -175,7 +175,7 @@ get_header();
                             $url = $feature_images['url'];
                             $feature_images_thumb = $feature_images['sizes']['medium'];
                             ?>
-                            <a class="fancybox" href="<?php echo $url ?>" rel="usage-products" class="col-md-3 nopadding"><img class="img-responsive" src="<?php echo $feature_images_thumb ?>" alt=""/></a>
+                            <a class="fancybox-features" href="<?php echo $url ?>" rel="usage-products" class="col-md-3 nopadding"><img class="img-responsive" src="<?php echo $feature_images_thumb ?>" alt=""/></a>
                             <?php endwhile; ?>
                     </div>
                 </div>

@@ -179,7 +179,7 @@ $(function () {
         });
     });
 
-    $(".fancybox").fancybox();
+    $(".fancybox-features").fancybox();
 });
 
 $(function () {

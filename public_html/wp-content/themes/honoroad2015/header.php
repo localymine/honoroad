@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Top Page</title>
+        <title><?php echo wp_title('｜', true, 'right') ?></title>
         <meta charset="UTF-8">
         <meta content="IE=9" http-equiv="X-UA-Compatible">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -182,7 +182,7 @@
                 <!--side-bar-->
                 <ul id="sidr" class="m-sidebar">
                     <li><a class="active" href="<?php bloginfo('url') ?>"><span>Trang chủ</span></a></li>
-                    <li><a class="" href="javascript:void(0)"><span>Giới thiệu</span></a></li>
+                    <li><a class="" href="<?php bloginfo('url') ?>/about-us"><span>Giới thiệu</span></a></li>
                     <li>
                         <a class="" href="<?php bloginfo('url') ?>/product"><span>Sản phẩm</span></a>
                         <ul class="sub-menu-sidr">

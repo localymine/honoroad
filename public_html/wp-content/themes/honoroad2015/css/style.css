@@ -1030,8 +1030,21 @@ ul.m-sidebar {
           padding-left: 5px; }
         .news .news-sidebar ul ul li a:hover {
           color: #7dbb00; }
-.news article.box h2 {
+.news article.box a h2 {
   padding: 5px; }
+.news article.box a:hover h2 {
+  color: #5b8800; }
+.news article.box-row a {
+  display: table; }
+  .news article.box-row a figure {
+    display: table-cell; }
+  .news article.box-row a h2 {
+    padding: 5px;
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%; }
+  .news article.box-row a:hover h2 {
+    color: #5b8800; }
 .news article.news-detail h2 {
   padding-top: 8px;
   padding-bottom: 5px;
@@ -1156,6 +1169,14 @@ ul.m-sidebar {
 /* Small Devices, Tablets */
 /*==========  Non-Mobile First Method  ==========*/
 /* Extra Small Devices, Phones */
+@media only screen and (max-width: 480px) {
+  .contact-info .contact-info-form {
+    width: 100%;
+    margin: 0 auto; }
+    .contact-info .contact-info-form .nopadding-left {
+      padding-right: 0; }
+    .contact-info .contact-info-form .nopadding-right {
+      padding-left: 0; } }
 /*==========  Non-Mobile First Method  ==========*/
 /* Custom, iPhone Retina */
 @media only screen and (max-width: 320px) {
