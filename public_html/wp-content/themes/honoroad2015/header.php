@@ -24,14 +24,24 @@
 
         <script src='https://www.google.com/recaptcha/api.js'></script>
         <?php
+        global $omw_active_menu;
         global $current_user;
         get_currentuserinfo();
         //
         global $omw_theme_settings;
         $logo = (object) json_decode($omw_theme_settings->ct_company_logo);
         ?>
+
+        <?php if ($omw_theme_settings->ct_use_css): ?>
+            <style type="text/css">
+                <?php echo $omw_theme_settings->ct_custom_css; ?>
+            </style>
+        <?php endif; ?>
     </head>
     <body>
+        <?php if (isset($omw_theme_settings->ct_facebook_script)) echo $omw_theme_settings->ct_facebook_script; ?>
+        <?php if (isset($omw_theme_settings->ct_google_plus_script)) echo $omw_theme_settings->ct_google_plus_script; ?>
+        <?php if (isset($omw_theme_settings->ct_twitter_script)) echo $omw_theme_settings->ct_twitter_script; ?>
         <div class="navbar-wrapper">
             <!-- hotline -->
             <header class="hot-top">
@@ -83,10 +93,10 @@
                         </div>
                         <div class="navbar-collapse collapse nopadding">
                             <ul class="top-menu">
-                                <li><a class="nav-title active" href="<?php bloginfo('url') ?>"><span>Trang chủ</span></a></li>
-                                <li><a class="nav-title" href="<?php bloginfo('url') ?>/about-us"><span>Giới thiệu</span></a></li>
+                                <li><a class="nav-title <?php echo $omw_active_menu['home'] ?>" href="<?php bloginfo('url') ?>"><span>Trang chủ</span></a></li>
+                                <li><a class="nav-title <?php echo $omw_active_menu['about-us'] ?>" href="<?php bloginfo('url') ?>/about-us"><span>Giới thiệu</span></a></li>
                                 <li>
-                                    <a class="nav-title" href="<?php bloginfo('url') ?>/product"><span>Sản phẩm</span></a>
+                                    <a class="nav-title <?php echo $omw_active_menu['product'] ?>" href="<?php bloginfo('url') ?>/product"><span>Sản phẩm</span></a>
                                     <ul>
                                         <?php
                                         $args = array(
@@ -106,7 +116,7 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a class="" href="javascript:void(0);"><span>Tin tức</span></a>
+                                    <a class="nav-title <?php echo $omw_active_menu['news'] ?>" href="javascript:void(0);"><span>Tin tức</span></a>
                                     <ul>
                                         <?php
                                         $args = array(
@@ -119,12 +129,12 @@
                                         <?php endforeach; ?>
                                     </ul>
                                 </li>
-                                <li><a class="" href="<?php bloginfo('url') ?>/health"><span>Sức khỏe và Dinh dưỡng</span></a></li>
-                                <li><a class="" href="<?php bloginfo('url') ?>/policy"><span>Chính sách</span></a></li>
+                                <li><a class="nav-title <?php echo $omw_active_menu['health'] ?>" href="<?php bloginfo('url') ?>/health"><span>Sức khỏe và Dinh dưỡng</span></a></li>
+                                <li><a class="nav-title <?php echo $omw_active_menu['policy'] ?>" href="<?php bloginfo('url') ?>/policy"><span>Chính sách</span></a></li>
                                 <?php if (is_user_logged_in() && current_user_can('b2b_customer')): ?>
-                                    <li><a class="" href="<?php bloginfo('url') ?>/order"><span>Đặt hàng</span></a></li>
+                                    <li><a class="nav-title <?php echo $omw_active_menu['order'] ?>" href="<?php bloginfo('url') ?>/order"><span>Đặt hàng</span></a></li>
                                 <?php endif; ?>
-                                <li><a class="" href="<?php bloginfo('url') ?>/contact"><span>Liên hệ</span></a></li>
+                                <li><a class="nav-title <?php echo $omw_active_menu['contact'] ?>" href="<?php bloginfo('url') ?>/contact"><span>Liên hệ</span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -181,10 +191,10 @@
 
                 <!--side-bar-->
                 <ul id="sidr" class="m-sidebar">
-                    <li><a class="active" href="<?php bloginfo('url') ?>"><span>Trang chủ</span></a></li>
-                    <li><a class="" href="<?php bloginfo('url') ?>/about-us"><span>Giới thiệu</span></a></li>
+                    <li><a class="<?php echo $omw_active_menu['home'] ?>" href="<?php bloginfo('url') ?>"><span>Trang chủ</span></a></li>
+                    <li><a class="<?php echo $omw_active_menu['about-us'] ?>" href="<?php bloginfo('url') ?>/about-us"><span>Giới thiệu</span></a></li>
                     <li>
-                        <a class="" href="<?php bloginfo('url') ?>/product"><span>Sản phẩm</span></a>
+                        <a class="<?php echo $omw_active_menu['product'] ?>" href="<?php bloginfo('url') ?>/product"><span>Sản phẩm</span></a>
                         <ul class="sub-menu-sidr">
                             <?php
                             $args = array(
@@ -204,7 +214,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a class="" href="javascript:void(0);"><span>Tin tức</span></a>
+                        <a class="<?php echo $omw_active_menu['news'] ?>" href="javascript:void(0);"><span>Tin tức</span></a>
                         <ul class="sub-menu-sidr">
                             <?php
                             $args = array(
@@ -217,12 +227,12 @@
                             <?php endforeach; ?>
                         </ul>
                     </li>
-                    <li><a class="" href="<?php bloginfo('url') ?>/health"><span>Sức khỏe và Dinh dưỡng</span></a></li>
-                    <li><a class="" href="<?php bloginfo('url') ?>/policy"><span>Chính sách</span></a></li>
+                    <li><a class="<?php echo $omw_active_menu['health'] ?>" href="<?php bloginfo('url') ?>/health"><span>Sức khỏe và Dinh dưỡng</span></a></li>
+                    <li><a class="<?php echo $omw_active_menu['policy'] ?>" href="<?php bloginfo('url') ?>/policy"><span>Chính sách</span></a></li>
                     <?php if (is_user_logged_in() && current_user_can('b2b_customer')): ?>
-                        <li><a class="" href="<?php bloginfo('url') ?>/order"><span>Đặt hàng</span></a></li>
+                        <li><a class="<?php echo $omw_active_menu['order'] ?>" href="<?php bloginfo('url') ?>/order"><span>Đặt hàng</span></a></li>
                     <?php endif; ?>
-                    <li><a class="" href="<?php bloginfo('url') ?>/contact"><span>Liên hệ</span></a></li>
+                    <li><a class="<?php echo $omw_active_menu['contact'] ?>" href="<?php bloginfo('url') ?>/contact"><span>Liên hệ</span></a></li>
                 </ul>
                 <!--side-bar-->
             </header>

@@ -40,5 +40,15 @@ $logo = (object) json_decode($omw_theme_settings->ct_company_logo);
 <script src="<?php echo get_template_directory_uri() ?>/js/jquery.zoom.min.js"></script>
 <script src="<?php echo get_template_directory_uri() ?>/js/jquery.heightLine.js"></script>
 <script src="<?php echo get_template_directory_uri() ?>/js/common.js"></script>
+
+<?php if ($omw_theme_settings->ct_use_script): ?>
+    <script>
+    <?php echo $omw_theme_settings->ct_custom_script; ?>
+    </script>
+<?php endif; ?>
+
+<?php if (isset($omw_theme_settings->ct_google_analytics)) echo $omw_theme_settings->ct_google_analytics; ?>
+<?php if (isset($omw_theme_settings->ct_google_tag_manager)) echo $omw_theme_settings->ct_google_tag_manager; ?>
+
 </body>
 </html>

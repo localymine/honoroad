@@ -24,7 +24,7 @@ class omw_theme_settings {
         $this->setting_fields = $this->omw_init_setting_fields();
         $this->theme_data = wp_get_theme();
     }
-    
+
     public function get_theme_settings() {
         $meta_data = get_option($this->option_name);
         $data = array();
@@ -331,9 +331,9 @@ class omw_theme_settings {
         $tab = $this->omw_get_tab();
         //
         foreach ($this->setting_fields as $s_tab => $tab_data) {
-            foreach ($tab_data as $field => $data) {
-                $id = $data['id'];
-                if (isset($_POST[$id])) {
+            if ($tab == $s_tab) {
+                foreach ($tab_data as $field => $data) {
+                    $id = $data['id'];
                     switch ($data['type']) {
                         case 'image':
                             $image_data = array(
@@ -347,8 +347,12 @@ class omw_theme_settings {
                             );
                             $this->settings[$id] = json_encode($image_data);
                             break;
+                        case 'checkbox':
+                            $d_checkbox = (isset($_POST[$id]) || $_POST[$id] == 'on') ? TRUE : FALSE;
+                            $this->settings[$id] = $d_checkbox;
+                            break;
                         default:
-                            $this->settings[$id] = $_POST[$id];
+                            $this->settings[$id] = isset($_POST[$id]) ? $_POST[$id] : '';
                             break;
                     }
                 }
@@ -432,7 +436,7 @@ class omw_theme_settings {
                                             <tr>
                                                 <th><label for="<?php echo $id ?>"><?php echo $data['label'] ?></label></th>
                                                 <td>
-                                                    <?php wp_editor(isset($settings[$id]) ? esc_html(stripslashes($settings[$id])) : '', $id, array('wpautop' => false, 'tinymce' => true)); ?>
+                                <?php wp_editor(isset($settings[$id]) ? esc_html(stripslashes($settings[$id])) : '', $id, array('wpautop' => false, 'tinymce' => true)); ?>
                                                 </td>
                                             </tr>
                                             <?php
@@ -442,7 +446,7 @@ class omw_theme_settings {
                                             <tr>
                                                 <th><label for="<?php echo $id ?>"><?php echo $data['label'] ?></label></th>
                                                 <td>
-                                                    <label for="<?php echo $id ?>"><input id="<?php echo $id ?>" name="<?php echo $id ?>" type="checkbox" <?php if ($settings[$id]) echo 'checked="checked"'; ?> />
+                                                    <label for="<?php echo $id ?>"><input id="<?php echo $id ?>" name="<?php echo $id ?>" type="checkbox" value="<?php echo (isset($settings[$id]) && $settings[$id] == TRUE) ? 1 : 0 ?>" <?php if ($settings[$id]) echo 'checked="checked"'; ?> />
                                                         <span class="description"><?php echo $data['description'] ?></span>
                                                     </label>
                                                 </td>

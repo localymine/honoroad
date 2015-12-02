@@ -27,18 +27,85 @@ function omw_set_wp_title($title, $sep) {
 
 add_filter('wp_title', 'omw_set_wp_title', 10, 2);
 
-/* --------------------------------------------------------------------- menu */
+/* -------------------------------------------------------------- Active Menu */
+global $omw_active_menu;
 
-function breadcrumbs_on_post_start() {
-    if (function_exists('bcn_display')) {
-        echo '<div class="breadcrumbs">';
-        bcn_display();
-        echo '</div>';
+function omw_active_menu() {
+
+    global $wp_query;
+    global $omw_active_menu;
+
+    $query = $wp_query->query;
+    $pagename = $query['pagename'];
+    $post_type = $query['post_type'];
+
+    $omw_active_menu = array(
+        'home' => '',
+        'about-us' => '',
+        'product' => '',
+        'news' => '',
+        'health' => '',
+        'order' => '',
+        'policy' => '',
+        'contact' => '');
+
+    $active = ' active ';
+
+    if (is_home() || is_front_page()) {
+        $omw_active_menu['home'] = $active;
+    } elseif ($pagename == 'about-us') {
+        $omw_active_menu['about-us'] = $active;
+    } elseif ($post_type == 'product') {
+        $omw_active_menu['product'] = $active;
+    } elseif (is_post_type_archive('news') || is_page('news') || is_tax('news-type')) {
+        $omw_active_menu['news'] = $active;
+    } elseif ($post_type == 'health') {
+        $omw_active_menu['health'] = $active;
+    } elseif ($pagename == 'order') {
+        $omw_active_menu['order'] = $active;
+    } elseif ($pagename == 'policy') {
+        $omw_active_menu['policy'] = $active;
+    } elseif ($pagename == 'contact') {
+        $omw_active_menu['contact'] = $active;
     }
 }
 
-add_action('themify_post_start', 'breadcrumbs_on_post_start');
-/* --------------------------------------------------------------------------- */
+add_action('template_redirect', 'omw_active_menu');
+
+/* ------------------------------------------------------------ Theme Support */
+
+function omw_load_script_footer() {
+    global $omw_theme_settings;
+    $script = '';
+
+    if (isset($omw_theme_settings->ct_google_analytics)) {
+        $script .= $omw_theme_settings->ct_google_analytics;
+    }
+
+    if (isset($omw_theme_settings->ct_google_tag_manager)) {
+        $script .= $omw_theme_settings->ct_google_tag_manager;
+    }
+
+    if (isset($omw_theme_settings->ct_facebook_script)) {
+        $script .= $omw_theme_settings->ct_facebook_script;
+    }
+
+    if (isset($omw_theme_settings->ct_google_plus_script)) {
+        $script .= $omw_theme_settings->ct_google_plus_script;
+    }
+
+    if (isset($omw_theme_settings->ct_twitter_script)) {
+        $script .= $omw_theme_settings->ct_twitter_script;
+    }
+
+    if ($omw_theme_settings->ct_use_script) {
+        $script .= '<script>' . $omw_theme_settings->ct_custom_script . '</script>';
+    }
+    
+    echo $script;
+}
+
+//add_action('wp_footer', 'omw_load_script_footer');
 
 /* ----------- Change Admin Default Logo & Url -------------------------------- */
 
