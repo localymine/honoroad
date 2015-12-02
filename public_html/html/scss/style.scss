@@ -924,15 +924,19 @@ ul.m-sidebar{
     }
     article.box-row{
         a{
-            display: table;
+            display: block;
+            position: relative;
             figure{
-                display: table-cell;
+                display: inline-block;
+                min-width: 100px;
             }
             h2{
                 padding: 5px;
-                display: table-cell;
+                margin-bottom: 0;
+                display: inline-block;
                 vertical-align: middle;
-                width: 100%;
+                width: auto;
+                position: absolute;
             }
             &:hover{
                 h2{
@@ -1076,6 +1080,30 @@ ul.m-sidebar{
             background-color: $menu-color;
             border: 1px solid $image-border-color;
             color: $white;
+        }
+    }
+}
+
+ul.recent_short{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    li{
+        a{
+            display: block;
+            color: $menu-color;
+            figure{
+                display: inline-block;
+            }
+            span.p-title{
+                padding: 5px;
+                display: inline-block;
+                width: auto;
+                position: absolute;
+            }
+            &:hover{
+                color: $menu-color-active;
+            }
         }
     }
 }

@@ -1,5 +1,61 @@
 <?php
 
+add_shortcode('omw_list_recent_post', 'omw_list_recent_post');
+
+/**
+ * 
+ * @param type $atts
+ * @return string
+ */
+function omw_list_recent_post($atts) {
+    
+    
+    $para = shortcode_atts(array(
+        'post_type' => 'post_type',
+        'number' => 'number',
+                    ), $atts);
+
+    $tmpl = '';
+    $limit = isset($para['number']) ? $para['number'] : 5;
+
+    switch ($para['post_type']) {
+        case 'news':
+            $args = array(
+                'post_type' => array($para['post_type']),
+                'posts_per_page' => $limit,
+                'order' => 'DESC',
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'news-type',
+                        'field' => 'slug',
+                        'terms' => array('recruiting', 'promotion'),
+                        'operator' => 'NOT IN',
+                    ),
+                ),
+            );
+            $loop = new WP_Query($args);
+
+            $tmpl .= '<ul class="recent_short">';
+            if ($loop->have_posts()) {
+                while ($loop->have_posts()) {
+                    $loop->the_post();
+                    $image = get_field('image');
+                    $tmpl .= '<li>';
+                    $tmpl .= '<a href="' . get_permalink() . '">';
+                    $tmpl .= '<figure><img width="50" src="' . $image['sizes']['thumbnail'] . '" class="img-responsive center-block" /></figure>';
+                    $tmpl .= '<span class="p-title">' . get_the_title() . '</span>';
+                    $tmpl .= '</a>';
+                    $tmpl .= '</li>';
+                }
+            }
+            $tmpl .= '</ul>';
+            wp_reset_postdata();
+            break;
+    }
+
+    return $tmpl;
+}
+
 /* -------------------------------------------------------------------------- */
 add_action('wp_ajax_update_view', 'update_view');
 
@@ -87,15 +143,30 @@ function redirect_post_type_taxonomy() {
  * @return type
  */
 function add_custom_posts_per_page(&$q) {
-    global $custom_post_types;
+    if (!is_admin()) {
+        global $custom_post_types;
 
-    $custom_post_types = array("health", "news");
-    if ($q->is_archive) { // any archive
-        if (in_array($q->query_vars['post_type'], $custom_post_types)) {
-            $q->set('posts_per_page', 12);
+        $custom_post_types = array('health');
+        $custom_post_types_tax_slug = array('news', 'event', 'promotion', 'recruiting');
+
+        if ($q->is_archive) { // any archive
+            if (isset($q->query_vars['post_type'])) {
+                if (in_array($q->query_vars['post_type'], $custom_post_types)) {
+                    $q->set('posts_per_page', 12);
+                }
+            }
         }
+        //
+        if (isset($q->query_vars['news-type']) ||
+                isset($q->query_vars['post_type'])) {
+            if (in_array($q->query_vars['news-type'], $custom_post_types_tax) ||
+                    in_array($q->query_vars['post_type'], $custom_post_types_tax_slug)) {
+                $q->set('posts_per_page', 1);
+            }
+        }
+        //
+        return $q;
     }
-    return $q;
 }
 
 add_filter('parse_query', 'add_custom_posts_per_page');

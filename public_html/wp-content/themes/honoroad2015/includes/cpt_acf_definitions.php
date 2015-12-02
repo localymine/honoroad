@@ -166,37 +166,6 @@ function cptui_register_my_taxes() {
     );
     register_taxonomy("product-line", array("product"), $args);
 
-//    $labels = array(
-//        "name" => "News Type",
-//        "label" => "News Type",
-//    );
-//
-//    $args = array(
-//        "labels" => $labels,
-//        "hierarchical" => true,
-//        "label" => "News Type",
-//        "show_ui" => true,
-//        "query_var" => true,
-//        "rewrite" => array('slug' => 'news-type', 'with_front' => true),
-//        "show_admin_column" => true,
-//    );
-//    register_taxonomy("news-type", array("news"), $args);
-//    
-//    $labels = array(
-//        "name" => "News Category",
-//        "label" => "News Category",
-//    );
-//    $args = array(
-//        "labels" => $labels,
-//        "hierarchical" => true,
-//        "label" => "News Category",
-//        "show_ui" => true,
-////        "query_var" => true,
-//        "query_var" => 'news',
-//        "rewrite" => array('slug' => 'news'),
-//        "show_admin_column" => true,
-//    );
-//    register_taxonomy("news", array("news"), $args);
 
     $labels = array(
         "name" => "News",

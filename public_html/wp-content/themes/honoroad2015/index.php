@@ -38,9 +38,9 @@ if ($loop->have_posts()) {
         <!-- Slides Container -->
         <div class="box-slider" u="slides">
             <?php for ($i = 0; $i < count($home_slider); $i++): ?>
-            <div>
-                <img u="image" src2="<?php echo $home_slider[$i]['image'] ?>" />
-            </div>
+                <div>
+                    <img u="image" src2="<?php echo $home_slider[$i]['image'] ?>" />
+                </div>
             <?php endfor; ?>
         </div>
 
@@ -139,12 +139,18 @@ if ($loop->have_posts()) {
                         </header>
                         <div class="mod-article">
                             <div class="item-info">
-                                <?php the_excerpt() ?>
+                                <?php
+                                if (the_excerpt() == '') {
+                                    the_content();
+                                } else {
+                                    the_excerpt();
+                                }
+                                ?>
                             </div>
                         </div>
                         <?php if (get_field('show_button')): ?>
                             <a href="<?php echo (get_field('link_to') != '') ? get_field('link_to') : get_permalink() ?>" class="btn btn-oil center-block"><i class="fa fa-angle-double-right fa-2x"></i></a>
-                        <?php endif; ?>
+                            <?php endif; ?>
                     </div>
                 </div>
                 <?php $i++; ?>

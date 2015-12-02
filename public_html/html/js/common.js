@@ -233,7 +233,7 @@ $(function () {
     $('.image-block').zoom();
     
     $('.health-nutri article').heightLine();
-    $('.news article').heightLine();
+    $('.news article.box').heightLine();
 
     $('a.fancybox').attr('rel', 'health-news').fancybox({
         minWidth: 200, // or whatever, default is 100

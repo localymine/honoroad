@@ -35,7 +35,7 @@ get_header();
             <?php if ($wp_query->have_posts()): ?>
                 <?php while ($wp_query->have_posts()): $wp_query->the_post(); ?>
                     <?php $image = get_field('image'); ?>
-                    <div class="col-xs-12 col-md-12 padding-left-xs padding-right-xs margin-bottom-sm margin-top-xs">
+                    <div class="col-xs-12 col-md-12 padding-left-xs padding-right-xs margin-bottom-xs margin-top-xs">
                         <article class="box-row">
                             <a href="<?php the_permalink() ?>">
                                 <figure>
