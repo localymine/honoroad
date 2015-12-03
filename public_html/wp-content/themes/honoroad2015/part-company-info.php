@@ -51,8 +51,8 @@ global $omw_theme_settings;
                         <h2><span>Follow Us</span></h2>
                         <div class="item-introtext">
                             <p>
-                                <a class="padding-lt-rt-md"><i class="fa fa-facebook fa-4x"></i></a>
-                                <a class="padding-lt-rt-md"><i class="fa fa-twitter fa-4x"></i></a>
+                                <a class="padding-lt-rt-md" href="https://www.facebook.com/sharer/sharer.php?u=<?php bloginfo('url') ?>"><i class="fa fa-facebook fa-4x"></i></a>
+                                <a class="padding-lt-rt-md" href="http://www.twitter.com/intent/tweet?url=<?php bloginfo('url') ?>"><i class="fa fa-twitter fa-4x"></i></a>
                             </p>
                         </div>
                     </div>

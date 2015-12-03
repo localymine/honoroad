@@ -8,12 +8,12 @@ add_shortcode('omw_list_recent_post', 'omw_list_recent_post');
  * @return string
  */
 function omw_list_recent_post($atts) {
-    
-    
+
+
     $para = shortcode_atts(array(
         'post_type' => 'post_type',
         'number' => 'number',
-                    ), $atts);
+            ), $atts);
 
     $tmpl = '';
     $limit = isset($para['number']) ? $para['number'] : 5;
@@ -29,6 +29,38 @@ function omw_list_recent_post($atts) {
                         'taxonomy' => 'news-type',
                         'field' => 'slug',
                         'terms' => array('recruiting', 'promotion'),
+                        'operator' => 'NOT IN',
+                    ),
+                ),
+            );
+            $loop = new WP_Query($args);
+
+            $tmpl .= '<ul class="recent_short">';
+            if ($loop->have_posts()) {
+                while ($loop->have_posts()) {
+                    $loop->the_post();
+                    $image = get_field('image');
+                    $tmpl .= '<li>';
+                    $tmpl .= '<a href="' . get_permalink() . '">';
+                    $tmpl .= '<figure><img width="50" src="' . $image['sizes']['thumbnail'] . '" class="img-responsive center-block" /></figure>';
+                    $tmpl .= '<span class="p-title">' . get_the_title() . '</span>';
+                    $tmpl .= '</a>';
+                    $tmpl .= '</li>';
+                }
+            }
+            $tmpl .= '</ul>';
+            wp_reset_postdata();
+            break;
+        case 'promotion':
+            $args = array(
+                'post_type' => array($para['post_type']),
+                'posts_per_page' => $limit,
+                'order' => 'DESC',
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'news-type',
+                        'field' => 'slug',
+                        'terms' => array('recruiting', 'event'),
                         'operator' => 'NOT IN',
                     ),
                 ),

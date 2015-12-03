@@ -241,6 +241,7 @@ ul.top-menu{
             a{
                 text-transform: capitalize;
                 white-space: nowrap;
+                color: $menu-bg;
                 &:before{
                     height: 0;
                 }
@@ -602,9 +603,13 @@ ul.m-sidebar{
         li{
             padding: 5px;
             a{
-                color: $menu-color;
+                /*color: $menu-color;*/
+                @include style-1;
                 span{
                     padding-left: 10px;
+                }
+                &:hover{
+                    @include style-3;
                 }
             }
         }
@@ -663,11 +668,11 @@ ul.m-sidebar{
         width: 100%;
     }
     .prod-name{
-        color: $menu-color;
+        @include style-1;
     }
     .prod-detail{
         .prod-attr{
-            color: $menu-color;
+            @include style-3;
         }
     }
     .prod-img-features{
@@ -853,7 +858,8 @@ ul.m-sidebar{
     }
     .entry-header{
         .entry-title{
-            color: $menu-color;
+            /*color: $menu-color;*/
+            @include style-1;
         }
     }
     .login-holder{
@@ -884,11 +890,11 @@ ul.m-sidebar{
                 .head-news-type{
                     text-transform: capitalize;
                     margin-top: 10px;
-                    color: $menu-color;
+                    color: $color-primary;
                 }
                 &:hover{
                     .head-news-type{
-                        color: $menu-color-active;
+                        color: $menu-bg;
                     }
                 }
             }
@@ -926,6 +932,7 @@ ul.m-sidebar{
         a{
             display: block;
             position: relative;
+            color: $color-primary;
             figure{
                 display: inline-block;
                 min-width: 100px;
@@ -938,9 +945,15 @@ ul.m-sidebar{
                 width: auto;
                 position: absolute;
             }
+            span.des{
+                display: block;
+                font-size: 0.75em;
+                font-weight: normal;
+                padding-top: 5px;
+            }
             &:hover{
                 h2{
-                    color: $menu-color;
+                    color: $menu-bg;
                 }
             }
         }
@@ -1091,7 +1104,8 @@ ul.recent_short{
     li{
         a{
             display: block;
-            color: $menu-color;
+            color: $color-primary;
+            @include transition(0.3s);
             figure{
                 display: inline-block;
             }
@@ -1102,7 +1116,7 @@ ul.recent_short{
                 position: absolute;
             }
             &:hover{
-                color: $menu-color-active;
+                color: $menu-bg;
             }
         }
     }

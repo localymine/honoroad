@@ -60,6 +60,13 @@ get_header();
 
                     <?php endwhile; ?>
                 </div>
+                
+                <div class="social-navigation">
+                    <div class="fb-share-button" 
+                         data-href="<?php bloginfo('url') ?>" 
+                         data-layout="button_count">
+                    </div>
+                </div>
 
                 <div class="prod-detail margin-top-xl">
                     <?php if (trim(get_field('description')) != ''): ?>

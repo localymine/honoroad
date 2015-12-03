@@ -32,9 +32,17 @@
         $logo = (object) json_decode($omw_theme_settings->ct_company_logo);
         ?>
 
+        <?php if (isset($omw_theme_settings->ct_facebook_script)): ?>
+            <meta property="og:url" content="<?php echo home_url() ?>" />
+            <meta property="og:type" content="website" />
+            <meta property="og:title" content="<?php bloginfo('name') ?>" />
+            <meta property="og:description" content="<?php bloginfo('description') ?>" />
+            <meta property="og:image" content="<?php echo $logo->url ?>" />
+        <?php endif; ?>
+
         <?php if ($omw_theme_settings->ct_use_css): ?>
             <style type="text/css">
-                <?php echo $omw_theme_settings->ct_custom_css; ?>
+    <?php echo $omw_theme_settings->ct_custom_css; ?>
             </style>
         <?php endif; ?>
     </head>

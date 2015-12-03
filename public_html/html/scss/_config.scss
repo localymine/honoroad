@@ -107,6 +107,12 @@ $menu-bg: #56ba57; // #ffef00; // #5b8800; // #84904B;
 $menu-color: #ffef00; // #5b8800; // #DFFFBF;
 $menu-color-normal: lighten($menu-color, 5%);
 $menu-color-active: lighten($menu-color, 10%);
+
+$style-1-color: #5b8800;
+$style-1-bg-color: #ffef00;
+$style-2-color: $menu-color;
+$style-2-bg-color: $menu-bg;
+
 $brand-color: #ff0000;
 $border-color: #e7e7e7;
 $h-color: #363f45;
@@ -125,3 +131,31 @@ $btn-cart-border-color: #8cac1b;
 $btn-cart-color: #8cac1b;
 $border-color: #e9e8e8;
 $error-text-color: #ff0033;
+
+@mixin style-0($no-bg : false){
+    color: $color-primary;
+    @if $no-bg{
+        background: $white;
+    }
+}
+
+@mixin style-1($no-bg : false){
+    color: $style-1-color;
+    @if $no-bg{
+        background: $style-1-bg-color;
+    }
+}
+
+@mixin style-2($no-bg : false){
+    color: $style-2-color;
+    @if $no-bg{
+        background: $style-2-bg-color;
+    }
+}
+
+@mixin style-3($no-bg : false){
+    color: $style-2-bg-color;
+    @if $no-bg{
+        background: $style-2-color;
+    }
+}
