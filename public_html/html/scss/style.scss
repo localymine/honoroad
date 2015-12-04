@@ -36,6 +36,14 @@ p{
     font-size: 1.143em;
 }
 
+p{
+    img{
+        display: block;
+        height: auto;
+        max-width: 100%;
+    }
+}
+
 $h-font-size: (h2: 20.02px);
 @each $name, $value in $h-font-size{
     #{$name} {
@@ -1013,6 +1021,7 @@ ul.m-sidebar{
                         white-space: pre-line; /* CSS 3 */
                         word-wrap: break-word; /* IE */
                         width: 226px;
+                        position: absolute;
                     }
                     &:hover{
                         color: $menu-color;
