@@ -743,7 +743,8 @@ ul.m-sidebar{
     a{
         @include transition(0.5s);
         .prod-title{
-            color: $menu-color;
+            color: $color-primary;
+            text-align: center;
         }
         .prod-title{
             padding-top: 10px;
@@ -755,7 +756,7 @@ ul.m-sidebar{
             /*background: lighten($image-border-color, 50%);*/
             display: block;
             .prod-title{
-                color: $menu-color-active;
+                color: $style-1-color;
             }
             p{
                 color: $black;
@@ -822,7 +823,7 @@ ul.m-sidebar{
         width: 60%;
         margin: 0 auto;
         .form-group{
-            position: relative;
+            /*position: relative;*/
             input[type="text"], textarea{
                 @include border-radius(0);
             }
@@ -1024,7 +1025,7 @@ ul.m-sidebar{
                         position: absolute;
                     }
                     &:hover{
-                        color: $menu-color;
+                        color: $style-1-color;
                     }
                 }
                 &:hover{
@@ -1067,7 +1068,7 @@ ul.m-sidebar{
 }
 .fancybox-inner{
     h2{
-        color: $menu-color;
+        color: $style-1-color;
     }
 }
 
@@ -1086,20 +1087,20 @@ ul.m-sidebar{
         > a, > span{
             background-color: transparent;
             border: 1px solid $image-border-color;
-            color: $menu-color;
+            color: $page-color;
             @include border-radius(0);
         }  
     }
     > li {
         > a:hover, > a:focus, > span:hover, > span:focus{
-            background-color: $menu-color;
+            background-color: $page-color;
             border: 1px solid $image-border-color;
             color: $white;
         }
     }
     > .active{
         > a, > a:hover, > a:focus, > span, > span:hover, > span:focus{
-            background-color: $menu-color;
+            background-color: $page-color;
             border: 1px solid $image-border-color;
             color: $white;
         }

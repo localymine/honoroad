@@ -179,7 +179,6 @@ function add_custom_posts_per_page(&$q) {
         global $custom_post_types;
 
         $custom_post_types = array('health');
-        $custom_post_types_tax_slug = array('news', 'event', 'promotion', 'recruiting');
 
         if ($q->is_archive) { // any archive
             if (isset($q->query_vars['post_type'])) {
@@ -189,19 +188,11 @@ function add_custom_posts_per_page(&$q) {
             }
         }
         //
-        if (isset($q->query_vars['news-type']) ||
-                isset($q->query_vars['post_type'])) {
-            if (in_array($q->query_vars['news-type'], $custom_post_types_tax) ||
-                    in_array($q->query_vars['post_type'], $custom_post_types_tax_slug)) {
-                $q->set('posts_per_page', 1);
-            }
-        }
-        //
         return $q;
     }
 }
 
-add_filter('parse_query', 'add_custom_posts_per_page');
+//add_filter('parse_query', 'add_custom_posts_per_page');
 
 /**
  * 

@@ -17,7 +17,6 @@ get_header();
         <?php
         $args = array(
             'post_type' => 'health',
-            'posts_per_page' => 12,
             'paged' => $paged,
         );
         $wp_query = new WP_Query($args);

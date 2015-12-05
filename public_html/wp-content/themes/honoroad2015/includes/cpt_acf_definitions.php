@@ -107,7 +107,7 @@ function cptui_register_my_cpts() {
         "capability_type" => "post",
         "map_meta_cap" => true,
         "hierarchical" => false,
-        "rewrite" => array("slug" => "news/%news-type%", "with_front" => true),
+        "rewrite" => array("slug" => "topic/%news-type%", "with_front" => true),
         "query_var" => true,
         "menu_position" => 26,
         "menu_icon" => get_template_directory_uri() . '/images/ad-ico/h6.png',
