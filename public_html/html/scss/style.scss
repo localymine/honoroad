@@ -820,7 +820,7 @@ ul.m-sidebar{
 
 .contact-info{
     .contact-info-form{
-        width: 60%;
+        /*width: 60%;*/
         margin: 0 auto;
         .form-group{
             /*position: relative;*/
@@ -849,6 +849,14 @@ ul.m-sidebar{
                 span{
                     top: 55px;
                 }
+            }
+        }
+    }
+    .all-coms{
+        .c-info-title{
+            font-weight: bold;
+            &:after{
+                content: ' : ';
             }
         }
     }

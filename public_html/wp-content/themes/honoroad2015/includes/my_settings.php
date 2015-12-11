@@ -65,6 +65,7 @@ class omw_theme_settings {
     public function omw_init_setting_fields() {
         $this->tabs = array(
             'company-info' => 'Compnay Infomation',
+            'headquaters-info' => 'Headequaters',
             'general' => 'General',
             'footer' => 'Footer',
             'mail-setting' => 'Mail Setting',
@@ -168,9 +169,61 @@ class omw_theme_settings {
                             'default' => '',
                             'placeholder' => '',
                         ),
-                        'ct_company' => array(
-                            'id' => 'ct_company',
-                            'label' => 'Corporations',
+                        'ct_copyright' => array(
+                            'id' => 'ct_copyright',
+                            'label' => 'Copyright by',
+                            'description' => '',
+                            'type' => 'text',
+                            'default' => '',
+                            'placeholder' => '',
+                        ),
+                    );
+                    break;
+                case 'headquaters-info':
+                    $tab_data[$tab_id] = array(
+                        'ct_head_com_name' => array(
+                            'id' => 'ct_head_com_name',
+                            'label' => 'Company Name',
+                            'description' => '',
+                            'type' => 'text',
+                            'default' => '',
+                            'placeholder' => '',
+                        ),
+                        'ct_head_com_address' => array(
+                            'id' => 'ct_head_com_address',
+                            'label' => 'Address',
+                            'description' => '',
+                            'type' => 'text',
+                            'default' => '',
+                            'placeholder' => '',
+                        ),
+                        'ct_head_com_telephone' => array(
+                            'id' => 'ct_head_com_telephone',
+                            'label' => 'Phone Number',
+                            'description' => '',
+                            'type' => 'text',
+                            'default' => '',
+                            'placeholder' => '',
+                        ),
+                        'ct_head_com_fax' => array(
+                            'id' => 'ct_head_com_fax',
+                            'label' => 'Fax',
+                            'description' => '',
+                            'type' => 'text',
+                            'default' => '',
+                            'placeholder' => '',
+                        ),
+                        'ct_head_com_email' => array(
+                            'id' => 'ct_head_com_email',
+                            'label' => 'Email',
+                            'description' => '',
+                            'type' => 'text',
+                            'default' => '',
+                            'placeholder' => '',
+                        ),
+                        'ct_head_com_website' => array(
+                            'id' => 'ct_head_com_website',
+                            'label' => 'Website',
                             'description' => '',
                             'type' => 'text',
                             'default' => '',

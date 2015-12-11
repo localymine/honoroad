@@ -79,12 +79,10 @@ if (isset($_POST['g-recaptcha-response'])) {
 get_header();
 ?>
 
-<?php get_template_part('part-google-map') ?>
-
 <!-- contact info -->
 <div class="container contact-info margin-top-xl margin-bottom-xl">
     <div class="row">
-        <div class="col-xs-12 col-md-12">
+        <div class="col-xs-12 col-md-6">
             <div class="contact-info-form">
                 <h3>Thông tin phản hồi của khách hàng</h3>
                 <form id="contact-info-form" name="contact-info-form" method="post" action="<?php bloginfo('url') ?>/contact">
@@ -115,19 +113,34 @@ get_header();
                     </div>
                     <div class="form-group">
                         <div class="controls center-block">
-                            <button type="submit" class="btn btn-success inline-block">Gửi Mail</button>
+                            <button type="submit" class="btn btn-success inline-block">Gửi Thư</button>
                             <button type="reset" class="btn btn-success inline-block">Xóa</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
+        <div class="col-xs-12 col-md-6">
+            <div class="all-coms">
+                <h2>Trụ sở chính</h2>
+                <p><?php echo $omw_theme_settings->ct_head_com_address ?></p>
+                <p><span class="c-info-title">Điện thoại</span> <?php echo $omw_theme_settings->ct_head_com_telephone ?></p>
+                <p><span class="c-info-title">Fax</span> <?php echo $omw_theme_settings->ct_head_com_fax ?></p>
+                <p><span class="c-info-title">Email</span> <?php echo $omw_theme_settings->ct_head_com_email ?></p>
+                <p><span class="c-info-title">Website</span> <?php echo $omw_theme_settings->ct_head_com_website ?></p>
+                <div class="margin-top-xl"></div>
+                <h2>Chi nhánh phía nam</h2>
+                <p><?php echo $omw_theme_settings->ct_company_address ?></p>
+                <p><span class="c-info-title">Điện thoại</span> <?php echo $omw_theme_settings->ct_company_telephone ?></p>
+                <p><span class="c-info-title">Fax</span> <?php echo $omw_theme_settings->ct_company_fax ?></p>
+                <p><span class="c-info-title">Email</span> <?php echo $omw_theme_settings->ct_company_email ?></p>
+                <p><span class="c-info-title">Website</span> <?php echo home_url() ?></p>
+            </div>
+            <div class="margin-top-xl"></div>
+            <?php get_template_part('part-google-map') ?>
+        </div>
     </div>
 </div>
 <!-- contact info end -->
-
-<?php get_template_part('part-company-info') ?>
-
-<?php get_template_part('part-google-map') ?>
 
 <?php get_footer(); ?>

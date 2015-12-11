@@ -9,14 +9,24 @@ $logo = (object) json_decode($omw_theme_settings->ct_company_logo);
             <div class="container">
                 <div class="col-xs-12 copyright padding-bottom-md padding-top-xxl">
                     <a class="footer-logo" href="#"><img src="<?php echo $logo->url ?>"/></a>
+                    <p><?php echo $omw_theme_settings->ct_head_com_name ?></p>
+                    <p><?php echo $omw_theme_settings->ct_company_address ?></p>
+                    <p><?php echo $omw_theme_settings->ct_company_telephone ?></p>
+                    <p><?php echo $omw_theme_settings->ct_company_fax ?></p>
+                    <p>
+                        <a href="mailto:<?php echo $omw_theme_settings->ct_company_email ?>"><?php echo $omw_theme_settings->ct_company_email ?></a>
+                    </p>
                     <span class="priv">
                         <span class="copy"><i class="fa fa-copyright"></i></span>
-                        <span class="year">2015</span>
-                        <a class="privacy_link" href="<?php bloginfo('url') ?>/policy">Privacy Policy</a>
-                        <?php if ($omw_theme_settings->ct_company): ?>
-                            <h5><?php echo $omw_theme_settings->ct_company ?></h5>
-                        <?php endif; ?>
+                        <span class="year">Copyright 2015
+                            <?php if ($omw_theme_settings->ct_copyright): ?>
+                                · <h5><?php echo $omw_theme_settings->ct_copyright ?></h5>
+                            <?php endif; ?>
+                        </span>
                     </span>
+                    <p>
+                        <a class="privacy_link" href="<?php bloginfo('url') ?>/policy">Privacy Policy</a>
+                    </p>
                 </div>
             </div>
         </div>
