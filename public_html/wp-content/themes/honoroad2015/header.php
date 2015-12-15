@@ -25,7 +25,7 @@
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri() ?>/images/fav/ms-icon-144x144.png">
         <meta name="theme-color" content="#ffffff">
-        
+
         <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/css/font-awesome.min.css"/>
         <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/css/jquery.sidr.light.css"/>
@@ -155,10 +155,16 @@
                                     </ul>
                                 </li>
                                 <li><a class="nav-title <?php echo $omw_active_menu['health'] ?>" href="<?php bloginfo('url') ?>/health"><span>Sức khỏe và Dinh dưỡng</span></a></li>
-                                <li><a class="nav-title <?php echo $omw_active_menu['policy'] ?>" href="<?php bloginfo('url') ?>/policy"><span>Chính sách</span></a></li>
-                                <?php if (is_user_logged_in() && current_user_can('b2b_customer')): ?>
-                                    <li><a class="nav-title <?php echo $omw_active_menu['order'] ?>" href="<?php bloginfo('url') ?>/order"><span>Đặt hàng</span></a></li>
+                                <?php if (is_user_logged_in()): ?>
+                                    <li>
+                                        <a class="nav-title <?php echo $omw_active_menu['order'] ?>" href="<?php bloginfo('url') ?>/order"><span>Đặt hàng</span></a>
+                                        <ul>
+                                            <li><a>Quản lý đặt hàng</a></li>
+                                            <li><a>Quản lý đơn hàng</a></li>
+                                        </ul>
+                                    </li>
                                 <?php endif; ?>
+                                <li><a class="nav-title <?php echo $omw_active_menu['policy'] ?>" href="<?php bloginfo('url') ?>/policy"><span>Chính sách</span></a></li>
                                 <li><a class="nav-title <?php echo $omw_active_menu['contact'] ?>" href="<?php bloginfo('url') ?>/contact"><span>Liên hệ</span></a></li>
                             </ul>
                         </div>
@@ -253,10 +259,16 @@
                         </ul>
                     </li>
                     <li><a class="<?php echo $omw_active_menu['health'] ?>" href="<?php bloginfo('url') ?>/health"><span>Sức khỏe và Dinh dưỡng</span></a></li>
-                    <li><a class="<?php echo $omw_active_menu['policy'] ?>" href="<?php bloginfo('url') ?>/policy"><span>Chính sách</span></a></li>
-                    <?php if (is_user_logged_in() && current_user_can('b2b_customer')): ?>
-                        <li><a class="<?php echo $omw_active_menu['order'] ?>" href="<?php bloginfo('url') ?>/order"><span>Đặt hàng</span></a></li>
+                    <?php if (is_user_logged_in()): ?>
+                        <li>
+                            <a class="<?php echo $omw_active_menu['order'] ?>" href="<?php bloginfo('url') ?>/order"><span>Đặt hàng</span></a>
+                            <ul>
+                                <li><a>Quản lý đặt hàng</a></li>
+                                <li><a>Quản lý đơn hàng</a></li>
+                            </ul>
+                        </li>
                     <?php endif; ?>
+                    <li><a class="<?php echo $omw_active_menu['policy'] ?>" href="<?php bloginfo('url') ?>/policy"><span>Chính sách</span></a></li>
                     <li><a class="<?php echo $omw_active_menu['contact'] ?>" href="<?php bloginfo('url') ?>/contact"><span>Liên hệ</span></a></li>
                 </ul>
                 <!--side-bar-->

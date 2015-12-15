@@ -24,9 +24,6 @@ $logo = (object) json_decode($omw_theme_settings->ct_company_logo);
                             <?php endif; ?>
                         </span>
                     </span>
-                    <p>
-                        <a class="privacy_link" href="<?php bloginfo('url') ?>/policy">Privacy Policy</a>
-                    </p>
                 </div>
             </div>
         </div>
