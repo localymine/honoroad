@@ -65,7 +65,7 @@ get_header();
             <?php wp_reset_postdata() ?>
         </div>
         <div class="col-xs-12 col-md-3">
-            <?php get_sidebar('news-right') ?>
+            <?php get_sidebar('health-right') ?>
         </div>
     </div>
 </div>

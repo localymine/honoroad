@@ -121,6 +121,14 @@ class omw_theme_settings {
                             'default' => '',
                             'placeholder' => '',
                         ),
+                        'ct_company_image' => array(
+                            'id' => 'ct_company_image',
+                            'label' => 'Company Image',
+                            'description' => '',
+                            'type' => 'image',
+                            'default' => '',
+                            'placeholder' => '',
+                        ),
                         'ct_company_name' => array(
                             'id' => 'ct_company_name',
                             'label' => 'Company Name',
@@ -181,6 +189,14 @@ class omw_theme_settings {
                     break;
                 case 'headquaters-info':
                     $tab_data[$tab_id] = array(
+                        'ct_head_com_image' => array(
+                            'id' => 'ct_head_com_image',
+                            'label' => 'Company Image',
+                            'description' => '',
+                            'type' => 'image',
+                            'default' => '',
+                            'placeholder' => '',
+                        ),
                         'ct_head_com_name' => array(
                             'id' => 'ct_head_com_name',
                             'label' => 'Company Name',

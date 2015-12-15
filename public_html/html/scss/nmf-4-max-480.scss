@@ -2,6 +2,17 @@
 
 /* Extra Small Devices, Phones */ 
 @media only screen and (max-width : 480px) {
+    
+    .header{
+        #logo{
+            .navbar-brand{
+                .img-logo{
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+    
     .contact-info{
         .contact-info-form{
             width: 100%;
@@ -12,6 +23,12 @@
             .nopadding-right {
                 padding-left: 0;
             }
+        }
+    }
+    
+    .newsletter-form-holder{
+        .newsletter-form{
+            margin-top: 0;
         }
     }
 }

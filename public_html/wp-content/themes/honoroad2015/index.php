@@ -26,6 +26,8 @@ if ($loop->have_posts()) {
         }
     }
 }
+//
+wp_reset_postdata();
 ?>
 <div class="row nopadding nomargin" style="min-height: 50px;">
     <!-- Jssor Slider Begin -->
@@ -68,53 +70,57 @@ if ($loop->have_posts()) {
 <div class="container product">
     <div class="row">
         <?php
-        $i = 1;
         $args = array(
-            'hide_empty' => 0
+            'post_type' => 'product',
+            'posts_per_page' => -1,
         );
-        $terms = get_terms('product-line', $args);
+        $loop = new WP_Query($args);
         ?>
-        <?php foreach ($terms as $term): ?>
-            <?php
-            $args = array(
-                'post_type' => 'product',
-                'posts_per_page' => 1,
-                'tax_query' => array(
-                    array(
-                        'taxonomy' => 'product-line',
-                        'field' => 'slug',
-                        'terms' => array($term->slug),
-                    ),
-                ),
-            );
-            $loop = new WP_Query($args);
-            ?>
-            <?php if ($loop->have_posts()): ?>
-                <?php while ($loop->have_posts()): $loop->the_post(); ?>
-                    <div class="col-xs-12 col-md-4 prod-block wow fadeInUp" data-wow-delay="<?php echo $i * 0.25 ?>s">
-                        <a href="<?php the_permalink() ?>">
-                            <article id="item-1" class="item">
-                                <?php if (have_rows('images')): ?>
-                                    <?php while (have_rows('images')): the_row(); ?>
-                                        <?php
-                                        $image = get_sub_field('image');
-                                        // thumbnail
-                                        $size = 'large';
-                                        $thumb = $image['sizes'][$size];
-                                        ?>
-                                        <img class="img-responsive" src="<?php echo $thumb ?>" alt="<?php the_title() ?>"/>
-                                        <?php break; ?>
-                                    <?php endwhile; ?>
-                                <?php endif; ?>
-                                <div class="prod-title"><h1><?php the_title() ?></h1></div>
-                            </article>
-                        </a>
+        <div class="col-xs-12">
+            <div id="jssor_1">
+                <!-- Loading Screen -->
+                <div class="box-loading" data-u="loading">
+                    <div class="box-loading-overlay"></div>
+                    <div class="box-loading-img"></div>
+                </div>
+                <div class="box-slider" data-u="slides">
+                    <?php if ($loop->have_posts()): ?>
+                        <?php while ($loop->have_posts()): $loop->the_post(); ?>    
+                            <div class="col-xs-12 col-md-4 box-item prod-block">
+                                <a href="<?php the_permalink() ?>">
+                                    <article id="item-<?php the_ID() ?>" class="item">
+                                        <?php if (have_rows('images')): ?>
+                                            <?php while (have_rows('images')): the_row(); ?>
+                                                <?php
+                                                $image = get_sub_field('image');
+                                                // thumbnail
+                                                $size = 'large';
+                                                $thumb = $image['sizes'][$size];
+                                                ?>
+                                                <img class="img-responsive" src="<?php echo $thumb ?>" alt="<?php the_title() ?>"/>
+                                                <?php break; ?>
+                                            <?php endwhile; ?>
+                                        <?php endif; ?>
+                                        <div class="prod-title"><h1><?php the_title() ?></h1></div>
+                                    </article>
+                                </a>
+                            </div>
+                        <?php endwhile; ?>
+                    <?php endif; ?>
+                    <?php wp_reset_postdata() ?>
+                </div>
+                <!-- Bullet Navigator -->
+                <div data-u="navigator" class="box-navigator jssorb03">
+                    <!-- bullet navigator item prototype -->
+                    <div class="box-prototype" data-u="prototype">
+                        <div data-u="numbertemplate"></div>
                     </div>
-                    <?php $i++; ?>
-                <?php endwhile; ?>
-            <?php endif; ?>
-        <?php endforeach; ?>
-        <?php wp_reset_postdata() ?>
+                </div>
+                <!-- Arrow Navigator -->
+                <span data-u="arrowleft" class="box-arrowleft jssora03l"></span>
+                <span data-u="arrowright" class="box-arrowright jssora03r"></span>
+            </div>
+        </div>
     </div>
 </div>
 <!-- product end -->

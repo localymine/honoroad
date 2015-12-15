@@ -148,6 +148,7 @@ $paddings: (xs: 0.5rem, sm: 1rem, md: 1.5rem, lg: 2rem, xl: 2.5rem, xxl: 3rem);
         }
         .navbar-brand{
             padding: 0;
+            float: none;
         }
     }
     nav{
@@ -161,8 +162,10 @@ $paddings: (xs: 0.5rem, sm: 1rem, md: 1.5rem, lg: 2rem, xl: 2.5rem, xxl: 3rem);
             border-radius: 0;
         }
         ul{
-            display: inline-block;
-            float: right;
+            /*display: inline-block;*/
+            /*float: right;*/
+            display: block;
+            float: none;
             margin: 0px 0 0;
             padding: 0;
             list-style-type: none;
@@ -219,9 +222,14 @@ $paddings: (xs: 0.5rem, sm: 1rem, md: 1.5rem, lg: 2rem, xl: 2.5rem, xxl: 3rem);
     }
 }
 
+.menu-holder{
+    width: 100%;
+}
 ul.top-menu{
     position:relative;
     z-index: 100;
+    text-align: center;
+    margin: 0 auto;
     li{
         position: relative;
         ul{
@@ -232,6 +240,7 @@ ul.top-menu{
             position: absolute;
             opacity: 0;
             visibility: hidden;
+            text-align: left;
             &.right{
                 right: 0;
                 padding: 0;
@@ -551,7 +560,7 @@ ul.m-sidebar{
 #footer-wrapper{
     background: $footer-bg;
     .copyright{
-        text-align: center;
+        /*text-align: center;*/
         color: $footer-color-link;
         .privacy_link{
             color: $footer-color-link;
@@ -562,6 +571,18 @@ ul.m-sidebar{
         }
         a{
             color: $white;
+        }
+        .priv{
+            text-align: center;
+            display: inline-block;
+            width: 100%;
+            margin: 0 auto;
+            span{
+                display: inline-block;
+            }
+            h5{
+                display: inline-block;
+            }
         }
     }
 }
@@ -1141,6 +1162,26 @@ ul.recent_short{
                 color: $menu-bg;
             }
         }
+    }
+}
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.newsletter-form-holder{
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    .newsletter-form{
+        /*@include vertical-align();*/
+        margin-top: 30%;
     }
 }
 

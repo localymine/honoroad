@@ -36,8 +36,8 @@ function omw_active_menu() {
     global $omw_active_menu;
 
     $query = $wp_query->query;
-    $pagename = $query['pagename'];
-    $post_type = $query['post_type'];
+    $pagename = isset($query['pagename']) ? $query['pagename'] : '';
+    $post_type = isset($query['post_type']) ? $query['post_type'] : '';
 
     $omw_active_menu = array(
         'home' => '',

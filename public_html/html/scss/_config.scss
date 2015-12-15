@@ -97,6 +97,14 @@ font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
     border-width: 1px 1px 0;
 }
 
+@mixin vertical-align($position: relative) {
+  position: $position;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
 $white: #fff;
 $lighten-white: lighten($white, 50%);
 $black: #000;

@@ -89,6 +89,10 @@ jQuery(document).ready(function ($) {
 
     if ($('#slider1_container').length > 0) {
 
+        var _SlideshowTransitions = [
+            {$Duration: 1200, $Opacity: 2}
+        ];
+
         var options = {
             $AutoPlay: true, //[Optional] Whether to auto play, to enable slideshow, this option must be set to true, default value is false
             $AutoPlaySteps: 1, //[Optional] Steps to go for each navigation request (this options applys only when slideshow disabled), the default value is 1
@@ -108,6 +112,12 @@ jQuery(document).ready(function ($) {
             $PlayOrientation: 1, //[Optional] Orientation to play slide (for auto play, navigation), 1 horizental, 2 vertical, 5 horizental reverse, 6 vertical reverse, default value is 1
             $DragOrientation: 1, //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
 
+            $SlideshowOptions: {//[Optional] Options to specify and enable slideshow or not
+                $Class: $JssorSlideshowRunner$, //[Required] Class to create instance of slideshow
+                $Transitions: _SlideshowTransitions, //[Required] An array of slideshow transitions to play slideshow
+                $TransitionsOrder: 1, //[Optional] The way to choose transition to play slide, 1 Sequence, 0 Random
+                $ShowLink: true                                    //[Optional] Whether to bring slide link on top of the slider when slideshow is running, default value is false
+            },
             $ArrowNavigatorOptions: {//[Optional] Options to specify and enable arrow navigator or not
                 $Class: $JssorArrowNavigator$, //[Requried] Class to create arrow navigator instance
                 $ChanceToShow: 2, //[Required] 0 Never, 1 Mouse Over, 2 Always
@@ -133,17 +143,60 @@ jQuery(document).ready(function ($) {
         //responsive code begin
         //you can remove responsive code if you don't want the slider scales while window resizes
         function ScaleSlider() {
-            var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
-            if (parentWidth) {
-                jssor_slider1.$ScaleWidth(parentWidth - 0);
-            } else
+            var refSize = jssor_slider1.$Elmt.parentNode.clientWidth;
+            if (refSize) {
+                refSize = Math.min(refSize, 1920);
+                jssor_slider1.$ScaleWidth(refSize);
+            }
+            else {
                 window.setTimeout(ScaleSlider, 0);
+            }
         }
         ScaleSlider();
-
         $(window).bind("load", ScaleSlider);
         $(window).bind("resize", ScaleSlider);
         $(window).bind("orientationchange", ScaleSlider);
+        //responsive code end
+    }
+
+
+    if ($('#jssor_1').length > 0) {
+        
+        var jssor_1_options = {
+            $AutoPlaySteps: 3,
+            $SlideDuration: 160,
+            $SlideWidth: 200,
+            $SlideSpacing: 3,
+            $Cols: 3,
+            $ArrowNavigatorOptions: {
+                $Class: $JssorArrowNavigator$,
+                $Steps: 3
+            },
+            $BulletNavigatorOptions: {
+                $Class: $JssorBulletNavigator$,
+                $SpacingX: 1,
+                $SpacingY: 1
+            }
+        };
+
+        var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+
+        //responsive code begin
+        //you can remove responsive code if you don't want the slider scales while window resizing
+        function ScaleSlider_c() {
+            var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
+            if (refSize) {
+                refSize = Math.min(refSize, 809);
+                jssor_1_slider.$ScaleWidth(refSize);
+            }
+            else {
+                window.setTimeout(ScaleSlider_c, 30);
+            }
+        }
+        ScaleSlider_c();
+        $(window).bind("load", ScaleSlider_c);
+        $(window).bind("resize", ScaleSlider_c);
+        $(window).bind("orientationchange", ScaleSlider_c);
         //responsive code end
     }
 });
@@ -231,7 +284,7 @@ $(function () {
 
 $(function () {
     $('.image-block').zoom();
-    
+
     $('.health-nutri article').heightLine();
     $('.news article.box').heightLine();
 

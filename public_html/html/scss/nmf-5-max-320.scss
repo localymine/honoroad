@@ -6,9 +6,8 @@
     .header{
         #logo{
             .navbar-brand{
-                /*padding: 0;*/
-                img{
-                    width: 80%;
+                .img-logo{
+                    margin-left: 0;
                 }
             }
         }
@@ -50,4 +49,11 @@
             padding: 20px;
         }
     }
+
+    .newsletter-form-holder{
+        .newsletter-form{
+            margin-top: 0;
+        }
+    }
+
 }

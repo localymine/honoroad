@@ -123,18 +123,30 @@ get_header();
         <div class="col-xs-12 col-md-6">
             <div class="all-coms">
                 <h2>Trụ sở chính</h2>
-                <p><?php echo $omw_theme_settings->ct_head_com_address ?></p>
-                <p><span class="c-info-title">Điện thoại</span> <?php echo $omw_theme_settings->ct_head_com_telephone ?></p>
-                <p><span class="c-info-title">Fax</span> <?php echo $omw_theme_settings->ct_head_com_fax ?></p>
-                <p><span class="c-info-title">Email</span> <?php echo $omw_theme_settings->ct_head_com_email ?></p>
-                <p><span class="c-info-title">Website</span> <?php echo $omw_theme_settings->ct_head_com_website ?></p>
+                <div class="col-xs-3 nopadding-left nopadding-right">
+                    <?php $com_image = (object) json_decode($omw_theme_settings->ct_company_image); ?>
+                    <img class="img-responsive" src="<?php echo ($com_image->sizes->medium != '') ? $com_image->sizes->medium : $com_image->url ?>" />
+                </div>
+                <div class="col-xs-9">
+                    <p><?php echo $omw_theme_settings->ct_head_com_address ?></p>
+                    <p><span class="c-info-title">Điện thoại</span> <?php echo $omw_theme_settings->ct_head_com_telephone ?></p>
+                    <p><span class="c-info-title">Fax</span> <?php echo $omw_theme_settings->ct_head_com_fax ?></p>
+                    <p><span class="c-info-title">Email</span> <?php echo $omw_theme_settings->ct_head_com_email ?></p>
+                    <p><span class="c-info-title">Website</span> <?php echo $omw_theme_settings->ct_head_com_website ?></p>
+                </div>
                 <div class="margin-top-xl"></div>
                 <h2>Chi nhánh phía nam</h2>
-                <p><?php echo $omw_theme_settings->ct_company_address ?></p>
-                <p><span class="c-info-title">Điện thoại</span> <?php echo $omw_theme_settings->ct_company_telephone ?></p>
-                <p><span class="c-info-title">Fax</span> <?php echo $omw_theme_settings->ct_company_fax ?></p>
-                <p><span class="c-info-title">Email</span> <?php echo $omw_theme_settings->ct_company_email ?></p>
-                <p><span class="c-info-title">Website</span> <?php echo home_url() ?></p>
+                <div class="col-xs-3 nopadding-left nopadding-right">
+                    <?php $com_image = (object) json_decode($omw_theme_settings->ct_head_com_image); ?>
+                    <img class="img-responsive" src="<?php echo ($com_image->sizes->medium != '') ? $com_image->sizes->medium : $com_image->url ?>" />
+                </div>
+                <div class="col-xs-9">
+                    <p><?php echo $omw_theme_settings->ct_company_address ?></p>
+                    <p><span class="c-info-title">Điện thoại</span> <?php echo $omw_theme_settings->ct_company_telephone ?></p>
+                    <p><span class="c-info-title">Fax</span> <?php echo $omw_theme_settings->ct_company_fax ?></p>
+                    <p><span class="c-info-title">Email</span> <?php echo $omw_theme_settings->ct_company_email ?></p>
+                    <p><span class="c-info-title">Website</span> <?php echo home_url() ?></p>
+                </div>
             </div>
             <div class="margin-top-xl"></div>
             <?php get_template_part('part-google-map') ?>
