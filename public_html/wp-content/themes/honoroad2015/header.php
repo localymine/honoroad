@@ -104,70 +104,74 @@
                 <nav id="nav" class="navbar navbar-defaultx navbar-oil">
                     <div class="container">
                         <div class="row">
-                            <div id="logo" class="col-md-12 navbar-header">
-                                <a id="menu-toggle" href="#sidr">
-                                    <button class="navbar-toggle collapsed">
-                                        <span class="sr-only">Toggle navigation</span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                    </button>
-                                </a>
-                                <a class="navbar-brand nopadding" href="<?php bloginfo('url') ?>">
-                                    <img class="img-logo img-responsive center-block" src="<?php echo $logo->url ?>" alt="<?php echo $omw_theme_settings->ct_company_name ?>" />
-                                </a>
-                            </div>
-                            <div class="col-md-12 navbar-collapse collapse nopadding menu-holder">
-                                <ul class="top-menu">
-                                    <li><a class="nav-title <?php echo $omw_active_menu['home'] ?>" href="<?php bloginfo('url') ?>"><span>Trang chủ</span></a></li>
-                                    <li><a class="nav-title <?php echo $omw_active_menu['about-us'] ?>" href="<?php bloginfo('url') ?>/about-us"><span>Giới thiệu</span></a></li>
-                                    <li>
-                                        <a class="nav-title <?php echo $omw_active_menu['product'] ?>" href="<?php bloginfo('url') ?>/product"><span>Sản phẩm</span></a>
-                                        <ul>
-                                            <?php
-                                            $args = array(
-                                                'post_type' => 'product',
-                                                'posts_per_page' => -1,
-                                                'orderby' => 'title',
-                                                'order' => 'ASC',
-                                            );
-                                            $loop = new WP_Query($args);
-                                            ?>
-                                            <?php if ($loop->have_posts()): ?>
-                                                <?php while ($loop->have_posts()): $loop->the_post(); ?>
-                                                    <li><a href="<?php the_permalink() ?>"><?php the_title() ?></a></li>
-                                                <?php endwhile; ?>
-                                            <?php endif; ?>
-                                            <?php wp_reset_postdata() ?>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a class="nav-title <?php echo $omw_active_menu['news'] ?>" href="javascript:void(0);"><span>Tin tức</span></a>
-                                        <ul>
-                                            <?php
-                                            $args = array(
-                                                'hide_empty' => 0
-                                            );
-                                            $terms = get_terms('news-type', $args);
-                                            ?>
-                                            <?php foreach ($terms as $term): ?>
-                                                <li><a class="" href="<?php echo get_term_link($term) ?>"><?php echo $term->name ?></a></li>
-                                            <?php endforeach; ?>
-                                        </ul>
-                                    </li>
-                                    <li><a class="nav-title <?php echo $omw_active_menu['health'] ?>" href="<?php bloginfo('url') ?>/health"><span>Sức khỏe và Dinh dưỡng</span></a></li>
-                                    <?php if (is_user_logged_in()): ?>
+                            <div class="col-md-12 text-center">
+                                <div id="logo" class="navbar-header pull-left">
+                                    <a id="menu-toggle" href="#sidr">
+                                        <button class="navbar-toggle collapsed">
+                                            <span class="sr-only">Toggle navigation</span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                        </button>
+                                    </a>
+                                </div>
+                                <div class="navbar-collapse collapse nopadding">
+                                    <ul class="top-menu">
+                                        <li class="no-hover">
+                                            <a class="navbar-brand" href="<?php bloginfo('url') ?>">
+                                                <img class="img-logo img-responsive" src="<?php echo $logo->url ?>" alt="<?php echo $omw_theme_settings->ct_company_name ?>" />
+                                            </a>
+                                        </li>
+                                        <li><a class="nav-title <?php echo $omw_active_menu['home'] ?>" href="<?php bloginfo('url') ?>"><span>Trang chủ</span></a></li>
+                                        <li><a class="nav-title <?php echo $omw_active_menu['about-us'] ?>" href="<?php bloginfo('url') ?>/about-us"><span>Giới thiệu</span></a></li>
                                         <li>
-                                            <a class="nav-title <?php echo $omw_active_menu['order'] ?>" href="<?php bloginfo('url') ?>/order"><span>Đặt hàng</span></a>
+                                            <a class="nav-title <?php echo $omw_active_menu['product'] ?>" href="<?php bloginfo('url') ?>/product"><span>Sản phẩm</span></a>
                                             <ul>
-                                                <li><a>Quản lý đặt hàng</a></li>
-                                                <li><a>Quản lý đơn hàng</a></li>
+                                                <?php
+                                                $args = array(
+                                                    'post_type' => 'product',
+                                                    'posts_per_page' => -1,
+                                                    'orderby' => 'title',
+                                                    'order' => 'ASC',
+                                                );
+                                                $loop = new WP_Query($args);
+                                                ?>
+                                                <?php if ($loop->have_posts()): ?>
+                                                    <?php while ($loop->have_posts()): $loop->the_post(); ?>
+                                                        <li><a href="<?php the_permalink() ?>"><?php the_title() ?></a></li>
+                                                    <?php endwhile; ?>
+                                                <?php endif; ?>
+                                                <?php wp_reset_postdata() ?>
                                             </ul>
                                         </li>
-                                    <?php endif; ?>
-                                    <li><a class="nav-title <?php echo $omw_active_menu['policy'] ?>" href="<?php bloginfo('url') ?>/policy"><span>Chính sách</span></a></li>
-                                    <li><a class="nav-title <?php echo $omw_active_menu['contact'] ?>" href="<?php bloginfo('url') ?>/contact"><span>Liên hệ</span></a></li>
-                                </ul>
+                                        <li>
+                                            <a class="nav-title <?php echo $omw_active_menu['news'] ?>" href="javascript:void(0);"><span>Tin tức</span></a>
+                                            <ul>
+                                                <?php
+                                                $args = array(
+                                                    'hide_empty' => 0
+                                                );
+                                                $terms = get_terms('news-type', $args);
+                                                ?>
+                                                <?php foreach ($terms as $term): ?>
+                                                    <li><a class="" href="<?php echo get_term_link($term) ?>"><?php echo $term->name ?></a></li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        </li>
+                                        <li><a class="nav-title <?php echo $omw_active_menu['health'] ?>" href="<?php bloginfo('url') ?>/health"><span>Sức khỏe và Dinh dưỡng</span></a></li>
+                                        <?php if (is_user_logged_in()): ?>
+                                            <li>
+                                                <a class="nav-title <?php echo $omw_active_menu['order'] ?>" href="<?php bloginfo('url') ?>/order"><span>Đặt hàng</span></a>
+                                                <ul>
+                                                    <li><a>Quản lý đặt hàng</a></li>
+                                                    <li><a>Quản lý đơn hàng</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a class="nav-title <?php echo $omw_active_menu['policy'] ?>" href="<?php bloginfo('url') ?>/policy"><span>Chính sách</span></a></li>
+                                        <?php endif; ?>
+                                        <li><a class="nav-title <?php echo $omw_active_menu['contact'] ?>" href="<?php bloginfo('url') ?>/contact"><span>Liên hệ</span></a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -269,8 +273,8 @@
                                 <li><a>Quản lý đơn hàng</a></li>
                             </ul>
                         </li>
+                        <li><a class="<?php echo $omw_active_menu['policy'] ?>" href="<?php bloginfo('url') ?>/policy"><span>Chính sách</span></a></li>
                     <?php endif; ?>
-                    <li><a class="<?php echo $omw_active_menu['policy'] ?>" href="<?php bloginfo('url') ?>/policy"><span>Chính sách</span></a></li>
                     <li><a class="<?php echo $omw_active_menu['contact'] ?>" href="<?php bloginfo('url') ?>/contact"><span>Liên hệ</span></a></li>
                 </ul>
                 <!--side-bar-->

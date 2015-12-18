@@ -132,6 +132,7 @@ $paddings: (xs: 0.5rem, sm: 1rem, md: 1.5rem, lg: 2rem, xl: 2.5rem, xxl: 3rem);
 .header{
     background: $menu-bg;
     #logo{
+        /*transform: translate(100%, 0);*/
         #menu-toggle{
             .navbar-toggle{
                 border: 1px solid $menu-color;
@@ -148,7 +149,7 @@ $paddings: (xs: 0.5rem, sm: 1rem, md: 1.5rem, lg: 2rem, xl: 2.5rem, xxl: 3rem);
         }
         .navbar-brand{
             padding: 0;
-            float: none;
+            /*float: none;*/
         }
     }
     nav{
@@ -162,15 +163,25 @@ $paddings: (xs: 0.5rem, sm: 1rem, md: 1.5rem, lg: 2rem, xl: 2.5rem, xxl: 3rem);
             border-radius: 0;
         }
         ul{
-            /*display: inline-block;*/
+            display: inline-block;
             /*float: right;*/
-            display: block;
+            /*display: block;*/
             float: none;
             margin: 0px 0 0;
             padding: 0;
             list-style-type: none;
             position: relative;
             z-index: 5;
+            li.no-hover{
+                a{
+                    &.navbar-brand{
+                        padding: 6px;
+                    }
+                    &:before{
+                        height: 0;
+                    }
+                }
+            }
             li{
                 display: inline-block;
                 /*position: relative;*/
@@ -222,9 +233,9 @@ $paddings: (xs: 0.5rem, sm: 1rem, md: 1.5rem, lg: 2rem, xl: 2.5rem, xxl: 3rem);
     }
 }
 
-.menu-holder{
+/*.menu-holder{
     width: 100%;
-}
+}*/
 ul.top-menu{
     position:relative;
     z-index: 100;
@@ -241,6 +252,9 @@ ul.top-menu{
             opacity: 0;
             visibility: hidden;
             text-align: left;
+            min-width: 170px;
+            left: 0;
+            border: 1px solid #519044;
             &.right{
                 right: 0;
                 padding: 0;
@@ -254,6 +268,7 @@ ul.top-menu{
             }
             li{
                 float: none;
+                width: 100%;
             }
             a{
                 text-transform: capitalize;
@@ -560,6 +575,7 @@ ul.m-sidebar{
 #footer-wrapper{
     background: $footer-bg;
     .copyright{
+        font-size: 0.75em;
         /*text-align: center;*/
         color: $footer-color-link;
         .privacy_link{

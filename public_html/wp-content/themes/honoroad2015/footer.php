@@ -8,18 +8,17 @@ $logo = (object) json_decode($omw_theme_settings->ct_company_logo);
         <div id="copyright" class="vertical-align">
             <div class="container">
                 <div class="col-xs-12 copyright padding-bottom-md padding-top-xxl vcenter">
-                    <div class="col-xs-12 col-md-4 nopadding">
+                    <div class="col-xs-12 col-md-5 nopadding">
                         <a class="footer-logo" href="#"><img src="<?php echo $logo->url ?>"/></a>
-                        <p><?php echo $omw_theme_settings->ct_head_com_name ?></p>
+                        <p class="inline-block"><?php echo $omw_theme_settings->ct_head_com_name ?></p>
                         <p><?php echo $omw_theme_settings->ct_company_address ?></p>
-                        <p><?php echo $omw_theme_settings->ct_company_telephone ?></p>
-                        <p><?php echo $omw_theme_settings->ct_company_fax ?></p>
+                        <p>Tel: <?php echo $omw_theme_settings->ct_company_telephone ?> - Fax: <?php echo $omw_theme_settings->ct_company_fax ?></p>
                         <p>
-                            <a href="mailto:<?php echo $omw_theme_settings->ct_company_email ?>"><?php echo $omw_theme_settings->ct_company_email ?></a>
+                            Email: <a href="mailto:<?php echo $omw_theme_settings->ct_company_email ?>"><?php echo $omw_theme_settings->ct_company_email ?></a>
                         </p>
                     </div>
                     <div class="col-md-4"></div>
-                    <div class="col-xs-12 col-md-4 nopadding vcenter">
+                    <div class="col-xs-12 col-md-3 nopadding vcenter">
                         <div class="newsletter-form-holder">
                             <form id="newsletter-form" name="newsletter-form" class="newsletter-form form-inline" method="post" action="">
                                 <div class="form-group">

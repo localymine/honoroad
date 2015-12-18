@@ -121,7 +121,7 @@ get_header();
             </div>
         </div>
         <div class="col-xs-12 col-md-6">
-            <div class="all-coms">
+            <div class="all-coms clearfix">
                 <h2>Trụ sở chính</h2>
                 <div class="col-xs-3 nopadding-left nopadding-right">
                     <?php $com_image = (object) json_decode($omw_theme_settings->ct_company_image); ?>
@@ -134,7 +134,9 @@ get_header();
                     <p><span class="c-info-title">Email</span> <?php echo $omw_theme_settings->ct_head_com_email ?></p>
                     <p><span class="c-info-title">Website</span> <?php echo $omw_theme_settings->ct_head_com_website ?></p>
                 </div>
-                <div class="margin-top-xl"></div>
+            </div>
+            <div class="margin-top-xl"></div>
+            <div class="all-coms clearfix">
                 <h2>Chi nhánh phía nam</h2>
                 <div class="col-xs-3 nopadding-left nopadding-right">
                     <?php $com_image = (object) json_decode($omw_theme_settings->ct_head_com_image); ?>

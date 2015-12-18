@@ -52,7 +52,7 @@ jQuery(document).ready(function ($) {
             attachment = file_frame.state().get('selection').first().toJSON();
             jQuery("#" + field_id).val(attachment.url);
             
-            console.log(attachment)
+//            console.log(attachment);
             if($.type(attachment.sizes.thumbnail) !== 'undefined'){
                 jQuery("#" + field_id + '_thumbnail').val(attachment.sizes.thumbnail.url);
             }
@@ -70,7 +70,11 @@ jQuery(document).ready(function ($) {
             }
             //
             if (preview_media) {
-                jQuery("#" + preview_id).attr('src', attachment.sizes.thumbnail.url);
+                if($.type(attachment.sizes.thumbnail) !== 'undefined'){
+                    jQuery("#" + preview_id).attr('src', attachment.sizes.thumbnail.url);
+                } else{
+                    jQuery("#" + preview_id).attr('src', attachment.url);
+                }
             }
         });
 
