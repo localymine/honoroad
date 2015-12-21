@@ -147,8 +147,7 @@ jQuery(document).ready(function ($) {
             if (refSize) {
                 refSize = Math.min(refSize, 1920);
                 jssor_slider1.$ScaleWidth(refSize);
-            }
-            else {
+            } else {
                 window.setTimeout(ScaleSlider, 0);
             }
         }
@@ -158,50 +157,31 @@ jQuery(document).ready(function ($) {
         $(window).bind("orientationchange", ScaleSlider);
         //responsive code end
     }
-
-
-    if ($('#jssor_1').length > 0) {
-        
-        var jssor_1_options = {
-            $AutoPlaySteps: 3,
-            $SlideDuration: 160,
-            $SlideWidth: 200,
-            $SlideSpacing: 3,
-            $Cols: 3,
-            $ArrowNavigatorOptions: {
-                $Class: $JssorArrowNavigator$,
-                $Steps: 3
-            },
-            $BulletNavigatorOptions: {
-                $Class: $JssorBulletNavigator$,
-                $SpacingX: 1,
-                $SpacingY: 1
-            }
-        };
-
-        var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
-
-        //responsive code begin
-        //you can remove responsive code if you don't want the slider scales while window resizing
-        function ScaleSlider_c() {
-            var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
-            if (refSize) {
-                refSize = Math.min(refSize, 809);
-                jssor_1_slider.$ScaleWidth(refSize);
-            }
-            else {
-                window.setTimeout(ScaleSlider_c, 30);
-            }
-        }
-        ScaleSlider_c();
-        $(window).bind("load", ScaleSlider_c);
-        $(window).bind("resize", ScaleSlider_c);
-        $(window).bind("orientationchange", ScaleSlider_c);
-        //responsive code end
-    }
 });
-/*----------------------------------------------------------------- jssor end */
+/* ---------------------------------------------------------------- jssor end */
 
+/* -------------------------------------------------- product carousel slider */
+$(function () {
+    $('#myCarousel').carousel({
+        interval: 10000
+    });
+
+    $('.carousel .item').each(function () {
+        var next = $(this).next();
+        if (!next.length) {
+            next = $(this).siblings(':first');
+        }
+        next.children(':first-child').clone().appendTo($(this));
+
+        if (next.next().length > 0) {
+            next.next().children(':first-child').clone().appendTo($(this));
+        } else {
+            $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+        }
+    });
+});
+
+/* -------------------------------------------------------------- back to top */
 $(function ($) {
     // browser window scroll (in pixels) after which the "back to top" link is shown
     var offset = 300,

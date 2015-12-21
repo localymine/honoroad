@@ -44,6 +44,13 @@ p{
     }
 }
 
+textarea { resize:both; } /* none|horizontal|vertical|both */
+textarea.vert { resize:vertical; }
+textarea.noResize { resize:none; }
+/*constrain the width and height of the textarea element*/
+#confinedSpace textarea { resize:vertical; max-height:300px; min-height:200px; }
+#confinedSpace textarea.horiz { resize:horizontal; max-width:400px; min-width:200px; }
+
 $h-font-size: (h2: 20.02px);
 @each $name, $value in $h-font-size{
     #{$name} {
@@ -660,6 +667,9 @@ ul.m-sidebar{
                 &:hover{
                     @include style-3;
                 }
+                &.active{
+                    @include style-3;
+                }
             }
         }
     }
@@ -949,6 +959,9 @@ ul.m-sidebar{
                     text-transform: capitalize;
                     margin-top: 10px;
                     color: $color-primary;
+                    &.active{
+                        color: $menu-bg;
+                    }
                 }
                 &:hover{
                     .head-news-type{
@@ -1171,7 +1184,7 @@ ul.recent_short{
             span.p-title{
                 padding: 5px;
                 display: inline-block;
-                width: auto;
+                width: 70%;
                 position: absolute;
             }
             &:hover{
@@ -1200,6 +1213,15 @@ ul.recent_short{
         margin-top: 30%;
     }
 }
+
+/* carousel slider css */
+.carousel-inner .active.left  { left: -33%;             }
+.carousel-inner .active.right { left: 33%;              }
+.carousel-inner .next         { left: 33%               }
+.carousel-inner .prev         { left: -33%              }
+.carousel-control.left        { background-image: none; }
+.carousel-control.right       { background-image: none; }
+.carousel-inner .item         { background: transparent;      }
 
 @import "nmf-1-max-1200.scss";
 @import "nmf-2-max-992.scss";
