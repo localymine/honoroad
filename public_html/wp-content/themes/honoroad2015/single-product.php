@@ -24,7 +24,7 @@ get_header();
                     <?php while ($loop->have_posts()): $loop->the_post(); ?>
                         <li>
                             <?php $prod_img = get_field('images'); ?>
-                            <a href="<?php the_permalink() ?>">
+                            <a class="<?php echo (get_query_var('product') == $post->post_name) ? 'active' : '' ?>" href="<?php the_permalink() ?>">
                                 <img width="50" src="<?php echo $prod_img[0]['image']['sizes']['thumbnail'] ?>" alt="<?php the_title() ?>"/>
                                 <span><?php the_title() ?></span>
                             </a>

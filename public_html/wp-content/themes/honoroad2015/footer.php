@@ -10,7 +10,7 @@ $logo = (object) json_decode($omw_theme_settings->ct_company_logo);
                 <div class="col-xs-12 copyright padding-bottom-md padding-top-xxl vcenter">
                     <div class="col-xs-12 col-md-5 nopadding">
                         <a class="footer-logo" href="#"><img src="<?php echo $logo->url ?>"/></a>
-                        <p class="inline-block"><?php echo $omw_theme_settings->ct_head_com_name ?></p>
+                        <p class="inline-block"><?php echo $omw_theme_settings->ct_company_name ?></p>
                         <p><?php echo $omw_theme_settings->ct_company_address ?></p>
                         <p>Tel: <?php echo $omw_theme_settings->ct_company_telephone ?> - Fax: <?php echo $omw_theme_settings->ct_company_fax ?></p>
                         <p>
@@ -36,6 +36,12 @@ $logo = (object) json_decode($omw_theme_settings->ct_company_logo);
                                 · <h5><?php echo $omw_theme_settings->ct_copyright ?></h5>
                             <?php endif; ?>
                         </span>
+                        <p class="text-center">
+                            <a href="<?php echo home_url('policy') ?>">Chính Sách Bảo Mật</a>
+                        </p>
+                        <p class="text-center">
+                            <a href="<?php echo home_url() ?>"><?php echo str_replace('http://', '', home_url()) ?></a>
+                        </p>
                     </div>
                 </div>
             </div>

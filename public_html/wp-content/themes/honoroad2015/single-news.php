@@ -19,7 +19,7 @@ setPostViews($post->ID, 'view-news');
             </article>
         </div>
         <div class="col-xs-12 col-md-3">
-            <?php get_sidebar('health-right') ?>
+            <?php get_sidebar('news-right') ?>
         </div>
     </div>
 </div>

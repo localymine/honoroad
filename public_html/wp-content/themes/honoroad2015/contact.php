@@ -105,7 +105,7 @@ get_header();
                         <input type="text" id="re_fax" name="re_fax" value="" placeholder="Fax" class="form-control" />
                     </div>
                     <div class="form-group">
-                        <textarea id="re_content" name="re_content" class="form-control" placeholder="Nội dung"></textarea>
+                        <textarea id="re_content" name="re_content" class="form-control vert" placeholder="Nội dung"></textarea>
                     </div>
                     <div class="form-group">
                         <div class="g-recaptcha" data-sitekey="<?php echo $omw_theme_settings->ct_recaptcha_public_key ?>"></div>
@@ -121,35 +121,47 @@ get_header();
             </div>
         </div>
         <div class="col-xs-12 col-md-6">
-            <div class="all-coms clearfix">
-                <h2>Trụ sở chính</h2>
-                <div class="col-xs-3 nopadding-left nopadding-right">
-                    <?php $com_image = (object) json_decode($omw_theme_settings->ct_company_image); ?>
-                    <img class="img-responsive" src="<?php echo ($com_image->sizes->medium != '') ? $com_image->sizes->medium : $com_image->url ?>" />
+            <?php
+            $args = array(
+                'hide_empty' => 0
+            );
+            $terms = get_terms('company-branch', $args);
+            ?>
+            <?php foreach ($terms as $term): ?>
+                <div class="all-coms clearfix">
+                    <h2><?php echo $term->name ?></h2>
+                    <?php
+                    $args = array(
+                        'post_type' => 'company-info',
+                        'posts_per_page' => -1,
+                        'tax_query' => array(
+                            array(
+                                'taxonomy' => 'company-branch',
+                                'field' => 'slug',
+                                'terms' => array($term->slug),
+                            ),
+                        ),
+                    );
+                    $loop = new WP_Query($args);
+                    ?>
+                    <?php if ($loop->have_posts()): ?>
+                        <?php while ($loop->have_posts()): $loop->the_post(); ?>
+                            <div class="col-xs-3 nopadding-left nopadding-right">
+                                <?php $company_image = get_field('image') ?>
+                                <img class="img-responsive" src="<?php echo $company_image['sizes']['medium'] ?>" />
+                            </div>
+                            <div class="col-xs-9">
+                                <p><?php echo get_field('address') ?></p>
+                                <p><span class="c-info-title">Điện thoại</span> <?php echo get_field('tel') ?></p>
+                                <p><span class="c-info-title">Fax</span> <?php echo get_field('fax') ?></p>
+                                <p><span class="c-info-title">Email</span> <?php echo get_field('email') ?></p>
+                                <p><span class="c-info-title">Website</span> <?php echo get_field('website') ?></p>
+                            </div>
+                        <?php endwhile; ?>
+                    <?php endif; ?>
+                    <?php wp_reset_postdata() ?>
                 </div>
-                <div class="col-xs-9">
-                    <p><?php echo $omw_theme_settings->ct_head_com_address ?></p>
-                    <p><span class="c-info-title">Điện thoại</span> <?php echo $omw_theme_settings->ct_head_com_telephone ?></p>
-                    <p><span class="c-info-title">Fax</span> <?php echo $omw_theme_settings->ct_head_com_fax ?></p>
-                    <p><span class="c-info-title">Email</span> <?php echo $omw_theme_settings->ct_head_com_email ?></p>
-                    <p><span class="c-info-title">Website</span> <?php echo $omw_theme_settings->ct_head_com_website ?></p>
-                </div>
-            </div>
-            <div class="margin-top-xl"></div>
-            <div class="all-coms clearfix">
-                <h2>Chi nhánh phía nam</h2>
-                <div class="col-xs-3 nopadding-left nopadding-right">
-                    <?php $com_image = (object) json_decode($omw_theme_settings->ct_head_com_image); ?>
-                    <img class="img-responsive" src="<?php echo ($com_image->sizes->medium != '') ? $com_image->sizes->medium : $com_image->url ?>" />
-                </div>
-                <div class="col-xs-9">
-                    <p><?php echo $omw_theme_settings->ct_company_address ?></p>
-                    <p><span class="c-info-title">Điện thoại</span> <?php echo $omw_theme_settings->ct_company_telephone ?></p>
-                    <p><span class="c-info-title">Fax</span> <?php echo $omw_theme_settings->ct_company_fax ?></p>
-                    <p><span class="c-info-title">Email</span> <?php echo $omw_theme_settings->ct_company_email ?></p>
-                    <p><span class="c-info-title">Website</span> <?php echo home_url() ?></p>
-                </div>
-            </div>
+            <?php endforeach; ?>
             <div class="margin-top-xl"></div>
             <?php get_template_part('part-google-map') ?>
         </div>

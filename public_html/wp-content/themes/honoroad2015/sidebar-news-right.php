@@ -2,7 +2,7 @@
     <h4 class="title"><span>Tin xem nhiều</span></h4>
     <?php
     $args = array(
-        'post_type' => array('news', 'health'),
+        'post_type' => array('news'),
         'posts_per_page' => 9,
         'order' => 'DESC',
         'orderby' => 'meta_value_num',
@@ -11,7 +11,7 @@
             array(
                 'taxonomy' => 'news-type',
                 'field' => 'slug',
-                'terms' => array('recruiting'),
+                'terms' => array('recruiting', 'promotion'),
                 'operator' => 'NOT IN',
             ),
         ),

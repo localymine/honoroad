@@ -63,7 +63,6 @@ wp_reset_postdata();
     </div>
     <!-- Jssor Slider End -->
 </div>
-
 <!-- silder end -->
 
 <!-- product -->
@@ -75,50 +74,44 @@ wp_reset_postdata();
             'posts_per_page' => -1,
         );
         $loop = new WP_Query($args);
+        $i = 0;
         ?>
-        <div class="col-xs-12">
-            <div id="jssor_1">
-                <!-- Loading Screen -->
-                <div class="box-loading" data-u="loading">
-                    <div class="box-loading-overlay"></div>
-                    <div class="box-loading-img"></div>
-                </div>
-                <div class="box-slider" data-u="slides">
+        <div class="col-md-12">
+            <div class="carousel slide" id="myCarousel">
+                <div class="carousel-inner">
                     <?php if ($loop->have_posts()): ?>
-                        <?php while ($loop->have_posts()): $loop->the_post(); ?>    
-                            <div class="col-xs-12 col-md-4 box-item prod-block">
-                                <a href="<?php the_permalink() ?>">
-                                    <article id="item-<?php the_ID() ?>" class="item">
-                                        <?php if (have_rows('images')): ?>
-                                            <?php while (have_rows('images')): the_row(); ?>
-                                                <?php
-                                                $image = get_sub_field('image');
-                                                // thumbnail
-                                                $size = 'large';
-                                                $thumb = $image['sizes'][$size];
-                                                ?>
-                                                <img class="img-responsive" src="<?php echo $thumb ?>" alt="<?php the_title() ?>"/>
-                                                <?php break; ?>
-                                            <?php endwhile; ?>
-                                        <?php endif; ?>
-                                        <div class="prod-title"><h1><?php the_title() ?></h1></div>
-                                    </article>
-                                </a>
+                        <?php while ($loop->have_posts()): $loop->the_post(); ?>
+                            <div class="item <?php echo ($i <= 0) ? 'active' : '' ?>">
+                                <div class="col-md-4">
+                                    <div class="prod-block">
+                                        <a href="<?php the_permalink() ?>">
+                                            <article id="item-<?php the_ID() ?>" class="item">
+                                                <?php if (have_rows('images')): ?>
+                                                    <?php while (have_rows('images')): the_row(); ?>
+                                                        <?php
+                                                        $image = get_sub_field('image');
+                                                        // thumbnail
+                                                        $size = 'large';
+                                                        $thumb = $image['sizes'][$size];
+                                                        ?>
+                                                        <img class="img-responsive" src="<?php echo $thumb ?>" alt="<?php the_title() ?>"/>
+                                                        <?php break; ?>
+                                                    <?php endwhile; ?>
+                                                <?php endif; ?>
+                                                <div class="prod-title"><h1><?php the_title() ?></h1></div>
+                                            </article>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
+                            <?php $i++ ?>
                         <?php endwhile; ?>
                     <?php endif; ?>
                     <?php wp_reset_postdata() ?>
                 </div>
-                <!-- Bullet Navigator -->
-                <div data-u="navigator" class="box-navigator jssorb03">
-                    <!-- bullet navigator item prototype -->
-                    <div class="box-prototype" data-u="prototype">
-                        <div data-u="numbertemplate"></div>
-                    </div>
-                </div>
-                <!-- Arrow Navigator -->
-                <span data-u="arrowleft" class="box-arrowleft jssora03l"></span>
-                <span data-u="arrowright" class="box-arrowright jssora03r"></span>
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
             </div>
         </div>
     </div>

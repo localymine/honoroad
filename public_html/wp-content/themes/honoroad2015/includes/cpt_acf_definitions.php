@@ -140,6 +140,30 @@ function cptui_register_my_cpts() {
     );
     register_post_type("health", $args);
 
+    $labels = array(
+        "name" => "Company Info",
+        "singular_name" => "Company Info",
+    );
+
+    $args = array(
+        "labels" => $labels,
+        "description" => "",
+        "public" => true,
+        "show_ui" => true,
+        "has_archive" => false,
+        "show_in_menu" => true,
+        "exclude_from_search" => false,
+        "capability_type" => "post",
+        "map_meta_cap" => true,
+        "hierarchical" => false,
+        "rewrite" => array("slug" => "company-info", "with_front" => true),
+        "query_var" => true,
+        "menu_position" => 26,
+        "menu_icon" => get_template_directory_uri() . '/images/ad-ico/h8.png',
+        "supports" => array("title"),
+    );
+    register_post_type("company-info", $args);
+
 // End of cptui_register_my_cpts()
 }
 
@@ -184,7 +208,21 @@ function cptui_register_my_taxes() {
     );
     register_taxonomy("news-type", array("news"), $args);
 
+    $labels = array(
+        "name" => "Company Branch",
+        "label" => "Company Branch",
+    );
 
+    $args = array(
+        "labels" => $labels,
+        "hierarchical" => true,
+        "label" => "Company Branch",
+        "show_ui" => true,
+        "query_var" => true,
+        "rewrite" => array('slug' => 'company-branch', 'with_front' => true),
+        "show_admin_column" => true,
+    );
+    register_taxonomy("company-branch", array("company-info"), $args);
 
 // End cptui_register_my_taxes
 }
@@ -254,50 +292,52 @@ if (function_exists("register_field_group")) {
                 'toolbar' => 'basic',
                 'media_upload' => 'yes',
             ),
-            array(
-                'key' => 'field_564765d7a2f72',
-                'label' => 'Price Plans',
-                'name' => 'price_plans',
-                'type' => 'repeater',
-                'instructions' => 'Giá',
-                'sub_fields' => array(
-                    array(
-                        'key' => 'field_5647752e4802c',
-                        'label' => 'Weight',
-                        'name' => 'weight',
-                        'type' => 'select',
-                        'column_width' => '',
-                        'choices' => array(
-                            '1L' => '1L',
-                            '2L' => '2L',
-                            '5L' => '5L',
-                            '22L' => '22L',
-                            '25Kg' => '25Kg',
-                        ),
-                        'default_value' => '',
-                        'allow_null' => 0,
-                        'multiple' => 0,
-                    ),
-                    array(
-                        'key' => 'field_564775964802d',
-                        'label' => 'Price',
-                        'name' => 'price',
-                        'type' => 'number',
-                        'column_width' => '',
-                        'default_value' => '',
-                        'placeholder' => '',
-                        'prepend' => '',
-                        'append' => '',
-                        'min' => '',
-                        'max' => '',
-                        'step' => '',
-                    ),
-                ),
-                'row_min' => '',
-                'row_limit' => '',
-                'layout' => 'table',
-                'button_label' => 'Add Row',
-            ),
+            /*
+              array(
+              'key' => 'field_564765d7a2f72',
+              'label' => 'Price Plans',
+              'name' => 'price_plans',
+              'type' => 'repeater',
+              'instructions' => 'Giá',
+              'sub_fields' => array(
+              array(
+              'key' => 'field_5647752e4802c',
+              'label' => 'Weight',
+              'name' => 'weight',
+              'type' => 'select',
+              'column_width' => '',
+              'choices' => array(
+              '1L' => '1L',
+              '2L' => '2L',
+              '5L' => '5L',
+              '22L' => '22L',
+              '25Kg' => '25Kg',
+              ),
+              'default_value' => '',
+              'allow_null' => 0,
+              'multiple' => 0,
+              ),
+              array(
+              'key' => 'field_564775964802d',
+              'label' => 'Price',
+              'name' => 'price',
+              'type' => 'number',
+              'column_width' => '',
+              'default_value' => '',
+              'placeholder' => '',
+              'prepend' => '',
+              'append' => '',
+              'min' => '',
+              'max' => '',
+              'step' => '',
+              ),
+              ),
+              'row_min' => '',
+              'row_limit' => '',
+              'layout' => 'table',
+              'button_label' => 'Add Row',
+              ),
+             */
             array(
                 'key' => 'field_5642fb481e434',
                 'label' => 'Images',
@@ -376,16 +416,23 @@ if (function_exists("register_field_group")) {
                         'key' => 'field_5642e237b732d',
                         'label' => 'Attribute',
                         'name' => 'attribute',
-                        'type' => 'select',
+                        'type' => 'text',
                         'column_width' => '',
-                        'choices' => array(
-                            'Trạng thái' => 'Trạng thái',
-                            'Màu sắc' => 'Màu sắc',
-                            'Mùi' => 'Mùi',
-                        ),
                         'default_value' => '',
-                        'allow_null' => 0,
-                        'multiple' => 0,
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                    /*
+                      'column_width' => '',
+                      'choices' => array(
+                      'Trạng thái' => 'Trạng thái',
+                      'Màu sắc' => 'Màu sắc',
+                      'Mùi' => 'Mùi',
+                      ),
+                      'default_value' => '',
+                      'allow_null' => 0,
+                      'multiple' => 0,
+                     */
                     ),
                     array(
                         'key' => 'field_5642e3d4b732e',
@@ -417,20 +464,27 @@ if (function_exists("register_field_group")) {
                         'key' => 'field_5642e5aab7330',
                         'label' => 'Item',
                         'name' => 'item',
-                        'type' => 'select',
+                        'type' => 'text',
                         'instructions' => 'Hạng mục',
                         'column_width' => '',
-                        'choices' => array(
-                            'Hàm lượng axit béo tự do (axit oleic)' => 'Hàm lượng axit béo tự do (axit oleic)',
-                            'Hydro hóa' => 'Hydro hóa',
-                            'Iốt' => 'Iốt',
-                            'Độ ẩm' => 'Độ ẩm',
-                            'Tạp chất' => 'Tạp chất',
-                            'Độ nóng chảy' => 'Độ nóng chảy',
-                        ),
                         'default_value' => '',
-                        'allow_null' => 0,
-                        'multiple' => 0,
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                    /*
+                      'column_width' => '',
+                      'choices' => array(
+                      'Hàm lượng axit béo tự do (axit oleic)' => 'Hàm lượng axit béo tự do (axit oleic)',
+                      'Hydro hóa' => 'Hydro hóa',
+                      'Iốt' => 'Iốt',
+                      'Độ ẩm' => 'Độ ẩm',
+                      'Tạp chất' => 'Tạp chất',
+                      'Độ nóng chảy' => 'Độ nóng chảy',
+                      ),
+                      'default_value' => '',
+                      'allow_null' => 0,
+                      'multiple' => 0,
+                     */
                     ),
                     array(
                         'key' => 'field_5642e5b7b7331',
@@ -528,18 +582,25 @@ if (function_exists("register_field_group")) {
                         'key' => 'field_5642ef578d0c0',
                         'label' => 'Attribute',
                         'name' => 'attribute',
-                        'type' => 'select',
+                        'type' => 'text',
                         'column_width' => '',
-                        'choices' => array(
-                            'Năng lượng' => 'Năng lượng',
-                            'Chất đạm' => 'Chất đạm',
-                            'Chất béo toàn phần' => 'Chất béo toàn phần',
-                            'Hydrat cacbon' => 'Hydrat cacbon',
-                            'Cholesterol' => 'Cholesterol',
-                        ),
                         'default_value' => '',
-                        'allow_null' => 0,
-                        'multiple' => 0,
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                    /*
+                      'column_width' => '',
+                      'choices' => array(
+                      'Năng lượng' => 'Năng lượng',
+                      'Chất đạm' => 'Chất đạm',
+                      'Chất béo toàn phần' => 'Chất béo toàn phần',
+                      'Hydrat cacbon' => 'Hydrat cacbon',
+                      'Cholesterol' => 'Cholesterol',
+                      ),
+                      'default_value' => '',
+                      'allow_null' => 0,
+                      'multiple' => 0,
+                     */
                     ),
                     array(
                         'key' => 'field_5642f6c48d0c1',
@@ -735,6 +796,103 @@ if (function_exists("register_field_group")) {
                     'param' => 'post_type',
                     'operator' => '==',
                     'value' => 'health',
+                    'order_no' => 0,
+                    'group_no' => 0,
+                ),
+            ),
+        ),
+        'options' => array(
+            'position' => 'normal',
+            'layout' => 'no_box',
+            'hide_on_screen' => array(
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+
+    register_field_group(array(
+        'id' => 'acf_company-info',
+        'title' => 'Company Info',
+        'fields' => array(
+            array(
+                'key' => 'field_567806fcd7c3b',
+                'label' => 'Image',
+                'name' => 'image',
+                'type' => 'image',
+                'instructions' => 'Hình Ảnh',
+                'save_format' => 'object',
+                'preview_size' => 'thumbnail',
+//                'library' => 'uploadedTo',
+            ),
+            array(
+                'key' => 'field_56780724d7c3c',
+                'label' => 'Address',
+                'name' => 'address',
+                'type' => 'text',
+                'instructions' => 'Địa Chỉ',
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'none',
+                'maxlength' => '',
+            ),
+            array(
+                'key' => 'field_567807cbd7c3d',
+                'label' => 'Tel',
+                'name' => 'tel',
+                'type' => 'text',
+                'instructions' => 'Điện Thoại',
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'none',
+                'maxlength' => '',
+            ),
+            array(
+                'key' => 'field_567807e3d7c3e',
+                'label' => 'Fax',
+                'name' => 'fax',
+                'type' => 'text',
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'none',
+                'maxlength' => '',
+            ),
+            array(
+                'key' => 'field_56780837d7c3f',
+                'label' => 'Email',
+                'name' => 'email',
+                'type' => 'text',
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'none',
+                'maxlength' => '',
+            ),
+            array(
+                'key' => 'field_56780864d7c40',
+                'label' => 'Website',
+                'name' => 'website',
+                'type' => 'text',
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'none',
+                'maxlength' => '',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'company-info',
                     'order_no' => 0,
                     'group_no' => 0,
                 ),
