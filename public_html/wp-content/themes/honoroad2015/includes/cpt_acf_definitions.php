@@ -490,8 +490,14 @@ if (function_exists("register_field_group")) {
                         'key' => 'field_5642e5b7b7331',
                         'label' => 'Unit',
                         'name' => 'unit',
-                        'type' => 'select',
+                        'type' => 'text',
                         'instructions' => 'Đơn vị',
+                        'column_width' => '',
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                        /*
                         'column_width' => '',
                         'choices' => array(
                             '%' => '%',
@@ -501,6 +507,7 @@ if (function_exists("register_field_group")) {
                         'default_value' => '',
                         'allow_null' => 0,
                         'multiple' => 0,
+                        */
                     ),
                     array(
                         'key' => 'field_5642e62e6beef',
