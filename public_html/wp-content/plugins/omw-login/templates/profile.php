@@ -12,8 +12,9 @@ wp_reset_vars(array('action', 'user_id', 'wp_http_referer'));
 
 $user_id = (int) $user_id;
 $current_user = wp_get_current_user();
-if ($user_id == $current_user->ID)
-    ;
+if ($user_id == $current_user->ID){
+    
+}
 
 $profileuser = get_user_to_edit($user_id);
 
