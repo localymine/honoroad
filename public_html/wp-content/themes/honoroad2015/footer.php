@@ -16,6 +16,9 @@ $logo = (object) json_decode($omw_theme_settings->ct_company_logo);
                         <p>
                             Email: <a href="mailto:<?php echo $omw_theme_settings->ct_company_email ?>"><?php echo $omw_theme_settings->ct_company_email ?></a>
                         </p>
+                        <p>
+                            Website: <a href="<?php echo home_url() ?>"><?php echo str_replace('http://', '', home_url()) ?></a>
+                        </p>
                     </div>
                     <div class="col-md-4"></div>
                     <div class="col-xs-12 col-md-3 nopadding vcenter">
@@ -37,10 +40,7 @@ $logo = (object) json_decode($omw_theme_settings->ct_company_logo);
                             <?php endif; ?>
                         </span>
                         <p class="text-center">
-                            <a href="<?php echo home_url('policy') ?>">Chính Sách Bảo Mật</a>
-                        </p>
-                        <p class="text-center">
-                            <a href="<?php echo home_url() ?>"><?php echo str_replace('http://', '', home_url()) ?></a>
+                            <a href="<?php echo home_url('security') ?>">Chính Sách Bảo Mật</a>
                         </p>
                     </div>
                 </div>
