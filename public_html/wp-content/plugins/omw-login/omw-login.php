@@ -91,6 +91,7 @@ class omw_login {
         // Add short code
         add_shortcode('omw-shortcode', array($this, 'print_shortcode'), 10, 1);
         //
+        add_filter('user_contactmethods', array($this, 'modify_user_contact_methods'), 10, 1);
         add_filter('login_redirect', array($this, 'omw_login_redirect'), 10, 3);
         add_action('admin_init', array($this, 'omw_admin_login_init'));
         add_action('template_redirect', array($this, 'omw_template_redirect'));
@@ -98,6 +99,16 @@ class omw_login {
         add_action('validate_password_reset', array($this, 'omw_validate_password_reset'), 10, 2);
         add_action('login_init', array($this, 'omw_login_init'));
         add_filter('registration_errors', array($this, 'omw_registration_redirect'), 10, 3);
+    }
+
+    public function modify_user_contact_methods($user_contact) {
+
+        // Add user contact methods
+        $user_contact['user_fullname'] = __('Fullname');
+        $user_contact['user_phonenumber'] = __('Phonenumber');
+        $user_contact['user_address'] = __('Address');
+
+        return $user_contact;
     }
 
     /**

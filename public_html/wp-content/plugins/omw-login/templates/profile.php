@@ -8,6 +8,17 @@ get_header();
 ?>
 
 <?php
+wp_reset_vars(array('action', 'user_id', 'wp_http_referer'));
+
+$user_id = (int) $user_id;
+$current_user = wp_get_current_user();
+if ($user_id == $current_user->ID)
+    ;
+
+$profileuser = get_user_to_edit($user_id);
+
+print_r($profileuser);
+
 global $current_user;
 get_currentuserinfo();
 
@@ -48,23 +59,23 @@ if (!empty($_POST) && !empty($_POST['action']) && $_POST['action'] == 'update-us
 <div class="container margin-top-xl margin-bottom-xl profile">
     <div class="row">
 
-        <?php while (have_posts()) : the_post(); ?>
+<?php while (have_posts()) : the_post(); ?>
 
             <article id="page-<?php the_ID(); ?>" class="meta-box hentry">
                 <div class="col-xs-12 col-md-6">
-                    <?php if (!empty($_GET['success'])): ?>
+    <?php if (!empty($_GET['success'])): ?>
                         <div class="message-box message-success">
                             <span class="icon-thumbs-up"></span>
                             Profile updated successfully!
                         </div>
                     <?php endif; ?>
 
-                    <?php if (!empty($error)): ?>
+    <?php if (!empty($error)): ?>
                         <div class="message-box message-error">
                             <span class="icon-thumbs-up"></span>
-                            <?php echo $error; ?>
+                        <?php echo $error; ?>
                         </div>
-                    <?php endif; ?>
+    <?php endif; ?>
 
                     <header class="entry-header">
                         <h1 class="entry-title">Welcome <span class="userColor"><?php echo esc_html($current_user->display_name); ?></span></h1>
@@ -112,7 +123,7 @@ if (!empty($_POST) && !empty($_POST['action']) && $_POST['action'] == 'update-us
                 </div>
             </article>
 
-        <?php endwhile; ?>
+<?php endwhile; ?>
 
     </div><!-- .main-column -->
 
