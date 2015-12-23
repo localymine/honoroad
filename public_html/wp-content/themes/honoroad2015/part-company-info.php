@@ -7,7 +7,7 @@ global $omw_theme_settings;
         <div class="row">
             <div class="col-xs-12 col-md-3 wow fadeInUp" data-wow-delay="0.25s">
                 <article>
-                    <div class="item-content">
+                    <div class="item-content text-center">
                         <i class="fa fa-map-marker fa-3x"></i>
                         <h2><span>Địa Chỉ</span></h2>
                         <div class="item-introtext">
@@ -20,7 +20,7 @@ global $omw_theme_settings;
             </div>
             <div class="col-xs-12 col-md-3 wow fadeInUp" data-wow-delay="0.5s">
                 <article>
-                    <div class="item-content">
+                    <div class="item-content text-center">
                         <i class="fa fa-phone fa-3x"></i>
                         <h2><span>Điện Thoại</span></h2>
                         <div class="item-introtext">
@@ -33,7 +33,7 @@ global $omw_theme_settings;
             </div>
             <div class="col-xs-12 col-md-3 wow fadeInUp" data-wow-delay="0.75s">
                 <article>
-                    <div class="item-content">
+                    <div class="item-content text-center">
                         <i class="fa fa-envelope-o fa-3x"></i>
                         <h2><span>Email</span></h2>
                         <div class="item-introtext">
@@ -46,7 +46,7 @@ global $omw_theme_settings;
             </div>
             <div class="col-xs-12 col-md-3 wow fadeInUp" data-wow-delay="1s">
                 <article>
-                    <div class="item-content">
+                    <div class="item-content text-center">
                         <i class="fa fa-envelope-o fa-3x"></i>
                         <h2><span>Follow Us</span></h2>
                         <div class="item-introtext">

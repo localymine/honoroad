@@ -637,7 +637,7 @@ ul.m-sidebar{
         @include transition(0.3s);
         color: transparentize($black, 0.1);
         &:hover{
-            color: $white;
+            color: #ccc;
         }
     }
 }
@@ -665,7 +665,6 @@ ul.m-sidebar{
         li{
             padding: 5px;
             a{
-                /*color: $menu-color;*/
                 @include style-1;
                 span{
                     padding-left: 10px;
@@ -674,7 +673,8 @@ ul.m-sidebar{
                     @include style-3;
                 }
                 &.active{
-                    @include style-3;
+                    @include style-1;
+                    font-weight: bold;
                 }
             }
         }
