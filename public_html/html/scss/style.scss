@@ -734,10 +734,12 @@ ul.m-sidebar{
     }
     .prod-name{
         @include style-1;
+        border-bottom: 1px solid;
     }
     .prod-detail{
         .prod-attr{
             @include style-3;
+            font-size: $font-size-sub-title;
         }
     }
     .prod-img-features{

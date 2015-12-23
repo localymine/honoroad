@@ -81,20 +81,20 @@ get_header();
                 <h2 class="prod-name"><?php the_title() ?></h2>
                 <div class="prod-detail">
                     <?php if (trim(get_field('ingredients')) != ''): ?>
-                        <div class="prod-attr">Thành phần:</div> 
+                        <div class="prod-attr"><?php echo get_field('title_1') ?>:</div> 
                         <p>
                             <?php echo get_field('ingredients') ?>
                         </p>
                     <?php endif; ?>
                     <?php if (trim(get_field('features')) != ''): ?>
-                        <div class="prod-attr">Đặc điểm:</div>
+                        <div class="prod-attr"><?php echo get_field('title_2') ?>:</div>
                         <p>
                             <?php echo get_field('features') ?>
                         </p>
                     <?php endif; ?>
-                    <h5 class="prod-attr">Tiêu chuẩn chất lượng</h5>
+                    <h5 class="prod-attr"><?php echo get_field('title_3') ?></h5>
                     <?php if (have_rows('sensory')): ?>
-                        <div class="prod-attr">Chỉ tiêu cảm quan</div>
+                        <div class="prod-attr"><?php echo get_field('title_4') ?></div>
                         <p>
                             <?php while (have_rows('sensory')): the_row(); ?>
                                 <?php echo get_sub_field('attribute') ?>：<?php echo get_sub_field('description') ?><br/>
@@ -102,7 +102,7 @@ get_header();
                         </p>
                     <?php endif; ?>
                     <?php if (have_rows('physical_and_chemical_indicators')): ?>
-                        <div class="prod-attr">Chỉ số lý hóa</div>
+                        <div class="prod-attr"><?php echo get_field('title_5') ?></div>
                         <table class="table">
                             <thead>
                                 <tr>
@@ -121,31 +121,31 @@ get_header();
                         </table>
                     <?php endif; ?>
                     <?php if (trim(get_field('usage')) != ''): ?>
-                        <div class="prod-attr">Công dụng</div>
+                        <div class="prod-attr"><?php echo get_field('title_6') ?></div>
                         <p>
                             <?php echo get_field('usage') ?>
                         </p>
                     <?php endif; ?>
                     <?php if (trim(get_field('target_user')) != ''): ?>
-                        <div class="prod-attr">Đối tượng sử dụng</div>
+                        <div class="prod-attr"><?php echo get_field('title_7') ?></div>
                         <p>
                             <?php echo get_field('target_user') ?>
                         </p>
                     <?php endif; ?>
                     <?php if (trim(get_field('preservation')) != ''): ?>
-                        <div class="prod-attr">Bảo quản</div>
+                        <div class="prod-attr"><?php echo get_field('title_8') ?></div>
                         <p>
                             <?php echo get_field('preservation') ?>
                         </p>
                     <?php endif; ?>
                     <?php if (trim(get_field('number_of_quality_standard')) != ''): ?>
-                        <div class="prod-attr">Số tiêu chuẩn chất lượng</div>
+                        <div class="prod-attr"><?php echo get_field('title_9') ?></div>
                         <p>
                             <?php echo get_field('number_of_quality_standard') ?>
                         </p>
                     <?php endif; ?>
                     <?php if (have_rows('nutritional_information')): ?>
-                        <h5 class="prod-attr">Thông tin dinh dưỡng</h5>
+                        <h5 class="prod-attr"><?php echo get_field('title_10') ?></h5>
                         <div>*Hàm lượng trung bình trong mỗi khẩu phần</div>
                         <table class="table">
                             <thead>
@@ -165,7 +165,7 @@ get_header();
                         </table>
                     <?php endif; ?>
                     <?php if (trim(get_field('usage_in_field')) != ''): ?>
-                        <div class="prod-attr">Dùng cho lĩnh vực</div>
+                        <div class="prod-attr"><?php echo get_field('title_11') ?></div>
                         <p>
                             <?php echo get_field('usage_in_field') ?>
                         </p>

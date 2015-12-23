@@ -83,6 +83,7 @@ class omw_login {
         $this->templates = array(
             $this->theme_template_directory . '/login.php' => 'Login',
             $this->theme_template_directory . '/profile.php' => 'Profile',
+            $this->theme_template_directory . '/change.php' => 'Change Password',
             $this->theme_template_directory . '/forgot-password.php' => 'Forgot Password',
             $this->theme_template_directory . '/reset-password.php' => 'Reset Password',
             $this->theme_template_directory . '/register.php' => 'Register',
@@ -92,6 +93,7 @@ class omw_login {
         add_shortcode('omw-shortcode', array($this, 'print_shortcode'), 10, 1);
         //
         add_filter('user_contactmethods', array($this, 'modify_user_contact_methods'), 10, 1);
+        add_action('user_register', array($this, 'register_user_contact_methods'));
         add_filter('login_redirect', array($this, 'omw_login_redirect'), 10, 3);
         add_action('admin_init', array($this, 'omw_admin_login_init'));
         add_action('template_redirect', array($this, 'omw_template_redirect'));
@@ -101,6 +103,11 @@ class omw_login {
         add_filter('registration_errors', array($this, 'omw_registration_redirect'), 10, 3);
     }
 
+    /**
+     * 
+     * @param type $user_contact
+     * @return type
+     */
     public function modify_user_contact_methods($user_contact) {
 
         // Add user contact methods
@@ -109,6 +116,22 @@ class omw_login {
         $user_contact['user_address'] = __('Address');
 
         return $user_contact;
+    }
+    
+    /**
+     * 
+     * @param type $user_id
+     */
+    public function register_user_contact_methods($user_id){
+        if (isset($_POST['user_fullname'])){
+            update_user_meta($user_id, 'user_fullname', $_POST['user_fullname']);
+        }
+        if (isset($_POST['user_phonenumber'])){
+            update_user_meta($user_id, 'user_phonenumber', $_POST['user_phonenumber']);
+        }
+        if (isset($_POST['user_address'])){
+            update_user_meta($user_id, 'user_address', $_POST['user_address']);
+        }
     }
 
     /**
@@ -249,6 +272,16 @@ class omw_login {
             'page_template' => $this->theme_template_directory . '/profile.php',
         );
         $profile_page_id = $this->create_page_if_null($profile_page);
+        
+        // Change Password
+        $change_page = array(
+            'post_name' => 'change',
+            'post_title' => 'Change',
+            'post_status' => 'publish',
+            'post_type' => 'page',
+            'page_template' => $this->theme_template_directory . '/change.php',
+        );
+        $change_page_id = $this->create_page_if_null($change_page);
 
         // Forgot Password
         $forgot_password_page = array(
