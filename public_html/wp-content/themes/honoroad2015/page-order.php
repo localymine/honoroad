@@ -8,6 +8,7 @@
 get_header();
 ?>
 
+
 <?php
 global $current_user;
 get_currentuserinfo();
@@ -50,8 +51,10 @@ $user_id = $current_user->ID;
         </div>
 
         <div class="col-md-8">
-            
-            
+
+            <p>{{ 1 + 3 }}</p>
+
+
             <pre>
 First you need to create a controller.
 
@@ -69,24 +72,36 @@ There is many things needs to be done for what you are asking. Please check the 
             </pre>
 
 
-
-            <div id="ctrl-as-exmpl" ng-controller="SettingsController1 as settings">
-                <label>Name: <input type="text" ng-model="settings.name"/></label>
-                <button ng-click="settings.greet()">greet</button><br/>
-                Contact:
-                <ul>
-                    <li ng-repeat="contact in settings.contacts">
-                        <select ng-model="contact.type" aria-label="Contact method" id="select_{{$index}}">
-                            <option>phone</option>
-                            <option>email</option>
-                        </select>
-                        <input type="text" ng-model="contact.value" aria-labelledby="select_{{$index}}" />
-                        <button ng-click="settings.clearContact(contact)">clear</button>
-                        <button ng-click="settings.removeContact(contact)" aria-label="Remove">X</button>
-                    </li>
-                    <li><button ng-click="settings.addContact()">add</button></li>
-                </ul>
-            </div>
+            <ul class="ul-rs lst-pd-order" ng-controller="productListCtrl">
+                <?php
+                $args = array(
+                    'post_type' => 'product',
+                    'posts_per_page' => -1,
+                );
+                $loop = new WP_Query($args);
+                ?>
+                <?php if ($loop->have_posts()): ?>
+                    <?php while ($loop->have_posts()): $loop->the_post(); ?>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <?php if (have_rows('images')): ?>
+                                    <?php while (have_rows('images')): the_row(); ?>
+                                        <?php
+                                        $image = get_sub_field('image');
+                                        // thumbnail
+                                        $size = 'thumbnail';
+                                        $thumb = $image['sizes'][$size];
+                                        ?>
+                                        <img width="32" src="<?php echo $thumb ?>" alt="<?php the_title() ?>" />
+                                        <?php break; ?>
+                                    <?php endwhile; ?>
+                                <?php endif; ?>
+                                <h2 class="prod-title"><?php the_title() ?></h2>
+                            </a>
+                        </li>
+                    <?php endwhile; ?>
+                <?php endif; ?>
+            </ul>
 
 
         </div>
@@ -96,32 +111,3 @@ There is many things needs to be done for what you are asking. Please check the 
 </div>
 
 <?php get_footer(); ?>
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-resource.min.js"></script>
-<script>
-    angular.module('controllerAsExample', []).controller('SettingsController1', SettingsController1);
-    function SettingsController1() {
-    this.name = "John Smith";
-            this.contacts = [
-            {type: 'phone', value: '408 555 1212'},
-            {type: 'email', value: 'john.smith@example.org'} ];
-    }
-
-    SettingsController1.prototype.greet = function() {
-        alert(this.name);
-    };
-    SettingsController1.prototype.addContact = function() {
-        this.contacts.push({type: 'email', value: 'yourname@example.org'});
-    };
-    SettingsController1.prototype.removeContact = function(contactToRemove) {
-        var index = this.contacts.indexOf(contactToRemove);
-        this.contacts.splice(index, 1);
-    };
-    SettingsController1.prototype.clearContact = function(contact) {
-        contact.type = 'phone';
-        contact.value = '';
-    };
-
-
-</script>

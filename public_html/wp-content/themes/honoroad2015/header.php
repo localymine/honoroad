@@ -32,6 +32,8 @@
         <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/fancybox/jquery.fancybox.css"/>
         <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/css/animate.css"/>
         <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/css/style.css"/>
+        
+        <script src="<?php echo get_template_directory_uri() ?>/js/angular.min.js"></script>
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -62,8 +64,9 @@
     <?php echo $omw_theme_settings->ct_custom_css; ?>
             </style>
         <?php endif; ?>
+        <?php wp_head(); ?>
     </head>
-    <body>
+    <body ng-app="myapp">
         <?php if (isset($omw_theme_settings->ct_facebook_script)) echo $omw_theme_settings->ct_facebook_script; ?>
         <?php if (isset($omw_theme_settings->ct_google_plus_script)) echo $omw_theme_settings->ct_google_plus_script; ?>
         <?php if (isset($omw_theme_settings->ct_twitter_script)) echo $omw_theme_settings->ct_twitter_script; ?>

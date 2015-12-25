@@ -328,4 +328,62 @@ function setPostViews($post_ID, $count_key = '') {
 }
 
 // Remove issues with prefetching adding extra views
-remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+//remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+
+/* -------------------------------------------------------------------------- */
+
+global $product_list;
+add_action('init', 'load_data', 2);
+
+function load_data() {
+
+    if (is_front_page() || !is_admin()) {
+        global $product_list;
+        // Google Map Data
+        $args = array(
+            'post_type' => 'product',
+            'posts_per_page' => -1,
+        );
+        $loop = new WP_Query($args);
+        //
+        if ($loop->have_posts()):
+            while ($loop->have_posts()): $loop->the_post();
+                if (have_rows('images')) {
+                    while (have_rows('images')): the_row();
+                        $image = get_sub_field('image');
+                        // thumbnail
+                        $size = 'thumbnail';
+                        $thumb = $image['sizes'][$size];
+                        break;
+                    endwhile;
+                }
+                //
+                $product_list[] = array(
+                    'title' => get_the_title(),
+                    'image' => $thumb,
+                );
+            endwhile;
+            $product_list = json_encode($product_list);
+        endif;
+        wp_reset_postdata();
+    }
+}
+
+add_action('wp_print_scripts', 'scripts');
+
+function scripts() {
+
+    if (is_front_page() || !is_admin()) {
+        //
+        global $product_list;
+        //
+        wp_enqueue_script('js-product', get_template_directory_uri() . '/js/productListCtrl.js', array(), '1.0', TRUE);
+        $dataToBePassed = array(
+            'home' => get_template_directory_uri(),
+            'product_list' => $product_list,
+        );
+
+        wp_localize_script('js-product', 'vars', $dataToBePassed);
+        wp_enqueue_script('js-product');
+    }
+}

@@ -54,7 +54,6 @@ $logo = (object) json_decode($omw_theme_settings->ct_company_logo);
     <a href="javascript:void(0)"><i class="fa fa-chevron-circle-up fa-5x"></i></a>
 </div>
 
-
 <script src="<?php echo get_template_directory_uri() ?>/js/jquery-1.11.2.js"></script>
 <script src="<?php echo get_template_directory_uri() ?>/js/bootstrap.min.js"></script>
 <script src="<?php echo get_template_directory_uri() ?>/js/ie10-viewport-bug-workaround.js"></script>
@@ -75,6 +74,7 @@ $logo = (object) json_decode($omw_theme_settings->ct_company_logo);
 
 <?php if (isset($omw_theme_settings->ct_google_analytics)) echo $omw_theme_settings->ct_google_analytics; ?>
 <?php if (isset($omw_theme_settings->ct_google_tag_manager)) echo $omw_theme_settings->ct_google_tag_manager; ?>
-
+    
+<?php wp_footer(); ?>
 </body>
 </html>
