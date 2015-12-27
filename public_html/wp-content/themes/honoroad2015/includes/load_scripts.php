@@ -44,12 +44,12 @@ class register_assets {
 add_action('wp_enqueue_scripts', 'omw_register_load_scripts');
 
 function omw_register_load_scripts() {
-//    wp_register_script('my-js', get_template_directory_uri() . '/js/my-js.js', array('jquery'), '', TRUE);
-//    wp_enqueue_script('my-js');
+    wp_register_script('my-js', get_template_directory_uri() . '/js/my-js.js', array('jquery'), '', TRUE);
+    wp_enqueue_script('my-js');
     //
     $dataToBePassed = array(
         'home_url' => home_url(),
         'template_url' => get_template_directory_uri(),
     );
-    wp_localize_script('js-omw-vars', 'omw_vars', $dataToBePassed);
+    wp_localize_script('my-js', 'omw_vars', $dataToBePassed);
 }

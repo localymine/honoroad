@@ -3,9 +3,10 @@ $(function () {
 
     console.log(vars);
     console.log(vars.product_list);
+    console.log(omw_vars);
 });
 
-$(function (angular) {
+(function (angular) {
     'use strict';
 
     var myApp = angular.module('myapp', []);

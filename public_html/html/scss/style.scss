@@ -43,6 +43,16 @@ p{
         max-width: 100%;
     }
 }
+.pinitial{
+    position: initial;
+    ul{
+        min-width: 150px !important;
+        li{
+            padding-left: 5px !important;
+            padding-right: 5px !important;
+        }
+    }
+}
 
 ul.ul-rs{
     margin: 0;
@@ -245,6 +255,15 @@ $paddings: (xs: 0.5rem, sm: 1rem, md: 1.5rem, lg: 2rem, xl: 2.5rem, xxl: 3rem);
         }
     }
 }
+
+/*ul > li{
+    box-shadow: none;
+    + ul > li{
+        &:hover{
+            box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0);
+        }
+    }
+}*/
 
 /*.menu-holder{
     width: 100%;
@@ -1114,7 +1133,9 @@ ul.m-sidebar{
 
 .header-sta-health{
     background: url('../images/header-health.jpg');
-    min-height: 300px;
+    height: 150px;
+    max-height: 150px;
+    min-height: 150;
     width: 100%;
     border-top: 2px solid $hot-top-bg;
     border-bottom: 2px solid $hot-top-bg;

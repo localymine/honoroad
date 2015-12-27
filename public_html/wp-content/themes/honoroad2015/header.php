@@ -67,9 +67,6 @@
         <?php wp_head(); ?>
     </head>
     <body ng-app="myapp">
-        <?php if (isset($omw_theme_settings->ct_facebook_script)) echo $omw_theme_settings->ct_facebook_script; ?>
-        <?php if (isset($omw_theme_settings->ct_google_plus_script)) echo $omw_theme_settings->ct_google_plus_script; ?>
-        <?php if (isset($omw_theme_settings->ct_twitter_script)) echo $omw_theme_settings->ct_twitter_script; ?>
         <div class="navbar-wrapper">
             <!-- hotline -->
             <header class="hot-top">
@@ -78,7 +75,7 @@
                         <li>
                             <i class="fa fa-phone fa-2x"></i><span class="hotline"><?php echo $omw_theme_settings->ct_company_telephone ?></span>
                         </li>
-                        <li>
+                        <li class="pinitial">
                             <?php if (is_user_logged_in()): ?>
                                 <a class="login-menu" href="javascript:void(0)"><i class="fa fa-user"></i></a>
                                 <ul class="right" style="padding-left: 0;margin-left: 0;">
@@ -167,9 +164,9 @@
                                         <li><a class="nav-title <?php echo $omw_active_menu['health'] ?>" href="<?php bloginfo('url') ?>/health"><span>Sức khỏe và Dinh dưỡng</span></a></li>
                                         <?php if (is_user_logged_in()): ?>
                                             <li>
-                                                <a class="nav-title <?php echo $omw_active_menu['order'] ?>" href="<?php bloginfo('url') ?>/order"><span>Đặt hàng</span></a>
+                                                <a class="nav-title <?php echo $omw_active_menu['order'] ?>" href="javascript:void(0)"><span>Đặt hàng</span></a>
                                                 <ul>
-                                                    <li><a>Quản lý đặt hàng</a></li>
+                                                    <li><a href="<?php bloginfo('url') ?>/order">Quản lý đặt hàng</a></li>
                                                     <li><a>Quản lý đơn hàng</a></li>
                                                 </ul>
                                             </li>

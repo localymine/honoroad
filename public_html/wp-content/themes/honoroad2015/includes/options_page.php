@@ -105,7 +105,7 @@ function omw_load_script_footer() {
     echo $script;
 }
 
-//add_action('wp_footer', 'omw_load_script_footer');
+add_action('wp_footer', 'omw_load_script_footer');
 
 /* ----------- Change Admin Default Logo & Url -------------------------------- */
 

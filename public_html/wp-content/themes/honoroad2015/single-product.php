@@ -60,7 +60,7 @@ get_header();
 
                     <?php endwhile; ?>
                 </div>
-                
+
                 <div class="social-navigation">
                     <div class="fb-share-button" 
                          data-href="<?php bloginfo('url') ?>" 
@@ -78,102 +78,75 @@ get_header();
                 </div>
             </div>
             <div class="col-xs-12 col-md-6">
+
                 <h2 class="prod-name"><?php the_title() ?></h2>
                 <div class="prod-detail">
-                    <?php if (trim(get_field('ingredients')) != ''): ?>
-                        <div class="prod-attr"><?php echo get_field('title_1') ?>:</div> 
-                        <p>
-                            <?php echo get_field('ingredients') ?>
-                        </p>
-                    <?php endif; ?>
-                    <?php if (trim(get_field('features')) != ''): ?>
-                        <div class="prod-attr"><?php echo get_field('title_2') ?>:</div>
-                        <p>
-                            <?php echo get_field('features') ?>
-                        </p>
-                    <?php endif; ?>
-                    <h5 class="prod-attr"><?php echo get_field('title_3') ?></h5>
-                    <?php if (have_rows('sensory')): ?>
-                        <div class="prod-attr"><?php echo get_field('title_4') ?></div>
-                        <p>
-                            <?php while (have_rows('sensory')): the_row(); ?>
-                                <?php echo get_sub_field('attribute') ?>：<?php echo get_sub_field('description') ?><br/>
-                            <?php endwhile; ?>
-                        </p>
-                    <?php endif; ?>
-                    <?php if (have_rows('physical_and_chemical_indicators')): ?>
-                        <div class="prod-attr"><?php echo get_field('title_5') ?></div>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Hạng mục</th>
-                                    <th>Đơn vị</th>
-                                    <th>&nbsp;</th>
-                                </tr>
-                            </thead>
-                            <?php while (have_rows('physical_and_chemical_indicators')): the_row(); ?>
-                                <tr>
-                                    <td><?php echo get_sub_field('item') ?></td>
-                                    <td><?php echo get_sub_field('unit') ?></td>
-                                    <td><?php echo get_sub_field('amount') ?></td>
-                                </tr>
-                            <?php endwhile; ?>
-                        </table>
-                    <?php endif; ?>
-                    <?php if (trim(get_field('usage')) != ''): ?>
-                        <div class="prod-attr"><?php echo get_field('title_6') ?></div>
-                        <p>
-                            <?php echo get_field('usage') ?>
-                        </p>
-                    <?php endif; ?>
-                    <?php if (trim(get_field('target_user')) != ''): ?>
-                        <div class="prod-attr"><?php echo get_field('title_7') ?></div>
-                        <p>
-                            <?php echo get_field('target_user') ?>
-                        </p>
-                    <?php endif; ?>
-                    <?php if (trim(get_field('preservation')) != ''): ?>
-                        <div class="prod-attr"><?php echo get_field('title_8') ?></div>
-                        <p>
-                            <?php echo get_field('preservation') ?>
-                        </p>
-                    <?php endif; ?>
-                    <?php if (trim(get_field('number_of_quality_standard')) != ''): ?>
-                        <div class="prod-attr"><?php echo get_field('title_9') ?></div>
-                        <p>
-                            <?php echo get_field('number_of_quality_standard') ?>
-                        </p>
-                    <?php endif; ?>
-                    <?php if (have_rows('nutritional_information')): ?>
-                        <h5 class="prod-attr"><?php echo get_field('title_10') ?></h5>
-                        <div>*Hàm lượng trung bình trong mỗi khẩu phần</div>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Hạng mục</th>
-                                    <th>*14g</th>
-                                    <th>*100g</th>
-                                </tr>
-                            </thead>
-                            <?php while (have_rows('nutritional_information')): the_row(); ?>
-                                <tr>
-                                    <td><?php echo get_sub_field('attribute') ?></td>
-                                    <td><?php echo get_sub_field('average_in_14g') ?></td>
-                                    <td><?php echo get_sub_field('average_in_100g') ?></td>
-                                </tr>
-                            <?php endwhile; ?>
-                        </table>
-                    <?php endif; ?>
-                    <?php if (trim(get_field('usage_in_field')) != ''): ?>
-                        <div class="prod-attr"><?php echo get_field('title_11') ?></div>
-                        <p>
-                            <?php echo get_field('usage_in_field') ?>
-                        </p>
-                    <?php endif; ?>
+
+                    <?php while (have_rows('block_information')): the_row(); ?>
+                        <?php // echo get_sub_field('type') ?>
+                        <div class="prod-attr"><?php echo get_sub_field('title') ?></div>
+                        <?php if (get_sub_field('type') == 'sensory'): ?>
+                            <?php if (have_rows('sensory')): ?>
+                                <p>
+                                    <?php while (have_rows('sensory')): the_row(); ?>
+                                        <?php echo get_sub_field('attribute') ?>：<?php echo get_sub_field('description') ?><br/>
+                                    <?php endwhile; ?>
+                                </p>
+                            <?php endif; ?>
+                        <?php elseif (get_sub_field('type') == 'physical_and_chemical_indicators'): ?>
+                            <?php if (have_rows('physical_and_chemical_indicators')): ?>
+                                <div class="prod-attr"><?php echo get_field('title_5') ?></div>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Hạng mục</th>
+                                            <th>Đơn vị</th>
+                                            <th>&nbsp;</th>
+                                        </tr>
+                                    </thead>
+                                    <?php while (have_rows('physical_and_chemical_indicators')): the_row(); ?>
+                                        <tr>
+                                            <td><?php echo get_sub_field('item') ?></td>
+                                            <td><?php echo get_sub_field('unit') ?></td>
+                                            <td><?php echo get_sub_field('amount') ?></td>
+                                        </tr>
+                                    <?php endwhile; ?>
+                                </table>
+                            <?php endif; ?>
+                        <?php elseif (get_sub_field('type') == 'nutritional_information'): ?>
+                            <?php if (have_rows('nutritional_information')): ?>
+                                <h5 class="prod-attr"><?php echo get_field('title_10') ?></h5>
+                                <div>*Hàm lượng trung bình trong mỗi khẩu phần</div>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Hạng mục</th>
+                                            <th>*14g</th>
+                                            <th>*100g</th>
+                                        </tr>
+                                    </thead>
+                                    <?php while (have_rows('nutritional_information')): the_row(); ?>
+                                        <tr>
+                                            <td><?php echo get_sub_field('attribute') ?></td>
+                                            <td><?php echo get_sub_field('average_in_14g') ?></td>
+                                            <td><?php echo get_sub_field('average_in_100g') ?></td>
+                                        </tr>
+                                    <?php endwhile; ?>
+                                </table>
+                            <?php endif; ?>
+                        <?php elseif (get_sub_field('type') == 'textarea'): ?>
+                            <p>
+                                <?php echo get_sub_field('textarea') ?>
+                            </p>
+                        <?php else: ?>
+                            <?php echo get_sub_field('editor') ?>
+                        <?php endif; ?>
+                    <?php endwhile; ?>
+
                 </div>
             </div>
             <?php if (have_rows('feature_images')): ?>
-                <div class="col-xs-12 col-md-4">
+                <div class="col-xs-12 col-md-12 clearfix">
                     <div class="prod-img-features">
                         <?php while (have_rows('feature_images')): the_row(); ?>
                             <?php
@@ -182,7 +155,7 @@ get_header();
                             $url = $feature_images['url'];
                             $feature_images_thumb = $feature_images['sizes']['medium'];
                             ?>
-                            <a class="fancybox-features" href="<?php echo $url ?>" rel="usage-products" class="col-md-3 nopadding"><img class="img-responsive" src="<?php echo $feature_images_thumb ?>" alt=""/></a>
+                            <a class="fancybox-features col-md-3 nopadding" href="<?php echo $url ?>" rel="usage-products"><img class="img-responsive" src="<?php echo $feature_images_thumb ?>" alt=""/></a>
                             <?php endwhile; ?>
                     </div>
                 </div>

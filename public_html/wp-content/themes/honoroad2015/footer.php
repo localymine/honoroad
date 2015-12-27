@@ -9,7 +9,7 @@ $logo = (object) json_decode($omw_theme_settings->ct_company_logo);
             <div class="container">
                 <div class="col-xs-12 copyright padding-bottom-md padding-top-xxl vcenter">
                     <div class="col-xs-12 col-md-5 nopadding">
-                        <a class="footer-logo" href="#"><img src="<?php echo $logo->url ?>"/></a>
+                        <a class="footer-logo" href="<?php echo home_url() ?>"><img src="<?php echo $logo->url ?>"/></a>
                         <p class="inline-block"><?php echo $omw_theme_settings->ct_company_name ?></p>
                         <p><?php echo $omw_theme_settings->ct_company_address ?></p>
                         <p>Tel: <?php echo $omw_theme_settings->ct_company_telephone ?> - Fax: <?php echo $omw_theme_settings->ct_company_fax ?></p>
@@ -17,7 +17,7 @@ $logo = (object) json_decode($omw_theme_settings->ct_company_logo);
                             Email: <a href="mailto:<?php echo $omw_theme_settings->ct_company_email ?>"><?php echo $omw_theme_settings->ct_company_email ?></a>
                         </p>
                         <p>
-                            Website: <a href="<?php echo home_url() ?>"><?php echo str_replace('http://', '', home_url()) ?></a>
+                            Website: <a href="<?php echo home_url() ?>"><?php echo str_replace('http://', 'www.', home_url()) ?></a>
                         </p>
                     </div>
                     <div class="col-md-4"></div>
@@ -66,15 +66,6 @@ $logo = (object) json_decode($omw_theme_settings->ct_company_logo);
 <script src="<?php echo get_template_directory_uri() ?>/js/jquery.heightLine.js"></script>
 <script src="<?php echo get_template_directory_uri() ?>/js/common.js"></script>
 
-<?php if ($omw_theme_settings->ct_use_script): ?>
-    <script>
-    <?php echo $omw_theme_settings->ct_custom_script; ?>
-    </script>
-<?php endif; ?>
-
-<?php if (isset($omw_theme_settings->ct_google_analytics)) echo $omw_theme_settings->ct_google_analytics; ?>
-<?php if (isset($omw_theme_settings->ct_google_tag_manager)) echo $omw_theme_settings->ct_google_tag_manager; ?>
-    
 <?php wp_footer(); ?>
 </body>
 </html>
