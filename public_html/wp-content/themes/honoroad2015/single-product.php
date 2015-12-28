@@ -136,10 +136,10 @@ get_header();
                             <?php endif; ?>
                         <?php elseif (get_sub_field('type') == 'textarea'): ?>
                             <p>
-                                <?php echo get_sub_field('textarea') ?>
+                                <?php echo get_sub_field('text_area') ?>
                             </p>
                         <?php else: ?>
-                            <?php echo get_sub_field('editor') ?>
+                            <?php echo get_sub_field('content') ?>
                         <?php endif; ?>
                     <?php endwhile; ?>
 

@@ -17,7 +17,10 @@ $logo = (object) json_decode($omw_theme_settings->ct_company_logo);
                             Email: <a href="mailto:<?php echo $omw_theme_settings->ct_company_email ?>"><?php echo $omw_theme_settings->ct_company_email ?></a>
                         </p>
                         <p>
-                            Website: <a href="<?php echo home_url() ?>"><?php echo str_replace('http://', 'www.', home_url()) ?></a>
+                            Website: <a href="<?php echo str_replace('http://', 'http://www.', home_url()) ?>"><?php echo str_replace('http://', 'www.', home_url()) ?></a>
+                        </p>
+			<p>
+                            Website: <a href="http://www.double-horse.com.vn">www.double-horse.com.vn</a>
                         </p>
                     </div>
                     <div class="col-md-4"></div>
