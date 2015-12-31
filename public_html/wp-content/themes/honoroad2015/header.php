@@ -33,8 +33,6 @@
         <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/css/animate.css"/>
         <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/css/style.css"/>
         
-        <script src="<?php echo get_template_directory_uri() ?>/js/angular.min.js"></script>
-
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>

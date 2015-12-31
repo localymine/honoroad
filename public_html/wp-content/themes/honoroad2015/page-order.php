@@ -50,7 +50,7 @@ $user_id = $current_user->ID;
             </div>
         </div>
 
-        <div class="col-md-8">
+        <div class="col-md-8" ng-controller="ProductListCtrl">
 
             <p>{{ 1 + 3 }}</p>
 
@@ -71,8 +71,17 @@ https://docs.angularjs.org/api/ng/directive/ngRepeat
 There is many things needs to be done for what you are asking. Please check the docs, if you don't understand or face with an error of yourse you can ask again.
             </pre>
 
-
-            <ul class="ul-rs lst-pd-order" ng-controller="productListCtrl">
+            <hr/>
+            <ul>
+                <li ng-repeat="product in products">
+                    <a href="javascript:void(0)">
+                        <img width="32" src="{{product.image}}" alt="{{product.title}}" />
+                        <h2 class="prod-title">{{product.title}}</h2>
+                    </a>
+                </li>
+            </ul>
+            <hr/>
+            <ul class="ul-rs lst-pd-order">
                 <?php
                 $args = array(
                     'post_type' => 'product',
