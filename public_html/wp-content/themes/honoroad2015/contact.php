@@ -105,7 +105,7 @@ get_header();
                         <input type="text" id="re_fax" name="re_fax" value="" placeholder="Fax" class="form-control" />
                     </div>
                     <div class="form-group">
-                        <textarea id="re_content" name="re_content" class="form-control vert" placeholder="Nội dung"></textarea>
+                        <textarea id="re_content" name="re_content" class="form-control vert confinedSpace" placeholder="Nội dung"></textarea>
                     </div>
                     <div class="form-group">
                         <div class="g-recaptcha" data-sitekey="<?php echo $omw_theme_settings->ct_recaptcha_public_key ?>"></div>
