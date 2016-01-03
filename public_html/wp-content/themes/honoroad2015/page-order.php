@@ -52,66 +52,23 @@ $user_id = $current_user->ID;
 
         <div class="col-md-8" ng-controller="ProductListCtrl">
 
-            <p>{{ 1 + 3 }}</p>
-
-
-            <pre>
-First you need to create a controller.
-
-https://docs.angularjs.org/api/ng/directive/ngController
-
-Than you need to create a method in your controller that pushing your item and amount to an array. Assign that function to your button click via:
-
-https://docs.angularjs.org/api/ng/directive/ngClick
-
-In your html you need to loop your array in order to add your record to table.
-
-https://docs.angularjs.org/api/ng/directive/ngRepeat
-
-There is many things needs to be done for what you are asking. Please check the docs, if you don't understand or face with an error of yourse you can ask again.
-            </pre>
-
+            Search: <input ng-model="query">
             <hr/>
-            <ul>
-                <li ng-repeat="product in products">
-                    <a href="javascript:void(0)">
-                        <img width="32" src="{{product.image}}" alt="{{product.title}}" />
+            Sort by:
+            <select ng-model="orderProp">
+                <option value="title">Alphabetical</option>
+                <option value="id">ID</option>
+            </select>
+            <hr/>
+            <ul class="ul-rs lst-pd-order">
+                <li id="{{product.id}}" ng-repeat="product in products| filter:query | orderBy:orderProp">
+                    <a href="javascript:void(0)" data-slug="{{product.slug}}">
+                        <img width="32" ng-src="{{product.image}}" alt="{{product.title}}" />
                         <h2 class="prod-title">{{product.title}}</h2>
                     </a>
                 </li>
             </ul>
             <hr/>
-            <ul class="ul-rs lst-pd-order">
-                <?php
-                $args = array(
-                    'post_type' => 'product',
-                    'posts_per_page' => -1,
-                );
-                $loop = new WP_Query($args);
-                ?>
-                <?php if ($loop->have_posts()): ?>
-                    <?php while ($loop->have_posts()): $loop->the_post(); ?>
-                        <li>
-                            <a href="javascript:void(0)">
-                                <?php if (have_rows('images')): ?>
-                                    <?php while (have_rows('images')): the_row(); ?>
-                                        <?php
-                                        $image = get_sub_field('image');
-                                        // thumbnail
-                                        $size = 'thumbnail';
-                                        $thumb = $image['sizes'][$size];
-                                        ?>
-                                        <img width="32" src="<?php echo $thumb ?>" alt="<?php the_title() ?>" />
-                                        <?php break; ?>
-                                    <?php endwhile; ?>
-                                <?php endif; ?>
-                                <h2 class="prod-title"><?php the_title() ?></h2>
-                            </a>
-                        </li>
-                    <?php endwhile; ?>
-                <?php endif; ?>
-            </ul>
-
 
         </div>
 
