@@ -30,46 +30,64 @@ $user_id = $current_user->ID;
             </div>
 
             <div class="form-group">
+                <input class="form-control" name="user_email" type="text" id="user_email"  placeholder="Email" value="<?php echo esc_attr(get_the_author_meta('user_email', $current_user->ID)) ?>">
+            </div>
+            
+            <div class="form-group">
                 <input class="form-control" name="user_address" type="text" id="user_address"  placeholder="Address" value="<?php echo esc_attr(get_the_author_meta('user_address', $current_user->ID)) ?>">
             </div>
 
             <div class="form-group">
                 <textarea class="form-control vert"  placeholder="Comment"></textarea>
             </div>
+        </div>
 
-            <?php
-            // action hook for plugin and extra fields
-            do_action('edit_user_profile', $current_user);
-            ?>
+        <div class="col-md-8" ng-controller="ProductListCtrl">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th width="40"></th>
+                        <th width="80">Số lượng</th>
+                        <th width="60">Đơn vị</th>
+                        <th width="60">
+                            <div class="text-center">
+                                <button ng-click="add_row(r)" class="btn btn-xs btn-success"><i class="fa fa-plus-circle fa-2x"></i></button>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="r in rows">
+                        <td>
+                            <select ng-change="get_product_details(r)" ng-model="r.id" ng-options="p.id as p.title for p in products" class="form-control">
+                                <option value="">== Chọn sản phẩm ==</option>
+                            </select>
+                        </td>
+                        <td>
+                            <img width="32" ng-model="r.image" ng-src="{{r.image}}" alt="{{r.title}}" />
+                        </td>
+                        <td>
+                            <input type="text" ng-model="r.quantity" value="0" class="form-control" />
+                        </td>
+                        <td><small>Thùng</small></td>
+                        <td>
+                            <div class="text-center">
+                                <button ng-click="sub_row(r)" class="btn btn-xs btn-default"><i class="fa fa-minus-circle fa-2x"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
+        <div class="col-md-12">
+            <div class="text-center">
+                <div class="center-block">
                     <button name="order" id="updateuser" type="submit" class="btn btn-success">Order</button>
                     <input name="action" type="hidden" id="action" value="client-order" />
                 </div>
             </div>
-        </div>
-
-        <div class="col-md-8" ng-controller="ProductListCtrl">
-
-            Search: <input ng-model="query">
-            <hr/>
-            Sort by:
-            <select ng-model="orderProp">
-                <option value="title">Alphabetical</option>
-                <option value="id">ID</option>
-            </select>
-            <hr/>
-            <ul class="ul-rs lst-pd-order">
-                <li id="{{product.id}}" ng-repeat="product in products| filter:query | orderBy:orderProp">
-                    <a href="javascript:void(0)" data-slug="{{product.slug}}">
-                        <img width="32" ng-src="{{product.image}}" alt="{{product.title}}" />
-                        <h2 class="prod-title">{{product.title}}</h2>
-                    </a>
-                </li>
-            </ul>
-            <hr/>
-
         </div>
 
     </div>
