@@ -284,3 +284,23 @@ $(function () {
         }
     });
 });
+
+$(function () {
+    $('.carousel').carousel({
+        interval: 2000
+    });
+    //
+    setInterval(function(){
+        var $el = $('.touch-list');
+        var $t_el;
+        console.log($el)
+        if ($el.children().is(':last')){
+            $el.siblings(':first');
+            console.log('1')
+            console.log($('a', $el.siblings(':first')).data('full'))
+        } else {
+            console.log('2')
+            console.log($('a', $el.children().next()).data('full'))
+        }
+    }, 5000);
+});
