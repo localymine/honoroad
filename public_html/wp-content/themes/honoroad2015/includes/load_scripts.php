@@ -45,7 +45,7 @@ global $product_list;
 
 function omw_load_data() {
 
-    if (is_front_page() || !is_admin()) {
+    if ((is_front_page() || !is_admin()) && is_page('order')) {
         global $product_list;
         // Google Map Data
         $args = array(
@@ -67,6 +67,9 @@ function omw_load_data() {
                 }
                 //
                 $product_list[] = array(
+                    'id' => get_the_ID(),
+                    'permalink' => get_permalink(),
+                    'slug' => basename(get_permalink()),
                     'title' => get_the_title(),
                     'image' => $thumb,
                 );
@@ -81,14 +84,14 @@ add_action('wp_print_scripts', 'onw_scripts');
 
 function onw_scripts() {
 
-    if (is_front_page() || !is_admin()) {
+    if ((is_front_page() || !is_admin()) && is_page('order')) {
         //
         global $product_list;
         //
-        wp_enqueue_script('js-angular', get_template_directory_uri() . '/js/angular.min.js', array(), '1.0', TRUE);
+        wp_register_script('js-angular', get_template_directory_uri() . '/js/angular.min.js', array(), '1.0', TRUE);
         wp_enqueue_script('js-angular');
         //
-        wp_enqueue_script('js-controller', get_template_directory_uri() . '/js/controller.js', array(), '1.0', TRUE);
+        wp_enqueue_script('js-controller', get_template_directory_uri() . '/js/controller.js', array('js-angular'), '1.0', TRUE);
         $dataToBePassed = array(
             'home_url' => home_url(),
             'template_url' => get_template_directory_uri(),

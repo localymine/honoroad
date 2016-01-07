@@ -30,89 +30,64 @@ $user_id = $current_user->ID;
             </div>
 
             <div class="form-group">
+                <input class="form-control" name="user_email" type="text" id="user_email"  placeholder="Email" value="<?php echo esc_attr(get_the_author_meta('user_email', $current_user->ID)) ?>">
+            </div>
+            
+            <div class="form-group">
                 <input class="form-control" name="user_address" type="text" id="user_address"  placeholder="Address" value="<?php echo esc_attr(get_the_author_meta('user_address', $current_user->ID)) ?>">
             </div>
 
             <div class="form-group">
                 <textarea class="form-control vert"  placeholder="Comment"></textarea>
             </div>
+        </div>
 
-            <?php
-            // action hook for plugin and extra fields
-            do_action('edit_user_profile', $current_user);
-            ?>
+        <div class="col-md-8" ng-controller="ProductListCtrl">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th width="40"></th>
+                        <th width="80">Số lượng</th>
+                        <th width="60">Đơn vị</th>
+                        <th width="60">
+                            <div class="text-center">
+                                <button ng-click="add_row(r)" class="btn btn-xs btn-success"><i class="fa fa-plus-circle fa-2x"></i></button>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="r in rows">
+                        <td>
+                            <select ng-change="get_product_details(r)" ng-model="r.id" ng-options="p.id as p.title for p in products" class="form-control">
+                                <option value="">== Chọn sản phẩm ==</option>
+                            </select>
+                        </td>
+                        <td>
+                            <img width="32" ng-model="r.image" ng-src="{{r.image}}" alt="{{r.title}}" />
+                        </td>
+                        <td>
+                            <input type="text" ng-model="r.quantity" value="0" class="form-control" />
+                        </td>
+                        <td><small>Thùng</small></td>
+                        <td>
+                            <div class="text-center">
+                                <button ng-click="sub_row(r)" class="btn btn-xs btn-default"><i class="fa fa-minus-circle fa-2x"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
+        <div class="col-md-12">
+            <div class="text-center">
+                <div class="center-block">
                     <button name="order" id="updateuser" type="submit" class="btn btn-success">Order</button>
                     <input name="action" type="hidden" id="action" value="client-order" />
                 </div>
             </div>
-        </div>
-
-        <div class="col-md-8" ng-controller="ProductListCtrl">
-
-            <p>{{ 1 + 3 }}</p>
-
-
-            <pre>
-First you need to create a controller.
-
-https://docs.angularjs.org/api/ng/directive/ngController
-
-Than you need to create a method in your controller that pushing your item and amount to an array. Assign that function to your button click via:
-
-https://docs.angularjs.org/api/ng/directive/ngClick
-
-In your html you need to loop your array in order to add your record to table.
-
-https://docs.angularjs.org/api/ng/directive/ngRepeat
-
-There is many things needs to be done for what you are asking. Please check the docs, if you don't understand or face with an error of yourse you can ask again.
-            </pre>
-
-            <hr/>
-            <ul>
-                <li ng-repeat="product in products">
-                    <a href="javascript:void(0)">
-                        <img width="32" src="{{product.image}}" alt="{{product.title}}" />
-                        <h2 class="prod-title">{{product.title}}</h2>
-                    </a>
-                </li>
-            </ul>
-            <hr/>
-            <ul class="ul-rs lst-pd-order">
-                <?php
-                $args = array(
-                    'post_type' => 'product',
-                    'posts_per_page' => -1,
-                );
-                $loop = new WP_Query($args);
-                ?>
-                <?php if ($loop->have_posts()): ?>
-                    <?php while ($loop->have_posts()): $loop->the_post(); ?>
-                        <li>
-                            <a href="javascript:void(0)">
-                                <?php if (have_rows('images')): ?>
-                                    <?php while (have_rows('images')): the_row(); ?>
-                                        <?php
-                                        $image = get_sub_field('image');
-                                        // thumbnail
-                                        $size = 'thumbnail';
-                                        $thumb = $image['sizes'][$size];
-                                        ?>
-                                        <img width="32" src="<?php echo $thumb ?>" alt="<?php the_title() ?>" />
-                                        <?php break; ?>
-                                    <?php endwhile; ?>
-                                <?php endif; ?>
-                                <h2 class="prod-title"><?php the_title() ?></h2>
-                            </a>
-                        </li>
-                    <?php endwhile; ?>
-                <?php endif; ?>
-            </ul>
-
-
         </div>
 
     </div>
