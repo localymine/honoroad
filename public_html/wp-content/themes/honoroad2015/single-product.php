@@ -43,22 +43,20 @@ get_header();
                 </div>
 
                 <div class="thumb-list clearfix">
-                    <?php while (have_rows('images')): the_row(); ?>
-                        <?php
-                        $prod_img = get_sub_field('image');
-                        //
-                        $url = $prod_img['url'];
-                        $prod_thumb = $prod_img['sizes']['thumbnail'];
-                        $prod_large = $prod_img['sizes']['large'];
-                        ?>
-
-                        <ul class="touch-list">
+                    <ul class="touch-list">
+                        <?php while (have_rows('images')): the_row(); ?>
+                            <?php
+                            $prod_img = get_sub_field('image');
+                            //
+                            $url = $prod_img['url'];
+                            $prod_thumb = $prod_img['sizes']['thumbnail'];
+                            $prod_large = $prod_img['sizes']['large'];
+                            ?>
                             <li>
                                 <a href="javascript:void(0)" data-large="<?php echo $prod_large ?>" data-full="<?php echo $url ?>"><img width="50" src="<?php echo $prod_thumb ?>"/></a>
                             </li>
-                        </ul>
-
-                    <?php endwhile; ?>
+                        <?php endwhile; ?>
+                    </ul>
                 </div>
 
                 <div class="social-navigation">
