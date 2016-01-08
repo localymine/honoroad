@@ -216,7 +216,8 @@ $(function () {
 });
 
 $(function () {
-    var error_icon_template = '<span><i class="fa fa-times"></i></span>';
+//    var error_icon_template = '<span><i class="fa fa-times"></i></span>';
+    var error_icon_template = '';
     var form_valid = $('#contact-info-form');
     form_valid.validate({
         rules: {

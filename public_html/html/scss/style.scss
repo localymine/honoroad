@@ -1150,7 +1150,7 @@ ul.m-sidebar{
     display: none;
 }
 .fancybox-nav{
-    width: 30%;
+    width: 5%;
 }
 .health-nutri{
     article{
@@ -1238,6 +1238,8 @@ ul.recent_short{
     display: inline-block;
     vertical-align: middle;
     float: none;
+    width: 100%;
+    height: 100%;
 }
 
 .newsletter-form-holder{
@@ -1278,6 +1280,17 @@ ul.lst-pd-order{
             display: inline-block;
             font-size: 1em;
         }
+    }
+}
+
+.req{
+    &:after{
+        font-family: FontAwesome;
+        content: '(\f069)';
+        color: $error-text-color;
+        margin: -26px 90%;
+        position: absolute;
+        font-size: 1em;
     }
 }
 

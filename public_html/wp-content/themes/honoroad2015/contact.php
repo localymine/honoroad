@@ -86,25 +86,25 @@ get_header();
             <div class="contact-info-form">
                 <h3>Thông tin phản hồi của khách hàng</h3>
                 <form id="contact-info-form" name="contact-info-form" method="post" action="<?php bloginfo('url') ?>/contact">
-                    <div class="form-group">
+                    <div class="form-group req">
                         <input type="text" id="re_title" name="re_title" value="" placeholder="Chủ đề" class="form-control" />
                     </div>
-                    <div class="form-group col-xs-12 col-md-6 nopadding-left">
+                    <div class="form-group col-xs-12 col-md-6 nopadding-left req">
                         <input type="text" id="re_name" name="re_name" value="" placeholder="Tên người liên hệ" class="form-control" />
                     </div>
-                    <div class="form-group col-xs-12 col-md-6 nopadding-right">
+                    <div class="form-group col-xs-12 col-md-6 nopadding-right req">
                         <input type="text" id="re_email" name="re_email" value="" placeholder="Email" class="form-control" />
                     </div>
                     <div class="form-group">
                         <input type="text" id="re_company" name="re_company" value="" placeholder="Tên công ty" class="form-control" />
                     </div>
-                    <div class="form-group col-xs-12 col-md-6 nopadding-left">
+                    <div class="form-group col-xs-12 col-md-6 nopadding-left req">
                         <input type="text" id="re_phone" name="re_phone" value="" placeholder="Điện thoại" class="form-control" />
                     </div>
                     <div class="form-group col-xs-12 col-md-6 nopadding-right">
                         <input type="text" id="re_fax" name="re_fax" value="" placeholder="Fax" class="form-control" />
                     </div>
-                    <div class="form-group">
+                    <div class="form-grou req">
                         <textarea id="re_content" name="re_content" class="form-control vert confinedSpace" placeholder="Nội dung"></textarea>
                     </div>
                     <div class="form-group">
@@ -146,11 +146,11 @@ get_header();
                     ?>
                     <?php if ($loop->have_posts()): ?>
                         <?php while ($loop->have_posts()): $loop->the_post(); ?>
-                            <div class="col-xs-3 nopadding-left nopadding-right">
+                            <div class="col-xs-12 col-md-3 nopadding-left nopadding-right">
                                 <?php $company_image = get_field('image') ?>
                                 <img class="img-responsive" src="<?php echo $company_image['sizes']['medium'] ?>" />
                             </div>
-                            <div class="col-xs-9">
+                            <div class="col-xs-12 col-md-9">
                                 <p><?php echo get_field('address') ?></p>
                                 <p><span class="c-info-title">Điện thoại</span> <?php echo get_field('tel') ?></p>
                                 <p><span class="c-info-title">Fax</span> <?php echo get_field('fax') ?></p>
