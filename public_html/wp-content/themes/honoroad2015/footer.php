@@ -7,7 +7,7 @@ $logo = (object) json_decode($omw_theme_settings->ct_company_logo);
     <div class="footer-wrapper-inner">
         <div id="copyright" class="vertical-align">
             <div class="container">
-                <div class="col-xs-12 copyright padding-bottom-md padding-top-xxl vcenter">
+                <div class="col-xs-12 copyright padding-bottom-md padding-top-xxl nopadding-left nopadding-right">
                     <div class="col-xs-12 col-md-4">
                         <a class="footer-logo" href="<?php echo home_url() ?>"><img src="<?php echo $logo->url ?>"/></a>
                         <p class="inline-block"><?php echo $omw_theme_settings->ct_company_name ?></p>
@@ -24,7 +24,7 @@ $logo = (object) json_decode($omw_theme_settings->ct_company_logo);
                         </p>
                     </div>
                     <div class="col-xs-12 col-md-4">
-                        <div class="vcenter">
+                        <div class="row">
                             <span class="priv">
                                 <span class="copy"><i class="fa fa-copyright"></i></span>
                                 <span class="year">Copyright 2015</span>
@@ -39,12 +39,14 @@ $logo = (object) json_decode($omw_theme_settings->ct_company_logo);
                         </div>
                     </div>
                     <div class="col-xs-12 col-md-4">
-                        <div class="newsletter-form-holder vcenter">
+                        <div class="row newsletter-form-holder">
                             <form id="newsletter-form" name="newsletter-form" class="newsletter-form form-inline" method="post" action="">
-                                <div class="form-group">
-                                    <input type="text" id="re_newsletter" name="re_newsletter" value="" placeholder="Newsletter" class="form-control" />
+                                <div class="center-block holder">
+                                    <div class="form-group">
+                                        <input type="text" id="re_newsletter" name="re_newsletter" value="" placeholder="Newsletter" class="form-control" />
+                                    </div>
+                                    <button type="submit" class="btn btn-success inline-block">Gửi</button>
                                 </div>
-                                <button type="submit" class="btn btn-success inline-block">Gửi</button>
                             </form>
                         </div>
                     </div>

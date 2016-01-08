@@ -1238,17 +1238,30 @@ ul.recent_short{
     display: inline-block;
     vertical-align: middle;
     float: none;
-    width: 100%;
-    height: 100%;
+    /*width: 100%;*/
+    /*height: 100%;*/
 }
 
+/* saf3+, chrome1+ */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .newsletter-form-holder{
+        .newsletter-form{
+            .holder{
+                width: 260px;
+            }
+        }
+    }
+}
 .newsletter-form-holder{
-    -webkit-transform-style: preserve-3d;
-    -moz-transform-style: preserve-3d;
-    transform-style: preserve-3d;
+    /*-webkit-transform-style: preserve-3d;*/
+    /*-moz-transform-style: preserve-3d;*/
+    /*transform-style: preserve-3d;*/
     .newsletter-form{
         /*@include vertical-align();*/
-        margin-top: 30%;
+        /*margin-top: 30%;*/
+        .holder{
+            width: -moz-fit-content;
+        }
     }
     input{
         @include border-radius(0);
