@@ -202,16 +202,33 @@ $(function ($) {
 });
 
 $(function () {
+    // auto play product in home page
+    $('.carousel').carousel({
+        interval: 2000
+    });
+    // auto play list product single page
+    var $lis = $('ul.touch-list li');
+    var len = $lis.length;
+    var loop_init = 0;
+    //
+    setInterval(function () {
+        loop_init++;
+        var img_src = $lis.eq(loop_init % len).children('a').data('full');
+        $lis.removeClass('selected').eq(loop_init % len).addClass('selected');
+        $('.image-block img').fadeOut().attr('src', img_src).fadeIn();
+    }, 5000);
+    // click to change product image
     var $thumb_list = $('.thumb-list ul.touch-list li');
     $thumb_list.each(function () {
         $(this).find('a').on('click', function () {
             var full = $(this).data('full');
             $thumb_list.removeClass('selected');
             $(this).parent().addClass('selected');
-            $('.image-block img').attr('src', full);
+            $('.image-block img').fadeOut().attr('src', full).fadeIn();
+            loop_init = $(this).parent().index();
         });
     });
-
+    //
     $(".fancybox-features").fancybox();
 });
 
@@ -270,10 +287,16 @@ $(function () {
     $('.news article.box').heightLine();
 
     $('a.fancybox').attr('rel', 'health-news').fancybox({
-        minWidth: 200, // or whatever, default is 100
-        minHeight: 200, // default 100
+        minWidth: 180, // or whatever, default is 100
+        minHeight: 300, // default 100
         maxWidth: 800, // default 9999
         maxHeight: 900, // default 9999
+        openEffect: 'none',
+        closeEffect: 'none',
+        nextEffect: 'none',
+        prevEffect: 'none',
+        padding: 10,
+        margin: 60,
         afterLoad: function () {
             this.content = $('#content-' + this.element.data('id')).html();
             //
@@ -284,41 +307,4 @@ $(function () {
             });
         }
     });
-});
-
-
-$(function () {
-    $('.carousel').carousel({
-        interval: 2000
-    });
-    //
-    var $lis = $('ul.touch-list li');
-    var len = $lis.length;
-
-console.log($lis);
-console.log(len);
-
-    function loop(index) {
-        setInterval(function(){
-            img_url = $lis.eq(index).siblings('li').children('a').data('full');
-            console.log(img_url)
-            loop(index+1);
-        }, 5000);
-    }
-    
-
-
-//    setInterval(function(){
-//        console.log($el)
-//        if ($el.children().is(':last')){
-//            $el.siblings(':first');
-//            console.log('1')
-//            console.log($('a', $el.siblings(':first')).data('full'))
-//        } else {
-//            console.log('2')
-//            $t_el = $el.next();
-//            console.log($t_el)
-//            console.log($('a', $t_el).data('full'))
-//        }
-//    }, 5000);
 });

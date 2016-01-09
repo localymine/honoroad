@@ -104,7 +104,7 @@ get_header();
                     <div class="form-group">
                         <input type="text" id="re_fax" name="re_fax" value="" placeholder="Fax" class="form-control" />
                     </div>
-                    <div class="form-grou req">
+                    <div class="form-group req">
                         <textarea id="re_content" name="re_content" class="form-control vert confinedSpace" placeholder="Nội dung"></textarea>
                     </div>
                     <div class="form-group">

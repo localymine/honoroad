@@ -1149,9 +1149,20 @@ ul.m-sidebar{
 .fan-content{
     display: none;
 }
+
 .fancybox-nav{
-    width: 5%;
+    width: 60px;
+    span{
+        visibility: visible;
+    }
 }
+.fancybox-next {
+    right: -70px;
+}
+.fancybox-prev {
+    left: -70px;
+}
+
 .health-nutri{
     article{
         border: 1px solid $image-border-color; 
@@ -1258,7 +1269,7 @@ ul.recent_short{
     /*transform-style: preserve-3d;*/
     .newsletter-form{
         /*@include vertical-align();*/
-        /*margin-top: 30%;*/
+        margin-top: 40%;
         .holder{
             width: -moz-fit-content;
         }

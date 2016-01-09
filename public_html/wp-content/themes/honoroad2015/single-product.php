@@ -44,6 +44,7 @@ get_header();
 
                 <div class="thumb-list clearfix">
                     <ul class="touch-list">
+                        <?php $i = 0; ?>
                         <?php while (have_rows('images')): the_row(); ?>
                             <?php
                             $prod_img = get_sub_field('image');
@@ -52,9 +53,10 @@ get_header();
                             $prod_thumb = $prod_img['sizes']['thumbnail'];
                             $prod_large = $prod_img['sizes']['large'];
                             ?>
-                            <li>
+                            <li class="<?php echo ($i == 0) ? 'selected' : '' ?>">
                                 <a href="javascript:void(0)" data-large="<?php echo $prod_large ?>" data-full="<?php echo $url ?>"><img width="50" src="<?php echo $prod_thumb ?>"/></a>
                             </li>
+                            <?php $i++; ?>
                         <?php endwhile; ?>
                     </ul>
                 </div>

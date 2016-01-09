@@ -32,7 +32,7 @@
         <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/fancybox/jquery.fancybox.css"/>
         <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/css/animate.css"/>
         <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/css/style.css"/>
-        
+
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -162,10 +162,10 @@
                                         <li><a class="nav-title <?php echo $omw_active_menu['health'] ?>" href="<?php bloginfo('url') ?>/health"><span>Sức khỏe và Dinh dưỡng</span></a></li>
                                         <?php if (is_user_logged_in()): ?>
                                             <li>
-                                                <a class="nav-title <?php echo $omw_active_menu['order'] ?>" href="javascript:void(0)"><span>Đặt hàng</span></a>
+                                                <a class="nav-title <?php echo $omw_active_menu['order'] ?>" href="<?php bloginfo('url') ?>/order"><span>Đặt hàng</span></a>
                                                 <ul>
-                                                    <li><a href="<?php bloginfo('url') ?>/order">Quản lý đặt hàng</a></li>
-                                                    <li><a>Quản lý đơn hàng</a></li>
+                                                    <li><a href="javascript:void(0)">Quản lý đặt hàng</a></li>
+                                                    <li><a href="javascript:void(0)">Quản lý đơn hàng</a></li>
                                                 </ul>
                                             </li>
                                             <li><a class="nav-title <?php echo $omw_active_menu['policy'] ?>" href="<?php bloginfo('url') ?>/policy"><span>Chính sách</span></a></li>
@@ -270,8 +270,8 @@
                         <li>
                             <a class="<?php echo $omw_active_menu['order'] ?>" href="<?php bloginfo('url') ?>/order"><span>Đặt hàng</span></a>
                             <ul>
-                                <li><a>Quản lý đặt hàng</a></li>
-                                <li><a>Quản lý đơn hàng</a></li>
+                                <li><a href="javascript:void(0)">Quản lý đặt hàng</a></li>
+                                <li><a href="javascript:void(0)">Quản lý đơn hàng</a></li>
                             </ul>
                         </li>
                         <li><a class="<?php echo $omw_active_menu['policy'] ?>" href="<?php bloginfo('url') ?>/policy"><span>Chính sách</span></a></li>

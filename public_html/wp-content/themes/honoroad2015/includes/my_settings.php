@@ -121,9 +121,9 @@ class omw_theme_settings {
                             'default' => '',
                             'placeholder' => '',
                         ),
-                        'ct_company_image' => array(
-                            'id' => 'ct_company_image',
-                            'label' => 'Company Image',
+                        'ct_company_logo_footer' => array(
+                            'id' => 'ct_company_logo_footer',
+                            'label' => 'Company Logo Footer',
                             'description' => '',
                             'type' => 'image',
                             'default' => '',
