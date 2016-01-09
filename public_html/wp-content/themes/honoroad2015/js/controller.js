@@ -4,8 +4,9 @@ myapp.controller('ProductListCtrl', function ($scope) {
     $scope.products = angular.fromJson(vars.product_list);
     //
     $scope.rows = [{}];
-    $scope.add_row = function (row) {
+    $scope.add_row = function () {
         $scope.rows.push({});
+        $scope.count = $scope.count + 1;
     };
     $scope.sub_row = function (row) {
         $scope.rows.splice($scope.rows.indexOf(row), 1);
@@ -20,7 +21,13 @@ myapp.controller('ProductListCtrl', function ($scope) {
         });
     };
     //
-    $scope.total_products = function(){
+    $scope.total_products = function () {
         return $scope.rows.length;
     };
+    //
+    $scope.save_order = function (po) {
+        $scope.lastAction = 'save_order';
+        console.log($scope.rows)
+        console.log(po)
+    }
 });
