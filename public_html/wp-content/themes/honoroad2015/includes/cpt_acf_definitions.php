@@ -289,7 +289,7 @@ if (function_exists("register_field_group")) {
                 'type' => 'wysiwyg',
                 'instructions' => 'Mô tả',
                 'default_value' => '',
-                'toolbar' => 'basic',
+                'toolbar' => 'full',
                 'media_upload' => 'yes',
             ),
             array(
