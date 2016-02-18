@@ -308,3 +308,10 @@ $(function () {
         }
     });
 });
+
+$(function(){
+    $('.trig-btn').on('click', function(){
+        $(this).hide().siblings('li').show();
+        $('.bn-content > p').toggle();
+    });
+});

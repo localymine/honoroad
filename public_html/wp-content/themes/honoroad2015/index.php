@@ -164,4 +164,6 @@ wp_reset_postdata();
 
 <?php get_template_part('part-google-map') ?>
 
+<?php get_template_part('part-video') ?>
+
 <?php get_footer(); ?>

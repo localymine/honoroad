@@ -53,7 +53,7 @@ global $omw_theme_settings;
                             <p>
                                 <a class="padding-lt-rt-md vcenter" href="https://www.facebook.com/sharer/sharer.php?u=<?php bloginfo('url') ?>"><i class="fa fa-facebook fa-3x"></i></a>
                                 <a class="padding-lt-rt-md vcenter" href="http://www.twitter.com/intent/tweet?url=<?php bloginfo('url') ?>"><i class="fa fa-twitter fa-3x"></i></a>
-                                <a class="inline-block vcenter" href="http://alibaba.com">
+                                <a class="inline-block vcenter" href="http://honoroadvn.trustpass.alibaba.com/">
                                     <img width="64" src="<?php echo get_template_directory_uri() ?>/images/i-alibaba.png"/>
                                 </a>
                             </p>

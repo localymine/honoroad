@@ -1333,6 +1333,56 @@ ul.lst-pd-order{
     }
 }
 
+.float_banner_bottom{
+    position: fixed;
+    right: 0;
+    bottom: 0; 
+    z-index: 9999;
+    .bn-border-bg{
+        position: relative;
+        .bn-control{
+            color: $white; 
+            display: block; 
+            line-height: 15px; 
+            position: relative;
+            ul.bn-nav{
+                padding: 0; 
+                margin: -25px 0 0; 
+                list-style: none outside none; 
+                overflow: hidden; 
+                border-top-left-radius: 3px; 
+                position: absolute;
+                display: table; 
+                right: 0;
+                li{
+                    background: $hot-top-bg;
+                    width: 20px; 
+                    display: table-cell; 
+                    padding: 5px; 
+                    text-align: center; 
+                    vertical-align: middle;
+                    a{
+                        color: $white; 
+                        &:hover{
+                            color: $white; 
+                        }
+                    }
+                }
+            }
+        }
+        .bn-content{
+            border: $hot-top-bg solid 5px;
+            background: #000;
+            width: 360px;
+            display: table;
+            p{
+                vertical-align: middle;
+                display: table-cell;
+            }
+        }
+    }
+}
+
 @import "nmf-1-max-1200.scss";
 @import "nmf-2-max-992.scss";
 @import "nmf-3-max-768.scss";
