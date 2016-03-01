@@ -13,7 +13,7 @@
             </div>
             <div class="bn-content">
                 <p>
-                    <iframe width="350" height="226" src="https://www.youtube.com/embed/QKyr7dp1ELc" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="350" height="226" src="https://www.youtube.com/embed/QKyr7dp1ELc?autoplay=1&loop=1&controls=0&showinfo=0&rel=0" frameborder="0" allowfullscreen></iframe>
                 </p>
             </div>
         </div>

@@ -1383,6 +1383,26 @@ ul.lst-pd-order{
     }
 }
 
+.sns{
+    background: #ddd;
+    padding: 5px;
+    ul.sns{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        li{
+            &:nth-child(1){
+                margin-top: 16px;
+            }
+        }
+        li{
+            display: inline-block;
+            position: relative;
+            vertical-align: middle;
+        }
+    }
+}
+
 @import "nmf-1-max-1200.scss";
 @import "nmf-2-max-992.scss";
 @import "nmf-3-max-768.scss";

@@ -35,7 +35,9 @@ get_header();
                     </article>
                     <div class="fan-content" id="content-<?php the_ID() ?>">
                         <h2><?php the_title() ?></h2>
+                        <?php get_template_part('part-share') ?>
                         <p><?php echo $post->post_content ?></p>
+                        <?php get_template_part('part-share') ?>
                     </div>
                 </div>
             <?php endwhile; ?>

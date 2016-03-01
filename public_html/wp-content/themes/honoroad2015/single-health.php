@@ -15,7 +15,9 @@ setPostViews($post->ID, 'view-news');
         <div class="col-xs-12 col-md-7">
             <article class="news-detail">
                 <h2><span><?php echo $post->post_title ?></span></h2>
+                <?php get_template_part('part-share') ?>
                 <p><?php echo $post->post_content ?></p>
+                <?php get_template_part('part-share') ?>
             </article>
         </div>
         <div class="col-xs-12 col-md-3">
